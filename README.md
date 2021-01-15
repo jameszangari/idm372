@@ -38,7 +38,7 @@
 #
 ## Working with the files
 * **!!!** Before making any changes, **branch off of the main/master** (make sure you pull first)
-* **!!!** Create a **new branch** for you work and **create a pull request** when finished
+* **!!!** Create a **new branch** for your work and **create a pull request** when finished
     * For organization of the repo, use [emojis](https://gitmoji.dev/) when writing commits messages e.g. `:lipstick: styled footer navigation`
     * Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit 
 #
@@ -47,7 +47,7 @@
 * The url, page title, and location of the `.ejs` templates are stored as values in `src/scripts/config/endpoints.json`
     * This allows us to dynamically changes these values globally so that we don't have to manually change each value on each template e.g. `endpoints.registerAlbum.url`
 * In `src/scripts/routes`, there is a file called `routes.js` which renders these pages
-##### Creating New Pages
+#### Creating New Pages
 1. Create a new `.ejs` template for the page you want to create e.g. `chat.ejs`
 2. In `src/scripts/routes/routes.js`, create a new function for this page underneath the others (using formatting as a reference)
     1. Use `res.render` to load up an `.ejs` view file
