@@ -28,6 +28,9 @@
 	padding-left: 3%;
 	padding-right: 3%;
 	margin: 0 auto;
+	// @include blue-gradient($color-purple, $color-bright-blue);
+	background: $color-blues-1;
+	color: $color-gray-5;
 
 	// @include media('>l') {
 	// 	padding-left: 20px;

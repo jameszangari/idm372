@@ -1,0 +1,8 @@
+@mixin blue-gradient($color-purple, $color-bright-blue) {
+    background-color: $color-purple;
+    background: linear-gradient(109.22deg, $color-purple 6.76%, $color-bright-blue 95.8%);   
+}
+@mixin pink-gradient($color-pink-1, $color-orange) {
+    background-color: $color-pink-1;
+    background: linear-gradient(109.22deg, $color-pink-1 6.76%, $color-orange 95.8%);   
+}
