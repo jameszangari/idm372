@@ -8,7 +8,8 @@
 
 1. In the Command Line, navigate to the directory ( **idm372** )
 2. Download the *node_modules* using: `npm install`
-3. Go to Microsoft Teams and download the necessary ***secret*** files: `Back End Development/Secret_Keys_2021`
+3. Install nodemon globally using `npm i nodemon -g`
+4. Go to Microsoft Teams and download the necessary ***secret*** files: `Back End Development/Secret_Keys_2021`
 
 ---
 
