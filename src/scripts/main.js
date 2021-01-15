@@ -8,9 +8,15 @@ var $ = require('jquery');
 // Expose Jquery to window
 window.$ = window.jQuery = $;
 
-const Spotify = require('./modules/Spotify')
+// QuickRefs
+window.docQ = document.querySelector.bind(document);
+window.docQA = document.querySelectorAll.bind(document);
 
-// Gloabl Logic here
-$(document).ready(function() {
+const Spotify = require('./modules/Spotify');
+const Register = require('./modules/Register');
+
+// Global Logic here
+$(document).ready(() => {
     Spotify.init();
+    Register.init();
 });

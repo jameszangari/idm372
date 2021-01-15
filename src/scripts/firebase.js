@@ -6,7 +6,7 @@ module.exports = {
       credential: firebaseAdmin.credential.cert(serviceAccount)
     });
   },
-  db: function() {
+  db: function () {
     return firebaseAdmin.firestore();
   }
 }
