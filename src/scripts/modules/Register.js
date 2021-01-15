@@ -20,7 +20,7 @@ module.exports = {
 
             // Get form data as an object, !!!the name attribute will declare the field name in the DB!!!
             var valsObj = {};
-            const form_children = docQA('form > *');
+            const form_children = docQA('#firestore_form > *');
             form_children.forEach(el => {
                 if (el.value) valsObj[el.name] = el.value;
             });
