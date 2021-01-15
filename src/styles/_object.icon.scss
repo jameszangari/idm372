@@ -2,64 +2,101 @@
     #BUTTONS
 \*------------------------------------*/
 .o-button {
-	// All shared button styles across
-	display: inline-block;
-	font-family: $font-primary;
-	font-size: 20px;
-	font-weight: 800;
-	text-transform: uppercase;
-	border-radius: 5px;
-	padding: 12px 24px;
+    // All shared button styles across
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+	border-radius: 50px;
+	padding: 16px 80px;
 	color: $color-gray-5;
-	transition: all 0.3s ease;
-	line-height: 1;
-	width: max-content;
-	cursor: pointer;
+    transition: all .3s ease;
+    line-height: 1;
+    width: max-content;
+    cursor: pointer;
 	border: none;
-}
+	box-sizing: border-box;
 
-.o-button-primary {
-	@extend .o-button;
-	background: $color-bright-blue;
-	&:hover {
-		background: $color-bright-blue-hover;
+	&-primary {
+		@extend .o-button;
+		font-family: $font-primary;
+		font-size: 20px;
+		font-weight: 800;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		right: 50%;
+		transform: translateX(50%);
+		margin: 0 auto;
+		text-transform: uppercase;
+		margin-bottom: 3%;
+		background: $color-bright-blue;
+
+		&:hover {
+			background: $color-bright-blue-hover;
+		}
 	}
-	&--small {
-		font-size: 14px;
-		padding: 8px 12px;
+
+	&-secondary {
+		@extend .o-button;
+		background: $color-gray-5;
+		color: $color-black;
+		box-shadow: inset 0 0 0 1px $color-black;
+
+		&:hover {
+			background: $color-black;
+			border: none;
+			color: $color-gray-5;
+		}
 	}
-}
 
-.o-button-secondary {
-	@extend .o-button;
-	background: $color-gray-5;
-	color: $color-black;
-	box-shadow: inset 0 0 0 1px $color-black;
-
-	&:hover {
-		background: $color-black;
-		border: none;
+	&-upload {
+		@extend .o-button;
+		display: block;
+		margin: 0 auto;
+		background: $color-bright-blue;
 		color: $color-gray-5;
-	}
-	&--small {
-		font-size: 14px;
-		padding: 8px 12px;
-	}
-}
+		padding: 20px 24px;
+		border-radius: 12px;
 
-.o-button-image-upload {
-	@extend .o-button;
-	display: block;
-	margin: 0 auto;
-	background: $color-gray-5;
-	color: $color-black;
-	box-shadow: inset 0 0 0 1px $color-black;
-	padding: 20px;
+		&:hover {
+			background: $color-bright-blue-hover;
+			border: none;
+		}
 
-	&:hover {
-		background: $color-black;
-		border: none;
-		color: $color-gray-5;
+		&:before {
+			content: '\f067';
+			font-family: 'FontAwesome';
+			font-size: 34px;
+		}
+	}
+
+	&-login {
+		@extend .o-button;
+		font-family: $font-tertiary;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		right: 50%;
+		transform: translateX(50%);
+		margin: 0 auto;
+		text-transform: uppercase;
+		font-weight: 900;
+		font-size: 16px;
+		color: $color-black;
+		padding: 10px 20px;
+		background: $color-gray-5;
+		border: 2px solid $color-black;
+		margin-bottom: 3%;
+
+		&:hover {
+			background: $color-gray-4;
+		}
+
+		&:before {
+			content: '\f1bc';
+			font-family: 'FontAwesome';
+			padding-right: 15px;
+		}
 	}
 }
 
@@ -93,4 +130,41 @@
 	}
 }
 
-
+/*------------------------------------*\
+    #INPUTS
+\*------------------------------------*/
+.o-search-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	&--input {
+		border: none;
+		margin: 0 auto;
+		text-align: center;
+		border-radius: 50px;
+		line-height: 1;
+		width: 100%;
+		&:focus {
+			outline: none;
+		}
+	}
+	&--button {
+		position: absolute;
+		color: $color-black;
+		align-self: flex-start;
+		padding-left: 20px;
+	}
+}
+.o-form--input {
+	border: none;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 50px;
+	line-height: 1;
+	width: 100%;
+	margin: 10px 0;
+	&:focus {
+		outline: none;
+	}
+}
