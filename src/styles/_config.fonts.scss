@@ -140,3 +140,12 @@
 	src: url('./../fonts/Starforge/Starforge-Regular.woff2') format('woff2'),
 	url('./../fonts/Starforge/Starforge-Regular.woff') format('woff');
 }
+
+/*----------------- VCR OSD Mono -------------------*/
+@font-face {
+	font-family: 'VCR';
+    font-weight: normal;
+    font-style: normal;
+	src: url('./../fonts/VCRMono/VCROSDMono.woff2') format('woff2'),
+	url('./../fonts/VCRMono/VCROSDMono.woff') format('woff');
+}

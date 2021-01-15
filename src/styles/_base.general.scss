@@ -62,21 +62,22 @@ li {
 
 input, select, textarea {
 	padding: 15px;
-	font-family: $font-primary;
+	font-family: $font-secondary;
 	font-weight: 400;
+	text-transform: uppercase;
 	font-size: 14px;
 	line-height: 24px;
 	border-radius: 5px;
 	&::-webkit-input-placeholder {
-		color: red;
+		color: $color-black;
 	}
 
 	&:-ms-input-placeholder {
-		color: red;
+		color: $color-black;
 	}
 
 	&::placeholder {
-		color: red;
+		color: $color-black;
 	}
 }
 
