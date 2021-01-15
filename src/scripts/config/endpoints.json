@@ -25,6 +25,13 @@
     "page": ""
 
   },
+  "update":
+  {
+    "url": "/update",
+    "title": "Update",
+    "page": ""
+
+  },
   "callback":
   {
     "url": "/callback",
