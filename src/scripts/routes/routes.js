@@ -78,4 +78,13 @@ module.exports =  function(app) {
     });
   });
 
+  // Activities Page
+  app.get(endpoints.registerActivities.url, function(req, res)
+  {
+    res.render(endpoints.registerActivities.page, {
+        pageTitle: endpoints.registerActivities.title,
+        endpoints: endpoints,
+    });
+  });
+
 };

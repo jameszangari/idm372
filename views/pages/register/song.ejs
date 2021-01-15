@@ -1,20 +1,24 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
-Profile / Song
-<form action="" id="searchSong">
-    <h2>Choose a song that best represents you</h2>
-    <input type="text" id="anthem_id_input" placeholder="Search for a song">
-    <button type="button" class="green-btn" id="search_anthem_button">Search</button>
-</form>
-
-<div id="search_results"></div>
 
 <%- include('../../_components/buttons', {
     url: endpoints.registerProfile.url,
     label: 'Back'
 }); %>
 
+<h1 class="u-heading-1 u-align-center"><%= endpoints.registerSong.title %></h1>
+
+<form action="" id="searchSong">
+    <h2 class="u-heading-2 u-align-center">Choose a song that best represents you</h2>
+    <input type="text" id="anthem_id_input" placeholder="Search for a song">
+    <button class="o-button-primary" type="button" class="green-btn" id="search_anthem_button">Search</button>
+</form>
+
+<div id="search_results"></div>
+
+
 <%- include('../../_components/buttons', {
     url: endpoints.registerAlbum.url,
     label: 'Next'
 }); %>
+
 <%- include('../../_partials/footer'); %>

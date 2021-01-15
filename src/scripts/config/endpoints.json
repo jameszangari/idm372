@@ -76,5 +76,11 @@
     "url": "/register/bio",
     "title": "Set Up Profile",
     "page": "pages/register/bio"
+  },
+  "registerActivities":
+  {
+    "url": "/register/activities",
+    "title": "Set Up Profile",
+    "page": "pages/register/activities"
   }
 }
