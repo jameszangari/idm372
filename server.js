@@ -10,8 +10,9 @@ const cors = require('cors'); // Cross-origin Access
 const cookieParser = require('cookie-parser'); // Headers Cookies
 const path = require('path');
 
-// // Our Modules
+// Our Modules
 const config = require('./secret/config'); // Secret Keys
+
 // ====================
 // Start Express Server
 // ====================
@@ -22,11 +23,11 @@ const port = 8888;
 app.use(express.static(path.join(__dirname, 'public')))
     .use(cors())
     .use(cookieParser())
-    .use(express.urlencoded({ extended: true })); 
-// set the view engine to ejs
+    .use(express.urlencoded({ extended: true }));
+// Set the view engine to ejs
 app.set('view engine', 'ejs');
 
 app.listen(port);
-console.log('Server started at localhost:' + port);
-// use res.render to load up an ejs view file
+console.log('Server started at http://localhost:' + port);
+// Use res.render to load up an ejs view file
 require("./src/scripts/routes/routes")(app);
