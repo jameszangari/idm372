@@ -1,7 +1,6 @@
 const request = require('request');
 
-module.exports = function(req, res)
-{
+module.exports = function (req, res) {
     let criteria = req.query.query,
         token = req.query.access_token;
 

@@ -160,9 +160,9 @@ function broadcast(message, color) { // Sends a feedback message to the user
     status.innerText = message;
     status.style.color = color;
     status.style.opacity = '1';
-    setTimeout(function () { // Show for 5000ms (5s)
+    setTimeout(() => { // Show for 5000ms (5s)
         status.style.opacity = '0';
-        setTimeout(function () { // Clear message text after 500ms (0.5s)
+        setTimeout(() => { // Clear message text after 500ms (0.5s)
             status.innerText = '';
         }, 500);
     }, 5000);
@@ -299,7 +299,7 @@ function create_user(id_to_use) { // Create a user
     };
 
     // Push data to FireStore
-    db.collection('users').doc(id_to_use).set(data).then(function () {
+    db.collection('users').doc(id_to_use).set(data).then(() => {
         console.log('Account Created!');
         login_shuffle(id_to_use);
     }).catch(function (error) {
@@ -310,7 +310,7 @@ function create_user(id_to_use) { // Create a user
 // Refactored test of above function
 // function updateUser(userID, data) {
 //     // Push data to FireStore
-//     db.collection('users').doc(userID).set(data).then(function () {
+//     db.collection('users').doc(userID).set(data).then(() => {
 //         console.log('Account Created!');
 //         login_shuffle(userID);
 //     }).catch(function (error) {
@@ -545,7 +545,7 @@ function send_message(current_uuid, match_uuid, thread_id) { // Sends a message 
             uuid2: match_uuid,
             last_activity: timestamp(),
         };
-        db.collection('chats').doc('thread-' + thread_id).set(data).then(function () {
+        db.collection('chats').doc('thread-' + thread_id).set(data).then(() => {
             // 2. Send the message.
             const data = {
                 content: message_input.value,
@@ -553,7 +553,7 @@ function send_message(current_uuid, match_uuid, thread_id) { // Sends a message 
                 to: match_uuid,
                 when: timestamp()
             };
-            db.collection('chats').doc('thread-' + thread_id).collection('messages').doc().set(data).then(function () {
+            db.collection('chats').doc('thread-' + thread_id).collection('messages').doc().set(data).then(() => {
                 broadcast('Message Sent!', 'var(--green)');
                 message_input.value = '';
             }).catch(function (error) {
@@ -811,7 +811,7 @@ function toggle_user_block(target, current_uuid, command) {
         blocked: command,
     };
 
-    docRef.set(data).then(function () { // Push data to DB
+    docRef.set(data).then(() => { // Push data to DB
         // do stuff after
         decipher_uuid(target).then((name) => {
             console.log(`Toggling block on ${name}...`);
@@ -885,7 +885,7 @@ function prep_photo_input(current_uuid) { // Prepares the input and upload funct
         if (typeof files[0] === 'object') { // File attached
             // If there's a file
             var reader = new FileReader();
-            reader.onload = function () {
+            reader.onload = () => {
                 pp_thumb.src = reader.result;
                 reader = null;
             }
@@ -906,7 +906,7 @@ function prep_photo_input(current_uuid) { // Prepares the input and upload funct
             const data = { // Create data
                 pp: url,
             };
-            docRef.update(data).then(function () { // Push data to DB
+            docRef.update(data).then(() => { // Push data to DB
                 // do stuff after
                 broadcast('Upload complete', 'var(--green)');
                 upload_unready() // Styles
@@ -994,7 +994,7 @@ function delete_user(current_uuid) {
         })
     // ===== 4. Delete the User Document Itself =====
 
-    setTimeout(function () {
+    setTimeout(() => {
         // I am delayed
         db.collection('users').doc(current_uuid).delete();
 
