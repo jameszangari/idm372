@@ -1,8 +1,7 @@
 <%- include('../_partials/header', {pageTitle: pageTitle}); %>
-<h1>Shuffle</h1>
-<%- include('../_components/buttons', {
-    url: endpoints.authorize.url, 
-    label: 'Login with Spotify',
-}); %>
+
+<h1 class="u-heading-1 u-text-align-center">Shuffle</h1>
+
+<a class="" href="<%= endpoints.authorize.url %>">Login with Spotify</a>
 
 <%- include('../_partials/footer'); %>
