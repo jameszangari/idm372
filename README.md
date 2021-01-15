@@ -7,7 +7,7 @@
 ---
 
 1. In the Command Line, navigate to the directory ( **idm372** )
-2. Download the *node_modules* using: `npm i -y`
+2. Download the *node_modules* using: `npm install`
 3. Go to Microsoft Teams and download the necessary ***secret*** files: `Back End Development/Secret_Keys_2021`
 
 ---
@@ -19,7 +19,7 @@
 
 1. Download the `secret` folder from this directory
 2. Copy the contents of this folder to the secret folder in the root of this project, outside of the `public` folder (create this folder if it does not exist for you)
-3. Download `firebase-config.js` and copy it into `public/src/scripts/` (make sure this lives outside of the modules folder)
+3. Download `firebase-config.js` and copy it into `src/scripts/` (make sure this lives outside of the modules folder)
 
 ---
 

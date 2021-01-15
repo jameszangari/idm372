@@ -42,3 +42,27 @@
 	src: url('./../fonts/Euclid/EuclidCircularA-Bold.woff2') format('woff2'),
 	url('./../fonts/Euclid/EuclidCircularA-Bold.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Gellix';
+    font-weight: 100;
+    font-style: normal;
+	src: url('./../fonts/Gellix/Gellix-Thin.woff2') format('woff2'),
+	url('./../fonts/Gellix/Gellix-Thin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Gellix';
+    font-weight: 100;
+    font-style: italic;
+	src: url('./../fonts/Gellix/Gellix-ThinItalic.woff2') format('woff2'),
+	url('./../fonts/Gellix/Gellix-ThinItalic.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Gellix';
+	font-weight: 400;
+	font-style: normal;
+	src: url('./../fonts/Gellix/Gellix-Regular.woff2') format('woff2'),
+	url('./../fonts/Gellix/Gellix-Regular.woff') format('woff');
+}
