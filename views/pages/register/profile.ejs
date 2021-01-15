@@ -2,22 +2,24 @@
 
 <%- include('../../_components/buttons', {
     url: endpoints.registerConnected.url,
-    label: 'Back'
+    label: 'Back',
+    classnames: 'o-button-back'
 }); %>
 
 <h1 class="u-heading-1 u-align-center"><%= endpoints.registerProfile.title %></h1>
  <!-- ===== Sign Up Form ===== -->
  <form class="prompt_form" id="sign_up_form">
                 <h2 class="u-heading-2 u-align-center">Your Name</h2>
-                <input type="text" id="first_name_input" placeholder="First Name" required>
-                <input type="text" id="last_name_input" placeholder="Last Name" required>
+                <input class="o-form--input" type="text" id="first_name_input" placeholder="First Name" required>
+                <input class="o-form--input" type="text" id="last_name_input" placeholder="Last Name" required>
                 <h2 class="u-heading-2 u-align-center">Your Birthday</h2>
-                <input type="date" id="age_input" placeholder="Age">
+                <input class="o-form--input" type="date" id="age_input" placeholder="Age">
  </form>
 
 <%- include('../../_components/buttons', {
     url: endpoints.registerSong.url,
-    label: 'Next'
+    label: 'Next',
+    classnames: 'o-button-primary'
 }); %>
 
 <%- include('../../_partials/footer'); %>

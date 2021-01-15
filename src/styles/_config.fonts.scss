@@ -132,6 +132,15 @@
 	url('./../fonts/Gellix/Gellix-BlackItalic.woff') format('woff');
 }
 
+/*----------------- Roboto -------------------*/
+@font-face {
+	font-family: 'Roboto';
+    font-weight: 900;
+    font-style: normal;
+	src: url('./../fonts/Roboto/Roboto-Black.woff2') format('woff2'),
+	url('./../fonts/Roboto/Roboto-Black.woff') format('woff');
+}
+
 /*----------------- VCR OSD Mono -------------------*/
 @font-face {
 	font-family: 'VCR';
