@@ -1,0 +1,80 @@
+{
+  "home":
+  {
+    "url": "/",
+    "title": "home",
+    "page": "pages/home"
+  },
+  "login":
+  {
+    "url": "/login",
+    "title": "Login",
+    "page": "pages/login"
+  },
+  "authorize":
+  {
+    "url": "/authorize",
+    "title": "Authorize",
+    "page": "pages/login"
+
+  },
+  "search":
+  {
+    "url": "/search",
+    "title": "Search",
+    "page": ""
+
+  },
+  "callback":
+  {
+    "url": "/callback",
+    "title": "Callback",
+    "page": ""
+
+  },
+  "registerConnected":
+  {
+    "url": "/register/connected",
+    "title": "Set Up Profile",
+    "page": "pages/register/connected"
+
+  },
+  "registerProfile":
+  {
+    "url": "/register/profile",
+    "title": "Set Up Profile",
+    "page": "pages/register/profile"
+
+  },
+  "registerSong":
+  {
+    "url": "/register/song",
+    "title": "Set Up Profile",
+    "page": "pages/register/song"
+
+  },
+  "registerAlbum":
+  {
+    "url": "/register/album",
+    "title": "Set Up Profile",
+    "page": "pages/register/album"
+  },
+  "registerPlaylist":
+  {
+    "url": "/register/playlist",
+    "title": "Set Up Profile",
+    "page": "pages/register/playlist"
+  },
+  "registerImages":
+  {
+    "url": "/register/images",
+    "title": "Set Up Profile",
+    "page": "pages/register/images"
+  },
+  "registerBio":
+  {
+    "url": "/register/bio",
+    "title": "Set Up Profile",
+    "page": "pages/register/bio"
+  }
+}

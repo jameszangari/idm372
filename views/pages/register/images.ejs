@@ -1,0 +1,12 @@
+<%- include('../../_partials/header', {pageTitle: pageTitle}); %>
+Profile / Images
+<form action=""></form>
+<%- include('../../_components/buttons', {
+    url: endpoints.registerImages.url,
+    label: 'Back'
+}); %>
+<%- include('../../_components/buttons', {
+    url: endpoints.registerBio.url,
+    label: 'Next'
+}); %>
+<%- include('../../_partials/footer'); %>

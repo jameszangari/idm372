@@ -1,0 +1,14 @@
+<%- include('../../_partials/header', {pageTitle: pageTitle}); %>
+<!-- template: <%= endpoints.registerAlbum.template %> -->
+Profile / Album
+<form action="">
+    <h2>Choose your favorite album</h2>
+    <input type="text" id="anthem_id_input" placeholder="Search for a song">
+    <button type="button" class="green-btn" id="search_anthem_button">Search</button>
+    <div id="search_results"></div>
+</form>
+<%- include('../../_components/buttons', {
+    url: endpoints.registerPlaylist.url, 
+    label: 'Next'
+}); %>
+<%- include('../../_partials/footer'); %>

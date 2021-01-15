@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js" defer></script>
+    <script src="../src/scripts/firebase-config.js" defer></script>
+    <!-- Other Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" defer></script>
+    <!-- <script src="https://kit.fontawesome.com/a57c47fadc.js" crossorigin="anonymous" defer></script> -->
+   
+    <!-- Styles -->
+    <link rel="stylesheet" href="/dist/css/script.css">
+
+    <title>Shuffle</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <h1 id="title">Shuffle</h1>
+    <main>
+        <nav>
+            <button type="button" id="back_button">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <h2 id="nav_title"></h2>
+            <button type="button" class="nav-end" id="profile_button">
+                <i class="fas fa-user" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="nav-end" id="profile_options_button">
+                <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+            </button>
+        </nav>
+        <div id="content_area">
+            <!-- ===== Modals ===== -->
+            <div id="modal">
+                <div class="modal_common" id="modal_match_options">
+                    <button type="button" class="red-btn" id="block_user_button">Block</button>
+                    <button type="button" class="red-btn" id="report_user_button">Report</button>
+                    <button type="button" class="green-btn modal_close_button">Close</button>
+                </div>
+                <div class="modal_common" id="modal_profile_options">
+                    <!-- Not sure what should go here yet -->
+                    <button type="button" class="green-btn modal_close_button">Close</button>
+                </div>
+            </div>
+            <!-- ===== Login Form ===== -->
+            <form class="prompt_form" id="login_form">
+                <h2>Welcome to Shuffle!</h2>
+                <!-- Eventually login w/ Spotify goes here -->
+            </form>
+            <!-- ===== Sign Up Form ===== -->
+            <form class="prompt_form" id="sign_up_form">
+                <h2>Tell us some info</h2>
+                <input type="text" id="first_name_input" placeholder="First Name" required>
+                <input type="text" id="last_name_input" placeholder="Last Name" required>
+                <input type="number" id="age_input" placeholder="Age">
+                <select id="gender_input" required>
+                    <option value="">Gender</option>
+
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Trans-Male">Transgender Male</option>
+                    <option value="Trans-Female">Transgender Female</option>
+                    <option value="Non-Binary">Non-Binary</option>
+                    <option value="">Prefer not to say</option>
+                </select>
+                <select id="pronouns_input">
+                    <option value="">Pronouns</option>
+
+                    <option value="He/Him">He/Him</option>
+                    <option value="She/Her">She/Her</option>
+                    <option value="They-Them">They-Them</option>
+                    <option value="">Prefer not to say</option>
+                </select>
+                <select id="school_input">
+                    <option>Your School</option>
+
+                    <!-- Schools populated by philly-collages.js -->
+                </select>
+
+                <h2>What are you looking for?</h2>
+                <div class="checkboxes">
+                    <span><input data-category="looking_for" type="checkbox" value="Chat">Chat</span>
+                    <span><input data-category="looking_for" type="checkbox" value="Friends">Friends</span>
+                    <span><input data-category="looking_for" type="checkbox" value="Relationships">Relationships</span>
+                </div>
+                <h2>What's your anthem?</h2>
+                <input type="text" id="anthem_id_input" placeholder="Search for a song">
+                <button type="button" class="green-btn" id="search_anthem_button">Search</button>
+                <div id="search_results"></div>
+                <h2>Add a bio?</h2>
+                <textarea id="bio_input" placeholder="Write a quick bio for yourself" maxlength="75"></textarea>
+                <button type="button" class="green-btn" id="add_account_button">Complete Sign Up</button>
+            </form>
+            <!-- ===== Browse Users Form ===== -->
+            <form class="prompt_form" id="browse_users_form">
+                <div id="browse_profiles_list">
+                    <!-- Profiles populated by DB... -->
+                </div>
+            </form>
+            <!-- ===== Recent Users Form ===== -->
+            <form class="prompt_form" id="recent_chat_form">
+                <div id="recent_chat_list">
+                    <!-- Profiles populated by DB... -->
+                </div>
+            </form>
+            <!-- ===== Chat ===== -->
+            <form id="chat_form">
+                <ul id="chat_box">
+                    <!-- Chats populated by DB... -->
+                </ul>
+                <div id="chat_controls">
+                    <input type="text" id="message_input" placeholder="Message">
+                    <button type="button" class="green-btn" id="send_button">Send <i class="fa fa-paper-plane-o"
+                            aria-hidden="true"></i></button>
+                </div>
+            </form>
+            <!-- ===== Profile ===== -->
+            <form id="profile_view_form">
+                <!-- Top Half -->
+                <div class="profile_section" id="profile_top">
+                    <div id="me">
+                        <i id="profile_pic_placeholder" class="fas fa-user fa-3x" aria-hidden="true"></i>
+                        <span class="stat_wrap">
+                            <img class="stat" id="stat_pp">
+                            <!-- Source Populated by DB... -->
+                        </span>
+                        <span class="stat_wrap">
+                            <h2 class="stat" id="stat_name">
+                                <!-- Populated by DB... -->
+                            </h2>
+                        </span>
+                        <span class="stat_wrap">
+                            <p class="stat" id="stat_location">
+                                <!-- Populated by DB... -->
+                            </p>
+                        </span>
+                        <span class="stat_wrap">
+                            <p class="stat" id="stat_school">
+                                <!-- Populated by DB... -->
+                            </p>
+                        </span>
+                    </div>
+                    <span class="stat_wrap" id="anthem_wrap">
+                        <h2 id="stat_anthem_label">
+                            <!-- Populated by DB... -->
+                        </h2>
+                        <iframe id="stat_anthem" frameborder="0" allowtransparency="true"
+                            allow="encrypted-media"></iframe>
+                    </span>
+                </div>
+                <!-- Bottom Half -->
+                <div class="profile_section" id="profile_btm">
+                    <ul id="profile_stats">
+                        <li class="stat_wrap stat_li">
+                            <div class="stat_label">Age:</div>
+                            <div class="stat" id="stat_age">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                        <li class="stat_wrap stat_li">
+                            <div class="stat_label">Gender:</div>
+                            <div class="stat" id="stat_gender">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                        <li class="stat_wrap stat_li">
+                            <div class="stat_label">Pronouns:</div>
+                            <div class="stat" id="stat_pronouns">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                        <li class="stat_wrap stat_li">
+                            <div class="stat_label">Looking for:</div>
+                            <div class="stat" id="stat_looking_for">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                        <li class="stat_wrap stat_li stat_vertical">
+                            <div class="stat_label">Bio:</div>
+                            <div class="stat" id="stat_bio">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                        <li class="stat_wrap stat_li">
+                            <div class="stat_label">Join Date:</div>
+                            <div class="stat" id="stat_join_date">
+                                <!-- Populated by DB... -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <!-- === Profile CMS Form === -->
+            <form class="prompt_form" id="profile_cms_form">
+                <h2>Edit Profile Picture:</h2>
+                <div class="pp_thumb_wrap">
+                    <img id="pp_thumb" alt="Pic 1">
+                    <div class="row">
+                        <button id="pp_change_button">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <input hidden id="pp_input" type="file" accept="image/x-png,image/jpeg">
+                        <button id="pp_upload" class="green-btn">Upload</button>
+                    </div>
+                </div>
+                <div id="blocked_users_wrap">
+                    <h2>Blocked Users</h2>
+                    <select id="unblock_user_input" size="5">
+                        <!-- Blocked users populated by DB... -->
+                    </select>
+                    <button disabled type="button" class="green-btn" id="unblock_user_button">Unblock User</button>
+                </div>
+                <button type="button" class="red-btn" id="delete_user_button">Delete My Account</button>
+            </form>
+            <nav>
+                <button class="nav_button" id="nav_profile_button">Profile</button>
+                <button class="nav_button" id="nav_browse_button">Browse</button>
+                <button class="nav_button" id="nav_chat_button">Chat</button>
+            </nav>
+        </div>
+    </main>
+    <h2 id="status"></h2>
+</body>
+
+<script src="/dist/js/script.js"></script>
+
+</html>
