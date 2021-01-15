@@ -1,28 +1,18 @@
 .u-heading-1 {
+	font-family: $font-heading;
 	line-height: 1;
-	font-size: 54px;
-	font-weight: 600;
-	// @include media('>l') {
-	// 	font-size: 64px;
-	// }
+	font-size: 20px;
 }
 .u-heading-2 {
-	font-size: 38px;
-	font-weight: 600;
-	// @include media('>l') {
-	// 	font-size: 48px;
-	// }
+	font-family: $font-primary;
+	font-size: 24px;
+	font-weight: 700;
 }
 .u-heading-3 {
 	font-size: 26px;
-	font-weight: 600;
-	// @include media('>l') {
-	// 	font-size: 36px;
-	// }
 }
 .u-heading-4 {
 	font-size: 24px;
-	font-weight: 600;
 }
 .u-paragraph {
 	line-height: 24px;
