@@ -38,7 +38,9 @@
 #
 ## Working with the files
 * **!!!** Before making any changes, **branch off of the main/master** (make sure you pull first)
-* **!!!** Create a **new branch** for your work and **create a pull request** when finished
+* If you see any issues or are assigned a task for the week, create a ticket/issue for it
+* **!!!** Create a **new branch** for your work titled the same as the ticket issue e.g. `Issue-#7` – this will sync the commits with the ticket so you can reference them in a pull request to show the changes that were fixed/worked on
+* Make sure you **create a pull request** when finished
     * For organization of the repo, use [emojis](https://gitmoji.dev/) when writing commits messages e.g. `:lipstick: styled footer navigation`
     * Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit 
 #
@@ -64,3 +66,8 @@
 * If you are running into terminal errors for express or webpack, try re-running the commands for each
     * Express: `nodemon server.js`
     * Webpack: `npm run dev`
+
+### Extras
+* Helpful VSCode plugins [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight) & [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+    * These allow you to leave notes in certain areas of the project as a TODO list so you can come back to it later
+    * Todo Tree adds a sidebar icon to VSCode which shows where every TODO note you left is so you can keep track of what's left
