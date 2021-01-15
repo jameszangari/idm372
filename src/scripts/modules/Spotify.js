@@ -1,8 +1,12 @@
 const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
 
+// Cookies
+const spotifyObjectString = helper.getCookie('spotify');
+const spotifyObject = JSON.parse(spotifyObjectString);
+
 module.exports = {
-  init: () => {
+  init: function () {
     if (docQ('#searchSong')) {
       this.search();
     } else {
@@ -12,9 +16,7 @@ module.exports = {
   /**
    * Searches the Spotify database
    */
-  search: () => {
-    const spotifyObjectString = helper.getCookie('spotify');
-    const spotifyObject = JSON.parse(spotifyObjectString);
+  search: function () {
     const searchForm = docQ('#searchSong');
 
     searchForm.addEventListener('submit', (event) => {
