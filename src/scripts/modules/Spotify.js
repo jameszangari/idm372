@@ -7,19 +7,21 @@ const spotifyObject = JSON.parse(spotifyObjectString);
 
 module.exports = {
   init: function () {
-    if (docQ('#searchSong')) this.search();
-    else return;
+    if (docQ('#searchSong')) {
+      this.search();
+    } else {
+      return;
+    }
   },
   /**
    * Searches the Spotify database
    */
   search: function () {
     const searchForm = docQ('#searchSong');
-    const song_search_input = docQ('#song_search_input');
 
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      const query = song_search_input.value, // What the user searches for
+      const query = anthem_id_input.value, //what the user searches for
         search_results = docQ('#search_results');
       search_results.innerHTML = ''; //clear out previous results
       $.ajax(
@@ -33,8 +35,6 @@ module.exports = {
           }
         }).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
           // Add tracks to page in search results
-          song_submit_button.hidden = true;
-          search_results.innerHTML = ''; //clear out previous results
           results.forEach(result => {
             if (result.id) { // Skip the empty results (Idk why Spotify returns those...)
               const id = result.id,
@@ -60,10 +60,9 @@ module.exports = {
               // Add an event listener to it
               track_element.addEventListener('click', () => {
                 // Add a data attribute called anthem to the anthem id input for when user completes sign up
-                song_id.value = id;
+                anthem_id_input.dataset.anthem = id;
                 search_results.innerHTML = ''; //clear out previous results
-                song_submit_button.hidden = false;
-                // broadcast('Anthem Added!', 'var(--green)');
+                broadcast('Anthem Added!', 'var(--green)');
               });
             }
           });
