@@ -1,27 +1,24 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
-<!-- template: <%= endpoints.registerAlbum.template %> -->
+    <!-- template: <%= endpoints.registerAlbum.template %> -->
 
-<%- include('../../_components/buttons', {
-    url: endpoints.registerSong.url, 
-    label: 'Back',
-    classnames: 'o-button-back'
-}); %>
+    <%- include('../../_components/buttons', { url: endpoints.registerSong.url, label: 'Back' ,
+        classnames: 'o-button-back' }); %>
 
-<h1 class="u-heading-1 u-align-center"><%= endpoints.registerAlbum.title %></h1>
+        <h1 class="u-heading-1 u-align-center">
+            <%= endpoints.registerAlbum.title %>
+        </h1>
 
-<h2 class="u-heading-2 u-align-center">Choose your favorite album</h2>
+        <h2 class="u-heading-2 u-align-center">Choose your favorite album</h2>
 
-<form class="o-search-form l-grid--mobile" action="" id="searchSong">
-    <input class="o-search-form--input" type="text" id="anthem_id_input" placeholder="Search">
-    <button class="o-search-form--button" type="button" id="search_anthem_button"><i class="fas fa-search"></i></button>
-</form>
+        <form class="o-search-form l-grid--mobile" action="" id="searchSong">
+            <input class="o-search-form--input" type="text" id="song_search_input" placeholder="Search">
+            <button class="o-search-form--button" type="button" id="search_song_button"><i
+                    class="fas fa-search"></i></button>
+        </form>
 
-<div id="search_results"></div>
+        <div id="search_results"></div>
 
-<%- include('../../_components/buttons', {
-    url: endpoints.registerPlaylist.url, 
-    label: 'Next',
-    classnames: 'o-button-primary'
-}); %>
+        <%- include('../../_components/buttons', { url: endpoints.registerPlaylist.url, label: 'Next' ,
+            classnames: 'o-button-primary' }); %>
 
-<%- include('../../_partials/footer'); %>
+            <%- include('../../_partials/footer'); %>
