@@ -9,15 +9,16 @@
 
         <h2 class="u-heading-2 u-align-center">Choose a song that best represents you</h2>
 
-        <form class="o-search-form l-grid--mobile" action="" id="searchSong">
-            <input class="o-search-form--input" type="text" id="song_search_input" placeholder="Search">
-            <button class="o-search-form--button" type="submit" id="search_song_button"><i
+        <form class="o-search-form l-grid--mobile" action="" id="searchSpotify">
+            <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
+                placeholder="Search">
+            <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
                     class="fas fa-search"></i></button>
         </form>
 
         <form class="o-search-form l-grid--mobile" id="firestore_form">
-            <input class="o-search-form--input" id="song_id" type="text" name="song" hidden>
-            <button class="o-button" id="song_submit_button" type="submit" hidden>Add Song</button>
+            <input class="o-search-form--input" id="result_id" type="text" name="song" hidden>
+            <button class="o-button" id="submit_button" type="submit" hidden>Add Song</button>
         </form>
 
         <div id="search_results"></div>
