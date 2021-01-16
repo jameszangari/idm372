@@ -127,7 +127,13 @@
 		content: '\f303';
 		font-family: 'FontAwesome';
 		padding-left: 12px;
-		@include color-pink-gradient($color-pink-1, $color-orange);
+		@include pink-gradient($color-pink-1, $color-orange);
+		background-size: 100%;
+		background-repeat: repeat;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent; 
+		-moz-background-clip: text;
+		-moz-text-fill-color: transparent;
 	}
 	&:hover {
 		background: $color-gray-4;
