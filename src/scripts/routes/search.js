@@ -1,8 +1,10 @@
 const request = require('request');
 
 module.exports = function (req, res) {
-    let criteria = req.query.query,
-        token = req.query.access_token;
+    const data = req.query,
+        criteria = data.query,
+        token = data.access_token,
+        searchcategory = data.searchcategory;
 
     search(criteria, token, (error, response, body) => {
         if (error) {
@@ -17,20 +19,34 @@ module.exports = function (req, res) {
             return;
         } else {
             obj = JSON.parse(body);
-            items = obj.tracks.items; // Makes the obj items an array
+            items = obj[searchcategory + 's'].items; // Makes the obj items an array
 
             let tracks = [];
             let i = -1;
-            items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
-                i++;
-                tracks.push(i, {
-                    'id': item.id,
-                    'title': item.name,
-                    'artist': item.artists[0].name,
-                    'thumb': item.album.images[2].url,
-                    'album': item.album.name
+            if (searchcategory === 'track') {
+                items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    i++;
+                    tracks.push(i, {
+                        'id': item.id,
+                        'title': item.name,
+                        'artist': item.artists[0].name,
+                        'thumb': item.album.images[2].url,
+                        'album': item.album.name
+                    });
                 });
-            });
+            } else if (searchcategory === 'album') {
+                items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    i++;
+                    tracks.push(i, {
+                        'id': item.id,
+                        'title': item.name,
+                        'artist': item.artists[0].name,
+                        'thumb': item.images[2].url,
+                        'album': item.name
+                    });
+                });
+            }
+            console.log('length ' + tracks.length)
             res.send(tracks);
         }
     });
@@ -46,7 +62,7 @@ module.exports = function (req, res) {
             'Authorization': bearerstring
         };
         let options = {
-            url: `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=10`,
+            url: `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=${searchcategory}&limit=10`,
             headers: headers
         };
         request(options, callback);
