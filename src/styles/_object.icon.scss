@@ -81,42 +81,6 @@
 		margin-bottom: 3%;
 		background: #F72585;
 	}
-
-	// &-login {
-	// 	@extend .o-button;
-	// 	font-family: $font-tertiary;
-	// 	display: block;
-	// 	position: absolute;
-	// 	bottom: 0;
-	// 	right: 50%;
-	// 	transform: translateX(50%);
-	// 	margin: 0 auto;
-	// 	text-transform: uppercase;
-	// 	font-weight: 900;
-	// 	font-size: 16px;
-	// 	color: $color-black;
-	// 	padding: 10px 20px;
-	// 	background: $color-gray-5;
-	// 	border: 2px solid $color-black;
-	// 	margin-bottom: 100px;
-
-	// 	&:hover {
-	// 		background: $color-gray-4;
-	// 	}
-
-	// 	&:before {
-	// 		content: '\f1bc';
-	// 		font-family: 'FontAwesome';
-	// 		padding-right: 15px;
-	// 	}
-	// 	&__links {
-	// 		position: absolute;
-	// 		bottom: 0;
-	// 		padding-bottom: 50px;
-	// 		display: flex;
-	// 		justify-content: space-between;
-	// 	}
-	// }
 }
 
 .o-form {
@@ -148,6 +112,25 @@
 			border: none;
 			color: $color-gray-5;
 		}
+	}
+}
+
+.o-edit-button {
+	background: $color-gray-5;
+	border-radius: 50px;
+	color: $color-black;
+	line-height: 1;
+	width: max-content;
+	padding: 8px 14px;
+	transition: all .1s;
+	&::after {
+		content: '\f303';
+		font-family: 'FontAwesome';
+		padding-left: 12px;
+		@include color-pink-gradient($color-pink-1, $color-orange);
+	}
+	&:hover {
+		background: $color-gray-4;
 	}
 }
 		
