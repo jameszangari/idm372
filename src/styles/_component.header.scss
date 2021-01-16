@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #HEADER NAVIGATION
+\*------------------------------------*/
+.c-header-navigation {
+    @include blue-gradient($color-bright-blue, $color-darker-blue);
+    padding: 50px 25px;
+    height: 100px;
+    &__button {
+        float: left;
+        font-size: 30px;
+        color: $color-gray-5;
+    }
+    &__title {
+    }
+}

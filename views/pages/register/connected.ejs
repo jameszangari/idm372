@@ -1,6 +1,9 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
-<h1 class="u-heading-1 u-align-center">Connected</h1>
+<%- include('../../_components/header-navigation', { 
+    title: endpoints.registerConnected.title
+}); %>
+
 <h2 class="u-heading-2 u-align-center">Here's what we found:</h2>
 
 <%- include('../../_components/buttons', {

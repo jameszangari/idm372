@@ -42,7 +42,7 @@
   "registerConnected":
   {
     "url": "/register/connected",
-    "title": "Set Up Profile",
+    "title": "Connected",
     "page": "pages/register/connected"
 
   },
