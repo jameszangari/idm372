@@ -53,7 +53,7 @@ module.exports = {
               <img src="${thumb}" id="track_thumbnail">
               <div class="track_info">
                   <h3 class="track_title">${title}</h3>
-                  <h5 class="track_artist">${artist + (searchcategory != 'album' ? ' - ' + album : '')}</h5>
+                  <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
               </div>
             `;
 

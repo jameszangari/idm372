@@ -14,8 +14,7 @@ module.exports = function (req, res) {
             console.error('A Server Error Occurred: Error #' + response.statusCode);
             return;
         } else if (response.statusCode === 401) {
-            console.error('A Server Error Occurred: Error #' + response.statusCode);
-            console.log('Error 401 usually happens when Spotify user tokens have expired, try re-logging in.');
+            console.log('Error 401: The user access token expired, try re-logging in.');
             return;
         } else {
             obj = JSON.parse(body);
@@ -42,7 +41,19 @@ module.exports = function (req, res) {
                         'title': item.name,
                         'artist': item.artists[0].name,
                         'thumb': item.images[2].url,
-                        'album': item.name
+                        'album': false
+                    });
+                });
+            }
+            else if (searchcategory === 'playlist') {
+                items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    i++;
+                    tracks.push(i, {
+                        'id': item.id,
+                        'title': item.name,
+                        'artist': item.owner.display_name,
+                        'thumb': item.images[0].url,
+                        'album': false
                     });
                 });
             }
