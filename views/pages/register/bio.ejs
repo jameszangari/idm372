@@ -9,10 +9,12 @@
 
         <h2 class="u-heading-2 u-align-center">Write a short bio about yourself</h2>
 
-        <input class="o-form--input" type="text" id="biography_input"
-            placeholder="Proin cras consequat nam ullamcorper sociosqu sapien tortor porta interdum elementum..."
-            required>
-
+        <form class="o-search-form l-grid--mobile" id="firestore_form">
+            <input class="o-form--input" type="text" id="biography_input"
+                placeholder="Proin cras consequat nam ullamcorper sociosqu sapien tortor porta interdum elementum..."
+                name="bio" required>
+            <button class="o-button" id="submit_button" type="submit">Add Bio</button>
+        </form>
 
         <%- include('../../_components/buttons', { url: endpoints.registerActivities.url, label: 'Next' ,
             classnames: 'o-button-primary' }); %>
