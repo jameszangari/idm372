@@ -10,7 +10,3 @@
     background-color: $color-pink-1;
     background: linear-gradient(180deg, $color-pink-1 0%, $color-orange 100%);   
 }
-@mixin color-pink-gradient($color-pink-1, $color-orange) {
-    color: $color-pink-1;
-    color: linear-gradient(180deg, $color-pink-1 0%, $color-orange 100%);   
-}
