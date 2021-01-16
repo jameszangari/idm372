@@ -8,6 +8,6 @@ module.exports = function (req, res) {
         res.send(true);
     }).catch(function (error) {
         console.error(error);
-        res.send(error);
+        res.send(false);
     });
 }

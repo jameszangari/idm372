@@ -7,14 +7,14 @@ const spotifyObject = JSON.parse(spotifyObjectString);
 
 module.exports = {
     init: function () {
-        this.add();
+        if (docQ('#firestore_form')) this.update()
+        else return;
     },
     /**
      * Send update profile request to server
      */
-    add: function () {
-
-        const form = docQ('form');
+    update: function () {
+        const form = docQ('#firestore_form');
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -34,7 +34,7 @@ module.exports = {
                 }
             }).done((response) => {
                 // Do stuff after
-                response && console.log('Success');
+                response ? console.log('Success') : console.error('There was a server error...');
             });
         }, false);
     }
