@@ -46,16 +46,18 @@ module.exports = {
               album = result.album;
 
             const track_element = document.createElement('div'); // Create a div element (Better to do it this way for adding event listener later)
-            track_element.classList.add('track'); // Add the class 'track'
+            track_element.classList.add('o-spotify-select--track'); // Add the class 'track'
 
             // Then add the content
             track_element.innerHTML += `
-              <img src="${thumb}" id="track_thumbnail">
-              <div class="track_info">
+              <img class="o-spotify-select--image" src="${thumb}" id="track_thumbnail">
+              <div class="o-spotify-select--track-info">
                   <h3 class="track_title">${title}</h3>
-                  <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
+                  <h5 class="track_artist">${artist}</h5>
               </div>
-            `;
+              `;
+                  
+            // <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
 
             // Add the track element to the DOM
             search_results.appendChild(track_element);

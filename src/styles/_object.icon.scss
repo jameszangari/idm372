@@ -170,3 +170,71 @@
 		outline: none;
 	}
 }
+
+
+/*------------------------------------*\
+    #POP UPS
+\*------------------------------------*/
+.o-spotify-select {
+
+	// TODO - Fix width + toggle visibilty when search hasn't been submitted
+
+	&--close {
+		position: relative;
+		z-index: 99;
+		float: right;
+		color: $color-gray-2;
+		background: $color-gray-4;
+		padding: 10px;
+		font-family: $font-primary;
+		font-weight: 500;
+		font-size: 16px;
+		border-radius: 10px;
+		&:hover {
+			background: $color-gray-3;
+			color: $color-gray-1;
+		}
+	}
+
+	&--group {
+		position: absolute;
+		bottom: 0;
+		height: 80%;	
+		overflow-y: auto;
+		border-radius: 16px 16px 0 0;
+		background: $color-gray-5;
+		padding: 16px;
+		color: $color-black;
+	}
+
+	&--track {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding-top: 24px;
+		&:first-child {
+			padding-top: 0;
+		}
+		&:last-child {
+			padding-bottom: 100px;
+		}
+	}
+
+	&--image {
+		padding-right: 10px;
+	}
+
+	&--track-info {
+		font-family: $font-primary;
+		font-weight: 500;
+		& .track_title {
+			font-size: 16px;
+		}
+		& .track_artist {
+			color: $color-gray-2;
+			font-size: 14px;
+			padding-top: 5px;
+		}
+	}
+
+}

@@ -1,7 +1,7 @@
 .l-grid {
 	width: 100%;
 	max-width: 854px;
-	padding: 3%;
+	padding: 3% 3% 0 3%;
 	margin: 0 auto;
 	// @include blue-gradient($color-purple, $color-bright-blue);
 	background: $color-blues-1;
@@ -11,7 +11,7 @@
 .l-grid--mobile {
 	width: 100%;
 	max-width: 320px;
-	padding: 3%;
+	padding: 3% 3% 0 3%;
 	margin: 0 auto;
 	// @include blue-gradient($color-purple, $color-bright-blue);
 	background: $color-blues-1;
