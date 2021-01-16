@@ -200,7 +200,8 @@
 
 	&--close {
 		align-self: flex-end;
-		margin-top: 50px;
+		top: 100px;
+		margin-right: 20px;
 		position: fixed;
 		z-index: 99;
 		color: $color-gray-1;
@@ -219,11 +220,15 @@
 	}
 
 	&--group {
+		display: block;
+		&-open {
+			display: none;
+		}
 		position: absolute;
 		right: 50%;
 		transform: translateX(50%);
-		bottom: 0;
-		height: 75%;	
+		bottom: -100px;
+		// top: 90px;
 		overflow-y: auto;
 		border-radius: 16px 16px 0 0;
 		background: $color-gray-5;
@@ -235,7 +240,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		width: 100%;
+		width: 90%;
 		padding: 2%;
 		border-radius: 16px;
 		&:last-child {
