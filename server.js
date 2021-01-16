@@ -28,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
 
 app.listen(port);
-console.log('Server started at http://localhost:' + port);
 // Use res.render to load up an ejs view file
+require('dns').lookup(require('os').hostname(), function (err, ipv4) { // Log the URL to the host
+    err ? console.log(err) : console.log(`Hosting Local Node Server @ http://${ipv4}:${port}`);
+});
 require("./src/scripts/routes/routes")(app);
