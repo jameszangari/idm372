@@ -21,9 +21,12 @@
             <button class="o-button" id="submit_button" type="submit" hidden>Add Playlist</button>
         </form>
 
-        <div id="search_results"></div>
+        <div class="o-spotify-select">
+            <button class="o-spotify-select--close">Done</button>
+            <div class="o-spotify-select--group l-grid" id="search_results"></div>
+        </div>
 
-        <%- include('../../_components/buttons', { url: endpoints.registerImages.url, label: 'Next' ,
+    <%- include('../../_components/buttons', { url: endpoints.registerImages.url, label: 'Next' ,
             classnames: 'o-button-primary' }); %>
 
-            <%- include('../../_partials/footer'); %>
+<%- include('../../_partials/footer'); %>
