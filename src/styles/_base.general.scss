@@ -26,7 +26,12 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0;
 	font-weight: inherit;
 }
@@ -51,7 +56,8 @@ img {
 	max-width: 100%;
 }
 
-ul, ol {
+ul,
+ol {
 	padding: 0;
 	margin: 0;
 }
@@ -60,7 +66,9 @@ li {
 	list-style: none;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
 	padding: 15px;
 	font-family: $font-secondary;
 	font-weight: 400;
@@ -81,6 +89,10 @@ input, select, textarea {
 	}
 }
 
-input[type='submit'] {
+input[type="submit"] {
 	@extend .o-button-primary;
+}
+
+[hidden] {
+	display: none !important;
 }

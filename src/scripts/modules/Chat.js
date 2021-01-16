@@ -255,7 +255,7 @@ function login_shuffle(current_uuid) { // Logs user into shuffle. 1 param: (the 
 const sign_up_form = docQ('#sign_up_form'),
     add_account_button = docQ('#add_account_button'),
     school_input = docQ('#school_input'),
-    anthem_id_input = docQ('#anthem_id_input'),
+    song_search_input = docQ('#song_search_input'),
     gender_input = docQ('#gender_input'),
     pronouns_input = docQ('#pronouns_input'),
     bio_input = docQ('#bio_input');
@@ -291,7 +291,7 @@ function create_user(id_to_use) { // Create a user
         pronouns: pronouns_input.value,
         location: 'Philadelphia, PA',
         school: school_input.value,
-        anthem_id: anthem_id_input.dataset.anthem,
+        song_id: song_search_input.dataset.anthem,
         looking_for: merge_checkboxes('looking_for'),
         bio: bio_input.value,
         new_user: false, // Signifies completed profile
@@ -400,10 +400,10 @@ function list_users(current_uuid) { // Populates SELECT form with matches
                             <p class="user_age">${result.age}</p>
                         </div>
                         <div class="user_btm">
-                        <iframe ${result.anthem_id ? 'src=' + 'https://open.spotify.com/embed/track/' + result.anthem_id : 'style="display: none;"'} id="stat_anthem" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe ${result.song_id ? 'src=' + 'https://open.spotify.com/embed/track/' + result.song_id : 'style="display: none;"'} id="stat_anthem" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         </div>
                         `;
-                    // ${result.anthem_id && '<p class="anthem_label">' + name + "'s Favorite Song</p>"}
+                    // ${result.song_id && '<p class="anthem_label">' + name + "'s Favorite Song</p>"}
 
                     user_element.addEventListener('click', () => {
                         const match_uuid = doc.id,
@@ -756,7 +756,7 @@ function display_profile_stats(result) {
         bio = result.bio || false,
         school = result.school || false,
         looking_for = result.looking_for || false,
-        anthem_id = result.anthem_id || false,
+        song_id = result.song_id || false,
         pp = result.pp || false;
 
     // ===== Hide Empty Fields =====
@@ -787,9 +787,9 @@ function display_profile_stats(result) {
     // ===== Custom Field Handlers =====
 
     // Handler for Anthems
-    if (anthem_id) { // Anthem is set
+    if (song_id) { // Anthem is set
         stat_anthem_label.innerText = `${first_name}'s Anthem`;
-        stat_anthem.src = `https://open.spotify.com/embed/track/${anthem_id}`;
+        stat_anthem.src = `https://open.spotify.com/embed/track/${song_id}`;
     } else { // Anthem isn't set
         anthem_wrap.style.display = 'none';
     }
