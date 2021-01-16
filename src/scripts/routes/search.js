@@ -6,11 +6,14 @@ module.exports = function (req, res) {
 
     search(criteria, token, (error, response, body) => {
         if (error) {
-            console.log('?? error');
+            console.error(error);
             return;
         } else if (response.statusCode != 200) {
-            console.log('?? statuscode');
-            console.log(response.statusCode);
+            console.error('A Server Error Occurred: Error #' + response.statusCode);
+            return;
+        } else if (response.statusCode === 401) {
+            console.error('A Server Error Occurred: Error #' + response.statusCode);
+            console.log('Error 401 usually happens when Spotify user tokens have expired, try re-logging in.');
             return;
         } else {
             obj = JSON.parse(body);
