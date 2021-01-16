@@ -46,7 +46,6 @@ module.exports = function (req, res) {
                     });
                 });
             }
-            console.log('length ' + tracks.length)
             res.send(tracks);
         }
     });
