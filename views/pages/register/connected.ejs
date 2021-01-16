@@ -4,7 +4,64 @@
     title: endpoints.registerConnected.title
 }); %>
 
-<h2 class="u-heading-2 u-align-center">Here's what we found:</h2>
+<h2 class="l-grid__header u-heading-2 u-align-center">Here's what we found:</h2>
+
+<form class="l-connected" action="" id="firestore_form">
+    <div class="l-connected__heading--group">
+        <h2 class="u-heading-2 u-align-center">Your Top Artists</h2>
+        <a class="l-connected__artists--edit" href="">Edit</a>
+    </div>
+        <span class="l-connected__sub-group">
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Artist Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Artist Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Artist Name</p>
+            </span>
+        </span>
+    <div class="l-connected__heading--group">
+        <h2 class="u-heading-2 u-align-center">Your Top Songs</h2>
+        <a class="l-connected__artists--edit" href="">Edit</a>
+    </div>
+        <span class="l-connected__sub-group">
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Song Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Song Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Song Name</p>
+            </span>
+        </span>
+    <div class="l-connected__heading--group">
+        <h2 class="u-heading-2 u-align-center">Your Top Genres</h2>
+        <a class="l-connected__artists--edit" href="">Edit</a>
+    </div>
+        <span class="l-connected__sub-group">
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Genre Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Genre Name</p>
+            </span>
+            <span class="l-connected__artists--item">
+                <img src="http://placehold.it/100x70" alt="">
+                <p>Genre Name</p>
+            </span>
+        </span>
+</form>
 
 <%- include('../../_components/buttons', {
     url: endpoints.registerProfile.url, 

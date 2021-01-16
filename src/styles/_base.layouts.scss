@@ -4,6 +4,9 @@
 	margin: 0 auto;
 	background: $color-blues-1;
 	color: $color-gray-5;
+	&__header {
+		padding-top: 40px;
+	}
 	&--mobile {
 		width: 100%;
 		max-width: 320px;
@@ -73,6 +76,31 @@
 		}
 		&:hover {
 			color: $color-gray-3;
+		}
+	}
+}
+
+.l-connected {
+	padding-left: 3%;
+	padding-right: 3%;
+	&__heading--group {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 44px;
+		& .u-heading-2 {
+			font-weight: 800;
+		}
+	}
+	&__sub-group {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 24px;
+	}
+	&__artists--item {
+		& p {
+			margin-top: 5px;
 		}
 	}
 }
