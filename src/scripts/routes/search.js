@@ -7,16 +7,15 @@ module.exports = function (req, res) {
         searchcategory = data.searchcategory;
 
     search(criteria, token, (error, response, body) => {
-        if (error) {
+        if (error) { // General Error
             console.error(error);
+            res.send(false);
             return;
-        } else if (response.statusCode != 200) {
-            console.error('A Server Error Occurred: Error #' + response.statusCode);
+        } else if (response.statusCode != 200) { // Error Codes
+            const errCode = response.statusCode;
+            errCode === 401 && res.sendStatus(errCode); // Token expired, re-log in from start
             return;
-        } else if (response.statusCode === 401) {
-            console.log('Error 401: The user access token expired, try re-logging in.');
-            return;
-        } else {
+        } else { // Success
             obj = JSON.parse(body);
             items = obj[searchcategory + 's'].items; // Makes the obj items an array
 

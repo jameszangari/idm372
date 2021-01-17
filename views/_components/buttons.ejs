@@ -1,1 +1,10 @@
-<a class="<%= classnames %>" href="<%= url %>"><%= label %></a>
+<a
+    class="<%= classnames %>"
+    href="<%= url %>"
+    
+    <% if (typeof form != 'undefined') { %>
+        data-form="<%= form %>"
+    <% }; %>
+>
+    <%= label %>
+</a>
