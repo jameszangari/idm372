@@ -99,7 +99,10 @@
 		margin-top: 24px;
 	}
 	&__artists--item {
-		& p {
+		&-image {
+			border-radius: 6px;
+		}
+		&-text {
 			margin-top: 5px;
 		}
 	}

@@ -123,11 +123,13 @@
 	width: max-content;
 	padding: 8px 14px;
 	transition: all .1s;
+	font-size: 12px;
+	font-weight: 600;
 	&::after {
 		content: '\f303';
 		font-family: 'FontAwesome';
 		padding-left: 12px;
-		@include pink-gradient($color-pink-1, $color-orange);
+		@include pink-purple-gradient($color-pink-1, $color-purple);
 		background-size: 100%;
 		background-repeat: repeat;
 		-webkit-background-clip: text;
@@ -136,7 +138,11 @@
 		-moz-text-fill-color: transparent;
 	}
 	&:hover {
-		background: $color-gray-4;
+		@include pink-purple-gradient($color-pink-1, $color-purple);
+		color: $color-gray-5;
+		&::after {
+			-webkit-text-fill-color: $color-gray-5;
+		}
 	}
 }
 		
