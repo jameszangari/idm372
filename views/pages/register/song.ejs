@@ -13,9 +13,8 @@
                 class="fas fa-search"></i></button>
     </form>
 
-    <form class="o-search-form" id="firestore_form">
+    <form class="o-search-form" id="firestore_form" type="strings">
         <input class="o-search-form--input" id="result_id" type="text" name="song" hidden>
-        <button class="o-button" id="submit_button" type="submit" hidden>Add Song</button>
     </form>
 
     <div class="o-spotify-select">
@@ -23,7 +22,11 @@
         <div class="o-spotify-select--group l-grid" id="search_results"></div>
     </div>
 
-    <%- include('../../_components/buttons', { url: endpoints.registerAlbum.url, label: 'Next' ,
-            classnames: 'o-button-primary' }); %>
+    <%- include('../../_components/buttons', { 
+        url: endpoints.registerAlbum.url, 
+        label: 'Next',
+        classnames: 'o-button-primary',
+        form: '#firestore_form'
+    }); %>
 
 <%- include('../../_partials/footer'); %>

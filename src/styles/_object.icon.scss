@@ -79,7 +79,7 @@
 		margin: 0 auto;
 		text-transform: uppercase;
 		margin-bottom: 3%;
-		background: #F72585;
+		background: $color-pink-1;
 	}
 }
 
@@ -123,11 +123,13 @@
 	width: max-content;
 	padding: 8px 14px;
 	transition: all .1s;
+	font-size: 12px;
+	font-weight: 600;
 	&::after {
 		content: '\f303';
 		font-family: 'FontAwesome';
 		padding-left: 12px;
-		@include pink-gradient($color-pink-1, $color-orange);
+		@include pink-purple-gradient($color-pink-1, $color-purple);
 		background-size: 100%;
 		background-repeat: repeat;
 		-webkit-background-clip: text;
@@ -136,7 +138,11 @@
 		-moz-text-fill-color: transparent;
 	}
 	&:hover {
-		background: $color-gray-4;
+		@include pink-purple-gradient($color-pink-1, $color-purple);
+		color: $color-gray-5;
+		&::after {
+			-webkit-text-fill-color: $color-gray-5;
+		}
 	}
 }
 		
@@ -148,18 +154,22 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-left: 3%;
+	padding-right: 3%;
 	&--input {
+		margin-top: 16px;
 		border: none;
-		margin: 0 auto;
 		text-align: center;
 		border-radius: 50px;
 		line-height: 1;
 		width: 100%;
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 		&:focus {
 			outline: none;
 		}
 	}
 	&--button {
+		margin-top: 16px;
 		position: absolute;
 		color: $color-black;
 		align-self: flex-start;
@@ -167,19 +177,19 @@
 	}
 }
 .o-form--input {
+	margin-top: 16px;
 	border: none;
-	margin: 0 auto;
 	text-align: center;
 	border-radius: 50px;
 	line-height: 1;
 	width: 100%;
-	margin: 10px 0;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 	&:focus {
 		outline: none;
 	}
 	&-textarea {
 		border-radius: 26px;
-		border: 2px solid #000000;
+		border: 2px solid $color-black;
 		resize: none;
 		margin: 10px 0;
 		width: 90%;
@@ -199,8 +209,13 @@
 	// TODO - Fix width + toggle visibilty when search hasn't been submitted
 
 	&--close {
+		display: none;
+		&-open {
+			display: block;
+		}
 		align-self: flex-end;
 		top: 100px;
+		margin-top: 20px;
 		margin-right: 20px;
 		position: fixed;
 		z-index: 99;
@@ -220,9 +235,9 @@
 	}
 
 	&--group {
-		display: block;
+		display: none;
 		&-open {
-			display: none;
+			display: block;
 		}
 		position: absolute;
 		right: 50%;
@@ -234,6 +249,7 @@
 		background: $color-gray-5;
 		padding: 16px;
 		color: $color-black;
+		height: 100vh;
 	}
 
 	&--track {
@@ -244,7 +260,7 @@
 		padding: 2%;
 		border-radius: 16px;
 		&:last-child {
-			margin-bottom: 150px;
+			margin-bottom: 200px;
 		}
 		&:hover {
 			background: $color-gray-4;

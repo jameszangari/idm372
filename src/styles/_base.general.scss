@@ -95,3 +95,7 @@ input[type="submit"] {
 [hidden] {
 	display: none !important;
 }
+
+.invalid {
+	border: 2px solid red !important;
+}

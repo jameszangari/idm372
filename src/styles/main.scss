@@ -8,21 +8,21 @@ Shuffle Team
 */
 @import '~normalize.css/normalize';
 
-// Config
+/* Config */
 @import '_config.variables.scss';
 @import '_config.fonts.scss';
 @import '_config.functions.scss';
 @import '_config.mixin.scss';
 
-// Base
+/* Base */
 @import '_base.general.scss';
 @import '_base.typography.scss';
 @import '_base.layouts.scss';
 @import 'utilities';
 
-// Objects
+/* Objects */
 @import '_object.icon.scss';
 
-// Component Styles
+/* Component Styles */
 @import '_component.header.scss';
 @import '_component.footer.scss';

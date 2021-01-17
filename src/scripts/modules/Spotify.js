@@ -10,10 +10,7 @@ module.exports = {
     if (docQ('#searchSpotify')) this.search();
     else return;
   },
-  /**
-   * Searches the Spotify database
-   */
-  search: function () {
+  search: function () { // Searches the Spotify database
     const searchForm = docQ('#searchSpotify');
     const search_input = docQ('#search_input');
 
@@ -23,6 +20,9 @@ module.exports = {
         searchcategory = search_input.dataset.searchcategory, // What the user searches for
         search_results = docQ('#search_results');
       search_results.innerHTML = ''; //clear out previous results
+
+      $('.o-spotify-select--group').toggleClass("o-spotify-select--group-open"); // Opens results modal
+      $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open"); // Toggles visibility of close button for modal
 
       $.ajax({ //send info to server - GET request
         url: endpoints.search.url,
@@ -35,7 +35,6 @@ module.exports = {
         }
       }).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
         // Add tracks to page in search results
-        submit_button.hidden = true;
         search_results.innerHTML = ''; //clear out previous results
         results.forEach(result => {
           if (result.id) { // Skip the empty results (Idk why Spotify returns those...)
@@ -56,7 +55,7 @@ module.exports = {
                   <h5 class="track_artist">${artist}</h5>
               </div>
               `;
-                  
+
             // <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
 
             // Add the track element to the DOM
@@ -66,8 +65,9 @@ module.exports = {
               // Add a data attribute called anthem to the anthem id input for when user completes sign up
               result_id.value = id;
               search_results.innerHTML = ''; //clear out previous results
-              submit_button.hidden = false;
               // broadcast('Anthem Added!', 'var(--green)');
+              $('.o-spotify-select--group').removeClass("o-spotify-select--group-open"); // After selecting track, hide the modal
+              $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open"); // After selecting track, hide the modal close button
             });
           }
         });
