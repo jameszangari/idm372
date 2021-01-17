@@ -56,7 +56,7 @@ module.exports = {
                   <h5 class="track_artist">${artist}</h5>
               </div>
               `;
-                  
+
             // <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
 
             // Add the track element to the DOM

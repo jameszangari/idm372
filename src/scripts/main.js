@@ -12,13 +12,15 @@ window.$ = window.jQuery = $;
 window.docQ = document.querySelector.bind(document);
 window.docQA = document.querySelectorAll.bind(document);
 
-const Spotify = require('./modules/Spotify');
-const Register = require('./modules/Register');
-const Toggle = require('./modules/Toggle');
+const Spotify = require('./modules/Spotify'),
+    Register = require('./modules/Register'),
+    Toggle = require('./modules/Toggle'),
+    Next = require('./modules/Next');
 
 // Global Logic here
 $(document).ready(() => {
     Spotify.init();
     Register.init();
     Toggle.init();
+    Next.init();
 });

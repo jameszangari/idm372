@@ -5,6 +5,6 @@ module.exports = {
         $('.o-spotify-select--close').on('click', function(e) {
             e.preventDefault();
             $('.o-spotify-select--group').toggleClass("o-spotify-select--group-open");
-          });
+        });
     },
 }
