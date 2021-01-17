@@ -15,6 +15,7 @@ module.exports = {
                     submit.hidden = true;
                     submit.setAttribute('type', 'submit');
                     form.appendChild(submit);
+
                     // Submit form
                     submit.click();
                     // Navigate to next page

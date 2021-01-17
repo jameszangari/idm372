@@ -35,7 +35,6 @@ module.exports = {
         }
       }).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
         // Add tracks to page in search results
-        submit_button.hidden = true;
         search_results.innerHTML = ''; //clear out previous results
         results.forEach(result => {
           if (result.id) { // Skip the empty results (Idk why Spotify returns those...)
@@ -66,7 +65,6 @@ module.exports = {
               // Add a data attribute called anthem to the anthem id input for when user completes sign up
               result_id.value = id;
               search_results.innerHTML = ''; //clear out previous results
-              submit_button.hidden = false;
               // broadcast('Anthem Added!', 'var(--green)');
             });
           }
