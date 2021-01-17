@@ -1,5 +1,6 @@
 // Import our styles
 import './../styles/main.scss';
+
 const firebase = require('firebase'); // FireBase Functions
 
 // Theme Scripts
