@@ -1,6 +1,7 @@
 const Path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const PostCSS = require('postcss');
 const autoprefixer = require("autoprefixer");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
@@ -42,6 +43,9 @@ module.exports = {
                     },
                     {
                         loader: "css-loader"
+                    },
+                    {
+                        loader: "postcss-loader",
                     },
                     {
                         loader: "sass-loader",
