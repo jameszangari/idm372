@@ -66,6 +66,8 @@ module.exports = {
               result_id.value = id;
               search_results.innerHTML = ''; //clear out previous results
               // broadcast('Anthem Added!', 'var(--green)');
+              $('.o-spotify-select--group').removeClass("o-spotify-select--group-open"); // After selecting track, hide the modal
+              $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open"); // After selecting track, hide the modal close button
             });
           }
         });
