@@ -21,6 +21,9 @@ module.exports = {
         search_results = docQ('#search_results');
       search_results.innerHTML = ''; //clear out previous results
 
+      $('.o-spotify-select--group').toggleClass("o-spotify-select--group-open"); // Opens results modal
+      $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open"); // Toggles visibility of close button for modal
+
       $.ajax({ //send info to server - GET request
         url: endpoints.search.url,
         data:

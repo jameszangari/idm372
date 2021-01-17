@@ -154,18 +154,22 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-left: 3%;
+	padding-right: 3%;
 	&--input {
+		margin-top: 16px;
 		border: none;
-		margin: 0 auto;
 		text-align: center;
 		border-radius: 50px;
 		line-height: 1;
 		width: 100%;
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 		&:focus {
 			outline: none;
 		}
 	}
 	&--button {
+		margin-top: 16px;
 		position: absolute;
 		color: $color-black;
 		align-self: flex-start;
@@ -173,13 +177,13 @@
 	}
 }
 .o-form--input {
+	margin-top: 16px;
 	border: none;
-	margin: 0 auto;
 	text-align: center;
 	border-radius: 50px;
 	line-height: 1;
 	width: 100%;
-	margin: 10px 0;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 	&:focus {
 		outline: none;
 	}
@@ -205,8 +209,13 @@
 	// TODO - Fix width + toggle visibilty when search hasn't been submitted
 
 	&--close {
+		display: none;
+		&-open {
+			display: block;
+		}
 		align-self: flex-end;
 		top: 100px;
+		margin-top: 20px;
 		margin-right: 20px;
 		position: fixed;
 		z-index: 99;
@@ -226,9 +235,9 @@
 	}
 
 	&--group {
-		display: block;
+		display: none;
 		&-open {
-			display: none;
+			display: block;
 		}
 		position: absolute;
 		right: 50%;
@@ -240,6 +249,7 @@
 		background: $color-gray-5;
 		padding: 16px;
 		color: $color-black;
+		height: 100vh;
 	}
 
 	&--track {
@@ -250,7 +260,7 @@
 		padding: 2%;
 		border-radius: 16px;
 		&:last-child {
-			margin-bottom: 150px;
+			margin-bottom: 200px;
 		}
 		&:hover {
 			background: $color-gray-4;
