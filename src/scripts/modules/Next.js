@@ -15,13 +15,24 @@ module.exports = {
                     submit.hidden = true;
                     submit.setAttribute('type', 'submit');
                     form.appendChild(submit);
-
+                    
                     // Submit form
                     submit.click();
                     // Navigate to next page
                     window.location.href = url;
                 } else { // Handle invalid form
-                    console.error('Invalid Form');
+                    const invalids = form.querySelectorAll(':invalid'),
+                        valids = form.querySelectorAll(':valid');
+
+                        invalids.forEach(el => {
+                            el.classList.add('invalid');
+                            el.addEventListener('change', () => {
+                                el.value.length > 0 ? el.classList.remove('invalid') : el.classList.add('invalid');
+                            });
+                        });
+                        valids.forEach(el => {
+                            el.classList.remove('invalid');
+                        });
                 }
             });
         };
