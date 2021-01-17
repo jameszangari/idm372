@@ -1,86 +1,81 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
-<%- include('../../_components/header-navigation', { 
-    title: endpoints.registerActivities.title
-}); %>
+    <%- include('../../_components/header-navigation', { title: endpoints.registerActivities.title }); %>
 
-<h2 class="l-grid__header u-heading-2 u-align-center">Do you consume alcohol?</h2>
-    <form>
-        <div class="o-form">
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="yes" id="yes">
-                <label for="yes">YES</label>
-            </span>
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="sometimes" id="sometimes">
-                <label for="sometimes">SOMETIMES</label>
-            </span>
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="no" id="no">
-                <label for="no">NO</label>
-            </span>
-        </div>
-        <div class="o-form">
-            <span>
-                <input class="o-form--checkbox-toggle" type="checkbox" name="prefer-not-to-say" id="">
-                <label for="">PREFER NOT TO SAY</label>
-            </span>
-        </div>
-    </form>
+        <form id="firestore_form" type="checkOne">
+            <section name="alcohol">
+                <h2 class="l-grid__header u-heading-2 u-align-center">Do you consume alcohol?</h2>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="yes">
+                        <label for="yes">YES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="sometimes">
+                        <label for="sometimes">SOMETIMES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="no">
+                        <label for="no">NO</label>
+                    </span>
+                </div>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox-toggle" type="checkbox" value="prefer not to say">
+                        <label for="">PREFER NOT TO SAY</label>
+                    </span>
+                </div>
+            </section>
+            <section name="cannabis">
+                <h2 class="u-heading-2 u-align-center">Do you consume cannabis?</h2>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="yes">
+                        <label for="yes">YES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="sometimes">
+                        <label for="sometimes">SOMETIMES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="no">
+                        <label for="no">NO</label>
+                    </span>
+                </div>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox-toggle" type="checkbox" value="prefer not to say">
+                        <label for="">PREFER NOT TO SAY</label>
+                    </span>
+                </div>
+            </section>
+            <section name="tobacco">
+                <h2 class="u-heading-2 u-align-center">Do you consume tobacco?</h2>
 
-<h2 class="u-heading-2 u-align-center">Do you consume cannabis?</h2>
-<form>
-    <div class="o-form">
-        <span>
-            <input class="o-form--checkbox" type="checkbox" name="yes" id="yes">
-            <label for="yes">YES</label>
-        </span>
-        <span>
-            <input class="o-form--checkbox" type="checkbox" name="sometimes" id="sometimes">
-            <label for="sometimes">SOMETIMES</label>
-        </span>
-        <span>
-            <input class="o-form--checkbox" type="checkbox" name="no" id="no">
-            <label for="no">NO</label>
-        </span>
-    </div>
-    <div class="o-form">
-        <span>
-            <input class="o-form--checkbox-toggle" type="checkbox" name="prefer-not-to-say" id="">
-            <label for="">PREFER NOT TO SAY</label>
-        </span>
-    </div>
-</form>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="yes">
+                        <label for="yes">YES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="sometimes">
+                        <label for="sometimes">SOMETIMES</label>
+                    </span>
+                    <span>
+                        <input class="o-form--checkbox" type="checkbox" value="no">
+                        <label for="no">NO</label>
+                    </span>
+                </div>
+                <div class="o-form">
+                    <span>
+                        <input class="o-form--checkbox-toggle" type="checkbox" value="prefer not to say">
+                        <label for="">PREFER NOT TO SAY</label>
+                    </span>
+                </div>
+            </section>
+        </form>
 
+        <%- include('../../_components/buttons', { url: endpoints.registerActivities.url, label: 'Next' ,
+            classnames: 'o-button-primary' , form: '#firestore_form' }); %>
 
-<h2 class="u-heading-2 u-align-center">Do you consume tobacco?</h2>
-    <form>
-        <div class="o-form">
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="yes" id="yes">
-                <label for="yes">YES</label>
-            </span>
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="sometimes" id="sometimes">
-                <label for="sometimes">SOMETIMES</label>
-            </span>
-            <span>
-                <input class="o-form--checkbox" type="checkbox" name="no" id="no">
-                <label for="no">NO</label>
-            </span>
-        </div>
-        <div class="o-form">
-            <span>
-                <input class="o-form--checkbox-toggle" type="checkbox" name="prefer-not-to-say" id="">
-                <label for="">PREFER NOT TO SAY</label>
-            </span>
-        </div>
-    </form>
-
-    <%- include('../../_components/buttons', {
-        url: '', 
-        label: 'Next',
-        classnames: 'o-button-primary'
-    }); %>
-
-<%- include('../../_partials/footer'); %>
+            <%- include('../../_partials/footer'); %>
