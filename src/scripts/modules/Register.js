@@ -10,10 +10,7 @@ module.exports = {
         if (docQ('#firestore_form')) this.update()
         else return;
     },
-    /**
-     * Send update profile request to server
-     */
-    update: function () {
+    update: function () { // Send update profile request to server
         const form = docQ('#firestore_form');
         const type = form.getAttribute('type');
         form.addEventListener('submit', (e) => {

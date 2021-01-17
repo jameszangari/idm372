@@ -10,10 +10,7 @@ module.exports = {
     if (docQ('#searchSpotify')) this.search();
     else return;
   },
-  /**
-   * Searches the Spotify database
-   */
-  search: function () {
+  search: function () { // Searches the Spotify database
     const searchForm = docQ('#searchSpotify');
     const search_input = docQ('#search_input');
 

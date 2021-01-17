@@ -59,9 +59,8 @@ module.exports = function (req, res) {
             res.send(tracks);
         }
     });
-    /**
-     * return the results from spotify api for search
-     */
+
+    // Return the results from spotify api for search
     function search(criteria, token, callback) {
         let query = criteria;
         let bearerstring = 'Bearer ' + token;
