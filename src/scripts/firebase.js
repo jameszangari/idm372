@@ -4,9 +4,11 @@ const config = require('../../secret/config'); // Secret Keys
 module.exports = {
   init: function () {
     firebaseAdmin.initializeApp({ // Init Admin SDK w/ Keys
-      credential: firebaseAdmin.credential.cert(config)
+      // credential: firebaseAdmin.credential.cert(config)
+      credential: admin.credential.cert({
+        private_key: process.env.SECRET_FIREBASE_KEY.replace(/\\n/g, '\n'),
+      }),
     });
-    console.log(firebaseAdmin.credential.cert(config));
   },
   db: function () {
     return firebaseAdmin.firestore();
