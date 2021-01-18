@@ -19,10 +19,9 @@ const config = require('./secret/config'); // Secret Keys
 require('dotenv').config();
 
 console.log(process.env);
-console.log(config.client_id);
 
 const app = express();
-const port = process.env.PORT || 8888;
+const port = 8888;
 
 app.use(express.static(path.join(__dirname, 'public')))
     .use(cors())
