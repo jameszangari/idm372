@@ -1,6 +1,7 @@
 const helper = require('../helper')
 const querystring = require('querystring'); // Parse and stringify URL query strings
 const config = require('../../../secret/config'); // Secret Keys
+const { client_id, redirect_uri } = require('../../../secret/config');
 
 module.exports = function(req, res)
 {
@@ -20,4 +21,5 @@ module.exports = function(req, res)
       redirect_uri: config.redirect_uri,
       state: state
     }));
+    console.log('yo');
 }
