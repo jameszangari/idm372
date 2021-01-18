@@ -11,7 +11,7 @@ module.exports = config = {
 	type: "service_account",
 	project_id: "shuffle-devtest",
 	private_key_id: process.env.SECRET_FIREBASE_KEY_ID,
-	private_key: process.env.SECRET_FIREBASE_KEY,
+	private_key: JSON.parse(process.env.SECRET_FIREBASE_KEY).replace(/\\n/g, '\n'),
 	// private_key: process.env.SECRET_FIREBASE_KEY.replace(/\\n/g, '\n'),
 	// private_key: JSON.parse(process.env.SECRET_FIREBASE_KEY),
 	client_email: "firebase-adminsdk-fppxu@shuffle-devtest.iam.gserviceaccount.com",
