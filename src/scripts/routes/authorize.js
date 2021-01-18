@@ -21,5 +21,4 @@ module.exports = function(req, res)
       redirect_uri: config.redirect_uri,
       state: state
     }));
-    console.log('yo');
 }
