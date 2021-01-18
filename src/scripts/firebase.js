@@ -5,7 +5,7 @@ module.exports = {
   init: function () {
     firebaseAdmin.initializeApp({ // Init Admin SDK w/ Keys
       // credential: firebaseAdmin.credential.cert(config)
-      credential: admin.credential.cert({
+      credential: firebaseAdmin.credential.cert({
         private_key: process.env.SECRET_FIREBASE_KEY.replace(/\\n/g, '\n'),
       }),
     });
