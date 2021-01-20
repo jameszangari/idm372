@@ -18,8 +18,6 @@ const config = require('./secret/config'); // Secret Keys
 // ====================
 require('dotenv').config();
 
-// console.log(process.env);
-
 const app = express();
 const port = process.env.PORT || 8888;
 
@@ -33,7 +31,6 @@ app.set('view engine', 'ejs');
 app.listen(port);
 // Use res.render to load up an ejs view file
 require('dns').lookup(require('os').hostname(), function (err, ipv4) { // Log the URL to the host
-    // err ? console.log(err) : console.log(`Hosting Local Node Server @ http://${ipv4}:${port}`);
     err ? console.log(err) : console.log('Hosting Local Node Server @ http:// ' + ipv4 + ':' + port);
 });
 require("./src/scripts/routes/routes")(app);
