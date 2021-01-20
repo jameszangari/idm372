@@ -1,12 +1,11 @@
 # Shuffle Web App
+#### [Visit Live Build](https://shuffle-web-app.herokuapp.com)
 #### Requirements: 
 * [node.js](https://nodejs.org/en/)
 * [nodemon](https://nodemon.io/)
 
 #
 #### 1. Initialize the app
-
----
 
 1. In the Command Line, navigate to the directory  **idm372**
 2. Download node_modules using: `npm install`
@@ -18,18 +17,12 @@
 
 #
 #### 2. Run the app
-
----
-
 1. Run the command `nodemon server.js` to startup the express server
     * nodemon watches the files for changes and refreshes the server
 2. The server will then be running on `localhost:8888`
 3. In a new terminal tab/window, run the command `npm run dev` to build the files for development
     * Webpack will compile all files and watch for changes on save
 4. Go to `localhost:8888` in your preferred browser to view the build
-
----
-
 #
 ## Working with the files
 * **!!!** Before making any changes, **branch off of the main** using `git checkout -b (insert issue name here)` (make sure you pull first using `git pull origin main`)
