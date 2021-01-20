@@ -18,7 +18,7 @@ const config = require('./secret/config'); // Secret Keys
 // ====================
 require('dotenv').config();
 
-console.log(process.env);
+// console.log(process.env);
 
 const app = express();
 const port = 8888;
