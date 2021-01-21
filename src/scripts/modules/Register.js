@@ -7,8 +7,7 @@ const spotifyObject = JSON.parse(spotifyObjectString);
 
 module.exports = {
     init: function () {
-        if (docQ('#firestore_form')) this.update()
-        else return;
+        if (docQ('#firestore_form')) this.update(); else return;
     },
     update: function () { // Send update profile request to server
         const form = docQ('#firestore_form');
@@ -21,7 +20,6 @@ module.exports = {
             const form_children = docQA('#firestore_form > *');
 
             // Bundle form values into valsObj for DB
-            console.log(type);
             if (type === 'strings') {
                 form_children.forEach(el => {
                     if (el.value) valsObj[el.name] = el.value;
@@ -52,5 +50,16 @@ module.exports = {
             }
 
         }, false);
+
+        // Populate pronoun forms
+        pnoun_form = docQ('select[name="pronouns"]');
+        if (pnoun_form) {
+            const Pronouns = require('./Pronouns');
+            const list = Pronouns.list;
+
+            for (var i = 0; i < list.length; i++) {
+                pnoun_form.innerHTML += `<option value=${i}>${list[i]}</option>`;
+            }
+        }
     }
 }
