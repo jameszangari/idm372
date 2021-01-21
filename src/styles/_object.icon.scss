@@ -91,29 +91,93 @@
 		padding-top: 0px;
 		padding-bottom: 20px;
 	}
-	&--checkbox {
-		// display: block;
-		margin: 0px 10px;
-		color: $color-black;
-		box-shadow: inset 0 0 0 1px $color-black;
-		padding: 10px;
-	}
+	// &--checkbox {
+	// 	// display: block;
+	// 	margin: 0px 2.5px 0 17.5px;
+	// 	// opacity: 0;
+	// 	color: $color-black;
+	// 	box-shadow: inset 0 0 0 1px $color-black;
+	// 	padding: 10px;
+	// }
 
-	&--toggle {
-		align-self: flex-end;
-		margin: 0 auto;
-		background: $color-gray-5;
-		color: $color-black;
-		box-shadow: inset 0 0 0 1px $color-black;
-		padding: 20px;
+	// &--toggle {
+	// 	align-self: flex-end;
+	// 	margin: 0 auto;
+	// 	background: $color-gray-5;
+	// 	color: $color-black;
+	// 	box-shadow: inset 0 0 0 1px $color-black;
+	// 	padding: 20px;
 
-		&:hover {
-			background: $color-black;
-			border: none;
-			color: $color-gray-5;
-		}
-	}
+	// 	&:hover {
+	// 		background: $color-black;
+	// 		border: none;
+	// 		color: $color-gray-5;
+	// 	}
+	// }
 }
+
+//Activites Checkbox Stylings
+
+.checkbox {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-gap: 0.5em;
+    font-size: 18px;
+	color: var(--color);
+	margin: 0 0 0 10px;
+}
+
+.checkbox__control {
+	display: inline-grid;
+	width: 1em;
+	height: 1em;
+	border-radius: 0.25em;
+	border: 0.1em solid currentColor;
+	
+}
+
+.checkbox__input {
+	display: grid;
+	grid-template-areas: "checkbox";
+	margin: 0 0 0 12px;
+	color: #F72585;
+	font-size: 20px;
+
+	> * {
+	  grid-area: checkbox;
+	}
+
+	input {
+	  opacity: 0;
+	  width: 1em;
+	  height: 1em;
+	}
+
+}
+
+.checkbox__control svg {
+	transition: transform 0.1s ease-in 25ms;
+	transform: scale(0);
+	transform-origin: bottom left;
+}
+
+.checkbox__control svg {
+	transition: transform 0.1s ease-in 25ms;
+	transform: scale(0);
+	transform-origin: bottom left;
+}
+
+.checkbox__input input:checked
+ + .checkbox__control svg {
+  	transform: scale(1);
+}
+
+.checkbox__input input:focus
+ + .checkbox__control {
+  box-shadow: 0 0 0 0.05em #FF7854, 0 0 0.15em 0.1em currentColor;
+}
+
+//Activities Checkbox Stylings End
 
 .o-edit-button {
 	background: $color-gray-5;
@@ -233,7 +297,7 @@
 			color: $color-gray-2;
 		}
 	}
-
+ 
 	&--group {
 		display: none;
 		&-open {
