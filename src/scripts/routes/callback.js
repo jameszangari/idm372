@@ -148,6 +148,6 @@ module.exports = function (req, res) {
       refresh_token: refresh_token
     };
     res.cookie('spotify', JSON.stringify(spotifyObject));
-    return res.redirect(endpoints.registerConnected.url);
+    return res.redirect(endpoints.registerProfile.url);
   }
 }
