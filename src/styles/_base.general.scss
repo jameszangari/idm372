@@ -98,26 +98,3 @@ textarea {
 		}
 	}
 }
-
-input[type="submit"] {
-	@extend .o-button-primary;
-}
-
-[hidden] {
-	display: none !important;
-}
-
-.invalid {
-	margin-top: 0.5rem;
-	border: 2px solid red !important;
-}
-
-.invalid:first-of-type {
-	margin-top: 0;
-}
-
-.invalid_desc {
-	margin-top: 1rem;
-	color: red;
-	padding-left: 1rem;
-}
