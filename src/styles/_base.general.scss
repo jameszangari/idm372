@@ -75,16 +75,27 @@ textarea {
 	font-size: 14px;
 	line-height: 24px;
 	border-radius: 5px;
+	text-align-last: center;
 	&::-webkit-input-placeholder {
 		color: $color-black;
 	}
-
 	&:-ms-input-placeholder {
 		color: $color-black;
 	}
-
 	&::placeholder {
 		color: $color-black;
+	}
+	&:focus {
+		// Hide placeholder text on focus
+		&::-webkit-input-placeholder {
+			color: transparent;
+		}
+		&:-ms-input-placeholder {
+			color: transparent;
+		}
+		&::placeholder {
+			color: transparent;
+		}
 	}
 }
 
