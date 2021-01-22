@@ -30,8 +30,7 @@ module.exports = {
 
       $.ajax({ //send info to server - GET request
         url: endpoints.search.url,
-        data:
-        {
+        data: {
           access_token: spotifyObject.access_token,
           refresh_token: spotifyObject.refresh_token,
           query: query,
