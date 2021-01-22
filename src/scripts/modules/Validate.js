@@ -86,16 +86,20 @@ module.exports = {
                         const sections = form.querySelectorAll('section');
                         sections.forEach(section => {
                             section.classList.remove('invalid');
-                        })
+                            const invalid_desc = section.querySelector('.invalid_desc');
+                            invalid_desc && invalid_desc.remove();
+                        });
 
                         // Handle section validity
                         invalids.forEach(el => {
                             const invalid_section = el.closest('section');
                             const el_siblings = invalid_section.querySelectorAll('[type="checkbox"]');
                             invalid_section.classList.add('invalid'); // Located an invalid input
+                            invalid_section.querySelector('.u-heading-2').insertAdjacentHTML('afterend', '<p class="invalid_desc">This section requires input</>');
                             el_siblings.forEach(el => {
                                 el.addEventListener('click', () => {
                                     invalid_section.classList.remove('invalid');
+                                    invalid_section.querySelector('.invalid_desc').remove();
                                 });
                             });
                         });
