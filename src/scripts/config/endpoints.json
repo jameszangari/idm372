@@ -21,14 +21,14 @@
   "search":
   {
     "url": "/search",
-    "title": "Search",
+    "title": "",
     "page": ""
 
   },
   "update":
   {
     "url": "/update",
-    "title": "Update",
+    "title": "",
     "page": ""
 
   },

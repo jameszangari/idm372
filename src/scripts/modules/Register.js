@@ -10,8 +10,12 @@ module.exports = {
         if (docQ('#firestore_form')) this.update(); else return;
     },
     update: function () { // Send update profile request to server
-        const form = docQ('#firestore_form');
-        const type = form.getAttribute('type');
+        // quickRefs
+        const form = docQ('#firestore_form'),
+            next = docQ('[data-form]'),
+            url = next.dataset.href,
+            type = form.getAttribute('type');
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -45,7 +49,7 @@ module.exports = {
                     }
                 }).done((response) => {
                     // Do stuff after
-                    response ? console.log('Success') : console.error('There was a server error...');
+                    response ? window.location.href = url : console.error('There was a server error...');
                 });
             }
 

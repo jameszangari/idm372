@@ -2,8 +2,7 @@ const next = docQ('[data-form]');
 
 if (next) { // If there's a form
     // quickRefs
-    const url = next.dataset.href,
-        form = docQ(next.dataset.form),
+    const form = docQ(next.dataset.form),
         type = form.getAttribute('type');
 
     // Toggles UI validity of inputs
@@ -126,10 +125,7 @@ if (next) { // If there's a form
 
         // Submit form
         submit.click();
-        // Navigate to next page
-        window.location.href = url;
     }
-
 
     if (type === 'checkOne') { // If form type is a 'check just one per section'
         // Handle checkbox clicks & requires
