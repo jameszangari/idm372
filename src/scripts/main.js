@@ -21,5 +21,4 @@ $(document).ready(() => {
     Spotify.init();
     Register.init();
     Toggle.init();
-    Validate.init();
 });

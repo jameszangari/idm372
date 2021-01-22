@@ -41,7 +41,7 @@ module.exports = {
                     url: endpoints.update.url,
                     data: {
                         uuid: spotifyObject.user_id,
-                        values: valsObj
+                        values: obj
                     }
                 }).done((response) => {
                     // Do stuff after
