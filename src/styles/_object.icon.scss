@@ -85,6 +85,8 @@
 
 .o-form {
 	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
 	justify-content: center;
 	padding: 30px;
 	&:last-of-type {
@@ -124,7 +126,7 @@
     grid-gap: 0.5em;
     font-size: 18px;
 	color: var(--color);
-	margin: 0 0 0 10px;
+	margin-top: 2.5rem;
 }
 
 .checkbox__control {
@@ -133,7 +135,6 @@
 	height: 1em;
 	border-radius: 0.25em;
 	border: 0.1em solid currentColor;
-	
 }
 
 .checkbox__input {
@@ -144,13 +145,13 @@
 	font-size: 20px;
 
 	> * {
-	  grid-area: checkbox;
+		grid-area: checkbox;
 	}
 
 	input {
-	  opacity: 0;
-	  width: 1em;
-	  height: 1em;
+		opacity: 0;
+		width: 1em;
+		height: 1em;
 	}
 
 }
@@ -169,7 +170,7 @@
 
 .checkbox__input input:checked
  + .checkbox__control svg {
-  	transform: scale(1);
+	transform: scale(1);
 }
 
 .checkbox__input input:focus

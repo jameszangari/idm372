@@ -31,7 +31,7 @@ module.exports = {
                 const checkboxes = form.querySelectorAll('input[type="checkbox"]');
                 checkboxes.forEach(el => {
                     if (el.checked === true) {
-                        const section = el.parentElement.parentElement.parentElement;
+                        const section = el.closest('section');
                         if (el.checked) valsObj[section.getAttribute('name')] = el.value;
                     }
                 });

@@ -69,7 +69,7 @@ module.exports = {
 
                         // Handle section validity
                         invalids.forEach(el => {
-                            const invalid_section = el.parentElement.parentElement.parentElement;
+                            const invalid_section = el.closest('section');
                             const el_siblings = invalid_section.querySelectorAll('[type="checkbox"]');
                             invalid_section.classList.add('invalid');
                             el_siblings.forEach(el => {
