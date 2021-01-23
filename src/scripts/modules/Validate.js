@@ -1,22 +1,23 @@
 const next = docQ('[data-form]');
 
+function toggleInvalid(add, input, message) {
+    if (input.nextSibling.classList == 'invalid_desc') {
+        input.nextSibling.remove();
+    }
+    if (add == true) {
+        input.classList.add('invalid');
+        input.insertAdjacentHTML('afterend', `<p class="invalid_desc">${message}</>`);
+    } else {
+        input.classList.remove('invalid');
+    }
+}
+
 if (next) { // If there's a form
     // quickRefs
     const form = docQ(next.dataset.form),
         type = form.getAttribute('type');
 
     // Toggles UI validity of inputs
-    function toggleInvalid(add, input, message) {
-        if (input.nextSibling.classList == 'invalid_desc') {
-            input.nextSibling.remove();
-        }
-        if (add == true) {
-            input.classList.add('invalid');
-            input.insertAdjacentHTML('afterend', `<p class="invalid_desc">${message}</>`)
-        } else {
-            input.classList.remove('invalid');
-        }
-    }
 
     // Set validation listeners for all text inputs
     const req_strings = docQA('input[type="text"]');
@@ -154,4 +155,8 @@ if (next) { // If there's a form
             reCheckValidity();
         }
     });
+}
+
+module.exports = {
+    toggleInvalid: toggleInvalid
 }
