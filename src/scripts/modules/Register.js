@@ -1,5 +1,6 @@
 const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
+const Profile = require('./Profile');
 
 // Cookies
 const spotifyObjectString = helper.getCookie('spotify');
@@ -61,15 +62,15 @@ module.exports = {
 
         }, false);
 
-        // Populate pronoun forms
-        pnoun_form = docQ('select[name="pronouns"]');
-        if (pnoun_form) {
-            const Pronouns = require('./Pronouns');
-            const list = Pronouns.list;
-
-            for (var i = 0; i < list.length; i++) {
-                pnoun_form.innerHTML += `<option value=${i}>${list[i]}</option>`;
+        // Add all list options if it's on the page
+        const lists = Profile.lists;
+        Object.keys(lists).forEach(listKey => {
+            const form = docQ(`select[name="${listKey}"]`);
+            if (form) {
+                Object.keys(lists[listKey]).forEach(key => {
+                    form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+                });
             }
-        }
+        });
     }
 }
