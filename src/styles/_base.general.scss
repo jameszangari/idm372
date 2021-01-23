@@ -75,27 +75,26 @@ textarea {
 	font-size: 14px;
 	line-height: 24px;
 	border-radius: 5px;
+	text-align-last: center;
 	&::-webkit-input-placeholder {
 		color: $color-black;
 	}
-
 	&:-ms-input-placeholder {
 		color: $color-black;
 	}
-
 	&::placeholder {
 		color: $color-black;
 	}
-}
-
-input[type="submit"] {
-	@extend .o-button-primary;
-}
-
-[hidden] {
-	display: none !important;
-}
-
-.invalid {
-	border: 2px solid red !important;
+	&:focus {
+		// Hide placeholder text on focus
+		&::-webkit-input-placeholder {
+			color: transparent;
+		}
+		&:-ms-input-placeholder {
+			color: transparent;
+		}
+		&::placeholder {
+			color: transparent;
+		}
+	}
 }

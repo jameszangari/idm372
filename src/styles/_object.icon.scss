@@ -2,17 +2,17 @@
     #BUTTONS
 \*------------------------------------*/
 .o-button {
-    // All shared button styles across
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
+	// All shared button styles across
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
 	border-radius: 50px;
 	padding: 16px 80px;
 	color: $color-gray-5;
-    transition: all .3s ease;
-    line-height: 1;
-    width: max-content;
-    cursor: pointer;
+	transition: all 0.3s ease;
+	line-height: 1;
+	width: max-content;
+	cursor: pointer;
 	border: none;
 	box-sizing: border-box;
 
@@ -64,8 +64,8 @@
 		}
 
 		&:before {
-			content: '\f067';
-			font-family: 'FontAwesome';
+			content: "\f067";
+			font-family: "FontAwesome";
 			font-size: 34px;
 		}
 	}
@@ -81,6 +81,33 @@
 		margin-bottom: 3%;
 		background: $color-pink-1;
 	}
+}
+
+/*------------------------------------*\
+    #FORM COMPONENTS
+\*------------------------------------*/
+
+input[type="submit"] {
+	@extend .o-button-primary;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+.invalid {
+	margin-top: 0.5rem;
+	border: 2px solid red !important;
+}
+
+section .invalid:first-of-type {
+	margin-top: 0;
+}
+
+.invalid_desc {
+	margin-top: 1rem;
+	color: red;
+	padding-left: 1rem;
 }
 
 .o-form {
@@ -195,7 +222,6 @@
 	}
 }
 
-
 .o-edit-button {
 	background: $color-gray-5;
 	border-radius: 50px;
@@ -203,18 +229,18 @@
 	line-height: 1;
 	width: max-content;
 	padding: 8px 14px;
-	transition: all .1s;
+	transition: all 0.1s;
 	font-size: 12px;
 	font-weight: 600;
 	&::after {
-		content: '\f303';
-		font-family: 'FontAwesome';
+		content: "\f303";
+		font-family: "FontAwesome";
 		padding-left: 12px;
 		@include pink-purple-gradient($color-pink-1, $color-purple);
 		background-size: 100%;
 		background-repeat: repeat;
 		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent; 
+		-webkit-text-fill-color: transparent;
 		-moz-background-clip: text;
 		-moz-text-fill-color: transparent;
 	}
@@ -226,7 +252,7 @@
 		}
 	}
 }
-		
+
 /*------------------------------------*\
     #INPUTS
 \*------------------------------------*/
@@ -280,7 +306,6 @@
 	}
 }
 
-
 /*------------------------------------*\
     #POP UPS
 \*------------------------------------*/
@@ -307,18 +332,18 @@
 		color: $color-gray-1;
 		background: $color-gray-4;
 		width: 2.5rem;
-        height: 2.5rem;
-        padding: .65rem;
+		height: 2.5rem;
+		padding: 0.65rem;
 		border-radius: 50%;
-		transition: all .1s;
+		transition: all 0.1s;
 		&:hover {
 			background: $color-gray-3;
 		}
 		& .button__content {
 			width: 100%;
-            height: .2rem;
-			background-color: #93939E;
-			border-radius: .2rem;
+			height: 0.2rem;
+			background-color: #93939e;
+			border-radius: 0.2rem;
 		}
 		& .button__content:first-of-type {
 			transform-origin: center;
@@ -328,7 +353,7 @@
 			transform: translate(0%, -140%);
 		}
 	}
- 
+
 	&--group {
 		display: none;
 		&-open {
@@ -381,5 +406,4 @@
 			padding-top: 5px;
 		}
 	}
-
 }

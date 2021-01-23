@@ -14,12 +14,11 @@ window.docQA = document.querySelectorAll.bind(document);
 const Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
-    Next = require('./modules/Next');
+    Validate = require('./modules/Validate');
 
 // Global Logic here
 $(document).ready(() => {
     Spotify.init();
     Register.init();
     Toggle.init();
-    Next.init();
 });
