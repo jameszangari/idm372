@@ -24,7 +24,8 @@ module.exports = {
             var valsObj = {};
             const form_children = docQA('#firestore_form > *');
 
-            // Bundle form values into valsObj for DB
+            // ===== Bundle form values into valsObj for DB =====
+
             if (type === 'strings') {
                 form_children.forEach(el => {
                     if (el.value) { valsObj[el.name] = el.value; }
@@ -55,8 +56,8 @@ module.exports = {
             }
 
             function push_data(obj) { // Send info to server - GET request
-                if (Object.keys(obj).length > 0) {
-                    $.ajax({ // If theres values
+                if (Object.keys(obj).length > 0) { // If theres values
+                    $.ajax({
                         url: endpoints.update.url,
                         data: {
                             uuid: spotifyObject.user_id,
@@ -73,7 +74,7 @@ module.exports = {
 
         }, false);
 
-        // Add all list options if it's on the page
+        // Add all select options if it's on the page
         const lists = Profile.lists;
         Object.keys(lists).forEach(listKey => {
             const form = docQ(`select[name="${listKey}"]`);
