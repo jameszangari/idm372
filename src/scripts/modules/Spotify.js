@@ -24,7 +24,7 @@ module.exports = {
       search_results.innerHTML = ''; //clear out previous results
 
       if (!query) { // If search has no input
-        Validate.toggleInvalid(true, search_input, 'Input is required to perform search');
+        Validate.toggleInvalid(true, search_input, 'This field is required to perform search');
         return;
       } else {
         Validate.toggleInvalid(false, search_input);
