@@ -22,29 +22,40 @@ module.exports = {
 
             // Get form data as an object, !!!the name attribute will declare the field name in the DB!!!
             var valsObj = {};
-            var count = 0;
             const form_children = docQA('#firestore_form > *');
 
             // Bundle form values into valsObj for DB
             if (type === 'strings') {
                 form_children.forEach(el => {
-                    if (el.value) { valsObj[el.name] = el.value; count++; }
+                    if (el.value) { valsObj[el.name] = el.value; }
                 });
                 // console.log('count= ' + count);
                 push_data(valsObj);
+
             } else if (type === 'checkOne') {
-                const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(el => {
-                    if (el.checked === true) {
-                        const section = el.closest('section');
-                        if (el.checked) { valsObj[section.getAttribute('name')] = el.value; count++; }
-                    }
+                const checked = form.querySelectorAll('input[type="checkbox"]:checked');
+                checked.forEach(el => {
+                    const section = el.closest('section');
+                    valsObj[section.getAttribute('name')] = el.value;
+                });
+                push_data(valsObj);
+
+            } else if (type === 'checkMulti') {
+                const sections = form.querySelectorAll('section');
+                sections.forEach(section => {
+                    const strings = [];
+                    const fieldName = section.getAttribute('name');
+                    const checked = section.querySelectorAll('input[type="checkbox"]:checked');
+                    checked.forEach(el => {
+                        strings.push(el.value);
+                    });
+                    if (strings.length > 0) valsObj[fieldName] = strings.join(', ');
                 });
                 push_data(valsObj);
             }
 
             function push_data(obj) { // Send info to server - GET request
-                if (count > 0) {
+                if (Object.keys(obj).length > 0) {
                     $.ajax({ // If theres values
                         url: endpoints.update.url,
                         data: {
