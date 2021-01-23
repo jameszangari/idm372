@@ -80,4 +80,12 @@ module.exports = function (app) {
     });
   });
 
+  // Looking For Page
+  app.get(endpoints.registerLookingFor.url, function (req, res) {
+    res.render(endpoints.registerLookingFor.page, {
+      pageTitle: endpoints.registerLookingFor.title,
+      endpoints: endpoints,
+    });
+  });
+
 };

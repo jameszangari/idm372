@@ -84,6 +84,12 @@
     "title": "Set Up Profile",
     "page": "pages/register/bio"
   },
+  "registerLookingFor":
+  {
+    "url": "/register/looking-for",
+    "title": "Set Up Profile",
+    "page": "pages/register/looking-for"
+  },
   "registerActivities":
   {
     "url": "/register/activities",
