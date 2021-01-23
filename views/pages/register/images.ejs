@@ -1,17 +1,22 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
-<%- include('../../_components/header-navigation', { 
-    title: endpoints.registerImages.title
-}); %>
+    <%- include('../../_components/header-navigation', { title: endpoints.registerImages.title }); %>
 
-    <h1 class="l-grid__header u-heading-2 u-align-center">Add a picture of yourself</h1>
+        <h1 class="l-grid__header u-heading-2 u-align-center">Add a picture of yourself</h1>
 
-    <a href="#" class="o-button-upload"></a>
+        <button class="o-button-upload" data-index="0"></button>
+        <input type="file" class="pp_upload" data-index="0" accept=".jpg,.png" hidden></button>
 
-    <%- include('../../_components/buttons', { 
-        url: endpoints.registerBio.url, 
+        <button class="o-button-upload" data-index="1"></button>
+        <input type="file" class="pp_upload" data-index="1" accept=".jpg,.png" hidden></button>
+
+        <button class="o-button-upload" data-index="2"></button>
+        <input type="file" class="pp_upload" data-index="2" accept=".jpg,.png" hidden></button>
+
+    <%- include('../../_components/buttons', {
+        url: endpoints.registerSong.url,
         label: 'Next',
-        classnames: 'o-button-primary' 
+        classnames: 'o-button-primary'
     }); %>
 
 <%- include('../../_partials/footer'); %>
