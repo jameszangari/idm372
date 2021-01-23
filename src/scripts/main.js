@@ -14,7 +14,8 @@ window.docQA = document.querySelectorAll.bind(document);
 const Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
-    Validate = require('./modules/Validate');
+    Validate = require('./modules/Validate'),
+    Images = require('./modules/Images');
 
 // Global Logic here
 $(document).ready(() => {
