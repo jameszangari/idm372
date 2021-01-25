@@ -19,7 +19,8 @@
 }
 
 .l-login {
-	@include blue-purple-gradient($color-bright-blue, $color-purple);
+	@include ShuffleAnimatedGradient ($color-bright-blue, $color-purple);
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
