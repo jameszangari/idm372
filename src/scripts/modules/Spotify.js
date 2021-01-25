@@ -50,15 +50,22 @@ module.exports = {
                 title = result.title,
                 artist = result.artist,
                 album = result.album;
-
               const track_element = document.createElement('div'); // Create a div element (Better to do it this way for adding event listener later)
               track_element.classList.add('o-spotify-select--track'); // Add the class 'track'
+              
+              // Truncate a string
+              function truncateString(str, num) {
+                if (str.length <= num) {
+                  return str
+                }
+                return str.slice(0, num) + '...'
+              }
 
               // Then add the content
               track_element.innerHTML += `
               <img class="o-spotify-select--image" src="${thumb}" id="track_thumbnail">
               <div class="o-spotify-select--track-info">
-                  <h3 class="track_title">${title}</h3>
+                  <h3 class="track_title">${truncateString(title, 50)}</h3>
                   <h5 class="track_artist">${artist}</h5>
               </div>
               `;
