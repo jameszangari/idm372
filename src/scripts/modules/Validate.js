@@ -39,15 +39,43 @@ if (next) { // If there's a form
     if (req_selects.length > 0) { // If there's string input(s)
         req_selects.forEach(el => {
             if (el.required) {
-                el.addEventListener('change', () => { // Trim on every change
+                el.addEventListener('change', () => {
                     el.value && toggleInvalid(false, el);
                 });
             }
         });
     }
 
-    // Set min & max dates on date inputs
+    // Set validation listeners for all date inputs
     const date_inputs = docQA('input[type="date"]');
+    if (date_inputs.length > 0) { // If there's string input(s)
+        date_inputs.forEach(el => {
+            if (el.required) {
+                el.addEventListener('change', () => {
+                    validateDateInput(el);
+                });
+            }
+        });
+    }
+
+    function validateDateInput(el) {
+        const value = el.value, min = el.getAttribute('min'), max = el.getAttribute('max');
+        if (value) { // If there's input
+            if (min && max) { // If there is a min & max attribute
+                if (value < min) { // Too old
+                    toggleInvalid(true, el, 'This date is out of range.');
+                } else if (value > max) { // Too young
+                    toggleInvalid(true, el, 'You must be at least 18 years old to use Shuffle.');
+                } else if (value > min && value < max) { // In between aka correct
+                    toggleInvalid(false, el);
+                }
+            }
+        } else {
+            toggleInvalid(true, el, 'This field is required');
+        }
+    }
+
+    // Set min & max dates on date inputs
     if (date_inputs.length > 0) { // If there's date input(s)
         // Set 18 y/o restriction
         var today = new Date();
@@ -55,10 +83,10 @@ if (next) { // If there's a form
         var mm = today.getMonth() + 1; // January is 0!
         var yyyy = today.getFullYear();
         if (dd < 10) {
-            dd = '0' + dd
+            dd = '0' + dd;
         }
         if (mm < 10) {
-            mm = '0' + mm
+            mm = '0' + mm;
         }
         const max = (yyyy - 18) + '-' + mm + '-' + dd;
         const min = (yyyy - 90) + '-' + mm + '-' + dd;
@@ -85,7 +113,7 @@ if (next) { // If there's a form
         // Invalid string type forms
         function invalid_strings_form(form, invalids, valids) {
             invalids.forEach(el => { // Located an invalid input
-                toggleInvalid(true, el, 'This field is required');
+                el.type != 'date' ? toggleInvalid(true, el, 'This field is required') : validateDateInput(el);
             });
             valids.forEach(el => { // Located an invalid input
                 toggleInvalid(false, el);
