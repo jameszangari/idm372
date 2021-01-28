@@ -16,6 +16,11 @@
 		background: $color-blues-1;
 		color: $color-gray-5;
 	}
+	&--main {
+		@extend .l-grid;
+		padding-left: 6%;
+		padding-right: 6%
+	}
 }
 
 .l-login {
