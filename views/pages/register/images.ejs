@@ -4,14 +4,16 @@
 
         <h1 class="l-grid__header u-heading-2 u-align-center">Add a picture of yourself</h1>
 
-        <button class="o-button-upload" data-index="0"></button>
-        <input type="file" class="pp_upload" data-index="0" accept=".jpg,.png" hidden></button>
+        <div class="o-button-upload__group u-flex-center">
+            <button class="o-button-upload" data-index="0"></button>
+            <input type="file" class="pp_upload" data-index="0" accept=".jpg,.png" hidden></button>
 
-        <button class="o-button-upload" data-index="1"></button>
-        <input type="file" class="pp_upload" data-index="1" accept=".jpg,.png" hidden></button>
+            <button class="o-button-upload" data-index="1"></button>
+            <input type="file" class="pp_upload" data-index="1" accept=".jpg,.png" hidden></button>
 
-        <button class="o-button-upload" data-index="2"></button>
-        <input type="file" class="pp_upload" data-index="2" accept=".jpg,.png" hidden></button>
+            <button class="o-button-upload" data-index="2"></button>
+            <input type="file" class="pp_upload" data-index="2" accept=".jpg,.png" hidden></button>
+        </div>
 
     <%- include('../../_components/buttons', {
         url: endpoints.registerSong.url,

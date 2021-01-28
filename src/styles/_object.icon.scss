@@ -55,9 +55,16 @@
 		margin: 0 auto;
 		background: $color-bright-blue;
 		background-size: cover !important;
+		background-position: center;
 		color: $color-gray-5;
 		padding: 20px 24px;
+		height: 100px;
+		width: 100px;
 		border-radius: 12px;
+		margin-right: 40px;
+		&:last-of-type {
+			margin-right: 0;
+		}
 
 		&:hover {
 			background: $color-bright-blue-hover;
@@ -67,11 +74,18 @@
 		&:before {
 			content: "\f067";
 			font-family: "FontAwesome";
-			font-size: 34px;
+			font-size: 38px;
 		}
 
 		&.file-selected:before {
 			color: transparent;
+		}
+
+		&__group {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
 	}
 
@@ -101,12 +115,16 @@ input[type="submit"] {
 }
 
 .invalid {
-	margin-top: 0.5rem;
 	border: 2px solid red !important;
 	&_desc {
-		margin-top: 1rem;
 		color: red;
-		padding-left: 1rem;
+		margin-top: 5px;
+		margin-left: 15px;
+		margin-bottom: 20px;
+		&::before {
+			content: '*';
+			margin-right: 2.5px;
+		}
 	}
 }
 
@@ -314,9 +332,6 @@ section .invalid:first-of-type {
 		text-align: center;
 		&:focus {
 			outline: none;
-		}
-		&::placeholder {
-			color: $color-gray-3;
 		}
 	}
 }
