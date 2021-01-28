@@ -48,6 +48,22 @@ module.exports = function (app) {
     });
   });
 
+  // T.O.S Page
+  app.get(endpoints.tos.url, function (req, res) {
+    res.render(endpoints.tos.page, {
+      pageTitle: endpoints.tos.title,
+      endpoints: endpoints,
+    });
+  });
+
+  // Privacy Agreement Page
+  app.get(endpoints.privacy.url, function (req, res) {
+    res.render(endpoints.privacy.page, {
+      pageTitle: endpoints.privacy.title,
+      endpoints: endpoints,
+    });
+  });
+
   // Playlist Page
   app.get(endpoints.registerPlaylist.url, function (req, res) {
     res.render(endpoints.registerPlaylist.page, {

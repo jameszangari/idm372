@@ -16,7 +16,18 @@
     "url": "/authorize",
     "title": "Authorize",
     "page": "pages/login"
-
+  },
+  "tos":
+  {
+    "url": "/tos",
+    "title": "Terms",
+    "page": "pages/tos"
+  },
+  "privacy":
+  {
+    "url": "/privacy",
+    "title": "Privacy",
+    "page": "pages/privacy"
   },
   "search":
   {
