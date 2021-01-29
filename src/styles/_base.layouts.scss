@@ -1,4 +1,6 @@
 .l-grid {
+	position: relative;
+	min-height: 100vh;
 	width: 100%;
 	height: 100%;
 	max-width: 854px;
@@ -16,10 +18,16 @@
 		background: $color-blues-1;
 		color: $color-gray-5;
 	}
+	&--main {
+		@extend .l-grid;
+		padding-left: 6%;
+		padding-right: 6%
+	}
 }
 
 .l-login {
-	@include blue-purple-gradient($color-bright-blue, $color-purple);
+	@include ShuffleAnimatedGradient ($color-bright-blue, $color-purple);
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -44,7 +52,7 @@
 		font-family: $font-tertiary;
 		text-transform: uppercase;
 		font-weight: 900;
-		font-size: 16px;
+		font-size: 18px;
 		color: $color-black;
 		padding: 14px 28px;
 		background: $color-gray-5;
@@ -54,13 +62,14 @@
 		bottom: 100px;
 
 		&:hover {
-			background: $color-gray-4;
+			background: $color-gray-3;
 		}
 
 		&:before {
 			content: '\f1bc';
 			font-family: 'FontAwesome';
-			padding-right: 28px;
+			font-size: 18px;
+			padding-right: 30px;
 		}
 	}
 	&__links {

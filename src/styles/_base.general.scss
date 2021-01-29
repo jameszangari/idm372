@@ -69,33 +69,42 @@ input,
 select,
 textarea {
 	padding: 15px;
-	font-family: $font-secondary;
-	font-weight: 400;
-	text-transform: uppercase;
-	font-size: 14px;
-	line-height: 24px;
+	font-family: $font-primary;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 26px;
 	border-radius: 5px;
+	text-align-last: center; 
+	text-align: center; 
+	text-align: -webkit-center;
+	-ms-text-align-last: center; 
+	-moz-text-align-last: center;
+
+	/*  Reset inputs so that they 
+		maintain custom styles */
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;
+
 	&::-webkit-input-placeholder {
-		color: $color-black;
+		color: $color-gray-2;
 	}
-
 	&:-ms-input-placeholder {
-		color: $color-black;
+		color: $color-gray-2;
 	}
-
 	&::placeholder {
-		color: $color-black;
+		color: $color-gray-2;
 	}
-}
-
-input[type="submit"] {
-	@extend .o-button-primary;
-}
-
-[hidden] {
-	display: none !important;
-}
-
-.invalid {
-	border: 2px solid red !important;
+	&:focus {
+		// Hide placeholder text on focus
+		&::-webkit-input-placeholder {
+			color: transparent;
+		}
+		&:-ms-input-placeholder {
+			color: transparent;
+		}
+		&::placeholder {
+			color: transparent;
+		}
+	}
 }

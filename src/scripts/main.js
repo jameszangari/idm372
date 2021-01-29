@@ -1,8 +1,6 @@
 // Import our styles
 import './../styles/main.scss';
 
-const firebase = require('firebase'); // FireBase Functions
-
 // Theme Scripts
 var $ = require('jquery');
 
@@ -16,12 +14,12 @@ window.docQA = document.querySelectorAll.bind(document);
 const Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
-    Next = require('./modules/Next');
+    Validate = require('./modules/Validate'),
+    Images = require('./modules/Images');
 
 // Global Logic here
 $(document).ready(() => {
     Spotify.init();
     Register.init();
     Toggle.init();
-    Next.init();
 });

@@ -26,5 +26,27 @@ module.exports = {
       }
     }
     return "";
-  }
+  },
+  getAge: function (dob) { // dob param should be date-input.value (do not format it)
+    var year = Number(dob.substr(0, 4));
+    var month = Number(dob.substr(4, 2)) - 1;
+    var day = Number(dob.substr(6, 2));
+    var today = new Date();
+    var age = today.getFullYear() - year;
+    today.getMonth() < month || (today.getMonth() == month && today.getDate() < day) && age--
+    return age;
+  },
+  rm_events: function (object, hard_rm) {
+    // hard_rm param should be false for JQuery events, true for Vanilla JS events
+    // Always try using false first, if event duplicates, try a JQuery event, if still duping, try true
+    $(object).off('click');
+    $(object).unbind('click');
+    $(object).unbind('change');
+    if (hard_rm) { // If hard_rm === true
+        // This physically replaces the object to force remove all events
+        const old_e = docQ(object);
+        const new_e = old_e.cloneNode(true);
+        old_e.parentNode.replaceChild(new_e, old_e);
+    }
+}
 }

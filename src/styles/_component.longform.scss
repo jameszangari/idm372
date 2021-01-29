@@ -1,0 +1,84 @@
+.c-longform {
+	transition: all .3s ease;
+    padding-bottom: 80px;
+    & .o-button-primary {
+        margin-top: 26px;
+	}
+	a {
+		text-decoration: underline;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+	p {
+		margin-top: 26px;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 60px;
+	}
+	button {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+	code {
+		margin-top: 26px;
+		word-wrap: break-word;
+		white-space: break-spaces;
+	}
+	h1 {
+		@extend .u-heading-1;
+		font-family: $font-tertiary;
+	}
+	h2 {
+		@extend .u-heading-2;
+	}
+	h3 {
+		@extend .u-heading-3;
+	}
+	h4, h5, h6 {
+		@extend .u-heading-4;
+	}
+	p {
+		@extend .u-paragraph;
+	}
+    ul, ol {
+		margin: 16px 0;
+		font-family: $font-primary;
+		font-weight: 400;
+		ul, ol {
+			margin: 8px 0;
+			ul, ol {
+				margin: 8px 0;
+			}
+		}
+	}
+	ul li {
+		list-style: disc;
+		margin-left: 24px;
+		line-height: 24px;
+		li {
+			list-style: circle;
+			li {
+				list-style: square;
+			}
+		}
+	}
+	ol li {
+		list-style: decimal;
+		margin-left: 24px;
+		line-height: 24px;
+		li {
+			list-style: circle;
+			li {
+				list-style: square;
+			}
+		}
+	}
+	iframe, img {
+		margin-top: 60px;
+		max-width: 100%;
+		width: 100vw;
+		border: none;
+		background: none;
+	}
+}
