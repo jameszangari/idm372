@@ -15,6 +15,7 @@ const Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
+    Browse = require('./modules/Browse'),
     Images = require('./modules/Images');
 
 // Global Logic here

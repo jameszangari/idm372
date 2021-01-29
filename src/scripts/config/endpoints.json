@@ -11,6 +11,30 @@
     "title": "Login",
     "page": "pages/login"
   },
+  "list":
+  {
+    "url": "/list",
+    "title": "",
+    "page": ""
+  },
+  "search":
+  {
+    "url": "/search",
+    "title": "",
+    "page": ""
+  },
+  "update":
+  {
+    "url": "/update",
+    "title": "",
+    "page": ""
+  },
+  "callback":
+  {
+    "url": "/callback",
+    "title": "",
+    "page": ""
+  },
   "authorize":
   {
     "url": "/authorize",
@@ -29,47 +53,29 @@
     "title": "Privacy",
     "page": "pages/privacy"
   },
-  "search":
+  "browse":
   {
-    "url": "/search",
-    "title": "",
-    "page": ""
-
-  },
-  "update":
-  {
-    "url": "/update",
-    "title": "",
-    "page": ""
-
-  },
-  "callback":
-  {
-    "url": "/callback",
-    "title": "Callback",
-    "page": ""
-
+    "url": "/browse",
+    "title": "Browse",
+    "page": "pages/browse"
   },
   "registerConnected":
   {
     "url": "/register/connected",
     "title": "Connected",
     "page": "pages/register/connected"
-
   },
   "registerProfile":
   {
     "url": "/register/profile",
     "title": "Set Up Profile",
     "page": "pages/register/profile"
-
   },
   "registerSong":
   {
     "url": "/register/song",
     "title": "Set Up Profile",
     "page": "pages/register/song"
-
   },
   "registerAlbum":
   {
