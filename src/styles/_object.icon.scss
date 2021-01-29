@@ -434,3 +434,17 @@ section .invalid:first-of-type {
 		}
 	}
 }
+
+#o-spotify-done {
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+	width: 50%;
+	margin-top: 2rem;
+	
+	.o-spotify-done--image {
+		width: 5rem !important;
+		height: 5rem !important;
+		margin-right: 1rem;
+	}
+}

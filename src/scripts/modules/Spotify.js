@@ -14,7 +14,8 @@ module.exports = {
   },
   search: function () { // Searches the Spotify database
     const searchForm = docQ('#searchSpotify'),
-      search_input = docQ('#search_input');
+      search_input = docQ('#search_input'),
+      choice_area = docQ('#o-spotify-done');
 
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -63,7 +64,7 @@ module.exports = {
 
               // Then add the content
               track_element.innerHTML += `
-              <img class="o-spotify-select--image" src="${thumb}" id="track_thumbnail">
+              <img class="o-spotify-select--image" src="${thumb}">
               <div class="o-spotify-select--track-info">
                   <h3 class="track_title">${truncateString(title, 50)}</h3>
                   <h5 class="track_artist">${artist}</h5>
@@ -82,6 +83,18 @@ module.exports = {
                 // broadcast('Anthem Added!', 'var(--green)');
                 $('.o-spotify-select--group').removeClass("o-spotify-select--group-open"); // After selecting track, hide the modal
                 $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open"); // After selecting track, hide the modal close button
+
+                // Display choice
+                choice_area.innerHTML = ''; // Clear
+                choice_area.innerHTML = `
+                  <img class="o-spotify-done--image" src="${thumb}">
+                  <div class="o-spotify-select--track-info">
+                    <h3 class="track_title">${truncateString(title, 50)}</h3>
+                    <h5 class="track_artist">${artist}</h5>
+                  </div>
+                `;
+                document.body.click();
+                helper.rm_events('#o-spotify-done', false);
               });
             }
           });
