@@ -1,18 +1,30 @@
 .u-heading-1 {
 	font-family: $font-heading;
 	line-height: 1;
-	font-size: 30px;
+	font-size: 28px;
+	@media only screen and (min-width: 600px) {		
+		font-size: 30px;
+	}
 }
 .u-heading-2 {
 	font-family: $font-primary;
-	font-size: 24px;
+	font-size: 22px;
+	@media only screen and (min-width: 600px) {		
+		font-size: 24px;
+	}
 	font-weight: 700;
 }
 .u-heading-3 {
-	font-size: 26px;
+	font-size: 24px;
+	@media only screen and (min-width: 600px) {		
+		font-size: 26px;
+	}
 }
 .u-heading-4 {
-	font-size: 24px;
+	font-size: 22px;
+	@media only screen and (min-width: 600px) {		
+		font-size: 24px;
+	}
 }
 .u-paragraph {
 	line-height: 24px;
