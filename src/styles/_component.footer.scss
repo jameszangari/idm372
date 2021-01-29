@@ -1,0 +1,17 @@
+.c-footer-navigation {
+    position: absolute;
+    bottom: 0;
+    justify-content: space-around;
+    @include blue-purple-gradient($color-purple, $color-bright-blue);
+    border-radius: 12px 12px 0 0;
+    height: 76px;
+    width: 100%;
+    &__link {
+        &:hover, &:focus {
+            transition: fill .3s ease;
+            path {
+                fill: $color-gray-5;
+            }
+        }
+    }
+}
