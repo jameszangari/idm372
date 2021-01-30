@@ -11,9 +11,9 @@
     "title": "Login",
     "page": "pages/login"
   },
-  "list":
+  "users":
   {
-    "url": "/list",
+    "url": "/users",
     "title": "",
     "page": ""
   },
@@ -58,6 +58,12 @@
     "url": "/browse",
     "title": "Browse",
     "page": "pages/browse"
+  },
+  "profile":
+  {
+    "url": "/profile",
+    "title": "Profile",
+    "page": "pages/profile"
   },
   "registerConnected":
   {

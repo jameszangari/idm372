@@ -23,7 +23,7 @@ module.exports = {
     decipherCode: function (list, index) {
         // list param is the name of the list
         // index param is the key/identifier of the list
-        // Ex. decipherCode('gender', 'c') returns 'Female'
+        // Ex. decipherCode('genders', 'c') returns 'Female'
         return this[list][index];
     },
     lists: {
