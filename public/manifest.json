@@ -1,6 +1,6 @@
 {
-    "name": "shuffle",
-    "short_name": "shuffle",
+    "name": "Shuffle",
+    "short_name": "Shuffle",
     "icons": [
         {
          "src": "favicons/android-icon-36x36.png",
@@ -42,5 +42,6 @@
     "theme_color": "#4361EE",
     "background_color": "#4361EE",
     "display": "standalone",
+    "orientation": "portrait-primary",
     "start_url": "/login"
 }
