@@ -18,17 +18,15 @@
 
 	&-primary {
 		@extend .o-button;
+		position: fixed;
+		bottom: 3%;
+		left: 50%;
+		background: $color-bright-blue;
+		transform: translateX(-50%);
 		font-family: $font-primary;
 		font-size: 20px;
 		font-weight: 800;
-		position: absolute;
-		bottom: 0;
-		right: 50%;
-		transform: translateX(50%);
-		margin: 0 auto;
 		text-transform: uppercase;
-		margin-bottom: 3%;
-		background: $color-bright-blue;
 
 		&:hover {
 			background: $color-bright-blue-hover;
