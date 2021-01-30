@@ -57,20 +57,24 @@ if (title.innerText == endpoints.browse.title) { // Check if we are on browse pa
         }
     }).done((response) => {
         // Do stuff after
-        if (response) displayUser(response.data);
+        if (response) displayUser(response);
         else console.error('There was a server error...');
     });
 }
 
 function displayUser(user) {
+    // quickRefs
+    const data = user.data;
+    const user_view = docQ('.user_view');
+
     // Display the user
     user_view.hidden = false;
     user_view.innerHTML = `
-        <h2>${user.first_name} ${user.last_name}</h2>
-        <p>Pronouns: ${Lists.lists.pronouns[user.pronouns]}</p>
-        <p>Bday: ${helper.getAge(user.bday)}</p>
-        <p>Bio: ${user.bio}</p>
+        <h2>${data.first_name} ${data.last_name}</h2>
+        <p>Pronouns: ${Lists.lists.pronouns[data.pronouns]}</p>
+        <p>Bday: ${helper.getAge(data.bday)}</p>
+        <p>Bio: ${data.bio}</p>
         <p>Fav Song:</p>
-        <iframe src="https://open.spotify.com/embed/track/${user.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     `;
 }
