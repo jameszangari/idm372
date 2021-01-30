@@ -18,11 +18,14 @@
     </form>
 
     <div class="o-spotify-select">
-        <button class="o-spotify-select--close"></button>
-        <div class="o-spotify-select--group l-grid" id="search_results"></div>
+        <button class="o-spotify-select--close">Done</button>
+        <div class="o-spotify-select--group" id="search_results"></div>
     </div>
 
-    <div id="o-spotify-done"></div>
+    <div class="o-spotify-choice" hidden>
+        <div class="o-spotify-choice--cancel"></div>
+        <div class="o-spotify-choice--area"></div>
+    </div>
 
     <%- include('../../_components/buttons', { 
         url: endpoints.registerPlaylist.url, 

@@ -983,15 +983,13 @@ function delete_user(current_uuid) {
                     const childRef = ref.child(fileName);
                     childRef.delete();
                 }
+            }).catch(function (error) {
+                console.log('Error getting documents: ', error);
             })
-                .catch(function (error) {
-                    console.log('Error getting documents: ', error);
-                })
         }
+    }).catch(function (error) {
+        console.log('Error getting documents: ', error);
     })
-        .catch(function (error) {
-            console.log('Error getting documents: ', error);
-        })
     // ===== 4. Delete the User Document Itself =====
 
     setTimeout(() => {
