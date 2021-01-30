@@ -345,10 +345,7 @@ section .invalid:first-of-type {
 \*------------------------------------*/
 
 .o-spotify-select {
-	display: none;
-	&--open {
-		display: flex;
-	}
+	display: flex;
 	flex-direction: column;
 	position: fixed;
 	z-index: 10;

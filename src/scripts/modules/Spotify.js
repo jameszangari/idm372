@@ -15,6 +15,7 @@ module.exports = {
   search: function () { // Searches the Spotify database
     const searchForm = docQ('#searchSpotify'),
       search_input = docQ('#search_input'),
+      search_result_wrap = docQ('.o-spotify-select'),
       choice_wrap = docQ('.o-spotify-choice'),
       cancel_button = docQ('.o-spotify-choice--cancel'),
       choice_area = docQ('.o-spotify-choice--area');
@@ -28,14 +29,8 @@ module.exports = {
 
       // Modal
       docQ('.o-spotify-select--close').addEventListener('click', () => {
-        toggleModal(false); // Hide modal
+        search_result_wrap.hidden = true;
       });
-      function toggleModal(mode) {
-        // Mode is a boolean
-        mode ? mode = 'addClass' : mode = 'removeClass';
-        $('.o-spotify-select')[mode]("o-spotify-select--open"); // Opens results modal
-      }
-      toggleModal(true); // Show modal
 
       // Searching
       if (!query) { // If search has no input
@@ -53,8 +48,9 @@ module.exports = {
             searchcategory: searchcategory
           }
         }).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
+          search_result_wrap.hidden = false;
+          search_results.innerHTML = ''; // Clear previous results
           // Add tracks to page in search results
-          search_results.innerHTML = ''; //clear out previous results
           results.forEach(result => {
             if (result.id) { // Skip the empty results (Idk why Spotify returns those...)
               const track_element = document.createElement('div'); // Create a div element (Better to do it this way for adding event listener later)
