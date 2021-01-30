@@ -43,10 +43,16 @@ module.exports = {
     $(object).unbind('click');
     $(object).unbind('change');
     if (hard_rm) { // If hard_rm === true
-        // This physically replaces the object to force remove all events
-        const old_e = docQ(object);
-        const new_e = old_e.cloneNode(true);
-        old_e.parentNode.replaceChild(new_e, old_e);
+      // This physically replaces the object to force remove all events
+      const old_e = docQ(object);
+      const new_e = old_e.cloneNode(true);
+      old_e.parentNode.replaceChild(new_e, old_e);
     }
-}
+  },
+  truncateString: function (str, num) {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + '...';
+  }
 }

@@ -14,7 +14,13 @@
 }
 .u-flex-column {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+}
+.u-flex-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
 }
