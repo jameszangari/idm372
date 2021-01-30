@@ -1,6 +1,6 @@
 const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
-const Profile = require('./Profile');
+const Lists = require('./Lists');
 
 // Cookies
 const spotifyObjectString = helper.getCookie('spotify');
@@ -75,7 +75,7 @@ module.exports = {
         }, false);
 
         // Add all select options if it's on the page
-        const lists = Profile.lists;
+        const lists = Lists.lists;
         Object.keys(lists).forEach(listKey => {
             const form = docQ(`select[name="${listKey}"]`);
             if (form) {

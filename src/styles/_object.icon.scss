@@ -123,7 +123,7 @@ input[type="submit"] {
 		margin-bottom: 5px;
 		margin-left: 15px;
 		&::before {
-			content: '*';
+			content: "*";
 			margin-right: 1px;
 		}
 	}
@@ -369,8 +369,8 @@ section .invalid:first-of-type {
 		border-radius: 50%;
 		transition: all 0.1s;
 		&:before {
-			content: '\f00d';
-			font-family: 'FontAwesome';
+			content: "\f00d";
+			font-family: "FontAwesome";
 			font-size: 18px;
 			color: $color-gray-2;
 		}
@@ -441,10 +441,24 @@ section .invalid:first-of-type {
 	align-items: center;
 	margin: 2.5rem auto;
 	width: 50%;
-	
+
 	.o-spotify-done--image {
 		width: 5rem !important;
 		height: 5rem !important;
 		margin-bottom: 1rem;
 	}
+}
+
+.user_view {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: white;
+	color: black;
+}
+
+iframe {
+	height: 5rem;
+	width: 100%;
 }

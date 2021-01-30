@@ -14,7 +14,7 @@ module.exports = function (app) {
     "callback",
     "search",
     "update",
-    "list",
+    "users",
   ];
 
   routes.forEach(route => {
@@ -34,6 +34,7 @@ module.exports = function (app) {
     "registerActivities",
     "registerLookingFor",
     "browse",
+    "profile",
   ];
 
   pages.forEach(page => {
