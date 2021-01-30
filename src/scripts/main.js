@@ -11,7 +11,9 @@ window.$ = window.jQuery = $;
 window.docQ = document.querySelector.bind(document);
 window.docQA = document.querySelectorAll.bind(document);
 
-const Spotify = require('./modules/Spotify'),
+const 
+    AddToHome = require('./modules/AddToHome'),
+    Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
@@ -20,6 +22,7 @@ const Spotify = require('./modules/Spotify'),
 
 // Global Logic here
 $(document).ready(() => {
+    AddToHome.init();
     Spotify.init();
     Register.init();
     Toggle.init();
