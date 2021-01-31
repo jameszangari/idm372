@@ -1,6 +1,6 @@
 const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
-const Lists = require('./Lists');
+// const Lists = require('./Lists');
 
 // Cookies
 const spotifyObjectString = helper.getCookie('spotify');

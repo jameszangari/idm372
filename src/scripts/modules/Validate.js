@@ -144,6 +144,35 @@ if (next) { // If there's a form
         }
     }
 
+    // Check single input (not entire form)
+    function checkInput(el) {
+        const section = el.closest('.form-section');
+        const clone = section.cloneNode(true);
+        const tempForm = document.createElement('form');
+        tempForm.appendChild(clone);
+        console.log('yep');
+        if (el.tagName == 'SELECT' && el.value) { // QuickFix select inputs
+            addCheck(section);
+        } else {
+            tempForm.checkValidity() ? addCheck(section) : rmCheck(section);
+        }
+    }
+
+    function addCheck(section) {
+        section.querySelector('.section-title').classList.add('section-checked');
+    }
+    
+    function rmCheck(section) {
+        section.querySelector('.section-title').classList.remove('section-checked');
+    }
+
+    const allRequired = document.querySelectorAll('.form-section input, .form-section select');
+        if (allRequired.length > 0) {
+        allRequired.forEach(el => {
+            el.addEventListener('change', () => { checkInput(el); });
+        });
+    }
+
     // Submit the form
     function submitForm() {
         // Create submit button
