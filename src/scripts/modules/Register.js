@@ -74,15 +74,15 @@ module.exports = {
 
         }, false);
 
-        // Add all select options if it's on the page
-        const lists = Lists.lists;
-        Object.keys(lists).forEach(listKey => {
-            const form = docQ(`select[name="${listKey}"]`);
-            if (form) {
-                Object.keys(lists[listKey]).forEach(key => {
-                    form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
-                });
-            }
-        });
+        // // Add all select options if it's on the page
+        // const lists = Lists.lists;
+        // Object.keys(lists).forEach(listKey => {
+        //     const form = docQ(`select[name="${listKey}"]`);
+        //     if (form) {
+        //         Object.keys(lists[listKey]).forEach(key => {
+        //             form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+        //         });
+        //     }
+        // });
     }
 }
