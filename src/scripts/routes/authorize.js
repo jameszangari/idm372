@@ -9,7 +9,7 @@ module.exports = function(req, res)
   const stateKey = 'spotify_auth_state';
   const state = helper.generateRandomString(16);
   // your application requests authorization
-  const scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email user-top-read';
 
   res.cookie(stateKey, state);
   res.redirect('https://accounts.spotify.com/authorize?' +

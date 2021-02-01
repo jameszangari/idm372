@@ -71,7 +71,7 @@ module.exports = {
                     window.location.href = url;
                 }
             }
-
+			  
         }, false);
 
         // // Add all select options if it's on the page
