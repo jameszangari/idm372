@@ -17,7 +17,11 @@ const
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
+<<<<<<< Updated upstream
     Browse = require('./modules/Browse'),
+=======
+	 Connected = require('./modules/Connected'),
+>>>>>>> Stashed changes
     Images = require('./modules/Images');
 
 // Global Logic here

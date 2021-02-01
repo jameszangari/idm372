@@ -22,6 +22,17 @@
     "url": "/search",
     "title": "",
     "page": ""
+<<<<<<< Updated upstream
+=======
+
+  },  
+  "connected":
+  {
+    "url": "/connected",
+    "title": "",
+    "page": ""
+
+>>>>>>> Stashed changes
   },
   "update":
   {

@@ -112,9 +112,13 @@
 	&__artists--item {
 		&-image {
 			border-radius: 6px;
+			width: 100px;
+			height: 70px;
+			object-fit: cover;
 		}
 		&-text {
 			margin-top: 5px;
+			max-width: 100px;
 		}
 	}
 }
