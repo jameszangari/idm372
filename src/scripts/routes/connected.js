@@ -24,6 +24,7 @@ module.exports = function (req, res) {
 					  i++;
 					  if (type == 'artists') { //artists and tracks have thumbnail stored different
 						  thumb = item.images[2].url;
+						  console.log(typeof thumb);
 					  }
 					  else if (type == 'tracks') {
 						  thumb = item.album.images[1].url;

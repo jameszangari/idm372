@@ -25,10 +25,8 @@ if (lconnected) { //if on right page
           }
         }).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
           // Add tracks to page in search results
-			 console.log(results);
 		
 			 results.forEach(result => {
-				console.log(result);
             if (result.name) { // Skip the empty results
 				  itemName[i].innerHTML = result.name;
 				  itemImage[i].src = result.thumb;
