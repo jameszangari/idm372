@@ -10,7 +10,8 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
     entry:
     {
-        script: '/src/scripts/main.js'
+        script: '/src/scripts/main.js',
+        ServiceWorker: '/src/scripts/ServiceWorker.js'
     },
     output: {
         filename: "[name].js",
