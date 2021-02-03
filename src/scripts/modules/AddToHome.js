@@ -3,6 +3,8 @@
  * Released under MIT license, http://cubiq.org/license
  */
 var addToHome = (function (w) {
+	console.log('add to home running');
+
 	var nav = w.navigator,
 		isIDevice = 'platform' in nav && (/iphone|ipod|ipad/gi).test(nav.platform),
 		isIPad,
