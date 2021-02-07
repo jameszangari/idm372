@@ -11,5 +11,8 @@
         color: $color-gray-5;
     }
     &__title {
+        font-family: $font-euclid;
+        text-transform: uppercase;
+        font-weight: 600;
     }
 }
