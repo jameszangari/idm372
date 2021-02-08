@@ -78,14 +78,14 @@
 			color: transparent;
 		}
 
-		&__group {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			padding-left: 3%;
-			padding-right: 3%;
-			transform: translate(-50%, -50%);
-		}
+		// &__group {
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 50%;
+		// 	padding-left: 3%;
+		// 	padding-right: 3%;
+		// 	transform: translate(-50%, -50%);
+		// }
 	}
 
 	&-submit {
@@ -133,9 +133,11 @@ section .invalid:first-of-type {
 
 .o-form {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	flex-wrap: nowrap;
 	width: 100%;
+	padding: 0 1rem;
 	&--input {
 		margin-top: 16px;
 		border: none;
@@ -148,11 +150,11 @@ section .invalid:first-of-type {
 			outline: none;
 		}
 		&-textarea {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-50%, -50%);
+			// position: absolute;
+			// top: 50%;
+			// left: 50%;
+			// margin-right: -50%;
+			// transform: translate(-50%, -50%);
 			border-radius: 26px;
 			background: $color-gray-5;
 			border: 2px solid $color-black;
@@ -188,7 +190,7 @@ section .invalid:first-of-type {
 		&__input {
 			opacity: 0;
 			transform: scale(0);
-			position: absolute;
+			// position: absolute;
 		}
 		&__label {
 			font-family: $font-primary;
@@ -272,6 +274,9 @@ section .invalid:first-of-type {
 			width: max-content;
 		}
 	}
+	.form-section {
+		width: 100%;
+	}
 }
 
 .o-edit-button {
@@ -311,13 +316,14 @@ section .invalid:first-of-type {
 
 .o-search-form {
 	display: block;
+	padding: 0 1rem;
 	&--input {
-		position: absolute;
-		top: 50%;
-		left: 50%;
+		// position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// margin-right: -50%;
+		// transform: translate(-50%, -50%);
 		width: 100%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
 		border: none;
 		text-align: center;
 		border-radius: 50px;
@@ -328,11 +334,11 @@ section .invalid:first-of-type {
 		}
 	}
 	&--button {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
+		// position: absolute;
+		// top: 50%;
+		// left: 0;
+		// margin-right: -50%;
+		// transform: translate(-50%, -50%);
 		color: $color-black;
 		padding-left: 60px;
 		line-height: 1;

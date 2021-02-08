@@ -81,12 +81,10 @@ module.exports = {
         if (lookingForSection) {
             Object.keys(looking_for_list).forEach(key => {
                 lookingForSection.innerHTML += `
-                    <div class="o-form">
-                        <label class="o-form--checkbox">
-                            <input class="o-form--checkbox__input" type="checkbox" value="${key}">
-                            <span class="o-form--checkbox__label">${looking_for_list[key]}</span>
-                        </label>
-                    </div>
+                    <label class="o-form--checkbox">
+                        <input class="o-form--checkbox__input" type="checkbox" value="${key}">
+                        <span class="o-form--checkbox__label">${looking_for_list[key]}</span>
+                    </label>
                 `;
             });
         }

@@ -4,13 +4,13 @@
     title: endpoints.registerLookingFor.title
 }); %>
     
-    <form class="o-search-form" id="firestore_form" type="checkMulti">
+    <form class="o-form" id="firestore_form" type="checkMulti">
         <h2 class="l-grid__header u-heading-2 u-align-center">What are you looking for?</h2>
         <section name="looking_for" class="l-flex-row"></section>
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.browse.url, 
+        url: endpoints.registerBio.url, 
         label: 'Next',
         classnames: 'o-button-primary',
         form: '#firestore_form'
