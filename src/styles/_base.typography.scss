@@ -1,5 +1,6 @@
 .u-heading-1 {
 	font-family: $font-heading;
+	font-weight: 700;
 	line-height: 1;
 	font-size: 28px;
 	@media only screen and (min-width: 600px) {		
@@ -26,6 +27,36 @@
 		font-size: 24px;
 	}
 }
+
+//location on profile top
+.u-heading-5 {
+	font-family: $font-heading;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+//pronouns on profile top
+.u-heading-6 {
+	font-family: $font-heading;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+//anthem name on profile top
+.u-heading-7 {
+	font-family: $font-heading;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+//album and artist on profile top
+.u-heading-8 {
+	font-family: $font-heading;
+	font-size: 16px;
+	font-weight: 500;
+	color: #ADB5BD;
+}
+
 .u-paragraph {
 	line-height: 24px;
 	font-size: 16px;

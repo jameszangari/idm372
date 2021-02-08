@@ -47,7 +47,7 @@ module.exports = function (req, res) {
             'Authorization': bearerstring
         };
         let options = {
-            url: `https://api.spotify.com/v1/me/top/${type}?limit=3`,
+            url: `https://api.spotify.com/v1/me/top/${type}?time_range=short_term&limit=3`,
             headers: headers
         }; //currently hardcoded top 3 responses back, but can get more if needed by changing limit in url
         request(options, callback);

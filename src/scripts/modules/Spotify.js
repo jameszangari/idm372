@@ -18,7 +18,10 @@ module.exports = {
       search_result_wrap = docQ('.o-spotify-select'),
       choice_wrap = docQ('.o-spotify-choice'),
       cancel_button = docQ('.o-spotify-choice--cancel'),
-      choice_area = docQ('.o-spotify-choice--area');
+      choice_area = docQ('.o-spotify-choice--area'),
+		result_title = docQ("#result_title"),
+		result_album = docQ("#result_album"),
+		result_artist = docQ("#result_artist");
 
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -84,6 +87,10 @@ module.exports = {
               function displayChoice(result) { // Display choice
                 choice_wrap.hidden = false;
                 result_id.value = result.id;
+					 result_title.value = result.title;
+					 result_album.value = result.album;
+					 result_artist.value = result.artist;
+					 
 
                 choice_area.innerHTML = `
                   <img class="o-spotify-choice--image" src="${result.thumb}">
