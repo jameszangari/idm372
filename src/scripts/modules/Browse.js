@@ -17,71 +17,57 @@ module.exports = {
         // Page Identifier
         const title = docQ('.c-header-navigation__title');
 
-        if (title.innerText == endpoints.browse.title) { // Check if we are on browse page
-            const profile_list = docQ('#profile_list');
+        console.log('yep');
+        const profile_list = docQ('#profile_list');
 
-            // Functions
-            $.ajax({
-                url: endpoints.users.url,
-                data: {
-                    uuid: spotifyObject.user_id,
-                    queryCategory: 'all-users'
-                }
-            }).done((response) => {
-                // Do stuff after
-                response ? listUsers(response) : console.error('There was a server error...');
-            });
+        // Functions
+        $.ajax({
+            url: endpoints.users.url,
+            data: {
+                uuid: spotifyObject.user_id,
+                queryCategory: 'all-users'
+            }
+        }).done((response) => {
+            // Do stuff after
+            response ? listUsers(response) : console.error('There was a server error...');
+        });
 
-            // List the users
-            function listUsers(users) {
-                users.forEach(user => {
-                    // quickRefs
-                    const data = user.data;
-                    // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
-                    const el = document.createElement('div');
-                    el.classList.add('user-card');
-                    el.innerHTML += `
-                        <div class="user-card--top">
-                            <p class="stat stat--name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                            <p class="stat stat--pronouns u-heading-4">${Lists.lists.pronouns[data.pronouns]}</p>
-                            <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
-                        </div>
-                        <div class="user-card--btm">
-                            <p class="user-card--btm--title">${data.first_name}'s Favorite Song</p>
-                            <div class="media">
-                                <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                                <div class="media--controls">
-                                    <div class="media--controls--top">
-                                        <p class="media--controls--top--artist">Chop Suey!</p>
-                                        <p class="media--controls--top--title">System of a Down - Chop Suey</p>
-                                    </div>
-                                    <div class="media--controls--btm">
-                                        <i class="fas fa-lg fa-history"></i>
-                                        <i class="fas fa-lg fa-play"></i>
-                                        <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                                    </div>
+        // List the users
+        function listUsers(users) {
+            users.forEach(user => {
+                // quickRefs
+                const data = user.data;
+                // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
+                const el = document.createElement('div');
+                el.classList.add('user-card');
+                el.innerHTML += `
+                    <div class="user-card--top">
+                        <p class="stat stat--name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
+                        <p class="stat stat--pronouns u-heading-4">${Lists.lists.pronouns[data.pronouns]}</p>
+                        <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
+                    </div>
+                    <div class="user-card--btm">
+                        <p class="user-card--btm--title">${data.first_name}'s Favorite Song</p>
+                        <div class="media">
+                            <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <div class="media--controls">
+                                <div class="media--controls--top">
+                                    <p class="media--controls--top--artist">Chop Suey!</p>
+                                    <p class="media--controls--top--title">System of a Down - Chop Suey</p>
+                                </div>
+                                <div class="media--controls--btm">
+                                    <i class="fas fa-lg fa-history"></i>
+                                    <i class="fas fa-lg fa-play"></i>
+                                    <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
                                 </div>
                             </div>
                         </div>
-                    `;
-                    profile_list.appendChild(el);
-                    el.addEventListener('click', () => {
-                        displayUser(user);
-                    });
+                    </div>
+                `;
+                profile_list.appendChild(el);
+                el.addEventListener('click', () => {
+                    displayUser(user);
                 });
-            }
-        } else if (title.innerText == endpoints.profile.title) { // User's own profile
-            $.ajax({
-                url: endpoints.users.url,
-                data: {
-                    uuid: spotifyObject.user_id,
-                    queryCategory: 'single-user',
-                    target: spotifyObject.user_id
-                }
-            }).done((response) => {
-                // Do stuff after
-                if (response) displayUser(response);
-                else console.error('There was a server error...');
             });
         }
 
