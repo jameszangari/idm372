@@ -16,7 +16,6 @@ module.exports = {
 
         // Page Identifier
         const title = docQ('.c-header-navigation__title');
-        const user_view = docQ('.user_view');
 
         if (title.innerText == endpoints.browse.title) { // Check if we are on browse page
             const profile_list = docQ('#profile_list');
@@ -43,7 +42,7 @@ module.exports = {
                     el.classList.add('user-card');
                     el.innerHTML += `
                         <div class="user-card--top">
-                            <p class="stat stat--name u-heading-1">${data.first_name} ${data.last_name}, ${helper.getAge(data.bday)}</p>
+                            <p class="stat stat--name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
                             <p class="stat stat--pronouns u-heading-4">${Lists.lists.pronouns[data.pronouns]}</p>
                             <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
                         </div>
@@ -90,20 +89,27 @@ module.exports = {
             // quickRefs
             const data = user.data;
             const user_view = docQ('.user_view');
-            user_view.classList.add('user_view');
+            const html = docQ('html');
 
             // Display the user
+            html.classList.add('no-scroll');
+            user_view.classList.add('y-scroll');
             user_view.hidden = false;
             user_view.innerHTML = `
             <div class="user_view--top">
-                <h2 class="u-heading-1">${data.first_name} ${data.last_name}</h2>
+                <h2 class="u-heading-1">${data.first_name}</h2>
+                <button class="o-spotify-select--close">Done</button>
             </div>
             <div class="user_view--header">
-                <p class="u-heading-1">${data.first_name} ${data.last_name}, ${helper.getAge(data.bday)}</p>
+                <p class="u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
                 <p class="u-heading-3">${Lists.lists.pronouns[data.pronouns]}</p>
                 <p class="u-heading-2">Philadelphia</p>
             </div>
             <div class="user_view--main">
+                <div class="user_view--main--card">
+                    <h2 class="u-heading-3">Looking For</h2>
+                    <p>${data.looking_for}</p>
+                </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">About Me</h2>
                     <p>${data.bio}</p>
@@ -142,10 +148,18 @@ module.exports = {
                 </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">${data.first_name}'s Recreational Activities</h2>
-                    <p>Activities</p>
+                    <p></p>
                 </div>
             </div>
-    `;
+            `;
+            function close_user_view() {
+                html.classList.remove('no-scroll');
+                user_view.classList.remove('y-scroll');
+                user_view.hidden = true;
+                user_view.innerHTML = '';
+            }
+            const close = user_view.querySelector('.o-spotify-select--close');
+            close.addEventListener('click', close_user_view);
         }
     }
 }

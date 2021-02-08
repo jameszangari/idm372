@@ -19,6 +19,18 @@ const pronouns = {
     'd': 'They/Them',
 }
 
+const looking_for = {
+    'a': 'Band mates',
+    'b': 'Make friends',
+    'c': 'Concert buddies',
+    'd': 'Chats',
+    'e': 'New music',
+    'f': 'Local music',
+    'g': 'Jam buddies',
+    'h': 'Music discussion',
+    'i': 'Not sure yet',
+}
+
 module.exports = {
     decipherCode: function (list, index) {
         // list param is the name of the list
