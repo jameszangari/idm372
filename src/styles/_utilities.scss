@@ -24,3 +24,9 @@
 	align-items: center;
 	flex-direction: row;
 }
+.no-scroll {
+	overflow: hidden;
+}
+.y-scroll {
+	overflow-y: scroll !important;
+}
