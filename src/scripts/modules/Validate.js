@@ -150,7 +150,6 @@ if (next) { // If there's a form
         const clone = section.cloneNode(true);
         const tempForm = document.createElement('form');
         tempForm.appendChild(clone);
-        console.log('yep');
         if (el.tagName == 'SELECT' && el.value) { // QuickFix select inputs
             addCheck(section);
         } else {

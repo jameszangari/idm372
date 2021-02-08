@@ -14,7 +14,6 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
-        console.log('yep');
         const profile_list = docQ('#profile_list');
 
         // Functions
@@ -85,13 +84,13 @@ module.exports = {
             </div>
             <div class="user_view--header">
                 <p class="u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                <p class="u-heading-3">${Lists.lists.pronouns[data.pronouns]}</p>
+                <p class="u-heading-3">${Lists.decipherCodes('genders', data.pronouns)}</p>
                 <p class="u-heading-2">Philadelphia</p>
             </div>
             <div class="user_view--main">
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">Looking For</h2>
-                    <p>${data.looking_for}</p>
+                    <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
                 </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">About Me</h2>

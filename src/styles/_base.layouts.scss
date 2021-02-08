@@ -127,6 +127,10 @@
 	}
 }
 
+/*------------------------------------*\
+    #BROWSE PAGE
+\*------------------------------------*/
+
 #profile_list,
 .user-card {
 	display: flex;
@@ -153,6 +157,7 @@
 		justify-content: flex-end;
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-position: center;
 	}
 	&--btm {
 		padding: 1.5rem;
@@ -232,6 +237,7 @@ iframe {
 		padding: 1rem;
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-position: center;
 		height: 375px;
 		display: flex;
 		flex-direction: column;
@@ -264,6 +270,23 @@ iframe {
 .user_view:nth-of-type(odd) .user_view--header {
 	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
 }
+
+/*------------------------------------*\
+    #LOOKING FOR PAGE
+\*------------------------------------*/
+
+.l-flex-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 1rem;
+	.o-form {
+		width: fit-content;
+		margin: 1rem 0;
+	}
+}
+
 /*------------------------------------*\
     #LANDSCAPE/PORTRAIT LAYOUTS
 \*------------------------------------*/
