@@ -79,18 +79,6 @@ db.php
 node_modules
 *.DS_Store
 
-# Allow #
-!public/
-
-public/*
-!public/dist/
-
-public/dist/*
-!public/dist/js/
-
-public/dist/js/*
-!public/dist/js/ServiceWorker.js
-
 # Secret keys and secret things! #
 ##################################
 .env

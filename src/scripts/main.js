@@ -18,12 +18,16 @@ const
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
     Browse = require('./modules/Browse'),
+	Connected = require('./modules/Connected'),
     Images = require('./modules/Images');
 
 // Global Logic here
 $(document).ready(() => {
-    AddToHome.init();
+    if (document.querySelector('.l-login') !== null) {
+        AddToHome.addToHome();
+    }
     Spotify.init();
+    Browse.init();
     Register.init();
     Toggle.init();
 });

@@ -470,20 +470,6 @@ section .invalid:first-of-type {
 	}
 }
 
-.user_view {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	background: white;
-	color: black;
-}
-
-iframe {
-	height: 5rem;
-	width: 100%;
-}
-
 .section-checked::after {
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
