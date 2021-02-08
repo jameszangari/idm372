@@ -14,9 +14,6 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
-        // Page Identifier
-        const title = docQ('.c-header-navigation__title');
-
         console.log('yep');
         const profile_list = docQ('#profile_list');
 
