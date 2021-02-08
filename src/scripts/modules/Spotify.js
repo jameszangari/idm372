@@ -61,7 +61,7 @@ module.exports = {
                 <img class="o-spotify-select--image" src="${result.thumb}">
                 <div class="o-spotify-select--track-info">
                   <h3 class="track_title">${helper.truncateString(result.title, 50)}</h3>
-                  <h5 class="track_artist">${result.artist}</h5>
+                  <h5 class="track_artist">${result.artist || ''}</h5>
                 </div>
                 <div class="o-spotify-select--selected" hidden>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -70,7 +70,7 @@ module.exports = {
                   </svg>
                 </div>
               `;
-              // <h5 class="track_artist">${artist + (album ? ' - ' + album : '')}</h5>
+              // <h5 class="track_artist">${artist + (artist ? ' - ' + artist : '')}</h5>
 
               // Add the track element to the DOM
               search_results.appendChild(track_element);
@@ -80,7 +80,7 @@ module.exports = {
                 choice_area.innerHTML = '';
                 choice_wrap.hidden = true;
               }
-              
+
               function displayChoice(result) { // Display choice
                 choice_wrap.hidden = false;
                 result_id.value = result.id;
@@ -95,7 +95,7 @@ module.exports = {
               }
 
               cancel_button.addEventListener('click', rmChoice);
-              
+
               track_element.addEventListener('click', () => { // When user picks a track
                 docQA('.o-spotify-select--track').forEach(track => {
                   const check = track.querySelector('.o-spotify-select--selected');
