@@ -42,7 +42,7 @@ var addToHome = (function (w) {
 		},
 
 		intl = {
-			ar:    '<span dir="rtl">قم بتثبيت هذا التطبيق على <span dir="ltr">%device:</span>انقر<span dir="ltr">%icon</span> ،<strong>ثم اضفه الى الشاشة الرئيسية.</strong></span>',
+			ar: '<span dir="rtl">قم بتثبيت هذا التطبيق على <span dir="ltr">%device:</span>انقر<span dir="ltr">%icon</span> ،<strong>ثم اضفه الى الشاشة الرئيسية.</strong></span>',
 			ca_es: 'Per instal·lar aquesta aplicació al vostre %device premeu %icon i llavors <strong>Afegir a pantalla d\'inici</strong>.',
 			cs_cz: 'Pro instalaci aplikace na Váš %device, stiskněte %icon a v nabídce <strong>Přidat na plochu</strong>.',
 			da_dk: 'Tilføj denne side til din %device: tryk på %icon og derefter <strong>Føj til hjemmeskærm</strong>.',
@@ -72,20 +72,20 @@ var addToHome = (function (w) {
 			zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
 		};
 
-	function init () {
+	function init() {
 		// Preliminary check, all further checks are performed on iDevices only
-		if ( !isIDevice ) return;
+		if (!isIDevice) return;
 
 		var now = Date.now(),
 			i;
 
 		// Merge local with global options
-		if ( w.addToHomeConfig ) {
-			for ( i in w.addToHomeConfig ) {
+		if (w.addToHomeConfig) {
+			for (i in w.addToHomeConfig) {
 				options[i] = w.addToHomeConfig[i];
 			}
 		}
-		if ( !options.autostart ) options.hookOnLoad = false;
+		if (!options.autostart) options.hookOnLoad = false;
 
 		isIPad = (/ipad/gi).test(nav.platform);
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
@@ -97,24 +97,24 @@ var addToHome = (function (w) {
 		lastVisit = +w.localStorage.getItem('addToHome');
 
 		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
-		isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28*24*60*60*1000 > now : true;
+		isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28 * 24 * 60 * 60 * 1000 > now : true;
 
-		if ( !lastVisit ) lastVisit = now;
+		if (!lastVisit) lastVisit = now;
 
 		// If it is expired we need to reissue a new balloon
 		isExpired = isReturningVisitor && lastVisit <= now;
 
-		if ( options.hookOnLoad ) w.addEventListener('load', loaded, false);
-		else if ( !options.hookOnLoad && options.autostart ) loaded();
+		if (options.hookOnLoad) w.addEventListener('load', loaded, false);
+		else if (!options.hookOnLoad && options.autostart) loaded();
 	}
 
-	function loaded () {
+	function loaded() {
 		w.removeEventListener('load', loaded, false);
 
-		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
-		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
+		if (!isReturningVisitor) w.localStorage.setItem('addToHome', Date.now());
+		else if (options.expire && isExpired) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
 
-		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
+		if (!overrideChecks && (!isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor)) return;
 
 		var touchIcon = '',
 			platform = nav.platform.split(' ')[0],
@@ -125,25 +125,25 @@ var addToHome = (function (w) {
 		balloon.style.cssText += 'left:-9999px;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);position:' + (OSVersion < 5 ? 'absolute' : 'fixed');
 
 		// Localize message
-		if ( options.message in intl ) {		// You may force a language despite the user's locale
+		if (options.message in intl) {		// You may force a language despite the user's locale
 			language = options.message;
 			options.message = '';
 		}
-		if ( options.message === '' ) {			// We look for a suitable language (defaulted to en_us)
+		if (options.message === '') {			// We look for a suitable language (defaulted to en_us)
 			options.message = language in intl ? intl[language] : intl['en_us'];
 		}
 
-		if ( options.touchIcon ) {
+		if (options.touchIcon) {
 			touchIcon = isRetina ?
 				document.querySelector('head link[rel^=apple-touch-icon][sizes="114x114"],head link[rel^=apple-touch-icon][sizes="144x144"],head link[rel^=apple-touch-icon]') :
 				document.querySelector('head link[rel^=apple-touch-icon][sizes="57x57"],head link[rel^=apple-touch-icon]');
 
-			if ( touchIcon ) {
+			if (touchIcon) {
 				touchIcon = '<span style="background-image:url(' + touchIcon.href + ')" class="addToHomeTouchIcon"></span>';
 			}
 		}
 
-		balloon.className = (OSVersion >=7 ? 'addToHomeIOS7 ' : '') + (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+		balloon.className = (OSVersion >= 7 ? 'addToHomeIOS7 ' : '') + (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
 		balloon.innerHTML = touchIcon +
 			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
 			(options.arrow ? '<span class="addToHomeArrow"' + (OSVersion >= 7 && isIPad && touchIcon ? ' style="margin-left:-32px"' : '') + '></span>' : '') +
@@ -152,32 +152,32 @@ var addToHome = (function (w) {
 		document.body.appendChild(balloon);
 
 		// Add the close action
-		if ( options.closeButton ) balloon.addEventListener('click', clicked, false);
+		if (options.closeButton) balloon.addEventListener('click', clicked, false);
 
-		if ( !isIPad && OSVersion >= 6 ) window.addEventListener('orientationchange', orientationCheck, false);
+		if (!isIPad && OSVersion >= 6) window.addEventListener('orientationchange', orientationCheck, false);
 
 		setTimeout(show, options.startDelay);
 	}
 
-	function show () {
+	function show() {
 		var duration,
 			iPadXShift = 208;
 
 		// Set the initial position
-		if ( isIPad ) {
-			if ( OSVersion < 5 ) {
+		if (isIPad) {
+			if (OSVersion < 5) {
 				startY = w.scrollY;
 				startX = w.scrollX;
-			} else if ( OSVersion < 6 ) {
+			} else if (OSVersion < 6) {
 				iPadXShift = 160;
-			} else if ( OSVersion >= 7 ) {
+			} else if (OSVersion >= 7) {
 				iPadXShift = 143;
 			}
 
 			balloon.style.top = startY + options.bottomOffset + 'px';
 			balloon.style.left = Math.max(startX + iPadXShift - Math.round(balloon.offsetWidth / 2), 9) + 'px';
 
-			switch ( options.animationIn ) {
+			switch (options.animationIn) {
 				case 'drop':
 					duration = '0.6s';
 					balloon.style.webkitTransform = 'translate3d(0,' + -(w.scrollY + options.bottomOffset + balloon.offsetHeight) + 'px,0)';
@@ -194,13 +194,13 @@ var addToHome = (function (w) {
 		} else {
 			startY = w.innerHeight + w.scrollY;
 
-			if ( OSVersion < 5 ) {
+			if (OSVersion < 5) {
 				startX = Math.round((w.innerWidth - balloon.offsetWidth) / 2) + w.scrollX;
 				balloon.style.left = startX + 'px';
 				balloon.style.top = startY - balloon.offsetHeight - options.bottomOffset + 'px';
 			} else {
 				balloon.style.left = '50%';
-				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0 ) + 'px';
+				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - (w.orientation % 180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0) + 'px';
 				balloon.style.bottom = options.bottomOffset + 'px';
 			}
 
@@ -228,39 +228,39 @@ var addToHome = (function (w) {
 		closeTimeout = setTimeout(close, options.lifespan);
 	}
 
-	function manualShow (override) {
-		if ( !isIDevice || balloon ) return;
+	function manualShow(override) {
+		if (!isIDevice || balloon) return;
 
 		overrideChecks = override;
 		loaded();
 	}
 
-	function close () {
-		clearInterval( positionInterval );
-		clearTimeout( closeTimeout );
+	function close() {
+		clearInterval(positionInterval);
+		clearTimeout(closeTimeout);
 		closeTimeout = null;
 
 		// check if the popup is displayed and prevent errors
-		if ( !balloon ) return;
+		if (!balloon) return;
 
 		var posY = 0,
 			posX = 0,
 			opacity = '1',
 			duration = '0';
 
-		if ( options.closeButton ) balloon.removeEventListener('click', clicked, false);
-		if ( !isIPad && OSVersion >= 6 ) window.removeEventListener('orientationchange', orientationCheck, false);
+		if (options.closeButton) balloon.removeEventListener('click', clicked, false);
+		if (!isIPad && OSVersion >= 6) window.removeEventListener('orientationchange', orientationCheck, false);
 
-		if ( OSVersion < 5 ) {
+		if (OSVersion < 5) {
 			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY;
-			posX = isIPad ? w.scrollX - startX : w.scrollX + Math.round((w.innerWidth - balloon.offsetWidth)/2) - startX;
+			posX = isIPad ? w.scrollX - startX : w.scrollX + Math.round((w.innerWidth - balloon.offsetWidth) / 2) - startX;
 		}
 
 		balloon.style.webkitTransitionProperty = '-webkit-transform,opacity';
 
-		switch ( options.animationOut ) {
+		switch (options.animationOut) {
 			case 'drop':
-				if ( isIPad ) {
+				if (isIPad) {
 					duration = '0.4s';
 					opacity = '0';
 					posY += 50;
@@ -270,7 +270,7 @@ var addToHome = (function (w) {
 				}
 				break;
 			case 'bubble':
-				if ( isIPad ) {
+				if (isIPad) {
 					duration = '0.8s';
 					posY -= balloon.offsetHeight + options.bottomOffset + 50;
 				} else {
@@ -291,48 +291,48 @@ var addToHome = (function (w) {
 	}
 
 
-	function clicked () {
+	function clicked() {
 		w.sessionStorage.setItem('addToHomeSession', '1');
 		isSessionActive = true;
 		close();
 	}
 
-	function transitionEnd () {
+	function transitionEnd() {
 		balloon.removeEventListener('webkitTransitionEnd', transitionEnd, false);
 
 		balloon.style.webkitTransitionProperty = '-webkit-transform';
 		balloon.style.webkitTransitionDuration = '0.2s';
 
 		// We reached the end!
-		if ( !closeTimeout ) {
+		if (!closeTimeout) {
 			balloon.parentNode.removeChild(balloon);
 			balloon = null;
 			return;
 		}
 
 		// On iOS 4 we start checking the element position
-		if ( OSVersion < 5 && closeTimeout ) positionInterval = setInterval(setPosition, options.iterations);
+		if (OSVersion < 5 && closeTimeout) positionInterval = setInterval(setPosition, options.iterations);
 	}
 
-	function setPosition () {
+	function setPosition() {
 		var matrix = new WebKitCSSMatrix(w.getComputedStyle(balloon, null).webkitTransform),
 			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY,
 			posX = isIPad ? w.scrollX - startX : w.scrollX + Math.round((w.innerWidth - balloon.offsetWidth) / 2) - startX;
 
 		// Screen didn't move
-		if ( posY == matrix.m42 && posX == matrix.m41 ) return;
+		if (posY == matrix.m42 && posX == matrix.m41) return;
 
 		balloon.style.webkitTransform = 'translate3d(' + posX + 'px,' + posY + 'px,0)';
 	}
 
 	// Clear local and session storages (this is useful primarily in development)
-	function reset () {
+	function reset() {
 		w.localStorage.removeItem('addToHome');
 		w.sessionStorage.removeItem('addToHomeSession');
 	}
 
-	function orientationCheck () {
-		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0 ) + 'px';
+	function orientationCheck() {
+		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - (w.orientation % 180 && OSVersion >= 6 && OSVersion < 7 ? 40 : 0) + 'px';
 	}
 
 	// Bootstrap!
