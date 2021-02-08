@@ -90,11 +90,11 @@
     "title": "Set Up Profile",
     "page": "pages/register/song"
   },
-  "registerAlbum":
+  "registerArtist":
   {
-    "url": "/register/album",
+    "url": "/register/artist",
     "title": "Set Up Profile",
-    "page": "pages/register/album"
+    "page": "pages/register/artist"
   },
   "registerPlaylist":
   {

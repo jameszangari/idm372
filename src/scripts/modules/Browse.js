@@ -114,7 +114,7 @@ module.exports = {
                     </div>
                 </div>
                 <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Favorite Album</h2>
+                    <h2 class="u-heading-3">${data.first_name}'s Favorite Artist</h2>
                 </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">${data.first_name}'s Favorite Playlist</h2>
@@ -123,7 +123,7 @@ module.exports = {
                     <h2 class="u-heading-3">${data.first_name}'s Top Songs</h2>
                 </div>
                 <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Top Album</h2>
+                    <h2 class="u-heading-3">${data.first_name}'s Top Artist</h2>
                 </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">${data.first_name}'s Top Playlists</h2>

@@ -1,20 +1,20 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerAlbum.title
+    title: endpoints.registerArtist.title
 }); %>
 
-    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your favorite album</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your favorite artist</h2>
 
     <form class="o-search-form" id="searchSpotify">
-        <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="album"
+        <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="artist"
             placeholder="Search">
         <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
                 class="fas fa-search"></i></button>
     </form>
 
-    <form class="o-search-form" id="firestore_form" type="strings">
-        <input class="o-search-form--input" id="result_id" type="text" name="album" hidden>
+    <form class="o-search-form" id="firestore_form" type="strings" hidden>
+        <input class="o-search-form--input" id="result_id" type="text" name="artist">
     </form>
 
     <div class="o-spotify-select" hidden>

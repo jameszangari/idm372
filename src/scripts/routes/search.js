@@ -24,22 +24,22 @@ module.exports = function (req, res) {
             if (searchcategory === 'track') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
                     i++;
+                    i == 1 && console.log(item.album.images);
                     tracks.push(i, {
                         'id': item.id,
                         'title': item.name,
                         'artist': item.artists[0].name,
-                        'thumb': item.album.images[2].url,
+                        'thumb': item.album.images[0].url,
                         'album': item.album.name
                     });
                 });
-            } else if (searchcategory === 'album') {
+            } else if (searchcategory === 'artist') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
                     i++;
                     tracks.push(i, {
                         'id': item.id,
                         'title': item.name,
-                        'artist': item.artists[0].name,
-                        'thumb': item.images[2].url,
+                        'thumb': item.images[0].url,
                         'album': false
                     });
                 });

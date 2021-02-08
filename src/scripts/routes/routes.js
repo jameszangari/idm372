@@ -15,7 +15,7 @@ module.exports = function (app) {
     "search",
     "update",
     "users",
-	 "connected"
+    "connected"
   ];
 
   routes.forEach(route => {
@@ -28,7 +28,7 @@ module.exports = function (app) {
     "registerConnected",
     "registerProfile",
     "registerSong",
-    "registerAlbum",
+    "registerArtist",
     "registerPlaylist",
     "registerImages",
     "registerBio",
