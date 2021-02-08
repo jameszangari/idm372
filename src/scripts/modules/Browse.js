@@ -43,9 +43,9 @@ module.exports = {
                         <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
                     </div>
                     <div class="user-card--btm">
-                        <p class="user-card--btm--title">${data.first_name}'s Favorite Song</p>
+                        <p class="user-card--btm--title">${data.first_name}'s Anthem</p>
                         <div class="media">
-                            <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                             <div class="media--controls">
                                 <div class="media--controls--top">
                                     <p class="media--controls--top--artist">Chop Suey!</p>
@@ -97,9 +97,9 @@ module.exports = {
                     <p>${data.bio}</p>
                 </div>
                 <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Favorite Song</h2>
+                    <h2 class="u-heading-3">${data.first_name}'s Favorite Anthem</h2>
                     <div class="media">
-                        <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         <div class="media--controls">
                             <div class="media--controls--top">
                                 <p class="media--controls--top--artist">Chop Suey!</p>

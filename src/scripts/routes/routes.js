@@ -27,7 +27,7 @@ module.exports = function (app) {
     "privacy",
     "registerConnected",
     "registerProfile",
-    "registerSong",
+    "registerAnthem",
     "registerArtist",
     "registerPlaylist",
     "registerImages",

@@ -1,7 +1,7 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerSong.title
+    title: endpoints.registerAnthem.title
 }); %>
     
     <h2 class="l-grid__header u-heading-2 u-align-center">Choose a song that best represents you</h2>
@@ -10,11 +10,11 @@
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
             placeholder="Search">
         <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
-                class="fas fa-search"></i></button>
+            class="fas fa-search"></i></button>
     </form>
 
     <form class="o-search-form" id="firestore_form" type="strings" hidden>
-        <input class="o-search-form--input" id="result_id" type="text" name="song">
+        <input class="o-search-form--input" id="result_id" type="text" name="anthem">
     </form>
 
     <div class="o-spotify-select" hidden>

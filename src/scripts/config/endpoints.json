@@ -84,11 +84,11 @@
     "title": "Set Up Profile",
     "page": "pages/register/profile"
   },
-  "registerSong":
+  "registerAnthem":
   {
-    "url": "/register/song",
+    "url": "/register/anthem",
     "title": "Set Up Profile",
-    "page": "pages/register/song"
+    "page": "pages/register/anthem"
   },
   "registerArtist":
   {
