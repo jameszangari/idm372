@@ -39,7 +39,7 @@ module.exports = {
                 el.innerHTML += `
                     <div class="user-card--top">
                         <p class="stat stat--name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                        <p class="stat stat--pronouns u-heading-4">${Lists.lists.pronouns[data.pronouns]}</p>
+                        <p class="stat stat--pronouns u-heading-4">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
                         <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
                     </div>
                     <div class="user-card--btm">
