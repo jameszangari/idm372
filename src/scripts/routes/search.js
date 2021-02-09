@@ -24,7 +24,6 @@ module.exports = function (req, res) {
             if (searchcategory === 'track') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
                     i++;
-                    i == 1 && console.log(item.album.images);
                     tracks.push(i, {
                         'id': item.id,
                         'title': item.name,

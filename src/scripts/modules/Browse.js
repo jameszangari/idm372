@@ -61,7 +61,8 @@ module.exports = {
                     </div>
                 `;
                 profile_list.appendChild(el);
-                el.addEventListener('click', () => {
+                el.querySelector('.user-card--top')
+                .addEventListener('click', () => {
                     displayUser(user);
                 });
             });
