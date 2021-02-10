@@ -36,6 +36,8 @@ module.exports = function (app) {
     "registerLookingFor",
     "browse",
     "profile",
+    "chatBrowse",
+    "chatView",
   ];
 
   pages.forEach(page => {

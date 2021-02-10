@@ -125,5 +125,17 @@
     "url": "/register/activities",
     "title": "Set Up Profile",
     "page": "pages/register/activities"
+  },
+  "chatBrowse":
+  {
+    "url": "/chat/browse",
+    "title": "Chats",
+    "page": "pages/chat/browse"
+  },
+  "chatView":
+  {
+    "url": "/chat/view",
+    "title": "Chat with [Name]",
+    "page": "pages/chat/view"
   }
 }
