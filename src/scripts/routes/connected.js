@@ -16,6 +16,7 @@ module.exports = function (req, res) {
             return;
         } else { // Success
             obj = JSON.parse(body); //the response from spotify
+            console.log(obj);
             const items = obj.items; //response as array
             let thumb;
             let artists = [];
