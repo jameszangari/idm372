@@ -14,7 +14,7 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
-        const profile_list = docQ('#profile_list');
+        const profile_list = docQ('#l-profile-list');
 
         // Functions
         $.ajax({
@@ -35,23 +35,23 @@ module.exports = {
                 const data = user.data;
                 // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
                 const el = document.createElement('div');
-                el.classList.add('user-card');
+                el.classList.add('c-user-card');
                 el.innerHTML += `
-                    <div class="user-card--top">
-                        <p class="stat stat--name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                        <p class="stat stat--pronouns u-heading-4">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                        <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
+                    <div class="c-user-card--top">
+                        <p class="c-user-card__stats-name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
+                        <p class="c-user-card__stats-pronouns u-heading-4">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
+                        <p class="c-user-card__stats-location u-heading-3">Philadelphia, PA</p>
                     </div>
-                    <div class="user-card--btm">
-                        <p class="user-card--btm--title">${data.first_name}'s Anthem</p>
-                        <div class="media">
+                    <div class="c-user-card--btm">
+                        <p class="c-user-card--btm--title">${data.first_name}'s Anthem</p>
+                        <div class="c-media">
                             <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            <div class="media--controls">
-                                <div class="media--controls--top">
-                                    <p class="media--controls--top--artist">Chop Suey!</p>
-                                    <p class="media--controls--top--title">System of a Down - Chop Suey</p>
+                            <div class="c-media--controls">
+                                <div class="c-media--controls--top">
+                                    <p class="c-media--controls--top--artist">Chop Suey!</p>
+                                    <p class="c-media--controls--top--title">System of a Down - Chop Suey</p>
                                 </div>
-                                <div class="media--controls--btm">
+                                <div class="c-media--controls--btm">
                                     <i class="fas fa-lg fa-history"></i>
                                     <i class="fas fa-lg fa-play"></i>
                                     <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
@@ -61,7 +61,7 @@ module.exports = {
                     </div>
                 `;
                 profile_list.appendChild(el);
-                el.querySelector('.user-card--top')
+                el.querySelector('.c-user-card--top')
                 .addEventListener('click', () => {
                     displayUser(user);
                 });
@@ -71,42 +71,42 @@ module.exports = {
         function displayUser(user) {
             // quickRefs
             const data = user.data;
-            const user_view = docQ('.user_view');
+            const viewUser = docQ('.c-view-user');
             const html = docQ('html');
 
             // Display the user
-            html.classList.add('no-scroll');
-            user_view.classList.add('y-scroll');
-            user_view.hidden = false;
-            user_view.innerHTML = `
-            <div class="user_view--top">
-                <h2 class="u-heading-1">${data.first_name}</h2>
+            html.classList.add('u-no-scroll');
+            viewUser.classList.add('c-view-user--open');
+            viewUser.hidden = false;
+            viewUser.innerHTML = `
+            <div class="c-view-user--top">
+                <h2 class="c-view-user--top-heading u-heading-1 u-align-center">${data.first_name}</h2>
                 <button class="o-spotify-select--close">Done</button>
             </div>
-            <div class="user_view--header">
+            <div class="c-view-user--header">
                 <p class="u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
                 <p class="u-heading-3">${Lists.decipherCodes('genders', data.pronouns)}</p>
                 <p class="u-heading-2">Philadelphia</p>
             </div>
-            <div class="user_view--main">
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">Looking For</h2>
+            <div class="c-view-user__main">
+                <div class="c-view-user__main--card c-view-user__main--card-horizontal">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
                     <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">About Me</h2>
-                    <p>${data.bio}</p>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
+                    <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Favorite Anthem</h2>
-                    <div class="media">
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Favorite Anthem</h2>
+                    <div class="c-media">
                         <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                        <div class="media--controls">
-                            <div class="media--controls--top">
-                                <p class="media--controls--top--artist">Chop Suey!</p>
-                                <p class="media--controls--top--title">System of a Down - Chop Suey</p>
+                        <div class="c-media--controls">
+                            <div class="c-media--controls--top">
+                                <p class="c-media--controls--top--artist">Chop Suey!</p>
+                                <p class="c-media--controls--top--title">System of a Down - Chop Suey</p>
                             </div>
-                            <div class="media--controls--btm">
+                            <div class="c-media--controls--btm">
                                 <i class="fas fa-lg fa-history"></i>
                                 <i class="fas fa-lg fa-play"></i>
                                 <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
@@ -114,34 +114,34 @@ module.exports = {
                         </div>
                     </div>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Favorite Artist</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Artist</h2>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Favorite Playlist</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Playlist</h2>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Top Songs</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Songs</h2>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Top Artist</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Artist</h2>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Top Playlists</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Playlists</h2>
                 </div>
-                <div class="user_view--main--card">
-                    <h2 class="u-heading-3">${data.first_name}'s Recreational Activities</h2>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Recreational Activities</h2>
                     <p></p>
                 </div>
             </div>
             `;
             function close_user_view() {
-                html.classList.remove('no-scroll');
-                user_view.classList.remove('y-scroll');
-                user_view.hidden = true;
-                user_view.innerHTML = '';
+                html.classList.remove('u-no-scroll');
+                viewUser.classList.remove('c-view-user--open');
+                viewUser.hidden = true;
+                viewUser.innerHTML = '';
             }
-            const close = user_view.querySelector('.o-spotify-select--close');
+            const close = viewUser.querySelector('.o-spotify-select--close');
             close.addEventListener('click', close_user_view);
         }
     }
