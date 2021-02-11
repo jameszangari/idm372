@@ -3,8 +3,12 @@
 \*------------------------------------*/
 .c-header-navigation {
     @include blue-gradient($color-bright-blue, $color-darker-blue);
+    @extend .u-box-shadow;
     padding: 50px 25px;
+    position: fixed;
     height: 100px;
+    width: 100%;
+    z-index: 98;
     &__button {
         float: left;
         font-size: 30px;
