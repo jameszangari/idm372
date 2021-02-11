@@ -19,7 +19,8 @@ const
     Validate = require('./modules/Validate'),
     Browse = require('./modules/Browse'),
     Connected = require('./modules/Connected'),
-    Images = require('./modules/Images');
+    Images = require('./modules/Images'),
+    Chat = require('./modules/Chat');
 
 // Global Logic here
 $(document).ready(() => {

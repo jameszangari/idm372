@@ -1,6 +1,10 @@
+/*------------------------------------*\
+    #Browse Chats Page
+\*------------------------------------*/
+
 .l-chat-browse {
 	@extend .u-flex-column;
-	padding-top: 100px;
+	padding: 100px 0 76px 0;
 	&--user-item {
 		@extend .u-flex-row;
 		border-bottom: 0.1rem solid white;
@@ -33,13 +37,74 @@
 		}
 		// Border Colors
 		&:nth-of-type(3n + 1) img {
-			border: 0.2rem solid #f72585;
+			border: 0.2rem solid $color-pink-1;
 		}
 		&:nth-of-type(3n + 2) img {
-			border: 0.2rem solid #60adff;
+			border: 0.2rem solid $color-bright-blue;
 		}
 		&:nth-of-type(3n + 3) img {
-			border: 0.2rem solid #3a0ca3;
+			border: 0.2rem solid $color-indigo;
+		}
+	}
+}
+
+/*------------------------------------*\
+    #Chat View Page
+\*------------------------------------*/
+
+.l-chat-view {
+	@extend .u-flex-column;
+	justify-content: space-between;
+	height: calc(100vh - 76px);
+	padding: 115px 0 0 0;
+	overflow-y: hidden;
+	&--content {
+		padding: 0 20px;
+		overflow-y: scroll;
+		&--message {
+			width: 90%;
+			margin-bottom: 1rem;
+			border-radius: 6px;
+			padding: 1rem;
+			font-size: 18px;
+		}
+		.message-from-me {
+			margin-left: 10%;
+			background-color: #db0064;
+			align-self: flex-end;
+			color: white;
+		}
+		.message-from-them {
+			background-color: $color-gray-5;
+			align-self: flex-start;
+			color: black;
+		}
+	}
+	// Input Bar
+	&--input-bar {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		padding: 0;
+		input,
+		button[type="submit"] {
+			height: 52px;
+			width: 20%;
+			border: none;
+			border-radius: 0;
+		}
+		input {
+			width: 80%;
+			text-align: left;
+			&::placeholder {
+				color: $color-gray-3;
+				text-align-last: left;
+			}
+		}
+		button[type="submit"] {
+			background: linear-gradient(90deg, #f72585 0%, #ff7854 100%),
+				#dadada;
+			color: white;
 		}
 	}
 }
