@@ -110,8 +110,8 @@ module.exports = {
                         <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         <div class="c-media--controls">
                             <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--artist">Chop Suey!</p>
-                                <p class="c-media--controls--top--title">System of a Down - Chop Suey</p>
+                                <p class="c-media--controls--top--artist">${data.song_title}</p>
+                                <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
                             </div>
                             <div class="c-media--controls--btm">
                                 <i class="fas fa-lg fa-history"></i>
