@@ -49,10 +49,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 } else if (docQ('.l-chat-view')) { // View Page
     // Get thread id from URL
     docQ('html').style.overflowY = 'hidden'; // Fix Incorrect Scroll
-    const
-        location = window.location.href,
-        url = new URL(location),
-        thread = url.searchParams.get('thread');
+    const thread = helper.getUrlParam('thread');
     console.log(thread);
 
     // Get chat history

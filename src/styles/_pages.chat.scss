@@ -4,7 +4,7 @@
 
 .l-chat-browse {
 	@extend .u-flex-column;
-	padding: 100px 0 76px 0;
+	padding: 0 0 76px 0;
 	&--user-item {
 		@extend .u-flex-row;
 		border-bottom: 0.1rem solid white;
