@@ -16,6 +16,7 @@ module.exports = function (app) {
     "update",
     "users",
     "connected",
+    "chat",
   ];
 
   routes.forEach(route => {

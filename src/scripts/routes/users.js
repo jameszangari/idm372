@@ -6,7 +6,7 @@ module.exports = async function (req, res) {
     const users = [];
 
     // Queries
-    if (data.queryCategory == 'all-users') {
+    if (data.query == 'all-users') {
         const snapshot = await firebase.db().collection('users')
             .where('new_user', '==', false) // Only include complete profiles
             .get();
@@ -19,7 +19,7 @@ module.exports = async function (req, res) {
             }
         });
         res.send(users);
-    } else if (data.queryCategory == 'single-user') {
+    } else if (data.query == 'single-user') {
         const snapshot = await firebase.db().collection('users').doc(data.target).get();
         res.send({
             uuid: snapshot.id,

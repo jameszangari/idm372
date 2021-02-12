@@ -21,7 +21,7 @@ module.exports = {
             url: endpoints.users.url,
             data: {
                 uuid: spotifyObject.user_id,
-                queryCategory: 'all-users'
+                query: 'all-users'
             }
         }).done((response) => {
             // Do stuff after
@@ -62,9 +62,9 @@ module.exports = {
                 `;
                 profile_list.appendChild(el);
                 el.querySelector('.c-user-card--top')
-                .addEventListener('click', () => {
-                    displayUser(user);
-                });
+                    .addEventListener('click', () => {
+                        displayUser(user);
+                    });
             });
         }
 

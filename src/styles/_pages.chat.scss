@@ -9,6 +9,7 @@
 		@extend .u-flex-row;
 		border-bottom: 0.1rem solid white;
 		padding: 0 1rem;
+		width: 100%;
 		&--img-area {
 			@extend .u-flex-center;
 			width: 20%;

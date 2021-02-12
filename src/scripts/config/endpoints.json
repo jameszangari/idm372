@@ -22,8 +22,13 @@
     "url": "/search",
     "title": "",
     "page": ""
-
-  },  
+  },
+  "chat":
+  {
+    "url": "/chat",
+    "title": "",
+    "page": ""
+  },
   "connected":
   {
     "url": "/connected",
