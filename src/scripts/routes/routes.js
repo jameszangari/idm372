@@ -43,6 +43,7 @@ module.exports = function (app) {
       res.render(endpoints[page].page, {
         pageTitle: endpoints[page].title,
         endpoints: endpoints,
+        bodyclassName: endpoints[page].bodyclassName,
       });
     });
   });

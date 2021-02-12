@@ -1,7 +1,6 @@
 /*------------------------------------*\
     #BROWSE PAGE
 \*------------------------------------*/
-
 #l-profile-list,
 .c-user-card {
 	display: flex;
@@ -22,7 +21,7 @@
 	margin-bottom: 1rem;
 	&--top,
 	&--btm {
-		padding: 0.5rem;
+		padding: 16px;
 	}
 	&--top {
 		color: white;

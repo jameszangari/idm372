@@ -23,8 +23,9 @@ const
 
 // Global Logic here
 $(document).ready(() => {
-    if (document.querySelector('.l-login') !== null) {
-        AddToHome.addToHome();
+    AddToHome.init();
+    if(document.body.className === 'l-grid--login') {
+        addToHomescreen();
     }
     Spotify.init();
     Browse.init();

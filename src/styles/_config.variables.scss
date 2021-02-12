@@ -1,11 +1,10 @@
 /*------------------------------------*\
-    $SASS VARIABLES
+    $GLOBAL SASS VARIABLES
 \*------------------------------------*/
 
 /*------------------------------------*\
     # COLORS
 \*------------------------------------*/
-
 $color-blues-1: #111238;
 $color-blues-2: #21244E;
 $color-blues-3: #34365B;
@@ -43,9 +42,8 @@ $color-green-secondary: #7FEBB6;
 /*------------------------------------*\
     #FONTS
 \*------------------------------------*/
-
-$font-primary: 'Gellix';
-$font-secondary: 'VCR';
-$font-tertiary: 'Roboto';
+$font-gellix: 'Gellix';
+$font-vcr: 'VCR';
+$font-roboto: 'Roboto';
 $font-euclid: 'Euclid';
-$font-heading: 'Conv_Starforge Regular';
+$font-starforge: 'Conv_Starforge Regular';

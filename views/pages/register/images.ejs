@@ -1,18 +1,17 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
-
     <%- include('../../_components/header-navigation', { title: endpoints.registerImages.title }); %>
 
         <h1 class="l-grid__header u-heading-2 u-align-center">Add a picture of yourself</h1>
 
         <div class="o-button-upload__group u-flex-center">
             <button class="o-button-upload" data-index="0"></button>
-            <input type="file" class="pp_upload" data-index="0" accept=".jpg,.png" hidden></button>
+            <input type="file" class="js-profile-picture" data-index="0" accept=".jpg,.png" hidden></button>
 
             <button class="o-button-upload" data-index="1"></button>
-            <input type="file" class="pp_upload" data-index="1" accept=".jpg,.png" hidden></button>
+            <input type="file" class="js-profile-picture" data-index="1" accept=".jpg,.png" hidden></button>
 
             <button class="o-button-upload" data-index="2"></button>
-            <input type="file" class="pp_upload" data-index="2" accept=".jpg,.png" hidden></button>
+            <input type="file" class="js-profile-picture" data-index="2" accept=".jpg,.png" hidden></button>
         </div>
 
     <%- include('../../_components/buttons', {
@@ -20,5 +19,4 @@
         label: 'Next',
         classnames: 'o-button-primary'
     }); %>
-
 <%- include('../../_partials/footer'); %>

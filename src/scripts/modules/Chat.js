@@ -852,7 +852,7 @@ function init_profile_cms_form(current_uuid) {
 
 const pp_input = docQ('#pp_input'),
     pp_thumb = docQ('#pp_thumb'),
-    pp_upload = docQ('#pp_upload'),
+    js-profile-picture = docQ('#js-profile-picture'),
     pp_change_button = docQ('#pp_change_button');
 
 pp_change_button.addEventListener('click', (e) => {
@@ -862,18 +862,18 @@ pp_change_button.addEventListener('click', (e) => {
 
 function prep_photo_input(current_uuid) { // Prepares the input and upload functions for a profile pic
     rm_events('#pp_input', false);
-    rm_events('#pp_upload', false);
+    rm_events('#js-profile-picture', false);
 
     upload_unready(); // Do this first
 
     function upload_unready() {
         pp_thumb.src = '';
         pp_thumb.hidden = true;
-        docQ('#pp_upload').setAttribute('disabled', true);
+        docQ('#js-profile-picture').setAttribute('disabled', true);
     }
     function upload_ready() {
         pp_thumb.hidden = false;
-        docQ('#pp_upload').removeAttribute('disabled');
+        docQ('#js-profile-picture').removeAttribute('disabled');
     }
 
     let files = [];
@@ -896,7 +896,7 @@ function prep_photo_input(current_uuid) { // Prepares the input and upload funct
         }
     });
 
-    $('#pp_upload').on('click', function (e) {
+    $('#js-profile-picture').on('click', function (e) {
         e.preventDefault();
         // Upload the file
         var upload_task = firebase.storage().ref(`profile_pics/${current_uuid}/1.jpeg`).put(files[0]);
