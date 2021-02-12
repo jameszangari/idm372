@@ -1,5 +1,10 @@
 /*------------------------------------*\
-    #LAYOUTS
+    #BASE LAYOUTS
+	***  DO NOT TOUCH  ***
+
+	** Create a new class name
+	   for your components to 
+	   override these styles **
 \*------------------------------------*/
 .l-grid {
 	position: relative;
@@ -8,18 +13,23 @@
 	height: 100%;
 	max-width: 854px;
 	margin: 0 auto;
-	background: $color-blues-1;
-	color: $color-gray-5;
+	padding-bottom: 6rem; // for next button space
 	&__header {
 		padding: 40px 0;
+	}
+	&--login {
+		position: relative;
+		min-height: 100vh;
+		width: 100%;
+		height: 100%;
+		max-width: 854px;
+		margin: 0 auto;
 	}
 	&--mobile {
 		width: 100%;
 		height: 100%;
 		max-width: 320px;
 		margin: 0 auto;
-		background: $color-blues-1;
-		color: $color-gray-5;
 	}
 	&--main {
 		@extend .l-grid;
@@ -28,9 +38,11 @@
 	}
 }
 
+/*------------------------------------*\
+    #LOGIN PAGE LAYOUT
+\*------------------------------------*/
 .l-login {
 	@include ShuffleAnimatedGradient($color-bright-blue, $color-purple);
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -49,10 +61,11 @@
 		&__title {
 			font-size: 40px;
 			margin-top: 50px;
+			font-family: $font-starforge;
 		}
 	}
 	&__button {
-		font-family: $font-tertiary;
+		font-family: $font-roboto;
 		text-transform: uppercase;
 		font-weight: 900;
 		font-size: 18px;
@@ -61,14 +74,13 @@
 		background: $color-gray-5;
 		border: 2px solid $color-black;
 		border-radius: 50px;
-		position: fixed;
+		position: absolute;
 		bottom: 100px;
-
+		transition: all .3s;
 		&:hover {
 			background: $color-gray-2;
 			color: #1ED760;
 		}
-
 		&:before {
 			content: "\f1bc";
 			font-family: "FontAwesome";
@@ -77,9 +89,9 @@
 		}
 	}
 	&__links {
-		font-family: $font-secondary;
+		font-family: $font-vcr;
 		font-size: 12px;
-		position: fixed;
+		position: absolute;
 		bottom: 50px;
 	}
 	&__link {
@@ -95,6 +107,9 @@
 	}
 }
 
+/*------------------------------------*\
+    #INFO PULLED FROM SPOTIFY LAYOUT
+\*------------------------------------*/
 .l-connected {
 	padding-left: 3%;
 	padding-right: 3%;
@@ -127,27 +142,36 @@
 	}
 }
 
+
 /*------------------------------------*\
     #LANDSCAPE/PORTRAIT LAYOUTS
 \*------------------------------------*/
-
 @media all and (orientation:portrait) {
 	.l-portrait-lock {
 		display: none;
 	}
+	.l-login {
+		display: flex;
+	}
 }
 @media all and (orientation:landscape) {
-	/* Style adjustments for landscape mode goes here */
+	.l-login {
+		display: none;
+	}
 	.l-portrait-lock {
+		position: fixed;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		@include ShuffleAnimatedGradient ($color-bright-blue, $color-purple);
 		height: 100vh;
+		width: 100%;
 		padding: 50px;
+		position: fixed;
+		z-index: 999;
 		&__heading {
-			font-family: $font-secondary;
+			font-family: $font-vcr;
 			text-transform: uppercase;
 		}
 		&__body {

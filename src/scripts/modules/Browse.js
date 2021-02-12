@@ -33,14 +33,15 @@ module.exports = {
             users.forEach(user => {
                 // quickRefs
                 const data = user.data;
+                console.log(data);
                 // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
                 const el = document.createElement('div');
                 el.classList.add('c-user-card');
                 el.innerHTML += `
                     <div class="c-user-card--top">
-                        <p class="c-user-card__stats-name u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                        <p class="c-user-card__stats-pronouns u-heading-4">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                        <p class="c-user-card__stats-location u-heading-3">Philadelphia, PA</p>
+                        <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
+                        <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
+                        <p class="c-user-card__stats-location u-heading-3 u-box-shadow--text">Philadelphia, PA</p>
                     </div>
                     <div class="c-user-card--btm">
                         <p class="c-user-card--btm--title">${data.first_name}'s Anthem</p>
@@ -48,13 +49,19 @@ module.exports = {
                             <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                             <div class="c-media--controls">
                                 <div class="c-media--controls--top">
-                                    <p class="c-media--controls--top--artist">Chop Suey!</p>
-                                    <p class="c-media--controls--top--title">System of a Down - Chop Suey</p>
+                                    <p class="c-media--controls--top--artist">${data.song_title}</p>
+                                    <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
                                 </div>
                                 <div class="c-media--controls--btm">
-                                    <i class="fas fa-lg fa-history"></i>
-                                    <i class="fas fa-lg fa-play"></i>
-                                    <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
+                                    <a href="#">
+                                        <i class="fas fa-lg fa-history"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fas fa-lg fa-play"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +110,8 @@ module.exports = {
                         <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         <div class="c-media--controls">
                             <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--artist">Chop Suey!</p>
-                                <p class="c-media--controls--top--title">System of a Down - Chop Suey</p>
+                                <p class="c-media--controls--top--artist">${data.song_title}</p>
+                                <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
                             </div>
                             <div class="c-media--controls--btm">
                                 <i class="fas fa-lg fa-history"></i>

@@ -23,7 +23,7 @@
 		left: 50%;
 		background: $color-bright-blue;
 		transform: translateX(-50%);
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-size: 20px;
 		font-weight: 800;
 		text-transform: uppercase;
@@ -92,7 +92,7 @@
 
 	&-submit {
 		@extend .o-button;
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-size: 20px;
 		font-weight: 800;
 		display: block;
@@ -196,7 +196,7 @@ section .invalid:first-of-type {
 			// position: absolute;
 		}
 		&__label {
-			font-family: $font-primary;
+			font-family: $font-gellix;
 			font-weight: 500;
 			font-size: 20px;
 			line-height: 1;
@@ -416,7 +416,7 @@ section .invalid:first-of-type {
 		margin-right: 1rem;
 		height: 100%;
 		width: 60%;
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-weight: 500;
 		& .track_title {
 			font-size: 1rem;

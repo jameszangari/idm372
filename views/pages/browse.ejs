@@ -1,11 +1,8 @@
 <%- include('../_partials/header', {pageTitle: pageTitle}); %>
+    <%- include('../_components/header-navigation--home', { title: endpoints.browse.title }); %>
 
-    <%- include('../_components/header-navigation', { title: endpoints.browse.title }); %>
+    <div class="js-browse" id="l-profile-list"></div>
+    <div class="c-view-user"></div>
 
-        <div class="js-browse" id="l-profile-list"></div>
-
-        <div class="c-view-user"></div>
-
-        <%- include('../_components/footer-navigation'); %>
-
-            <%- include('../_partials/footer'); %>
+    <%- include('../_components/footer-navigation'); %>
+<%- include('../_partials/footer'); %>

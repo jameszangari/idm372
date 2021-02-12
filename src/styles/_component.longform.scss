@@ -27,7 +27,7 @@
 	}
 	h1 {
 		@extend .u-heading-1;
-		font-family: $font-tertiary;
+		font-family: $font-roboto;
 	}
 	h2 {
 		@extend .u-heading-2;
@@ -43,7 +43,7 @@
 	}
     ul, ol {
 		margin: 16px 0;
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-weight: 400;
 		ul, ol {
 			margin: 8px 0;
