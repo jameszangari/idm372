@@ -7,6 +7,21 @@ function unixToFromNow(unix) {
     return moment.unix(unix).fromNow();
 }
 
+let targetInfo;
+function getTargetInfo(threadID) {
+    $.ajax({ //send info to server - GET request
+        url: endpoints.chat.url,
+        data: {
+            uuid: spotifyObject.user_id,
+            query: 'get-target-info',
+            thread: threadID
+        }
+    }).done(function (result) {
+        targetInfo = result;
+        docQ('.c-header-navigation__title').innerText = docQ('.c-header-navigation__title').innerText.replace('[NAME]', targetInfo.name);
+    });
+}
+
 // Cookies
 const spotifyObjectString = helper.getCookie('spotify');
 const spotifyObject = JSON.parse(spotifyObjectString);
@@ -50,7 +65,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     // Get thread id from URL
     docQ('html').style.overflowY = 'hidden'; // Fix Incorrect Scroll
     const thread = helper.getUrlParam('thread');
-    console.log(thread);
+    getTargetInfo(thread);
 
     // Get chat history
     $.ajax({ //send info to server - GET request
@@ -60,14 +75,16 @@ if (docQ('.l-chat-browse')) { // Browse Page
             query: 'get-history',
             thread: thread
         }
-    }).done(function (results) {
+    }).done(function (messages) {
         const chatContentDiv = docQ('.l-chat-view--content');
-        results.forEach(message => {
-            const data = message.data();
+        messages.forEach(message => {
             console.log(message);
+            let fromClass;
+            message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
+
             chatContentDiv.innerHTML += `
-                <div class="l-chat-view--content--message message-from-them">
-                    ${data.content}
+                <div class="l-chat-view--content--message message-${fromClass}">
+                    ${message.content}
                 </div>
             `;
         });

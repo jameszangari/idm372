@@ -57,27 +57,28 @@
 	@extend .u-flex-column;
 	justify-content: space-between;
 	height: calc(100vh - 76px);
-	padding: 115px 0 0 0;
+	padding: 15px 0 0 0;
 	overflow-y: hidden;
 	&--content {
 		padding: 0 20px;
 		overflow-y: scroll;
 		&--message {
-			width: 90%;
+			width: fit-content;
+			max-width: 90%;
 			margin-bottom: 1rem;
 			border-radius: 6px;
 			padding: 1rem;
 			font-size: 18px;
 		}
 		.message-from-me {
-			margin-left: 10%;
 			background-color: #db0064;
-			align-self: flex-end;
+			border-radius: 6px 6px 0 6px;
+			margin-left: auto;
 			color: white;
 		}
 		.message-from-them {
 			background-color: $color-gray-5;
-			align-self: flex-start;
+			border-radius: 6px 6px 6px 0;
 			color: black;
 		}
 	}

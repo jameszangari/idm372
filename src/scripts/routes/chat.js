@@ -1,17 +1,6 @@
 // Requires
 const firebase = require('../firebase'); // FireBase Functions
 
-function getName(uuid) {
-    return new Promise(async function (resolve, reject) {
-        const docRef = await firebase.db().collection('users').doc(uuid);
-        docRef.get().then(function (doc) {
-            resolve(doc.data().first_name)
-        }).catch(function (error) {
-            reject(Error(error));
-        });
-    });
-}
-
 function getMessages(threadId) {
     return new Promise(async function (resolve, reject) {
         const docRef = await firebase.db().collection('chats').doc(threadId).collection('messages')
@@ -25,7 +14,6 @@ function getMessages(threadId) {
 }
 
 function getLastMessage(threadId) {
-    threadId = 'thread-gabrielleroseh-zhlwu23ldecrebpglkybysvvf';
     return new Promise(async function (resolve, reject) {
         const docRef = await firebase.db().collection('chats').doc(threadId).collection('messages')
             .orderBy('when', 'desc')
@@ -38,12 +26,11 @@ function getLastMessage(threadId) {
     });
 }
 
-
 module.exports = async function (req, res) {
     const reqData = req.query;
 
     if (reqData.query == 'list-chats') {
-        const threads = [];
+        const threadsArray = [];
         // Query
         const docRef = await firebase.db().collection('chats')
             .where("participants", "array-contains", reqData.uuid) // Only threads the user is apart of
@@ -56,7 +43,9 @@ module.exports = async function (req, res) {
             let targetUUID;
             data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
 
-            getName(targetUUID).then((targetName) => {
+            firebase.getName(targetUUID).then((targetName) => {
+                console.log('RESOLVED', targetName);
+
                 getLastMessage(thread_id).then((message) => {
                     const thread = {
                         thread_id: thread_id,
@@ -66,7 +55,7 @@ module.exports = async function (req, res) {
                         preview: message.content
                     }
                     console.log('preview: ', message.content);
-                    threads.push(thread);
+                    threadsArray.push(thread);
                 }, function (err) { // Catch Error
                     console.log(err);
                     res.send(false);
@@ -78,33 +67,73 @@ module.exports = async function (req, res) {
 
             if (i != docRef.size) {
             } else { // When done
-                function sendThreads() {
-                    res.send(threads);
+                function send() {
+                    res.send(threadsArray);
                 }
-                function checkThreads() { // Check if data is ready
-                    console.log('Checking');
-                    if (docRef.size == threads.length) {
-                        sendThreads();
+                function checkArray() { // Check array before sending
+                    console.log('Checking Threads Array');
+                    if (docRef.size == threadsArray.length) {
+                        send();
                     } else {
+                        if (i > 50) { // Error
+                            res.send(false);
+                            console.error('Failed to process Threads Array');
+                            return;
+                        }
                         setTimeout(() => {
-                            checkThreads();
+                            checkArray();
                         }, 100);
                     }
                 }
-                checkThreads();
+                checkArray();
             }
         });
 
-        // Add Chat Browser Front-End Data
-        // 1. Last message preview
-
     } else if (reqData.query == 'get-history') {
+        // console.log(reqData.thread);
         getMessages(reqData.thread).then((messages) => {
-            console.log(messages);
-            // res.send(messages);
+            let messageArray = [];
+            let i = 0;
+            messages.docs.forEach(message => {
+                i++;
+                messageArray.push(message.data())
+            });
+
+            if (i != messages.size) { // Check array before sending
+            } else { // When done
+                function send() {
+                    res.send(messageArray);
+                }
+                function checkArray() { // Check if data is ready
+                    console.log('Checking Messages Array');
+                    if (messages.size == messageArray.length) {
+                        send();
+                    } else {
+                        if (i > 50) { // Error
+                            res.send(false);
+                            console.error('Failed to process Messages Array');
+                            return;
+                        }
+                        setTimeout(() => {
+                            checkArray();
+                        }, 100);
+                    }
+                }
+                checkArray();
+            }
+
         }, function (err) { // Catch Error
             console.log(err);
             res.send(false);
+        });
+    } else if (reqData.query == 'get-target-info') {
+        const targetUUID = firebase.getTargetUUID(reqData.thread, reqData.uuid);
+
+        firebase.getName(targetUUID).then((targetName) => {
+            res.send({
+                uuid: targetUUID,
+                name: targetName
+            });
         });
     }
 }
