@@ -87,7 +87,8 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
             chatContentDiv.innerHTML += `
                 <div class="l-chat-view--content--message message-${fromClass}">
-                    ${message.content}
+                    <p>${message.content}</p>
+                    <time>${moment.unix(message.when._seconds).format('M/D/YY, h:mm a')}</time>
                 </div>
             `;
         });
@@ -123,10 +124,10 @@ if (docQ('.l-chat-browse')) { // Browse Page
             }).done(function (response) {
                 if (response) {
                     chatContentDiv.innerHTML += `
-                    <div class="l-chat-view--content--message message-from-me">
-                    ${messageInput.value}
-                    </div>
-                    `;
+            < div class= "l-chat-view--content--message message-from-me" >
+            ${messageInput.value}
+                    </div >
+            `;
                     messageInput.value = ''; // Clear input
                     scroll_to_bottom('tell');
                 }

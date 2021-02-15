@@ -59,6 +59,7 @@
 	height: calc(100vh - 76px);
 	overflow-y: hidden;
 	&--content {
+		width: 100%;
 		padding: 15px 20px 0;
 		overflow-y: scroll;
 		&--message {
@@ -68,6 +69,10 @@
 			border-radius: 6px;
 			padding: 1rem;
 			font-size: 18px;
+			time {
+				font-size: smaller;
+				font-style: italic;
+			}
 		}
 		.message-from-me {
 			background-color: #db0064;
