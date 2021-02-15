@@ -41,7 +41,6 @@ if (docQ('.l-chat-browse')) { // Browse Page
         }
     }).done(function (results) {
         results.forEach(thread => {
-            console.log(thread);
             chatsList.innerHTML += `
                 <a class="l-chat-browse--user-item" href="${endpoints.chatView.url + '/?thread=' + thread.thread_id}">
                     <div class="l-chat-browse--user-item--img-area">

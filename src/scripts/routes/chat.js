@@ -68,7 +68,6 @@ module.exports = async function (req, res) {
                     res.send(threadsArray);
                 }
                 function checkArray() { // Check array before sending
-                    console.log('Checking Threads Array');
                     if (docRef.size == threadsArray.length) {
                         send();
                     } else {
@@ -133,6 +132,7 @@ module.exports = async function (req, res) {
         });
     } else if (reqData.query == 'send-message') {
         // quickRefs
+        const threadRef = firebase.db().collection('chats').doc(reqData.thread);
         const docRef = firebase.db().collection('chats').doc(reqData.thread).collection('messages').doc();
         // Create Obj
         const message = {
@@ -142,7 +142,13 @@ module.exports = async function (req, res) {
         }
         // Push data to FireStore
         docRef.set(message).then(() => {
-            res.send(true);
+            // Set last activity on thread
+            threadRef.update({ last_activity: firebase.tstamp() }).then(() => {
+                res.send(true);
+            }).catch(function (error) {
+                console.error(error);
+                res.send(false);
+            });
         }).catch(function (error) {
             console.error(error);
             res.send(false);
