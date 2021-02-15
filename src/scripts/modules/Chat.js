@@ -852,7 +852,7 @@ function init_profile_cms_form(current_uuid) {
 
 const pp_input = docQ('#pp_input'),
     pp_thumb = docQ('#pp_thumb'),
-    js-profile-picture = docQ('#js-profile-picture'),
+    js_profile_picture = docQ('#js-profile-picture'),
     pp_change_button = docQ('#pp_change_button');
 
 pp_change_button.addEventListener('click', (e) => {
