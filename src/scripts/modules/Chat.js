@@ -18,7 +18,9 @@ function getTargetInfo(threadID) {
         }
     }).done(function (result) {
         targetInfo = result;
-        docQ('.c-header-navigation__title').innerText = docQ('.c-header-navigation__title').innerText.replace('[NAME]', targetInfo.name);
+        const headerTitle = docQ('.c-header-navigation__title');
+        headerTitle.innerText = headerTitle.innerText.replace('[NAME]', targetInfo.name);
+        docQ('title').innerText = docQ('title').innerText.replace('[Name]', targetInfo.name);
     });
 }
 
@@ -78,6 +80,20 @@ if (docQ('.l-chat-browse')) { // Browse Page
         }
     }
 
+    function appendMessages(messages) {
+        messages.forEach(message => {
+            let fromClass;
+            message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
+
+            chatContentDiv.innerHTML += `
+                <div class="l-chat-view--content--message message-${fromClass}">
+                    ${message.content}
+                </div>
+            `;
+        });
+        scroll_to_bottom('tell');
+    };
+
     // Get chat history
     $.ajax({ // Send info to server - GET request
         url: endpoints.chat.url,
@@ -87,17 +103,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
             thread: thread
         }
     }).done(function (messages) {
-        messages.forEach(message => {
-            let fromClass;
-            message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
-
-            chatContentDiv.innerHTML += `
-            <div class="l-chat-view--content--message message-${fromClass}">
-            ${message.content}
-            </div>
-            `;
-        });
-        scroll_to_bottom('tell');
+        appendMessages(messages);
     });
 
     //  Send Messages

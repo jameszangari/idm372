@@ -6,7 +6,7 @@ function getMessages(threadId) {
         const docRef = await firebase.db().collection('chats').doc(threadId).collection('messages')
             .orderBy('when', 'asc');
         docRef.get().then(function (doc) {
-            resolve(doc)
+            resolve(doc);
         }).catch(function (error) {
             reject(Error(error));
         });

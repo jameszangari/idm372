@@ -11,12 +11,11 @@ module.exports = function (req, res) {
 
   res.cookie(stateKey, state);
   res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify(
-      {
-        response_type: 'code',
-        client_id: config.client_id,
-        scope: scope,
-        redirect_uri: config.redirect_uri,
-        state: state
-      }));
+    querystring.stringify({
+      response_type: 'code',
+      client_id: config.client_id,
+      scope: scope,
+      redirect_uri: config.redirect_uri,
+      state: state
+    }));
 }
