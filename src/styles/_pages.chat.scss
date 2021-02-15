@@ -69,8 +69,11 @@
 			border-radius: 6px;
 			padding: 1rem;
 			font-size: 18px;
+			display: flex;
+			flex-direction: column;
 			time {
-				font-size: smaller;
+				font-size: 13px;
+				padding-top: .25rem;
 				font-style: italic;
 			}
 		}
@@ -79,11 +82,17 @@
 			border-radius: 6px 6px 0 6px;
 			margin-left: auto;
 			color: white;
+			time {
+				margin-left: auto;
+			}
 		}
 		.message-from-them {
 			background-color: $color-gray-5;
 			border-radius: 6px 6px 6px 0;
 			color: black;
+			time {
+				margin-right: auto;
+			}
 		}
 	}
 	// Input Bar Form
