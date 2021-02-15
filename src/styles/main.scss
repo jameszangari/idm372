@@ -6,26 +6,29 @@ Shuffle Team
 
 *************************************************
 */
-@import '~normalize.css/normalize';
-@import 'addtohome.scss';
+@import "~normalize.css/normalize";
+@import "addtohome.scss";
 
 /* Config */
-@import '_config.variables.scss';
-@import '_config.fonts.scss';
-@import '_config.functions.scss';
-@import '_config.mixin.scss';
+@import "_config.variables.scss";
+@import "_config.fonts.scss";
+@import "_config.functions.scss";
+@import "_config.mixin.scss";
 
 /* Base */
-@import '_base.general.scss';
-@import '_base.typography.scss';
-@import '_base.layouts.scss';
-@import 'utilities';
+@import "_base.general.scss";
+@import "_base.typography.scss";
+@import "_base.layouts.scss";
+@import "utilities";
 
 /* Objects */
-@import '_object.icon.scss';
+@import "_object.icon.scss";
 
 /* Component Styles */
-@import '_component.header.scss';
-@import '_component.footer.scss';
-@import '_component.longform.scss';
-@import '_component.browse.scss';
+@import "_component.header.scss";
+@import "_component.footer.scss";
+@import "_component.longform.scss";
+@import "_component.browse.scss";
+
+/* Pages */
+@import "_pages.chat.scss";

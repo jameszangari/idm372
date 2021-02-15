@@ -86,13 +86,13 @@ textarea {
 	text-align: -webkit-center;
 	-ms-text-align-last: center;
 	-moz-text-align-last: center;
-
+	
 	/*  Reset inputs so that they 
-		maintain custom styles */
+	maintain custom styles */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-
+	
 	&::-webkit-input-placeholder {
 		color: $color-gray-2;
 	}
@@ -113,5 +113,6 @@ textarea {
 		&::placeholder {
 			color: transparent;
 		}
+		outline: none;
 	}
 }

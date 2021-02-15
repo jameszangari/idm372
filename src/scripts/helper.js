@@ -69,4 +69,11 @@ module.exports = {
       }
       return str.slice(0, num) + '...';
     },
+  
+    getUrlParam: function (param) { // Param should be a string
+      const
+        location = window.location.href,
+        url = new URL(location);
+      return url.searchParams.get(param);
+    }
 }

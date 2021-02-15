@@ -24,9 +24,13 @@
   {
     "url": "/search",
     "title": "",
-    "page": "",
-    "bodyclassName": "l-grid"
-
+    "page": ""
+  },
+  "chat":
+  {
+    "url": "/chat",
+    "title": "",
+    "page": ""
   },  
   "connected":
   {
@@ -145,6 +149,20 @@
     "url": "/register/activities",
     "title": "Set Up Profile",
     "page": "pages/register/activities",
+    "bodyclassName": "l-grid"
+  },
+  "chatBrowse":
+  {
+    "url": "/chat/browse",
+    "title": "Chats",
+    "page": "pages/chat/browse",
+    "bodyclassName": "l-grid"
+  },
+  "chatView":
+  {
+    "url": "/chat/view",
+    "title": "Chat with [Name]",
+    "page": "pages/chat/view",
     "bodyclassName": "l-grid"
   }
 }

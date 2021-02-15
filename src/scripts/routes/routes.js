@@ -16,6 +16,7 @@ module.exports = function (app) {
     "update",
     "users",
     "connected",
+    "chat",
   ];
 
   routes.forEach(route => {
@@ -36,6 +37,8 @@ module.exports = function (app) {
     "registerLookingFor",
     "browse",
     "profile",
+    "chatBrowse",
+    "chatView",
   ];
 
   pages.forEach(page => {
