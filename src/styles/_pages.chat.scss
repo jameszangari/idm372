@@ -57,10 +57,9 @@
 	@extend .u-flex-column;
 	justify-content: space-between;
 	height: calc(100vh - 76px);
-	padding: 15px 0 0 0;
 	overflow-y: hidden;
 	&--content {
-		padding: 0 20px;
+		padding: 15px 20px 0;
 		overflow-y: scroll;
 		&--message {
 			width: fit-content;
@@ -82,25 +81,25 @@
 			color: black;
 		}
 	}
-	// Input Bar
+	// Input Bar Form
 	&--input-bar {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
 		padding: 0 0 100px 0;
-		input,
+		input[name="message"],
 		button[type="submit"] {
 			height: 52px;
 			width: 20%;
 			border: none;
 			border-radius: 0;
 		}
-		input {
+		input[name="message"] {
 			width: 80%;
 			text-align: left;
+			text-align-last: left;
 			&::placeholder {
 				color: $color-gray-3;
-				text-align-last: left;
 			}
 		}
 		button[type="submit"] {
