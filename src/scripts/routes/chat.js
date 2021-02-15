@@ -44,8 +44,6 @@ module.exports = async function (req, res) {
             data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
 
             firebase.getName(targetUUID).then((targetName) => {
-                console.log('RESOLVED', targetName);
-
                 getLastMessage(thread_id).then((message) => {
                     const thread = {
                         thread_id: thread_id,
@@ -54,7 +52,6 @@ module.exports = async function (req, res) {
                         target_name: targetName,
                         preview: message.content
                     }
-                    console.log('preview: ', message.content);
                     threadsArray.push(thread);
                 }, function (err) { // Catch Error
                     console.log(err);
@@ -90,7 +87,6 @@ module.exports = async function (req, res) {
         });
 
     } else if (reqData.query == 'get-history') {
-        // console.log(reqData.thread);
         getMessages(reqData.thread).then((messages) => {
             let messageArray = [];
             let i = 0;
@@ -134,6 +130,22 @@ module.exports = async function (req, res) {
                 uuid: targetUUID,
                 name: targetName
             });
+        });
+    } else if (reqData.query == 'send-message') {
+        // quickRefs
+        const docRef = firebase.db().collection('chats').doc(reqData.thread).collection('messages').doc();
+        // Create Obj
+        const message = {
+            from: reqData.uuid,
+            content: reqData.content,
+            when: firebase.tstamp()
+        }
+        // Push data to FireStore
+        docRef.set(message).then(() => {
+            res.send(true);
+        }).catch(function (error) {
+            console.error(error);
+            res.send(false);
         });
     }
 }

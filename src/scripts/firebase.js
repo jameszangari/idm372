@@ -31,5 +31,8 @@ module.exports = {
 				reject(Error(error));
 			});
 		});
+	},
+	tstamp: function () {
+		return firebaseAdmin.firestore.FieldValue.serverTimestamp();
 	}
 }

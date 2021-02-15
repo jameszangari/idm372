@@ -66,9 +66,20 @@ if (docQ('.l-chat-browse')) { // Browse Page
     docQ('html').style.overflowY = 'hidden'; // Fix Incorrect Scroll
     const thread = helper.getUrlParam('thread');
     getTargetInfo(thread);
+    const chatContentDiv = docQ('.l-chat-view--content');
+
+    function scroll_to_bottom(command) { // command can be 'ask' or 'tell'
+        if (command == 'ask') {
+            if ((chatContentDiv.scrollHeight - (chatContentDiv.scrollTop + chatContentDiv.clientHeight)) <= 500) {
+                chatContentDiv.scrollTop = chatContentDiv.scrollHeight;
+            }
+        } else if (command == 'tell') {
+            chatContentDiv.scrollTop = chatContentDiv.scrollHeight;
+        }
+    }
 
     // Get chat history
-    $.ajax({ //send info to server - GET request
+    $.ajax({ // Send info to server - GET request
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -76,17 +87,44 @@ if (docQ('.l-chat-browse')) { // Browse Page
             thread: thread
         }
     }).done(function (messages) {
-        const chatContentDiv = docQ('.l-chat-view--content');
         messages.forEach(message => {
-            console.log(message);
             let fromClass;
             message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
 
             chatContentDiv.innerHTML += `
-                <div class="l-chat-view--content--message message-${fromClass}">
-                    ${message.content}
-                </div>
+            <div class="l-chat-view--content--message message-${fromClass}">
+            ${message.content}
+            </div>
             `;
         });
+        scroll_to_bottom('tell');
+    });
+
+    //  Send Messages
+    const messageForm = docQ('#messageForm');
+    const messageInput = messageForm.querySelector('input[name="message"]');
+    messageForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (messageInput.value) {
+            $.ajax({ //send info to server - GET request
+                url: endpoints.chat.url,
+                data: {
+                    uuid: spotifyObject.user_id,
+                    query: 'send-message',
+                    thread: thread,
+                    content: messageInput.value
+                }
+            }).done(function (response) {
+                if (response) {
+                    chatContentDiv.innerHTML += `
+                    <div class="l-chat-view--content--message message-from-me">
+                    ${messageInput.value}
+                    </div>
+                    `;
+                    messageInput.value = ''; // Clear input
+                    scroll_to_bottom('tell');
+                }
+            });
+        }
     });
 }
