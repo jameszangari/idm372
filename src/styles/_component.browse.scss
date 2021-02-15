@@ -16,9 +16,16 @@
 }
 
 .c-user-card {
-	border-radius: 1.5rem;
+	border-radius: 26px;
 	overflow: hidden;
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
+	&--overlay {
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 48.96%);
+		position: absolute;
+		z-index: 98;
+		height: 300px;
+		width: 345px;
+	}
 	&--top,
 	&--btm {
 		padding: 16px;
@@ -33,6 +40,9 @@
 		background-size: cover;
 		background-position: center;
 		cursor: pointer;
+		& p {
+			z-index: 98;
+		}
 	}
 	&--btm {
 		padding-left: 20px;
@@ -57,6 +67,9 @@
 				right: 50px;
 			}
 		}
+	}
+	&__stats-name {
+		padding-bottom: 16px;
 	}
 }
 
@@ -127,10 +140,17 @@ iframe {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	&--overlay {
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 48.96%);
+		position: absolute;
+		z-index: 98;
+		height: 375px;
+		width: 375px;
+	}
 	&--open {
 		display: block;
 		top: 0;
-		z-index: 99;
+		z-index: 1000;
 		height: 100%;
 		overflow-y: scroll !important;
 	}
@@ -159,6 +179,9 @@ iframe {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+		& p {
+			z-index: 98;
+		}
 	}
 	&__main {
 		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
