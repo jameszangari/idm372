@@ -2,17 +2,30 @@
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	justify-content: space-around;
-	@include blue-purple-gradient($color-purple, $color-bright-blue);
-	border-radius: 12px 12px 0 0;
-	height: 76px;
-	width: 100%;
-	&__link {
-		&:hover,
-		&:focus {
-			transition: fill 0.3s ease;
-			path {
-				fill: $color-gray-5;
+	z-index: 999;
+	&__group {
+		display: flex;
+		justify-content: space-around;
+		height: 76px;
+		width: 100%;
+		&-link {
+			z-index: 1000;
+			&:hover,
+			&:focus {
+				transition: fill 0.3s ease;
+				path {
+					fill: $color-gray-5;
+				}
+			}
+			&--home {
+				position: fixed;
+				left: 40px;
+				bottom: 20px;
+			}
+			&--chat {
+				position: fixed;
+				right: 40px;
+				bottom: 20px;
 			}
 		}
 	}

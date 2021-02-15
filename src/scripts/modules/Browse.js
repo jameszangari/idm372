@@ -38,6 +38,7 @@ module.exports = {
                 const el = document.createElement('div');
                 el.classList.add('c-user-card');
                 el.innerHTML += `
+                    <div class="c-user-card--overlay"></div>
                     <div class="c-user-card--top">
                         <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
                         <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
@@ -87,13 +88,14 @@ module.exports = {
             viewUser.hidden = false;
             viewUser.innerHTML = `
             <div class="c-view-user--top">
-                <h2 class="c-view-user--top-heading u-heading-1 u-align-center">${data.first_name}</h2>
-                <button class="o-spotify-select--close">Done</button>
+            <h2 class="c-view-user--top-heading u-heading-1 u-align-center">${data.first_name}</h2>
+            <button class="o-spotify-select--close">Done</button>
             </div>
+            <div class="c-view-user--overlay"></div>
             <div class="c-view-user--header">
-                <p class="u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                <p class="u-heading-3">${Lists.decipherCodes('genders', data.pronouns)}</p>
-                <p class="u-heading-2">Philadelphia</p>
+                <p class="u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
+                <p class="u-heading-3 u-box-shadow--text">${Lists.decipherCodes('genders', data.pronouns)}</p>
+                <p class="u-heading-2 u-box-shadow--text">Philadelphia</p>
             </div>
             <div class="c-view-user__main">
                 <div class="c-view-user__main--card c-view-user__main--card-horizontal">
