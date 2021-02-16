@@ -15,6 +15,8 @@ module.exports = {
         const spotifyObject = JSON.parse(spotifyObjectString);
 
         const profile_list = docQ('#l-profile-list');
+        const html = docQ('html');
+        const viewUser = docQ('.c-view-user');
 
         // Functions
         $.ajax({
@@ -35,6 +37,44 @@ module.exports = {
                 chatBar.href = endpoints.chatView.url + '?thread=' + helper.getThread(spotifyObject.user_id, target.uuid);
             }
         }
+
+        function close_user_view() {
+            html.classList.remove('u-no-scroll');
+            viewUser.classList.remove('c-view-user--open');
+            viewUser.hidden = true;
+            viewUser.innerHTML = '';
+            toggleChatBar(false);
+        }
+
+        // Get your own user
+        $.ajax({
+            url: endpoints.users.url,
+            data: {
+                target: spotifyObject.user_id,
+                query: 'single-user'
+            }
+        }).done((response) => {
+            // Do stuff after
+            if (response) {
+                // Ability to view own profile
+                const myProfileButton = docQ('.my-profile-button');
+                const backBtn = docQ('.c-header-navigation__button')
+                myProfileButton.addEventListener('click', () => {
+                    displayUser(response);
+                    toggleChatBar(false);
+                    docQ('.c-view-user').classList.add('c-view-user--self');
+                    backBtn.hidden = false;
+                    myProfileButton.hidden = true;
+                });
+                backBtn.addEventListener('click', () => {
+                    close_user_view();
+                    backBtn.hidden = true;
+                    myProfileButton.hidden = false;
+                });
+            } else {
+                console.log('Server Error');
+            }
+        });
 
         // List the users
         function listUsers(users) {
@@ -80,6 +120,7 @@ module.exports = {
                     .addEventListener('click', () => {
                         displayUser(user);
                         toggleChatBar(true, user);
+                        docQ('.c-view-user').classList.remove('c-view-user--self');
                     });
             });
         }
@@ -87,8 +128,6 @@ module.exports = {
         function displayUser(user) {
             // quickRefs
             const data = user.data;
-            const viewUser = docQ('.c-view-user');
-            const html = docQ('html');
 
             // Display the user
             html.classList.add('u-no-scroll');
@@ -102,7 +141,7 @@ module.exports = {
             <div class="c-view-user--overlay"></div>
             <div class="c-view-user--header">
                 <p class="u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                <p class="u-heading-3 u-box-shadow--text">${Lists.decipherCodes('genders', data.pronouns)}</p>
+                <p class="u-heading-3 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
                 <p class="u-heading-2 u-box-shadow--text">Philadelphia</p>
             </div>
             <div class="c-view-user__main">
@@ -152,13 +191,6 @@ module.exports = {
                 </div>
             </div>
             `;
-            function close_user_view() {
-                html.classList.remove('u-no-scroll');
-                viewUser.classList.remove('c-view-user--open');
-                viewUser.hidden = true;
-                viewUser.innerHTML = '';
-                toggleChatBar(false);
-            }
             const close = viewUser.querySelector('.o-spotify-select--close');
             close.addEventListener('click', close_user_view);
         }

@@ -185,7 +185,7 @@ iframe {
 	}
 	&__main {
 		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
-		padding: 1rem 1rem 3rem 1rem;
+		padding: 1rem 1rem 6rem 1rem;
 		&--card {
 			@extend .u-box-shadow--large;
 			&-horizontal {
@@ -231,11 +231,28 @@ iframe {
 		top: 50px;
 		right: 15px;
 	}
+	// Your own profile
+	&--self {
+		z-index: 995;
+		.c-view-user {
+			&--top {
+				display: none;
+			}
+			&__main {
+				background: $color-blues-1;
+			}
+		}
+	}
 }
+
 
 .c-view-user:nth-of-type(even) .c-view-user--header {
 	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
 }
 .c-view-user:nth-of-type(odd) .c-view-user--header {
 	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
+}
+
+.my-profile-button {
+	color: white;
 }

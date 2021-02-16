@@ -1,5 +1,5 @@
 <% if (typeof form != 'undefined') { %>
-    <button class="<%= classnames %>" data-form="<%= form %>" data-href="<%= url %>">Next</button>
+    <button class="<%= classnames %>" data-form="<%= form %>" data-href="<%= url %>"><%= label %></button>
 <% } else { %>
     <a class="<%= classnames %>" href="<%= url %>"><%= label %></a>
 <% } %>
