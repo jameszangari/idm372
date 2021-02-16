@@ -5,11 +5,13 @@
         <div class="l-chat-view">
             <div class="l-chat-view--content"></div>
             <form class="o-form l-chat-view--input-bar" id="messageForm" type="strings">
-                <input type="text" name="message" placeholder="Send a message" autocomplete="off">
+                <textarea name="message" maxlength="1000" placeholder="Send a message"></textarea>
                 <button type="submit">Send</button>
             </form>
         </div>
 
-        <%- include('../../_components/footer-navigation'); %>
+        <div class="footer-background"></div>
 
-            <%- include('../../_partials/footer'); %>
+    <%- include('../../_components/footer-navigation'); %>
+
+<%- include('../../_partials/footer'); %>

@@ -1,6 +1,6 @@
 module.exports = {
     init: function () {
-
+        
         if (document.querySelector('.js-browse') == null) {
             return;
         }
@@ -28,12 +28,19 @@ module.exports = {
             response ? listUsers(response) : console.error('There was a server error...');
         });
 
+        function toggleChatBar(mode, target) { // 'mode' is a boolean, true = show, false = hide
+            const chatBar = docQ('.l-chat-view--input-bar');
+            chatBar.hidden = !mode;
+            if (target) {
+                chatBar.href = endpoints.chatView.url + '?thread=' + helper.getThread(spotifyObject.user_id, target.uuid);
+            }
+        }
+
         // List the users
         function listUsers(users) {
             users.forEach(user => {
                 // quickRefs
                 const data = user.data;
-                console.log(data);
                 // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
                 const el = document.createElement('div');
                 el.classList.add('c-user-card');
@@ -69,9 +76,10 @@ module.exports = {
                     </div>
                 `;
                 profile_list.appendChild(el);
-                el.querySelector('.c-user-card--top')
+                el.querySelector('.c-user-card--overlay')
                     .addEventListener('click', () => {
                         displayUser(user);
+                        toggleChatBar(true, user);
                     });
             });
         }
@@ -149,6 +157,7 @@ module.exports = {
                 viewUser.classList.remove('c-view-user--open');
                 viewUser.hidden = true;
                 viewUser.innerHTML = '';
+                toggleChatBar(false);
             }
             const close = viewUser.querySelector('.o-spotify-select--close');
             close.addEventListener('click', close_user_view);

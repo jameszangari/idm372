@@ -1,5 +1,6 @@
 // Requires
 const firebase = require('../firebase'); // FireBase Functions
+const helper = require('../helper');
 
 function getMessages(threadId) {
     return new Promise(async function (resolve, reject) {
@@ -39,7 +40,7 @@ module.exports = async function (req, res) {
         docRef.forEach((doc) => {
             i++;
             const data = doc.data();
-            const thread_id = firebase.getThread(data.participants[0], data.participants[1]);
+            const thread_id = helper.getThread(data.participants[0], data.participants[1]);
             let targetUUID;
             data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
 

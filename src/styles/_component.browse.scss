@@ -150,7 +150,7 @@ iframe {
 	&--open {
 		display: block;
 		top: 0;
-		z-index: 1000;
+		z-index: 996;
 		height: 100%;
 		overflow-y: scroll !important;
 	}
@@ -185,7 +185,7 @@ iframe {
 	}
 	&__main {
 		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
-		padding: 1rem;
+		padding: 1rem 1rem 3rem 1rem;
 		&--card {
 			@extend .u-box-shadow--large;
 			&-horizontal {

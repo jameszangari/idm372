@@ -10,12 +10,6 @@ module.exports = {
 	db: function () {
 		return firebaseAdmin.firestore();
 	},
-	getThread: function (uuid1, uuid2) {
-		// Determines what the thread_id will be based on the two uuid's supplied
-		let thread_id;
-		uuid1 > uuid2 ? thread_id = uuid1 + '-' + uuid2 : thread_id = uuid2 + '-' + uuid1;
-		return 'thread-' + thread_id;
-	},
 	getTargetUUID: function (threadID, uuid) {
 		const array = threadID.split('-');
 		let targetUUID;

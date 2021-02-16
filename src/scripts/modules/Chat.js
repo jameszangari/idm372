@@ -108,7 +108,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
     //  Send Messages
     const messageForm = docQ('#messageForm');
-    const messageInput = messageForm.querySelector('input[name="message"]');
+    const messageInput = messageForm.querySelector('textarea[name="message"]');
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
@@ -134,4 +134,19 @@ if (docQ('.l-chat-browse')) { // Browse Page
             });
         }
     });
+
+    // Grow/Shrink Message Input
+    function resizeInput() {
+        messageInput.style.height = '52px';
+        const
+            vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
+            sHeight = messageInput.scrollHeight,
+            maxHeight = vh / 3;
+        
+        let newHeight;
+
+        sHeight > maxHeight ? newHeight = maxHeight : newHeight = sHeight;
+        messageInput.style.height = newHeight + 'px';
+    }
+    messageInput.addEventListener('input', resizeInput);
 }
