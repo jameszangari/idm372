@@ -44,7 +44,6 @@ module.exports = {
                 newArray.push(lists[list][code]);
             });
 
-            console.log(newArray);
             const newString = newArray.join(', ');
             return newString;
         } else { // If just one in the list

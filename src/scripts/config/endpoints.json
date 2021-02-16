@@ -81,13 +81,6 @@
     "page": "pages/browse",
     "bodyclassName": "l-grid"
   },
-  "profile":
-  {
-    "url": "/profile",
-    "title": "Profile",
-    "page": "pages/profile",
-    "bodyclassName": "l-grid"
-  },
   "registerConnected":
   {
     "url": "/register/connected",
@@ -142,13 +135,6 @@
     "url": "/register/looking-for",
     "title": "Set Up Profile",
     "page": "pages/register/looking-for",
-    "bodyclassName": "l-grid"
-  },
-  "registerActivities":
-  {
-    "url": "/register/activities",
-    "title": "Set Up Profile",
-    "page": "pages/register/activities",
     "bodyclassName": "l-grid"
   },
   "chatBrowse":

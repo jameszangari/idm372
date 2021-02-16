@@ -33,10 +33,8 @@ module.exports = function (app) {
     "registerPlaylist",
     "registerImages",
     "registerBio",
-    "registerActivities",
     "registerLookingFor",
     "browse",
-    "profile",
     "chatBrowse",
     "chatView",
   ];

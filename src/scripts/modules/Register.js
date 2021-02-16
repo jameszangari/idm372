@@ -22,15 +22,15 @@ module.exports = {
 
             // Get form data as an object, !!!the name attribute will declare the field name in the DB!!!
             var valsObj = {};
-            const form_children = docQA('#firestore_form > *');
+            const form_children = form.querySelectorAll('input, textarea, select');
 
             // ===== Bundle form values into valsObj for DB =====
 
             if (type === 'strings') {
                 form_children.forEach(el => {
-                    if (el.value) { valsObj[el.name] = el.value; }
+                    if (el.value) { valsObj[el.name] = el.value;}
                 });
-                // console.log('count= ' + count);
+                console.log(valsObj);
                 push_data(valsObj);
 
             } else if (type === 'checkOne') {

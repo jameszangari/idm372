@@ -15,7 +15,7 @@
         </div>
 
     <%- include('../../_components/buttons', {
-        url: endpoints.browse.url,
+        url: endpoints.browse.url + '?completed=true',
         label: 'Next',
         classnames: 'o-button-primary'
     }); %>

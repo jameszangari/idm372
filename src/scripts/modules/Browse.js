@@ -17,6 +17,9 @@ module.exports = {
         const profile_list = docQ('#l-profile-list');
         const html = docQ('html');
         const viewUser = docQ('.c-view-user');
+        const continueBtn = docQ('.o-button-primary--pink');
+        const myProfileButton = docQ('.my-profile-button');
+        const backBtn = docQ('.c-header-navigation__button');
 
         // Functions
         $.ajax({
@@ -43,7 +46,29 @@ module.exports = {
             viewUser.classList.remove('c-view-user--open');
             viewUser.hidden = true;
             viewUser.innerHTML = '';
+            backBtn.hidden = true;
+            myProfileButton.hidden = false;
+            continueBtn.hidden = true;
+            docQ('.o-spotify-select--close').hidden = false;
             toggleChatBar(false);
+        }
+
+        function completeProfile() {
+            // Sets the new_user field to false, allowing them to be seen
+            $.ajax({
+                url: endpoints.update.url,
+                data: {
+                    uuid: spotifyObject.user_id,
+                    values: {
+                        new_user: false
+                    }
+                }
+            }).done((response) => {
+                // Do stuff after
+                if (!response) {
+                    console.log('Server Error');
+                }
+            });
         }
 
         // Get your own user
@@ -57,8 +82,6 @@ module.exports = {
             // Do stuff after
             if (response) {
                 // Ability to view own profile
-                const myProfileButton = docQ('.my-profile-button');
-                const backBtn = docQ('.c-header-navigation__button')
                 myProfileButton.addEventListener('click', () => {
                     displayUser(response);
                     toggleChatBar(false);
@@ -71,6 +94,17 @@ module.exports = {
                     backBtn.hidden = true;
                     myProfileButton.hidden = false;
                 });
+
+                // If just came from profile complete
+                if (helper.getUrlParam('completed')) {
+                    myProfileButton.click();
+                    docQ('.c-view-user').classList.remove('c-view-user--self');
+                    docQ('.c-view-user--top-heading').innerText = 'Your Profile';
+                    docQ('.o-spotify-select--close').hidden = true;
+                    continueBtn.hidden = false;
+                    continueBtn.addEventListener('click', close_user_view);
+                    completeProfile();
+                }
             } else {
                 console.log('Server Error');
             }
@@ -184,10 +218,6 @@ module.exports = {
                 </div>
                 <div class="c-view-user__main--card">
                     <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Playlists</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Recreational Activities</h2>
-                    <p></p>
                 </div>
             </div>
             `;

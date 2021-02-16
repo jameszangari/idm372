@@ -5,7 +5,6 @@ var urlsToCache = [
     '/tos',
     '/privacy',
     '/register/profile',
-    '/register/activities',
     '/register/bio',
     '/register/images',
     '/register/anthem',
