@@ -5,6 +5,7 @@
 // The order of these lists is the order they will be displayed, you can change the order but...
 // The object keys ('a' 'b' etc.) are the identifers, NEVER change their values to something different than it's meaning
 // Ex. You can change 'a': 'Prefer not to say' to 'a': 'I'd rather not say', but do not change it to 'a': 'Male'
+// The 'Opt-Out' type choice (Prefer not to say / Not sure) should preferably come first in the lists
 
 const lists = {
     genders: {
@@ -20,15 +21,15 @@ const lists = {
         'd': 'They/Them',
     },
     looking_for: {
-        'a': 'Band mates',
-        'b': 'Make friends',
-        'c': 'Concert buddies',
-        'd': 'Chats',
-        'e': 'New music',
-        'f': 'Local music',
-        'g': 'Jam buddies',
-        'h': 'Music discussion',
-        'i': 'Not sure yet',
+        'a': 'Not sure yet',
+        'b': 'Band mates',
+        'c': 'Make friends',
+        'd': 'Concert buddies',
+        'e': 'Chats',
+        'f': 'New music',
+        'g': 'Local music',
+        'h': 'Jam buddies',
+        'i': 'Music discussion',
     }
 }
 
