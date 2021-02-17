@@ -28,6 +28,11 @@
 				right: 40px;
 				bottom: 20px;
 			}
+			&__selected {
+				path {
+					fill: $color-gray-5;
+				}
+			}
 		}
 	}
 }
