@@ -1,20 +1,20 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerSong.title
+    title: endpoints.registerAnthem.title
 }); %>
     
-    <h2 class="l-grid__header u-heading-2 u-align-center">Choose a song that best represents you</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your Anthem, a song that others can play while viewing your profile</h2>
 
     <form class="o-search-form" id="searchSpotify">
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
-            placeholder="Search">
+            placeholder="SEARCH">
         <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
-                class="fas fa-search"></i></button>
+            class="fas fa-search"></i></button>
     </form>
 
     <form class="o-search-form" id="firestore_form" type="strings" hidden>
-        <input class="o-search-form--input" id="result_id" type="text" name="song">
+        <input class="o-search-form--input" id="result_id" type="text" name="anthem">
         <input class="o-search-form--input" id="result_title" type="text" name="song_title">
         <input class="o-search-form--input" id="result_album" type="text" name="song_album">
         <input class="o-search-form--input" id="result_artist" type="text" name="song_artist">
@@ -24,14 +24,13 @@
         <button class="o-spotify-select--close">Done</button>
         <div class="o-spotify-select--group" id="search_results"></div>
     </div>
-
     <div class="o-spotify-choice" hidden>
-        <div class="o-spotify-choice--cancel"></div>
+        <button onclick="return confirm('Are you sure you want to Delete?');" class="o-spotify-choice--cancel"></button>
         <div class="o-spotify-choice--area"></div>
     </div>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerAlbum.url, 
+        url: endpoints.registerArtist.url, 
         label: 'Next',
         classnames: 'o-button-primary',
         form: '#firestore_form'

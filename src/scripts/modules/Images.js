@@ -1,11 +1,11 @@
 if (docQ('input[type="file"]')) {
 
     const pp_buttons = docQA('.o-button-upload');
-    const pp_inputs = docQA('.pp_upload');
+    const pp_inputs = docQA('.js-profile-picture');
 
     pp_buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const input = $(`.pp_upload[data-index="${btn.dataset.index}"]`);
+            const input = $(`.js-profile-picture[data-index="${btn.dataset.index}"]`);
             input.click();
         });
     });
@@ -32,5 +32,5 @@ if (docQ('input[type="file"]')) {
             button.classList.add('file-selected');
         }
     }
-
+    console.log(setImage);
 }

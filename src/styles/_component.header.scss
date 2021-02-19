@@ -3,8 +3,11 @@
 \*------------------------------------*/
 .c-header-navigation {
     @include blue-gradient($color-bright-blue, $color-darker-blue);
+    @extend .u-box-shadow;
     padding: 50px 25px;
     height: 100px;
+    width: 100%;
+    z-index: 999;
     &__button {
         float: left;
         font-size: 30px;
@@ -14,5 +17,35 @@
         font-family: $font-primary;
         text-transform: uppercase;
         font-weight: 600;
+    }
+}
+/**
+    HOME/BROWSE PAGE STYLES
+**/
+.c-header-navigation--home {
+    @include blue-gradient($color-bright-blue, $color-darker-blue);
+    @extend .u-box-shadow;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    z-index: 996;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &-logo {
+        width: 50px;
+        height: 50px;
+    } 
+    & .fas {
+        font-size: 24px;
+        transition: opacity .3s;
+        &:hover {
+            opacity: 0.75;
+        }
     }
 }

@@ -15,7 +15,8 @@ module.exports = function (app) {
     "search",
     "update",
     "users",
-	 "connected"
+    "connected",
+    "chat",
   ];
 
   routes.forEach(route => {
@@ -27,15 +28,15 @@ module.exports = function (app) {
     "privacy",
     "registerConnected",
     "registerProfile",
-    "registerSong",
-    "registerAlbum",
+    "registerAnthem",
+    "registerArtist",
     "registerPlaylist",
     "registerImages",
     "registerBio",
-    "registerActivities",
     "registerLookingFor",
     "browse",
-    "profile",
+    "chatBrowse",
+    "chatView",
   ];
 
   pages.forEach(page => {
@@ -43,6 +44,7 @@ module.exports = function (app) {
       res.render(endpoints[page].page, {
         pageTitle: endpoints[page].title,
         endpoints: endpoints,
+        bodyclassName: endpoints[page].bodyclassName,
       });
     });
   });

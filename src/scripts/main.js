@@ -11,20 +11,22 @@ window.$ = window.jQuery = $;
 window.docQ = document.querySelector.bind(document);
 window.docQA = document.querySelectorAll.bind(document);
 
-const 
+const
     AddToHome = require('./modules/AddToHome'),
     Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
     Browse = require('./modules/Browse'),
-	Connected = require('./modules/Connected'),
-    Images = require('./modules/Images');
+    Connected = require('./modules/Connected'),
+    Images = require('./modules/Images'),
+    Chat = require('./modules/Chat');
 
 // Global Logic here
 $(document).ready(() => {
-    if (document.querySelector('.l-login') !== null) {
-        AddToHome.addToHome();
+    AddToHome.init();
+    if(document.body.className === 'l-grid--login') {
+        addToHomescreen();
     }
     Spotify.init();
     Browse.init();

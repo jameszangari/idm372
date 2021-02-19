@@ -1,9 +1,9 @@
 const request = require('request');
 
 module.exports = function (req, res) {
-		  const data = req.query,
+    const data = req.query,
         token = data.access_token,
-		  type = data.type;
+        type = data.type;
 
     search(token, type, (error, response, body) => {
         if (error) { // General Error
@@ -16,25 +16,29 @@ module.exports = function (req, res) {
             return;
         } else { // Success
             obj = JSON.parse(body); //the response from spotify
-			   items = obj.items; //response as array
-			   let info = []; //what we we send back to frontend
-            let i = 0;
-			   let thumb = '';
-				items.forEach(item => { //make your package for frontend
-					  i++;
-					  if (type == 'artists') { //artists and tracks have thumbnail stored different
-						  thumb = item.images[2].url;
-						  console.log(typeof thumb);
-					  }
-					  else if (type == 'tracks') {
-						  thumb = item.album.images[1].url;
-					  }
-					  info.push(i, {
-							'name': item.name,
-							'thumb': thumb
-					  });
-					});
-			  res.send(info); //send info back to frontend
+            const items = obj.items; //response as array
+            let thumb;
+            let artists = [];
+            let tracks = [];
+            let data = {
+                artists: artists,
+                tracks: tracks,
+            };
+            
+            items.forEach(item => { //make your package for frontend
+                if (type == 'artists') { //artists and tracks have thumbnail stored different
+                    thumb = item.images[0].url;
+                } else if (type == 'tracks') {
+                    thumb = item.album.images[0].url;
+                }
+                data[type].push({
+                    'id': item.id,
+                    'title': item.name,
+                    'thumb': thumb,
+                    'href': item.external_urls.spotify,
+                });
+            });
+            res.send(data); //send info back to frontend
         }
     });
 

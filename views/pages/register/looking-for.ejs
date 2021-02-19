@@ -4,27 +4,9 @@
     title: endpoints.registerLookingFor.title
 }); %>
     
-    <form class="o-search-form" id="firestore_form" type="checkMulti">
+    <form class="o-form" id="firestore_form" type="checkMulti">
         <h2 class="l-grid__header u-heading-2 u-align-center">What are you looking for?</h2>
-        <section name="looking_for">
-            <div class="o-form">
-                <!-- CHAT -->
-                <label class="o-form--checkbox">
-                    <input class="o-form--checkbox__input" type="checkbox" value="chat">
-                    <span class="o-form--checkbox__label">CHAT</span>
-                </label>
-                <!-- RELATIONSHIP -->
-                <label class="o-form--checkbox">
-                    <input class="o-form--checkbox__input" type="checkbox" value="relationships">
-                    <span class="o-form--checkbox__label">RELATIONSHIPS</span>
-                </label>
-                <!-- FRIENDS -->
-                <label class="o-form--checkbox">
-                    <input class="o-form--checkbox__input" type="checkbox" value="friends">
-                    <span class="o-form--checkbox__label">FRIENDS</span>
-                </label>
-            </div>
-        </section>
+        <section name="looking_for" class="u-flex-row__form"></section>
     </form>
 
     <%- include('../../_components/buttons', { 

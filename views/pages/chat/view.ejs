@@ -1,0 +1,13 @@
+<%- include('../../_partials/header', {pageTitle: pageTitle}); %>
+
+    <%- include('../../_components/header-navigation', { title: endpoints.chatView.title }); %>
+
+        <div class="l-chat-view">
+            <div class="l-chat-view--content"></div>
+            <form class="o-form l-chat-view--input-bar" id="messageForm" type="strings">
+                <textarea name="message" maxlength="1000" placeholder="Send a message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+<%- include('../../_partials/footer'); %>

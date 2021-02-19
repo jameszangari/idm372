@@ -4,30 +4,26 @@
     title: endpoints.registerProfile.title
 }); %>
 
-    <form class="o-search-form" id="firestore_form" type="strings">
+    <form class="o-form" id="firestore_form" type="strings">
         <section class="form-section">
             <h2 class="section-title l-grid__header u-heading-2 u-align-center">Your Name</h2>
             <input class="o-form--input" type="text" name="first_name" placeholder="First Name" maxlength="15" required>
-            <input class="o-form--input" type="text" name="last_name" placeholder="Last Name" maxlength="15" required>
+            <input class="o-form--input" type="text" name="last_name" placeholder="Last Name" maxlength="15">
         </section>
         <section class="form-section">
             <h2 class="section-title l-grid__header u-heading-2 u-align-center">Your Birthday</h2>
             <input class="o-form--input" type="date" role="dob" name="bday" placeholder="mm/dd/yyyy" required>
         </section>
         <section class="form-section">
-            <h2 class="section-title l-grid__header u-heading-2 u-align-center">Pronouns</h2>
+            <h2 class="section-title l-grid__header u-heading-2 u-align-center">Your Pronouns</h2>
             <select class="o-form--input" name="pronouns" required>
                 <option value="">-Select-</option>
-                <option value="a">Prefer not to say</option>
-                <option value="b">He/His</option>
-                <option value="c">She/Her</option>
-                <option value="d">They/Them</option>
             </select>
         </section>
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerActivities.url, 
+        url: endpoints.registerAnthem.url, 
         label: 'Next',
         classnames: 'o-button-primary',
         form: '#firestore_form'

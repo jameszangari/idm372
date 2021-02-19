@@ -28,7 +28,7 @@ if (next) { // If there's a form
                     el.value = el.value.trim();
                 });
                 el.addEventListener('input', () => {
-                    el.value.trim().length > 0 ? toggleInvalid(false, el) : toggleInvalid(true, el, 'This field is required');
+                    el.value.trim().length > 0 ? toggleInvalid(false, el) : toggleInvalid(true, el, 'This field is required.');
                 });
             }
         });
@@ -71,7 +71,7 @@ if (next) { // If there's a form
                 }
             }
         } else {
-            toggleInvalid(true, el, 'This field is required');
+            toggleInvalid(true, el, 'This field is required.');
         }
     }
 
@@ -113,7 +113,7 @@ if (next) { // If there's a form
         // Invalid string type forms
         function invalid_strings_form(form, invalids, valids) {
             invalids.forEach(el => { // Located an invalid input
-                el.type != 'date' ? toggleInvalid(true, el, 'This field is required') : validateDateInput(el);
+                el.type != 'date' ? toggleInvalid(true, el, 'This field is required.') : validateDateInput(el);
             });
             valids.forEach(el => { // Located an invalid input
                 toggleInvalid(false, el);
@@ -150,7 +150,6 @@ if (next) { // If there's a form
         const clone = section.cloneNode(true);
         const tempForm = document.createElement('form');
         tempForm.appendChild(clone);
-        console.log('yep');
         if (el.tagName == 'SELECT' && el.value) { // QuickFix select inputs
             addCheck(section);
         } else {

@@ -3,127 +3,152 @@
   {
     "url": "/",
     "title": "home",
-    "page": "pages/home"
+    "page": "pages/home",
+    "bodyclassName": "l-grid"
   },
   "login":
   {
     "url": "/login",
     "title": "Login",
-    "page": "pages/login"
+    "page": "pages/login",
+    "bodyclassName": "l-grid--login"
   },
   "users":
   {
     "url": "/users",
     "title": "",
-    "page": ""
+    "page": "",
+    "bodyclassName": "l-grid"
   },
   "search":
   {
     "url": "/search",
     "title": "",
     "page": ""
-
+  },
+  "chat":
+  {
+    "url": "/chat",
+    "title": "",
+    "page": ""
   },  
   "connected":
   {
     "url": "/connected",
     "title": "",
-    "page": ""
+    "page": "",
+    "bodyclassName": "l-grid"
   },
   "update":
   {
     "url": "/update",
     "title": "",
-    "page": ""
+    "page": "",
+    "bodyclassName": "l-grid"
   },
   "callback":
   {
     "url": "/callback",
     "title": "",
-    "page": ""
+    "page": "",
+    "bodyclassName": "l-grid"
   },
   "authorize":
   {
     "url": "/authorize",
     "title": "Authorize",
-    "page": "pages/login"
+    "page": "pages/login",
+    "bodyclassName": "l-grid"
   },
   "tos":
   {
     "url": "/tos",
     "title": "Terms",
-    "page": "pages/tos"
+    "page": "pages/tos",
+    "bodyclassName": "l-grid"
   },
   "privacy":
   {
     "url": "/privacy",
     "title": "Privacy",
-    "page": "pages/privacy"
+    "page": "pages/privacy",
+    "bodyclassName": "l-grid"
   },
   "browse":
   {
     "url": "/browse",
     "title": "Browse",
-    "page": "pages/browse"
-  },
-  "profile":
-  {
-    "url": "/profile",
-    "title": "Profile",
-    "page": "pages/profile"
+    "page": "pages/browse",
+    "bodyclassName": "l-grid"
   },
   "registerConnected":
   {
     "url": "/register/connected",
     "title": "Connected",
-    "page": "pages/register/connected"
+    "page": "pages/register/connected",
+    "bodyclassName": "l-grid"
   },
   "registerProfile":
   {
     "url": "/register/profile",
     "title": "Set Up Profile",
-    "page": "pages/register/profile"
+    "page": "pages/register/profile",
+    "bodyclassName": "l-grid"
   },
-  "registerSong":
+  "registerAnthem":
   {
-    "url": "/register/song",
+    "url": "/register/anthem",
     "title": "Set Up Profile",
-    "page": "pages/register/song"
+    "page": "pages/register/anthem",
+    "bodyclassName": "l-grid"
   },
-  "registerAlbum":
+  "registerArtist":
   {
-    "url": "/register/album",
+    "url": "/register/artist",
     "title": "Set Up Profile",
-    "page": "pages/register/album"
+    "page": "pages/register/artist",
+    "bodyclassName": "l-grid"
   },
   "registerPlaylist":
   {
     "url": "/register/playlist",
     "title": "Set Up Profile",
-    "page": "pages/register/playlist"
+    "page": "pages/register/playlist",
+    "bodyclassName": "l-grid"
   },
   "registerImages":
   {
     "url": "/register/images",
     "title": "Set Up Profile",
-    "page": "pages/register/images"
+    "page": "pages/register/images",
+    "bodyclassName": "l-grid"
   },
   "registerBio":
   {
     "url": "/register/bio",
     "title": "Set Up Profile",
-    "page": "pages/register/bio"
+    "page": "pages/register/bio",
+    "bodyclassName": "l-grid"
   },
   "registerLookingFor":
   {
     "url": "/register/looking-for",
     "title": "Set Up Profile",
-    "page": "pages/register/looking-for"
+    "page": "pages/register/looking-for",
+    "bodyclassName": "l-grid"
   },
-  "registerActivities":
+  "chatBrowse":
   {
-    "url": "/register/activities",
-    "title": "Set Up Profile",
-    "page": "pages/register/activities"
+    "url": "/chat/browse",
+    "title": "Chats",
+    "page": "pages/chat/browse",
+    "bodyclassName": "l-grid"
+  },
+  "chatView":
+  {
+    "url": "/chat/view",
+    "title": "Chat with [Name]",
+    "page": "pages/chat/view",
+    "bodyclassName": "l-grid"
   }
 }

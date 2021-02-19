@@ -82,13 +82,6 @@ module.exports = function (req, res) {
           });
         });
 
-        // we can also pass the token to the browser to make requests from there
-        // res.redirect('/#' +
-        //   querystring.stringify({
-        //     access_token: access_token,
-        //     refresh_token: refresh_token
-        //   }));
-
       }
       else {
         // TODO send to 400 page and maybe send error to discord or something
@@ -114,7 +107,17 @@ module.exports = function (req, res) {
   }
 
   function redirect_to_shuffle(res, docRef, obj, user_id, user_status, access_token, refresh_token, req) {
+    // Set Cookie Data
     res.clearCookie('spotify');
+    var spotifyObject = {
+      user_id: user_id,
+      new_user: user_status,
+      access_token: access_token,
+      refresh_token: refresh_token
+    };
+    res.cookie('spotify', JSON.stringify(spotifyObject));
+
+    // Handle login updates
     if (user_status) { // New Users
       const data = { // User fields to add
         country: obj.country,
@@ -122,7 +125,7 @@ module.exports = function (req, res) {
         new_user: user_status
       };
       docRef.set(data).then(function () { // Using .SET() method
-        console.log(`Added ${user_id} to the DB`);
+        // Do stuff after...
       }).catch(function (error) {
         console.error(error);
       });
@@ -133,21 +136,15 @@ module.exports = function (req, res) {
         email: obj.email,
       };
       docRef.update(data).then(function () { // Using .UPDATE() method
-        console.log(`Updated ${user_id} in the DB`);
+        // Do stuff after...
       }).catch(function (error) {
         console.error(error);
       });
     }
 
-    // Redirect w/ hash params
-    // TODO: Set object in local storage spotify :
-    var spotifyObject = {
-      user_id: user_id,
-      new_user: user_status,
-      access_token: access_token,
-      refresh_token: refresh_token
-    };
-    res.cookie('spotify', JSON.stringify(spotifyObject));
-    return res.redirect(endpoints.registerProfile.url);
+    // Route user based on profile status
+    let url;
+    user_status ? url = endpoints.registerProfile.url : url = endpoints.browse.url;
+    return res.redirect(url);
   }
 }

@@ -18,17 +18,15 @@
 
 	&-primary {
 		@extend .o-button;
-		font-family: $font-primary;
+		position: fixed;
+		bottom: 3%;
+		left: 50%;
+		background: $color-bright-blue;
+		transform: translateX(-50%);
+		font-family: $font-gellix;
 		font-size: 20px;
 		font-weight: 800;
-		position: absolute;
-		bottom: 0;
-		right: 50%;
-		transform: translateX(50%);
-		margin: 0 auto;
 		text-transform: uppercase;
-		margin-bottom: 3%;
-		background: $color-bright-blue;
 
 		&:hover {
 			background: $color-bright-blue-hover;
@@ -51,7 +49,6 @@
 	&-upload {
 		@extend .o-button;
 		display: block;
-		margin: 0 auto;
 		background: $color-bright-blue;
 		background-size: cover !important;
 		background-position: center;
@@ -60,7 +57,6 @@
 		height: 100px;
 		width: 100px;
 		border-radius: 12px;
-		margin-right: 20px;
 		&:last-of-type {
 			margin-right: 0;
 		}
@@ -81,18 +77,16 @@
 		}
 
 		&__group {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			padding-left: 3%;
-			padding-right: 3%;
-			transform: translate(-50%, -50%);
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
 		}
 	}
 
 	&-submit {
 		@extend .o-button;
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-size: 20px;
 		font-weight: 800;
 		display: block;
@@ -135,9 +129,11 @@ section .invalid:first-of-type {
 
 .o-form {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	flex-wrap: nowrap;
 	width: 100%;
+	padding: 0 1rem;
 	&--input {
 		margin-top: 16px;
 		border: none;
@@ -150,11 +146,6 @@ section .invalid:first-of-type {
 			outline: none;
 		}
 		&-textarea {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-50%, -50%);
 			border-radius: 26px;
 			background: $color-gray-5;
 			border: 2px solid $color-black;
@@ -163,6 +154,7 @@ section .invalid:first-of-type {
 			height: 200px;
 			padding: 30px;
 			text-align: center;
+			width: 100%;
 			&:focus {
 				outline: none;
 			}
@@ -193,7 +185,7 @@ section .invalid:first-of-type {
 			position: absolute;
 		}
 		&__label {
-			font-family: $font-primary;
+			font-family: $font-gellix;
 			font-weight: 500;
 			font-size: 20px;
 			line-height: 1;
@@ -274,6 +266,9 @@ section .invalid:first-of-type {
 			width: max-content;
 		}
 	}
+	.form-section {
+		width: 100%;
+	}
 }
 
 .o-edit-button {
@@ -313,13 +308,9 @@ section .invalid:first-of-type {
 
 .o-search-form {
 	display: block;
+	padding: 0 1rem;
 	&--input {
-		position: absolute;
-		top: 50%;
-		left: 50%;
 		width: 100%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
 		border: none;
 		text-align: center;
 		border-radius: 50px;
@@ -330,11 +321,6 @@ section .invalid:first-of-type {
 		}
 	}
 	&--button {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
 		color: $color-black;
 		padding-left: 60px;
 		line-height: 1;
@@ -409,7 +395,7 @@ section .invalid:first-of-type {
 		margin-right: 1rem;
 		height: 100%;
 		width: 60%;
-		font-family: $font-primary;
+		font-family: $font-gellix;
 		font-weight: 500;
 		& .track_title {
 			font-size: 1rem;

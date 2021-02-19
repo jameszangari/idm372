@@ -1,6 +1,6 @@
 const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
-// const Lists = require('./Lists');
+const Lists = require('./Lists');
 
 // Cookies
 const spotifyObjectString = helper.getCookie('spotify');
@@ -22,15 +22,15 @@ module.exports = {
 
             // Get form data as an object, !!!the name attribute will declare the field name in the DB!!!
             var valsObj = {};
-            const form_children = docQA('#firestore_form > *');
+            const form_children = form.querySelectorAll('input, textarea, select');
 
             // ===== Bundle form values into valsObj for DB =====
 
             if (type === 'strings') {
                 form_children.forEach(el => {
-                    if (el.value) { valsObj[el.name] = el.value; }
+                    if (el.value) { valsObj[el.name] = el.value;}
                 });
-                // console.log('count= ' + count);
+                console.log(valsObj);
                 push_data(valsObj);
 
             } else if (type === 'checkOne') {
@@ -74,15 +74,29 @@ module.exports = {
 
         }, false);
 
-        // // Add all select options if it's on the page
-        // const lists = Lists.lists;
-        // Object.keys(lists).forEach(listKey => {
-        //     const form = docQ(`select[name="${listKey}"]`);
-        //     if (form) {
-        //         Object.keys(lists[listKey]).forEach(key => {
-        //             form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
-        //         });
-        //     }
-        // });
+        // Add all looking for options
+        const lists = Lists.lists;
+        const looking_for_list = lists.looking_for;
+        const lookingForSection = docQ('section[name="looking_for"]');
+        if (lookingForSection) {
+            Object.keys(looking_for_list).forEach(key => {
+                lookingForSection.innerHTML += `
+                    <label class="o-form--checkbox">
+                        <input class="o-form--checkbox__input" type="checkbox" value="${key}">
+                        <span class="o-form--checkbox__label">${looking_for_list[key]}</span>
+                    </label>
+                `;
+            });
+        }
+
+        // Add all select options if it's on the page
+        Object.keys(lists).forEach(listKey => {
+            const form = docQ(`select[name="${listKey}"]`);
+            if (form) {
+                Object.keys(lists[listKey]).forEach(key => {
+                    form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+                });
+            }
+        });
     }
 }

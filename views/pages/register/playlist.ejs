@@ -8,13 +8,13 @@
 
     <form class="o-search-form" id="searchSpotify">
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="playlist"
-            placeholder="Search">
+            placeholder="SEARCH">
         <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
-                class="fas fa-search"></i></button>
+            class="fas fa-search"></i></button>
     </form>
 
-    <form class="o-search-form" id="firestore_form" type="strings">
-        <input class="o-search-form--input" id="result_id" type="text" name="playlist" hidden>
+    <form id="firestore_form" type="strings" hidden>
+        <input id="result_id" type="text" name="playlist">
     </form>
 
     <div class="o-spotify-select" hidden>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="o-spotify-choice" hidden>
-        <div class="o-spotify-choice--cancel"></div>
+        <button onclick="return confirm('Are you sure you want to Delete?');" class="o-spotify-choice--cancel"></button>
         <div class="o-spotify-choice--area"></div>
     </div>
 

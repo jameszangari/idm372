@@ -1,5 +1,5 @@
 const endpoints = require('../config/endpoints.json');
-module.exports = function(req, res) {
+module.exports = function (req, res) {
   const spotifyObjectString = req.cookies ? req.cookies['spotify'] : null;
   // TODO: Redirect user if they're logged in
   // if (spotifyObjectString) {

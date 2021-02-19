@@ -1,0 +1,136 @@
+/*------------------------------------*\
+    #Browse Chats Page
+\*------------------------------------*/
+
+.l-chat-browse {
+	@extend .u-flex-column;
+	padding: 0 0 76px 0;
+	&--user-item {
+		@extend .u-flex-row;
+		border-bottom: 0.1rem solid white;
+		padding: 0 1rem;
+		width: 100%;
+		&--img-area {
+			@extend .u-flex-center;
+			width: 20%;
+			&--img {
+				width: 4rem;
+				height: 4rem;
+				border: 0.2rem solid white;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+		}
+		&--main {
+			width: 80%;
+			padding: 1rem;
+			&--top {
+				@extend .u-flex-row;
+				justify-content: space-between;
+				margin-bottom: 0.5rem;
+				&--name {
+					font-weight: bold;
+				}
+			}
+			&--btm {
+				font-size: 14px;
+			}
+		}
+		// Border Colors
+		&:nth-of-type(3n + 1) img {
+			border: 0.2rem solid $color-pink-1;
+		}
+		&:nth-of-type(3n + 2) img {
+			border: 0.2rem solid $color-bright-blue;
+		}
+		&:nth-of-type(3n + 3) img {
+			border: 0.2rem solid $color-indigo;
+		}
+	}
+}
+
+/*------------------------------------*\
+    #Chat View Page
+\*------------------------------------*/
+
+.l-chat-view {
+	@extend .u-flex-column;
+	justify-content: space-between;
+	height: calc(100vh - 76px);
+	overflow-y: hidden;
+	&--content {
+		width: 100%;
+		padding: 15px 20px 0;
+		overflow-y: scroll;
+		&--message {
+			width: fit-content;
+			max-width: 90%;
+			margin-bottom: 1rem;
+			border-radius: 6px;
+			padding: 1rem;
+			font-size: 18px;
+			display: flex;
+			flex-direction: column;
+			time {
+				font-size: 13px;
+				padding-top: .25rem;
+				font-style: italic;
+			}
+		}
+		.message-from-me {
+			background-color: #db0064;
+			border-radius: 6px 6px 0 6px;
+			margin-left: auto;
+			color: white;
+			time {
+				margin-left: auto;
+			}
+		}
+		.message-from-them {
+			background-color: $color-gray-5;
+			border-radius: 6px 6px 6px 0;
+			color: black;
+			time {
+				margin-right: auto;
+			}
+		}
+	}
+	// Input Bar Form
+	&--input-bar {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		padding: 0 0 24px 0;
+		textarea[name="message"],
+		button[type="submit"] {
+			width: 20%;
+			border: none;
+			border-radius: 0;
+		}
+		textarea[name="message"] {
+			min-height: 52px;
+			width: 80%;
+			text-align: left;
+			text-align-last: left;
+			resize: none;
+			&::placeholder {
+				color: $color-gray-3;
+			}
+		}
+		button[type="submit"] {
+			min-height: 52px;
+			height: 100%;
+			background: linear-gradient(90deg, #f72585 0%, #ff7854 100%),
+				#dadada;
+			color: white;
+		}
+	}
+}
+
+.o-form.l-chat-view--input-bar.browse-variant {
+	z-index: 996; 
+	position: fixed; 
+	bottom: 0; 
+	left: 0;
+	padding: 0;
+}
