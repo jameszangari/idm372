@@ -97,16 +97,6 @@ iframe {
 		justify-content: space-between;
 		padding: 0 1rem;
 		&--top {
-			&--artist,
-			&--title {
-				font-family: $font-gellix;
-				white-space: nowrap;
-				line-height: 24px;
-			}
-			&--artist {
-				font-size: 16px;
-				font-weight: 500;
-			}
 			&--title,
 			&--subtitle {
 				font-size: 14px;
