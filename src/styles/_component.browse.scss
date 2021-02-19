@@ -181,6 +181,7 @@ iframe {
 		padding: 1rem 1rem 6rem 1rem;
 		&--card {
 			@extend .u-box-shadow--large;
+			@extend .u-flex-column;
 			&-horizontal {
 				display: flex;
 				flex-direction: row;
@@ -200,6 +201,7 @@ iframe {
 			}
 			&-heading {
 				font-weight: 700;
+				align-self: flex-start;
 				&-anthem {
 					&:after {
 						content: '\f1bc';
@@ -211,8 +213,21 @@ iframe {
 					}
 				}
 			}
-			&-body {
-				padding-top: 12px;
+			&--block-wrap {
+				@extend .u-flex-row;
+				justify-content: space-between;
+			}
+			&--block {
+				@extend .u-flex-column;
+				width: calc(100% / 3 - 0.5rem);
+				&--img {
+					width: 100%;
+					height: 5rem;
+					overflow: hidden;
+					object-fit: cover;
+					border-radius: .5rem;
+					margin: 1rem 0;
+				}
 			}
 		}
 	}

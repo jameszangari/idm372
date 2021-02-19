@@ -82,3 +82,4 @@ node_modules
 # Secret keys and secret things! #
 ##################################
 .env
+public/dist/js/ServiceWorker.js

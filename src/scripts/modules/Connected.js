@@ -27,10 +27,10 @@ if (lconnected) { //if on right page
 				let i = 0;
 				artists.forEach(artist => {
 					form.innerHTML += `
-					<input type="text" name="artist-${i}-id" value="${artist.id}"></input>
-					<input type="text" name="artist-${i}-title" value="${artist.title}"></input>
-					<input type="text" name="artist-${i}-href" value="${artist.href}"></input>
-					<input type="text" name="artist-${i}-thumb" value="${artist.thumb}"></input>
+					<input type="text" name="artist_${i}_id" value="${artist.id}"></input>
+					<input type="text" name="artist_${i}_title" value="${artist.title}"></input>
+					<input type="text" name="artist_${i}_href" value="${artist.href}"></input>
+					<input type="text" name="artist_${i}_thumb" value="${artist.thumb}"></input>
 					`;
 					const section = docQ('section.group--artists');
 					const imgEl = section.querySelectorAll('.l-connected__item-image')[i];
@@ -44,10 +44,10 @@ if (lconnected) { //if on right page
 				let i = 0;
 				tracks.forEach(track => {
 					form.innerHTML += `
-					<input type="text" name="track-${i}-id" value="${track.id}"></input>
-					<input type="text" name="track-${i}-title" value="${track.title}"></input>
-					<input type="text" name="track-${i}-href" value="${track.href}"></input>
-					<input type="text" name="track-${i}-thumb" value="${track.thumb}"></input>
+					<input type="text" name="track_${i}_id" value="${track.id}"></input>
+					<input type="text" name="track_${i}_title" value="${track.title}"></input>
+					<input type="text" name="track_${i}_href" value="${track.href}"></input>
+					<input type="text" name="track_${i}_thumb" value="${track.thumb}"></input>
 					`;
 					const section = docQ('section.group--tracks');
 					const imgEl = section.querySelectorAll('.l-connected__item-image')[i];

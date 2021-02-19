@@ -30,7 +30,6 @@ module.exports = {
                 form_children.forEach(el => {
                     if (el.value) { valsObj[el.name] = el.value;}
                 });
-                console.log(valsObj);
                 push_data(valsObj);
 
             } else if (type === 'checkOne') {

@@ -128,11 +128,11 @@ module.exports = {
                     <div class="c-user-card--btm">
                         <p class="c-user-card--btm--title">${data.first_name}'s Anthem</p>
                         <div class="c-media">
-                            <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <iframe src="https://open.spotify.com/embed/track/${data.anthem_id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                             <div class="c-media--controls">
                                 <div class="c-media--controls--top">
-                                    <p class="c-media--controls--top--artist">${data.song_title}</p>
-                                    <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
+                                    <p class="c-media--controls--top--title">${data.anthem_title}</p>
+                                    <p class="c-media--controls--top--artist">${data.anthem_artist} - ${data.anthem_album}</p>
                                 </div>
                                 <div class="c-media--controls--btm">
                                     <a href="#">
@@ -162,6 +162,7 @@ module.exports = {
         function displayUser(user) {
             // quickRefs
             const data = user.data;
+            console.log(data);
 
             // Display the user
             html.classList.add('u-no-scroll');
@@ -179,22 +180,22 @@ module.exports = {
                 <p class="u-heading-2 u-box-shadow--text">Philadelphia</p>
             </div>
             <div class="c-view-user__main">
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
+                    <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
+                </div>
                 <div class="c-view-user__main--card c-view-user__main--card-horizontal">
                     <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
                     <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
                 </div>
                 <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
-                    <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
-                </div>
-                <div class="c-view-user__main--card">
                     <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Anthem</h2>
                     <div class="c-media">
-                        <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe src="https://open.spotify.com/embed/track/${data.anthem_id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         <div class="c-media--controls">
                             <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--artist">${data.song_title}</p>
-                                <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
+                                <p class="c-media--controls--top--title">${data.anthem_title}</p>
+                                <p class="c-media--controls--top--artist">${data.anthem_artist} - ${data.anthem_album}</p>
                             </div>
                             <div class="c-media--controls--btm">
                                 <i class="fas fa-lg fa-history"></i>
@@ -205,19 +206,41 @@ module.exports = {
                     </div>
                 </div>
                 <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Artist</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Playlist</h2>
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Artists</h2>
+                    <div class="c-view-user__main--card--block-wrap">
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.artist_0_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_0_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_0_title, 10)}</p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.artist_1_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_1_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_1_title, 10)}</p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.artist_2_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_2_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_2_title, 10)}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="c-view-user__main--card">
                     <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Songs</h2>
+                    <div class="c-view-user__main--card--block-wrap">
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.track_0_href}"><img class="c-view-user__main--card--block--img" src="${data.track_0_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_0_title, 10)}</p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.track_1_href}"><img class="c-view-user__main--card--block--img" src="${data.track_1_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_1_title, 10)}</p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a href="${data.track_2_href}"><img class="c-view-user__main--card--block--img" src="${data.track_2_thumb}"></a>
+                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_2_title, 10)}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Artist</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Playlists</h2>
+                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Playlist</h2>
                 </div>
             </div>
             `;

@@ -23,6 +23,7 @@ module.exports = function (req, res) {
             let i = -1;
             if (searchcategory === 'track') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    if (!item.id || !item.name || !item.artists[0] || !item.album.images[0] || !item.album.name) { return }
                     i++;
                     tracks.push(i, {
                         'id': item.id,
@@ -34,6 +35,7 @@ module.exports = function (req, res) {
                 });
             } else if (searchcategory === 'artist') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    if (!item.images[0] || !item.id || !item.name) { return }
                     i++;
                     tracks.push(i, {
                         'id': item.id,
@@ -45,6 +47,7 @@ module.exports = function (req, res) {
             }
             else if (searchcategory === 'playlist') {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
+                    if (!item.id || !item.name || !item.owner.display_name || !item.images[0]) { return }
                     i++;
                     tracks.push(i, {
                         'id': item.id,
