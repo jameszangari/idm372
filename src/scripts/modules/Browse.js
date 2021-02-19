@@ -14,6 +14,7 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
+        // Elements
         const profile_list = docQ('#l-profile-list');
         const html = docQ('html');
         const viewUser = docQ('.c-view-user');
@@ -110,22 +111,26 @@ module.exports = {
             }
         });
 
-        // List the users
+        function addGeneralData(el, data) {
+            el.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
+            data.pronouns ? el.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.data_pronouns').hidden = true;
+            el.querySelector('.data_location').innerText = 'Philadelphia';
+            el.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
+            el.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
+            el.querySelector('.data_anthem_title').innerText = data.anthem_title;
+            el.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+        }
+
+        // User Cards
         function listUsers(users) {
             users.forEach(user => {
                 // quickRefs
                 const data = user.data;
-                // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
                 const card = docQA('.c-user-card')[0];
                 const cloneCard = card.cloneNode(true);
 
-                // Add Data
-                cloneCard.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
-                data.pronouns ? cloneCard.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : cloneCard.querySelector('.data_pronouns').hidden = true;
-                cloneCard.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
-                cloneCard.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
-                cloneCard.querySelector('.data_anthem_title').innerText = data.anthem_title;
-                cloneCard.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+                // General Data
+                addGeneralData(cloneCard, data);
 
                 profile_list.appendChild(cloneCard);
                 cloneCard.querySelector('.c-user-card--overlay')
@@ -137,6 +142,7 @@ module.exports = {
             });
         }
 
+        // Specific User View
         function displayUser(user) {
             // quickRefs
             const data = user.data;
@@ -145,48 +151,27 @@ module.exports = {
             html.classList.add('u-no-scroll');
             viewUser.classList.add('c-view-user--open');
             viewUser.hidden = false;
+            const close = viewUser.querySelector('.o-spotify-select--close');
+            close.addEventListener('click', close_user_view);
 
-            // Base Data
-            viewUser.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
-            data.pronouns ? viewUser.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : viewUser.querySelector('.data_pronouns').hidden = true;
-            viewUser.querySelector('.data_location').innerText = 'Philadelphia';
+            // General Data
+            addGeneralData(viewUser, data);
 
-            viewUser.querySelector('.data_bio').innerText = data.bio;
-            viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for);
-            viewUser.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
-            viewUser.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
-            viewUser.querySelector('.data_anthem_title').innerText = data.anthem_title;
-            viewUser.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
-
-            // Extended Data
+            // User View Specific Data
             viewUser.querySelector('.data_first_name_1').innerText = data.first_name;
-
+            viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for);
+            viewUser.querySelector('.data_bio').innerText = data.bio;
             viewUser.querySelector('.data_top_artists_heading').innerText = data.first_name + "'s Top Artists";
             viewUser.querySelector('.data_top_tracks_heading').innerText = data.first_name + "'s Top Songs";
             viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
 
-            viewUser.querySelector('.data_artist_0_title').innerText = helper.truncateString(data.artist_0_title, 12);
-            viewUser.querySelector('.data_artist_1_title').innerText = helper.truncateString(data.artist_1_title, 12);
-            viewUser.querySelector('.data_artist_2_title').innerText = helper.truncateString(data.artist_2_title, 12);
-            viewUser.querySelector('.data_artist_0_thumb').src = data.artist_0_thumb;
-            viewUser.querySelector('.data_artist_1_thumb').src = data.artist_1_thumb;
-            viewUser.querySelector('.data_artist_2_thumb').src = data.artist_2_thumb;
-            viewUser.querySelector('.data_artist_0_href').src = data.artist_0_href;
-            viewUser.querySelector('.data_artist_1_href').src = data.artist_1_href;
-            viewUser.querySelector('.data_artist_2_href').src = data.artist_2_href;
-
-            viewUser.querySelector('.data_track_0_title').innerText = helper.truncateString(data.track_0_title, 12);
-            viewUser.querySelector('.data_track_1_title').innerText = helper.truncateString(data.track_1_title, 12);
-            viewUser.querySelector('.data_track_2_title').innerText = helper.truncateString(data.track_2_title, 12);
-            viewUser.querySelector('.data_track_0_thumb').src = data.track_0_thumb;
-            viewUser.querySelector('.data_track_1_thumb').src = data.track_1_thumb;
-            viewUser.querySelector('.data_track_2_thumb').src = data.track_2_thumb;
-            viewUser.querySelector('.data_track_0_href').src = data.track_0_href;
-            viewUser.querySelector('.data_track_1_href').src = data.track_1_href;
-            viewUser.querySelector('.data_track_2_href').src = data.track_2_href;
-
-            const close = viewUser.querySelector('.o-spotify-select--close');
-            close.addEventListener('click', close_user_view);
+            ['artist', 'track'].forEach(string => {
+                for (i = 0; i < 3; i++) {
+                    viewUser.querySelector(`.data_${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12);
+                    viewUser.querySelector(`.data_${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`];
+                    viewUser.querySelector(`.data_${string}_${i}_href`).src = data[`${string}_${i}_href`];
+                }
+            });
         }
     }
 }
