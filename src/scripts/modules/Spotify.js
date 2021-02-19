@@ -76,14 +76,20 @@ module.exports = {
               search_results.appendChild(track_element);
 
               function rmChoice() { // Hide choice
-                result_id.value = '';
+                docQA('#firestore_form input').forEach(input => {
+                  input.value = '';
+                });
                 choice_area.innerHTML = '';
                 choice_wrap.hidden = true;
               }
 
               function displayChoice(result) { // Display choice
                 choice_wrap.hidden = false;
-                result_id.value = result.id;
+                docQ('input#result_id').value = result.id;
+                docQ('input#result_title').value = result.title;
+                if (docQ('input#result_artist')) docQ('input#result_artist').value = result.artist; // This one is optional for artist search
+                docQ('input#result_thumb').value = result.thumb;
+                docQ('input#result_album').value = result.album;
 
                 choice_area.innerHTML = `
                   <img class="o-spotify-choice--image" src="${result.thumb}">

@@ -14,6 +14,7 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
+        // Elements
         const profile_list = docQ('#l-profile-list');
         const html = docQ('html');
         const viewUser = docQ('.c-view-user');
@@ -110,47 +111,29 @@ module.exports = {
             }
         });
 
-        // List the users
+        function addGeneralData(el, data) {
+            el.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
+            data.pronouns ? el.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.data_pronouns').hidden = true;
+            el.querySelector('.data_location').innerText = 'Philadelphia';
+            el.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
+            el.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
+            el.querySelector('.data_anthem_title').innerText = data.anthem_title;
+            el.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+        }
+
+        // User Cards
         function listUsers(users) {
             users.forEach(user => {
                 // quickRefs
                 const data = user.data;
-                // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
-                const el = document.createElement('div');
-                el.classList.add('c-user-card');
-                el.innerHTML += `
-                    <div class="c-user-card--overlay"></div>
-                    <div class="c-user-card--top">
-                        <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                        <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                        <p class="c-user-card__stats-location u-heading-3 u-box-shadow--text">Philadelphia, PA</p>
-                    </div>
-                    <div class="c-user-card--btm">
-                        <p class="c-user-card--btm--title">${data.first_name}'s Anthem</p>
-                        <div class="c-media">
-                            <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            <div class="c-media--controls">
-                                <div class="c-media--controls--top">
-                                    <p class="c-media--controls--top--artist">${data.song_title}</p>
-                                    <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
-                                </div>
-                                <div class="c-media--controls--btm">
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-history"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-play"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                profile_list.appendChild(el);
-                el.querySelector('.c-user-card--overlay')
+                const card = docQA('.c-user-card')[0];
+                const cloneCard = card.cloneNode(true);
+
+                // General Data
+                addGeneralData(cloneCard, data);
+
+                profile_list.appendChild(cloneCard);
+                cloneCard.querySelector('.c-user-card--overlay')
                     .addEventListener('click', () => {
                         displayUser(user);
                         toggleChatBar(true, user);
@@ -159,6 +142,7 @@ module.exports = {
             });
         }
 
+        // Specific User View
         function displayUser(user) {
             // quickRefs
             const data = user.data;
@@ -167,62 +151,27 @@ module.exports = {
             html.classList.add('u-no-scroll');
             viewUser.classList.add('c-view-user--open');
             viewUser.hidden = false;
-            viewUser.innerHTML = `
-            <div class="c-view-user--top">
-            <h2 class="c-view-user--top-heading u-heading-1 u-align-center">${data.first_name}</h2>
-            <button class="o-spotify-select--close">Done</button>
-            </div>
-            <div class="c-view-user--overlay"></div>
-            <div class="c-view-user--header">
-                <p class="u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                <p class="u-heading-3 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                <p class="u-heading-2 u-box-shadow--text">Philadelphia</p>
-            </div>
-            <div class="c-view-user__main">
-                <div class="c-view-user__main--card c-view-user__main--card-horizontal">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
-                    <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
-                    <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Anthem</h2>
-                    <div class="c-media">
-                        <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                        <div class="c-media--controls">
-                            <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--artist">${data.song_title}</p>
-                                <p class="c-media--controls--top--title">${data.song_artist} - ${data.song_album}</p>
-                            </div>
-                            <div class="c-media--controls--btm">
-                                <i class="fas fa-lg fa-history"></i>
-                                <i class="fas fa-lg fa-play"></i>
-                                <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Artist</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Playlist</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Songs</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Artist</h2>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Playlists</h2>
-                </div>
-            </div>
-            `;
             const close = viewUser.querySelector('.o-spotify-select--close');
             close.addEventListener('click', close_user_view);
+
+            // General Data
+            addGeneralData(viewUser, data);
+
+            // User View Specific Data
+            viewUser.querySelector('.data_first_name_1').innerText = data.first_name;
+            viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for);
+            viewUser.querySelector('.data_bio').innerText = data.bio;
+            viewUser.querySelector('.data_top_artists_heading').innerText = data.first_name + "'s Top Artists";
+            viewUser.querySelector('.data_top_tracks_heading').innerText = data.first_name + "'s Top Songs";
+            viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+
+            ['artist', 'track'].forEach(string => {
+                for (i = 0; i < 3; i++) {
+                    viewUser.querySelector(`.data_${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12);
+                    viewUser.querySelector(`.data_${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`];
+                    viewUser.querySelector(`.data_${string}_${i}_href`).src = data[`${string}_${i}_href`];
+                }
+            });
         }
     }
 }

@@ -1,15 +1,135 @@
 <%- include('../_partials/header', {pageTitle: pageTitle}); %>
     <%- include('../_components/header-navigation--home', { title: endpoints.browse.title }); %>
 
-    <div class="js-browse" id="l-profile-list"></div>
-    <div class="c-view-user"></div>
+        <div class="js-browse" id="l-profile-list">
+            <div class="c-user-card">
+                <div class="c-user-card--overlay"></div>
+                <div class="c-user-card--top">
+                    <span>
+                        <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text data_first_name"></p>
+                    </span>
+                    <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text data_pronouns"></p>
+                    <p class="c-user-card__stats-location u-heading-3 u-box-shadow--text data_location"></p>
+                </div>
+                <div class="c-user-card--btm">
+                    <p class="c-user-card--btm--title data_anthem_heading"></p>
+                    <div class="c-media">
+                        <iframe class="data_anthem_id" src="" frameborder="0" allowtransparency="true"
+                            allow="encrypted-media"></iframe>
+                        <div class="c-media--controls">
+                            <div class="c-media--controls--top">
+                                <p class="c-media--controls--top--title data_anthem_title"></p>
+                                <p class="c-media--controls--top--title data_anthem_subtitle"></p>
+                            </div>
+                            <div class="c-media--controls--btm">
+                                <a href="#">
+                                    <i class="fas fa-lg fa-history"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fas fa-lg fa-play"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <a class="o-form l-chat-view--input-bar browse-variant" hidden>
-        <textarea name="message" maxlength="500" placeholder="Send a message"></textarea>
-        <button type="submit">Send</button>
-    </a>
+        <div class="c-view-user">
+            <div class="c-view-user--top">
+                <h2 class="c-view-user--top-heading u-heading-1 u-align-center data_first_name_1"></h2>
+                <button class="o-spotify-select--close">Done</button>
+            </div>
+            <div class="c-view-user--overlay"></div>
+            <div class="c-view-user--header">
+                <p class="u-heading-1 u-box-shadow--text data_first_name"></p>
+                <p class="u-heading-3 u-box-shadow--text data_pronouns"></p>
+                <p class="u-heading-2 u-box-shadow--text data_location"></p>
+            </div>
+            <div class="c-view-user__main">
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
+                    <p class="c-view-user__main--card-body u-paragraph data_bio"></p>
+                </div>
+                <div class="c-view-user__main--card c-view-user__main--card-horizontal">
+                    <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
+                    <p class="data_looking_for"></p>
+                </div>
+                <div class="c-view-user__main--card">
+                    <h2
+                        class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3 data_anthem_heading">
+                    </h2>
+                    <div class="c-media">
+                        <iframe class="data_anthem_id" frameborder="0" allowtransparency="true"
+                            allow="encrypted-media"></iframe>
+                        <div class="c-media--controls">
+                            <div class="c-media--controls--top">
+                                <p class="c-media--controls--top--title data_anthem_title"></p>
+                                <p class="c-media--controls--top--artist data_anthem_subtitle"></p>
+                            </div>
+                            <div class="c-media--controls--btm">
+                                <i class="fas fa-lg fa-history"></i>
+                                <i class="fas fa-lg fa-play"></i>
+                                <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_artists_heading"></h2>
+                    <div class="c-view-user__main--card--block-wrap">
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_artist_0_href"><img
+                                    class="c-view-user__main--card--block--img data_artist_0_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_artist_0_title"></p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_artist_1_href"><img
+                                    class="c-view-user__main--card--block--img data_artist_1_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_artist_1_title"></p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_artist_2_href"><img
+                                    class="c-view-user__main--card--block--img data_artist_2_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_artist_2_title"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_tracks_heading"></h2>
+                    <div class="c-view-user__main--card--block-wrap">
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_track_0_href"><img
+                                    class="c-view-user__main--card--block--img data_track_0_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_track_0_title"></p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_track_1_href"><img
+                                    class="c-view-user__main--card--block--img data_track_1_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_track_1_title"></p>
+                        </div>
+                        <div class="c-view-user__main--card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="data_track_2_href"><img
+                                    class="c-view-user__main--card--block--img data_track_2_thumb"></a>
+                            <p class="c-view-user__main--card--block--title data_track_2_title"></p>
+                        </div>
+                    </div>
+                </div>
+                <div hidden class="c-view-user__main--card">
+                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_playlist_heading"></h2>
+                </div>
+            </div>
+        </div>
 
-    <button hidden class=" o-button-primary o-button-primary--pink">Continue</button>
+        <a class="o-form l-chat-view--input-bar browse-variant" hidden>
+            <textarea name="message" maxlength="500" placeholder="Send a message"></textarea>
+            <button type="submit">Send</button>
+        </a>
 
-    <%- include('../_components/footer-navigation'); %>
-<%- include('../_partials/footer'); %>
+        <button hidden class=" o-button-primary o-button-primary--pink">Continue</button>
+
+        <%- include('../_components/footer-navigation'); %>
+            <%- include('../_partials/footer'); %>

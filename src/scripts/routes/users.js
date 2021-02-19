@@ -8,13 +8,19 @@ module.exports = async function (req, res) {
     // Queries
     if (data.query == 'all-users') {
         const snapshot = await firebase.db().collection('users')
-            .where('new_user', '==', false) // Only include complete profiles
+            .where('new_user', '==', 'false') // Only include complete profiles
             .get();
         snapshot.forEach((doc) => {
             if (doc.id != data.uuid) { // Don't include the user performing the query
+                // Truncate sensitive data
+                const data = doc.data();
+                delete data.country;
+                delete data.email;
+                delete data.new_user;
+                data.pronouns == 'a' && delete data.pronouns;
                 users.push({
                     uuid: doc.id,
-                    data: doc.data()
+                    data: data
                 });
             }
         });
