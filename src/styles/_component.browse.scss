@@ -107,9 +107,14 @@ iframe {
 				font-size: 16px;
 				font-weight: 500;
 			}
-			&--title {
+			&--title,
+			&--subtitle {
 				font-size: 14px;
 				font-weight: 600;
+				white-space: nowrap;
+				overflow-x: hidden;
+			}
+			&--subtitle {
 				background: -webkit-linear-gradient(
 					45deg,
 					$color-gray-3,
