@@ -14,10 +14,6 @@ module.exports = {
         const spotifyObjectString = helper.getCookie('spotify');
         const spotifyObject = JSON.parse(spotifyObjectString);
 
-<<<<<<< Updated upstream
-        console.log('yep');
-=======
->>>>>>> Stashed changes
         const profile_list = docQ('#profile_list');
 
         // Functions
@@ -47,23 +43,13 @@ module.exports = {
                         <p class="stat stat--location u-heading-3">Philadelphia, PA</p>
                     </div>
                     <div class="user-card--btm">
-<<<<<<< Updated upstream
-                        <p class="user-card--btm--title">${data.first_name}'s Favorite Song</p>
-                        <div class="media">
-                            <iframe src="https://open.spotify.com/embed/track/${data.song}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            <div class="media--controls">
-                                <div class="media--controls--top">
-                                    <p class="media--controls--top--artist">Chop Suey!</p>
-                                    <p class="media--controls--top--title">System of a Down - Chop Suey</p>
-=======
                         <p class="user-card--btm--title">${data.first_name}'s Anthem</p>
                         <div class="media">
                             <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                             <div class="media--controls">
                                 <div class="media--controls--top">
-											  <p class="media--controls--top--artist u-heading-7">${data.song_title}</p>
-											  <p class="media--controls--top--title u-heading-8">${data.song_album} - ${data.song_artist}</p>
->>>>>>> Stashed changes
+									<p class="media--controls--top--artist u-heading-7">${data.song_title}</p>
+									<p class="media--controls--top--title u-heading-8">${data.song_album} - ${data.song_artist}</p>
                                 </div>
                                 <div class="media--controls--btm">
                                     <i class="fas fa-lg fa-history"></i>
@@ -98,21 +84,13 @@ module.exports = {
             </div>
             <div class="user_view--header">
                 <p class="u-heading-1">${data.first_name}, ${helper.getAge(data.bday)}</p>
-<<<<<<< Updated upstream
-                <p class="u-heading-3">${Lists.lists.pronouns[data.pronouns]}</p>
-=======
                 <p class="u-heading-3">${Lists.decipherCodes('genders', data.pronouns)}</p>
->>>>>>> Stashed changes
                 <p class="u-heading-2">Philadelphia</p>
             </div>
             <div class="user_view--main">
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">Looking For</h2>
-<<<<<<< Updated upstream
-                    <p>${data.looking_for}</p>
-=======
                     <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
->>>>>>> Stashed changes
                 </div>
                 <div class="user_view--main--card">
                     <h2 class="u-heading-3">About Me</h2>
