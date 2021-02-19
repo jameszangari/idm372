@@ -37,85 +37,93 @@ module.exports = async function (req, res) {
             .where("participants", "array-contains", reqData.uuid) // Only threads the user is apart of
             .get();
         let i = 0;
-        docRef.forEach((doc) => {
-            i++;
-            const data = doc.data();
-            const thread_id = helper.getThread(data.participants[0], data.participants[1]);
-            let targetUUID;
-            data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
+        if (docRef.size > 0) {
+            docRef.forEach((doc) => {
+                i++;
+                const data = doc.data();
+                const thread_id = helper.getThread(data.participants[0], data.participants[1]);
+                let targetUUID;
+                data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
 
-            firebase.getName(targetUUID).then((targetName) => {
-                getLastMessage(thread_id).then((message) => {
-                    const thread = {
-                        thread_id: thread_id,
-                        target_id: targetUUID,
-                        last_activity: data.last_activity,
-                        target_name: targetName,
-                        preview: message.content
-                    }
-                    threadsArray.push(thread);
+                firebase.getName(targetUUID).then((targetName) => {
+                    getLastMessage(thread_id).then((message) => {
+                        const thread = {
+                            thread_id: thread_id,
+                            target_id: targetUUID,
+                            last_activity: data.last_activity,
+                            target_name: targetName,
+                            preview: message.content
+                        }
+                        threadsArray.push(thread);
+                    }, function (err) { // Catch Error
+                        console.log(err);
+                        res.send(false);
+                    });
                 }, function (err) { // Catch Error
                     console.log(err);
                     res.send(false);
                 });
-            }, function (err) { // Catch Error
-                console.log(err);
-                res.send(false);
-            });
 
-            if (i != docRef.size) {
-            } else { // When done
-                function send() {
-                    res.send(threadsArray);
-                }
-                function checkArray() { // Check array before sending
-                    if (docRef.size == threadsArray.length) {
-                        send();
-                    } else {
-                        if (i > 50) { // Error
-                            res.send(false);
-                            console.error('Failed to process Threads Array');
-                            return;
-                        }
-                        setTimeout(() => {
-                            checkArray();
-                        }, 100);
+                if (i != docRef.size) {
+                } else { // When done
+                    function send() {
+                        res.send(threadsArray);
                     }
+                    function checkArray() { // Check array before sending
+                        if (docRef.size == threadsArray.length) {
+                            send();
+                        } else {
+                            if (i > 50) { // Error
+                                res.send(false);
+                                console.error('Failed to process Threads Array');
+                                return;
+                            }
+                            setTimeout(() => {
+                                checkArray();
+                            }, 100);
+                        }
+                    }
+                    checkArray();
                 }
-                checkArray();
-            }
-        });
+            });
+        } else {
+            res.send([]); // Empty Array
+        }
 
     } else if (reqData.query == 'get-history') {
         getMessages(reqData.thread).then((messages) => {
             let messageArray = [];
             let i = 0;
-            messages.docs.forEach(message => {
-                i++;
-                messageArray.push(message.data())
-            });
+            if (messages.size > 0) {
+                messages.docs.forEach(message => {
+                    i++;
+                    messageArray.push(message.data())
+                });
 
-            if (i != messages.size) { // Check array before sending
-            } else { // When done
-                function send() {
-                    res.send(messageArray);
-                }
-                function checkArray() { // Check if data is ready
-                    console.log('Checking Messages Array');
-                    if (messages.size == messageArray.length) {
-                        send();
-                    } else {
-                        if (i > 50) { // Error
-                            res.send(false);
-                            console.error('Failed to process Messages Array');
-                            return;
-                        }
-                        setTimeout(() => {
-                            checkArray();
-                        }, 100);
+                if (i != messages.size) { // Check array before sending
+                } else { // When done
+                    function send() {
+                        res.send(messageArray);
                     }
+                    function checkArray() { // Check if data is ready
+                        console.log('Checking Messages Array');
+                        if (messages.size == messageArray.length) {
+                            send();
+                        } else {
+                            if (i > 50) { // Error
+                                res.send(false);
+                                console.error('Failed to process Messages Array');
+                                return;
+                            }
+                            setTimeout(() => {
+                                checkArray();
+                            }, 100);
+                        }
+                    }
+                    checkArray();
                 }
-                checkArray();
+            } else {
+                res.send([]) // Empty Array
             }
 
         }, function (err) { // Catch Error
@@ -130,6 +138,9 @@ module.exports = async function (req, res) {
                 uuid: targetUUID,
                 name: targetName
             });
+        }).catch(function (error) {
+            console.log(error);
+            res.send('error');
         });
     } else if (reqData.query == 'send-message') {
         // quickRefs

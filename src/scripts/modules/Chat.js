@@ -40,8 +40,9 @@ if (docQ('.l-chat-browse')) { // Browse Page
             query: 'list-chats'
         }
     }).done(function (results) {
-        results.forEach(thread => {
-            chatsList.innerHTML += `
+        if (results.length > 0) {
+            results.forEach(thread => {
+                chatsList.innerHTML += `
                 <a class="l-chat-browse--user-item" href="${endpoints.chatView.url + '/?thread=' + thread.thread_id}">
                     <div class="l-chat-browse--user-item--img-area">
                         <img class="l-chat-browse--user-item--img-area--img"
@@ -60,7 +61,11 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     </div>
                 </a>
             `;
-        });
+            });
+        } else {
+            docQ('.l-chat-browse').hidden = true;
+            docQ('.no-results').hidden = false;
+        }
     });
 } else if (docQ('.l-chat-view')) { // View Page
     // Get thread id from URL
@@ -121,7 +126,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     content: messageInput.value
                 }
             }).done(function (response) {
-                if (response) {
+                if (response.length > 0) {
                     chatContentDiv.innerHTML += `
                         <div class="l-chat-view--content--message message-from-me">
                             <p>${messageInput.value}</p>
@@ -130,6 +135,8 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     `;
                     messageInput.value = ''; // Clear input
                     scroll_to_bottom('tell');
+                } else {
+                    // Beginning of chat
                 }
             });
         }
@@ -142,7 +149,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
             vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
             sHeight = messageInput.scrollHeight,
             maxHeight = vh / 3;
-        
+
         let newHeight;
 
         sHeight > maxHeight ? newHeight = maxHeight : newHeight = sHeight;

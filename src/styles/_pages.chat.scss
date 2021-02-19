@@ -73,7 +73,7 @@
 			flex-direction: column;
 			time {
 				font-size: 13px;
-				padding-top: .25rem;
+				padding-top: 0.25rem;
 				font-style: italic;
 			}
 		}
@@ -128,9 +128,21 @@
 }
 
 .o-form.l-chat-view--input-bar.browse-variant {
-	z-index: 996; 
-	position: fixed; 
-	bottom: 0; 
+	z-index: 996;
+	position: fixed;
+	bottom: 0;
 	left: 0;
 	padding: 0;
+}
+
+.no-results {
+	@extend .u-flex-column;
+	padding-top: 50%;
+	max-width: 12rem;
+	margin: auto;
+	text-align: center;
+	&--icon {
+		width: 6rem;
+		margin-bottom: 2rem;
+	}
 }
