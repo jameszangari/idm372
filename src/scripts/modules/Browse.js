@@ -116,41 +116,19 @@ module.exports = {
                 // quickRefs
                 const data = user.data;
                 // get the profile data by using user.<DB Field Name> (Ex. user.first_name)
-                const el = document.createElement('div');
-                el.classList.add('c-user-card');
-                el.innerHTML += `
-                    <div class="c-user-card--overlay"></div>
-                    <div class="c-user-card--top">
-                        <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                        <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                        <p class="c-user-card__stats-location u-heading-3 u-box-shadow--text">Philadelphia, PA</p>
-                    </div>
-                    <div class="c-user-card--btm">
-                        <p class="c-user-card--btm--title">${data.first_name}'s Anthem</p>
-                        <div class="c-media">
-                            <iframe src="https://open.spotify.com/embed/track/${data.anthem_id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            <div class="c-media--controls">
-                                <div class="c-media--controls--top">
-                                    <p class="c-media--controls--top--title">${data.anthem_title}</p>
-                                    <p class="c-media--controls--top--artist">${data.anthem_artist} - ${data.anthem_album}</p>
-                                </div>
-                                <div class="c-media--controls--btm">
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-history"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-play"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                profile_list.appendChild(el);
-                el.querySelector('.c-user-card--overlay')
+                const card = docQA('.c-user-card')[0];
+                const cloneCard = card.cloneNode(true);
+
+                // Add Data
+                cloneCard.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
+                data.pronouns ? cloneCard.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : cloneCard.querySelector('.data_pronouns').hidden = true;
+                cloneCard.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
+                cloneCard.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
+                cloneCard.querySelector('.data_anthem_title').innerText = data.anthem_title;
+                cloneCard.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+
+                profile_list.appendChild(cloneCard);
+                cloneCard.querySelector('.c-user-card--overlay')
                     .addEventListener('click', () => {
                         displayUser(user);
                         toggleChatBar(true, user);
@@ -162,88 +140,51 @@ module.exports = {
         function displayUser(user) {
             // quickRefs
             const data = user.data;
-            console.log(data);
 
             // Display the user
             html.classList.add('u-no-scroll');
             viewUser.classList.add('c-view-user--open');
             viewUser.hidden = false;
-            viewUser.innerHTML = `
-            <div class="c-view-user--top">
-            <h2 class="c-view-user--top-heading u-heading-1 u-align-center">${data.first_name}</h2>
-            <button class="o-spotify-select--close">Done</button>
-            </div>
-            <div class="c-view-user--overlay"></div>
-            <div class="c-view-user--header">
-                <p class="u-heading-1 u-box-shadow--text">${data.first_name}, ${helper.getAge(data.bday)}</p>
-                <p class="u-heading-3 u-box-shadow--text">${Lists.decipherCodes('pronouns', data.pronouns)}</p>
-                <p class="u-heading-2 u-box-shadow--text">Philadelphia</p>
-            </div>
-            <div class="c-view-user__main">
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
-                    <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
-                </div>
-                <div class="c-view-user__main--card c-view-user__main--card-horizontal">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
-                    <p>${Lists.decipherCodes('looking_for', data.looking_for)}</p>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Anthem</h2>
-                    <div class="c-media">
-                        <iframe src="https://open.spotify.com/embed/track/${data.anthem_id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                        <div class="c-media--controls">
-                            <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--title">${data.anthem_title}</p>
-                                <p class="c-media--controls--top--artist">${data.anthem_artist} - ${data.anthem_album}</p>
-                            </div>
-                            <div class="c-media--controls--btm">
-                                <i class="fas fa-lg fa-history"></i>
-                                <i class="fas fa-lg fa-play"></i>
-                                <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Artists</h2>
-                    <div class="c-view-user__main--card--block-wrap">
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.artist_0_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_0_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_0_title, 10)}</p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.artist_1_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_1_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_1_title, 10)}</p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.artist_2_href}"><img class="c-view-user__main--card--block--img" src="${data.artist_2_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.artist_2_title, 10)}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Top Songs</h2>
-                    <div class="c-view-user__main--card--block-wrap">
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.track_0_href}"><img class="c-view-user__main--card--block--img" src="${data.track_0_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_0_title, 10)}</p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.track_1_href}"><img class="c-view-user__main--card--block--img" src="${data.track_1_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_1_title, 10)}</p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a href="${data.track_2_href}"><img class="c-view-user__main--card--block--img" src="${data.track_2_thumb}"></a>
-                            <p class="c-view-user__main--card--block--title">${helper.truncateString(data.track_2_title, 10)}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">${data.first_name}'s Favorite Playlist</h2>
-                </div>
-            </div>
-            `;
+
+            // Base Data
+            viewUser.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
+            data.pronouns ? viewUser.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : viewUser.querySelector('.data_pronouns').hidden = true;
+            viewUser.querySelector('.data_location').innerText = 'Philadelphia';
+
+            viewUser.querySelector('.data_bio').innerText = data.bio;
+            viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for);
+            viewUser.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
+            viewUser.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
+            viewUser.querySelector('.data_anthem_title').innerText = data.anthem_title;
+            viewUser.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+
+            // Extended Data
+            viewUser.querySelector('.data_first_name_1').innerText = data.first_name;
+
+            viewUser.querySelector('.data_top_artists_heading').innerText = data.first_name + "'s Top Artists";
+            viewUser.querySelector('.data_top_tracks_heading').innerText = data.first_name + "'s Top Songs";
+            viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+
+            viewUser.querySelector('.data_artist_0_title').innerText = helper.truncateString(data.artist_0_title, 12);
+            viewUser.querySelector('.data_artist_1_title').innerText = helper.truncateString(data.artist_1_title, 12);
+            viewUser.querySelector('.data_artist_2_title').innerText = helper.truncateString(data.artist_2_title, 12);
+            viewUser.querySelector('.data_artist_0_thumb').src = data.artist_0_thumb;
+            viewUser.querySelector('.data_artist_1_thumb').src = data.artist_1_thumb;
+            viewUser.querySelector('.data_artist_2_thumb').src = data.artist_2_thumb;
+            viewUser.querySelector('.data_artist_0_href').src = data.artist_0_href;
+            viewUser.querySelector('.data_artist_1_href').src = data.artist_1_href;
+            viewUser.querySelector('.data_artist_2_href').src = data.artist_2_href;
+
+            viewUser.querySelector('.data_track_0_title').innerText = helper.truncateString(data.track_0_title, 12);
+            viewUser.querySelector('.data_track_1_title').innerText = helper.truncateString(data.track_1_title, 12);
+            viewUser.querySelector('.data_track_2_title').innerText = helper.truncateString(data.track_2_title, 12);
+            viewUser.querySelector('.data_track_0_thumb').src = data.track_0_thumb;
+            viewUser.querySelector('.data_track_1_thumb').src = data.track_1_thumb;
+            viewUser.querySelector('.data_track_2_thumb').src = data.track_2_thumb;
+            viewUser.querySelector('.data_track_0_href').src = data.track_0_href;
+            viewUser.querySelector('.data_track_1_href').src = data.track_1_href;
+            viewUser.querySelector('.data_track_2_href').src = data.track_2_href;
+
             const close = viewUser.querySelector('.o-spotify-select--close');
             close.addEventListener('click', close_user_view);
         }

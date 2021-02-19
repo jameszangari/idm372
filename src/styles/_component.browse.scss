@@ -16,11 +16,18 @@
 }
 
 .c-user-card {
+	&:first-of-type {
+		display: none;
+	}
 	border-radius: 26px;
 	overflow: hidden;
 	margin-bottom: 16px;
 	&--overlay {
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 48.96%);
+		background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.25) 48.96%
+		);
 		position: absolute;
 		z-index: 98;
 		height: 300px;
@@ -56,8 +63,8 @@
 			font-weight: 700;
 			font-size: 20px;
 			&:after {
-				content: '\f1bc';
-				font-family: 'FontAwesome';
+				content: "\f1bc";
+				font-family: "FontAwesome";
 				font-size: 30px;
 				float: right;
 				position: absolute;
@@ -98,12 +105,16 @@ iframe {
 			}
 			&--artist {
 				font-size: 16px;
-				font-weight: 600;
+				font-weight: 500;
 			}
 			&--title {
 				font-size: 14px;
-				font-weight: 500;
-				background: -webkit-linear-gradient(45deg, $color-gray-3, $color-gray-5);
+				font-weight: 600;
+				background: -webkit-linear-gradient(
+					45deg,
+					$color-gray-3,
+					$color-gray-5
+				);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
@@ -134,7 +145,11 @@ iframe {
 	width: 100%;
 	height: 100%;
 	&--overlay {
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 48.96%);
+		background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.25) 48.96%
+		);
 		position: absolute;
 		z-index: 98;
 		height: 375px;
@@ -204,8 +219,8 @@ iframe {
 				align-self: flex-start;
 				&-anthem {
 					&:after {
-						content: '\f1bc';
-						font-family: 'FontAwesome';
+						content: "\f1bc";
+						font-family: "FontAwesome";
 						font-size: 30px;
 						float: right;
 						position: absolute;
@@ -220,13 +235,19 @@ iframe {
 			&--block {
 				@extend .u-flex-column;
 				width: calc(100% / 3 - 0.5rem);
+				a {
+					font-size: 0;
+				}
 				&--img {
 					width: 100%;
 					height: 5rem;
 					overflow: hidden;
 					object-fit: cover;
-					border-radius: .5rem;
+					border-radius: 0.5rem;
 					margin: 1rem 0;
+				}
+				&--title {
+					font-size: 12px;
 				}
 			}
 		}
@@ -252,7 +273,6 @@ iframe {
 		}
 	}
 }
-
 
 .c-view-user:nth-of-type(even) .c-view-user--header {
 	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
