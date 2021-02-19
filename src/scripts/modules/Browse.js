@@ -20,7 +20,6 @@ module.exports = {
         const continueBtn = docQ('.o-button-primary--pink');
         const myProfileButton = docQ('.my-profile-button');
         const backBtn = docQ('.c-header-navigation__button');
-        const closeModalBtn = docQ('.o-spotify-select--close');
 
         // Functions
         $.ajax({
@@ -50,7 +49,7 @@ module.exports = {
             backBtn.hidden = true;
             myProfileButton.hidden = false;
             continueBtn.hidden = true;
-            if (closeModalBtn) closeModalBtn.hidden = false;
+            if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = false;
             toggleChatBar(false);
         }
 
@@ -101,7 +100,7 @@ module.exports = {
                     myProfileButton.click();
                     docQ('.c-view-user').classList.remove('c-view-user--self');
                     docQ('.c-view-user--top-heading').innerText = 'Your Profile';
-                    if (closeModalBtn) closeModalBtn.hidden = true;
+                    if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = true;
                     continueBtn.hidden = false;
                     continueBtn.addEventListener('click', close_user_view);
                     completeProfile();
