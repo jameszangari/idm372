@@ -188,7 +188,7 @@ module.exports = {
                     <p class="c-view-user__main--card-body u-paragraph">${data.bio}</p>
                 </div>
                 <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Favorite Anthem</h2>
+                    <h2 class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3">${data.first_name}'s Anthem</h2>
                     <div class="c-media">
                         <iframe src="https://open.spotify.com/embed/track/${data.anthem}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         <div class="c-media--controls">

@@ -403,7 +403,6 @@ function list_users(current_uuid) { // Populates SELECT form with matches
                         <iframe ${result.anthem_id ? 'src=' + 'https://open.spotify.com/embed/track/' + result.anthem_id : 'style="display: none;"'} id="stat_anthem" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         </div>
                         `;
-                    // ${result.anthem_id && '<p class="anthem_label">' + name + "'s Favorite Anthem</p>"}
 
                     user_element.addEventListener('click', () => {
                         const match_uuid = doc.id,
