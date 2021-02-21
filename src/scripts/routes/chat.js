@@ -155,7 +155,7 @@ module.exports = async function (req, res) {
         // Push data to FireStore
         docRef.set(message).then(() => {
             // Set last activity and update participants on thread
-            threadRef.update({
+            threadRef.set({
                 last_activity: firebase.tstamp(),
                 participants: [reqData.uuid, firebase.getTargetUUID(reqData.thread, reqData.uuid)]
             }).then(() => {

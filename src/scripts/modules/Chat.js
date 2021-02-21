@@ -126,18 +126,15 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     content: messageInput.value
                 }
             }).done(function (response) {
-                if (response.length > 0) {
-                    chatContentDiv.innerHTML += `
-                        <div class="l-chat-view--content--message message-from-me">
-                            <p>${messageInput.value}</p>
-                            <time>${moment.unix(Math.floor(Date.now() / 1000)).format('M/D/YY, h:mm a')}</time>
-                        </div>
-                    `;
-                    messageInput.value = ''; // Clear input
-                    scroll_to_bottom('tell');
-                } else {
-                    // Beginning of chat
-                }
+                console.log('why');
+                chatContentDiv.innerHTML += `
+                    <div class="l-chat-view--content--message message-from-me">
+                        <p>${messageInput.value}</p>
+                        <time>${moment.unix(Math.floor(Date.now() / 1000)).format('M/D/YY, h:mm a')}</time>
+                    </div>
+                `;
+                messageInput.value = ''; // Clear input
+                scroll_to_bottom('tell');
             });
         }
     });
