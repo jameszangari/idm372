@@ -28,7 +28,7 @@ module.exports = {
 
             if (type === 'strings') {
                 form_children.forEach(el => {
-                    if (el.value) { valsObj[el.name] = el.value;}
+                    if (el.value) { valsObj[el.name] = el.value; }
                 });
                 push_data(valsObj);
 
@@ -54,7 +54,7 @@ module.exports = {
                 push_data(valsObj);
             }
 
-            function push_data(obj) { // Send info to server - GET request
+            function push_data(obj) {
                 if (Object.keys(obj).length > 0) { // If theres values
                     $.ajax({
                         url: endpoints.update.url,

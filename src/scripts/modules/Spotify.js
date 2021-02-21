@@ -39,7 +39,7 @@ module.exports = {
       } else {
         Validate.toggleInvalid(false, search_input);
 
-        $.ajax({ //send info to server - GET request
+        $.ajax({ //
           url: endpoints.search.url,
           data: {
             access_token: spotifyObject.access_token,

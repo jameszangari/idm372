@@ -9,7 +9,7 @@ function unixToFromNow(unix) {
 
 let targetInfo;
 function getTargetInfo(threadID) {
-    $.ajax({ //send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -33,7 +33,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     const chatsList = docQ('.l-chat-browse');
 
     // List users
-    $.ajax({ //send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -100,7 +100,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     };
 
     // Get chat history
-    $.ajax({ // Send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -117,7 +117,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
-            $.ajax({ //send info to server - GET request
+            $.ajax({
                 url: endpoints.chat.url,
                 data: {
                     uuid: spotifyObject.user_id,
