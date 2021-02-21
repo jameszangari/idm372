@@ -35,6 +35,7 @@ module.exports = async function (req, res) {
         // Query
         const docRef = await firebase.db().collection('chats')
             .where("participants", "array-contains", reqData.uuid) // Only threads the user is apart of
+            .orderBy('last_activity', 'desc')
             .get();
         let i = 0;
         if (docRef.size > 0) {
