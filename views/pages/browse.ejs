@@ -133,7 +133,11 @@
             <button type="submit">Send</button>
         </a>
 
-        <button hidden class="o-button-secondary">Continue</button>
+        <%- include('../_components/buttons', { 
+            url: endpoints.browse.url, 
+            label: 'Continue',
+            classnames: 'o-button-primary o-button-primary--pink continue-button'
+        }); %>
 
-        <%- include('../_components/footer-navigation'); %>
-            <%- include('../_partials/footer'); %>
+    <%- include('../_components/footer-navigation'); %>
+<%- include('../_partials/footer'); %>

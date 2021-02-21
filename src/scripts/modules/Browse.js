@@ -18,7 +18,7 @@ module.exports = {
         const profile_list = docQ('#l-profile-list');
         const html = docQ('html');
         const viewUser = docQ('.c-view-user');
-        const continueBtn = docQ('.o-button-secondary');
+        const continueBtn = docQ('.continue-button');
         const myProfileButton = docQ('.my-profile-button');
         const backBtn = docQ('.c-header-navigation__button');
 
@@ -49,7 +49,6 @@ module.exports = {
             viewUser.innerHTML = '';
             backBtn.hidden = true;
             myProfileButton.hidden = false;
-            continueBtn.hidden = true;
             if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = false;
             toggleChatBar(false);
         }
@@ -95,7 +94,6 @@ module.exports = {
                     backBtn.hidden = true;
                     myProfileButton.hidden = false;
                 });
-
                 // If just came from profile complete
                 if (helper.getUrlParam('completed')) {
                     myProfileButton.click();
@@ -103,8 +101,9 @@ module.exports = {
                     docQ('.c-view-user--top-heading').innerText = 'Your Profile';
                     if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = true;
                     continueBtn.hidden = false;
-                    continueBtn.addEventListener('click', close_user_view);
                     completeProfile();
+                } else {
+                    continueBtn.hidden = true;
                 }
             } else {
                 console.log('Server Error');
