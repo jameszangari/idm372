@@ -18,7 +18,7 @@ module.exports = {
         const profile_list = docQ('#l-profile-list');
         const html = docQ('html');
         const viewUser = docQ('.c-view-user');
-        const continueBtn = docQ('.o-button-primary--pink');
+        const continueBtn = docQ('.o-button-secondary');
         const myProfileButton = docQ('.my-profile-button');
         const backBtn = docQ('.c-header-navigation__button');
 
