@@ -11,18 +11,18 @@ module.exports = async function (req, res) {
             .where('new_user', '==', 'false') // Only include complete profiles
             .get();
         snapshot.forEach((doc) => {
-            if (doc.id != data.uuid) { // Don't include the user performing the query
-                // Truncate sensitive data
-                const data = doc.data();
-                delete data.country;
-                delete data.email;
-                delete data.new_user;
-                data.pronouns == 'a' && delete data.pronouns;
-                users.push({
-                    uuid: doc.id,
-                    data: data
-                });
-            }
+            // if (doc.id != data.uuid) { // Don't include the user performing the query
+            // Truncate sensitive data
+            const data = doc.data();
+            delete data.country;
+            delete data.email;
+            delete data.new_user;
+            data.pronouns == 'a' && delete data.pronouns;
+            users.push({
+                uuid: doc.id,
+                data: data
+            });
+            // }
         });
         res.send(users);
     } else if (data.query == 'single-user') {

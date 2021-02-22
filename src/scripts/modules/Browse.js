@@ -46,7 +46,6 @@ module.exports = {
             html.classList.remove('u-no-scroll');
             viewUser.classList.remove('c-view-user--open');
             viewUser.hidden = true;
-            viewUser.innerHTML = '';
             backBtn.hidden = true;
             myProfileButton.hidden = false;
             if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = false;
@@ -110,14 +109,18 @@ module.exports = {
             }
         });
 
+        function hideCard(el) { // Hides the parent card of the specified field
+            viewUser.querySelector(el).closest('.c-view-user__main--card').hidden = true;
+        }
+
         function addGeneralData(el, data) {
-            el.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
             data.pronouns ? el.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.data_pronouns').hidden = true;
+            el.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
             el.querySelector('.data_location').innerText = 'Philadelphia';
             el.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
-            el.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id;
-            el.querySelector('.data_anthem_title').innerText = data.anthem_title;
-            el.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist;
+            data.anthem_id ? el.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id : hideCard('.data_anthem_id');
+            data.anthem_title ? el.querySelector('.data_anthem_title').innerText = data.anthem_title : hideCard('.data_anthem_title');
+            data.anthem_album && data.anthem_artist ? el.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist : hideCard('.data_anthem_subtitle');
         }
 
         // User Cards
@@ -141,34 +144,53 @@ module.exports = {
             });
         }
 
+        
         // Specific User View
         function displayUser(user) {
             // quickRefs
             const data = user.data;
+            const close = viewUser.querySelector('.o-spotify-select--close');
+            helper.rm_events(close, false);
+            close.addEventListener('click', close_user_view);
+
+            // Un-hide optional fields
+            viewUser.querySelectorAll('.c-view-user__main--card[hidden], .c-view-user__main--card--block[hidden]').forEach(el => {
+                el.hidden = false;
+            });
 
             // Display the user
             html.classList.add('u-no-scroll');
             viewUser.classList.add('c-view-user--open');
             viewUser.hidden = false;
-            const close = viewUser.querySelector('.o-spotify-select--close');
-            close.addEventListener('click', close_user_view);
 
             // General Data
             addGeneralData(viewUser, data);
 
             // User View Specific Data
             viewUser.querySelector('.data_first_name_1').innerText = data.first_name;
-            viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for);
-            viewUser.querySelector('.data_bio').innerText = data.bio;
             viewUser.querySelector('.data_top_artists_heading').innerText = data.first_name + "'s Top Artists";
             viewUser.querySelector('.data_top_tracks_heading').innerText = data.first_name + "'s Top Songs";
-            viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+            // viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+            
+            // Optional Fields
+            data.looking_for ? viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for) : hideCard('.data_looking_for');
+            data.bio ? viewUser.querySelector('.data_bio').innerText = data.bio : hideCard('.data_bio');
+
+            function hideBlock(el) { // Hides the parent card of the specified field
+                viewUser.querySelector(el).closest('.c-view-user__main--card--block').hidden = true;
+            }
 
             ['artist', 'track'].forEach(string => {
                 for (i = 0; i < 3; i++) {
-                    viewUser.querySelector(`.data_${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12);
-                    viewUser.querySelector(`.data_${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`];
-                    viewUser.querySelector(`.data_${string}_${i}_href`).src = data[`${string}_${i}_href`];
+                    data[`${string}_${i}_title`] ? viewUser.querySelector(`.data_${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12) : hideBlock(`.data_${string}_${i}_title`);
+                    data[`${string}_${i}_thumb`] ? viewUser.querySelector(`.data_${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`] : hideBlock(`.data_${string}_${i}_thumb`);
+                    data[`${string}_${i}_href`] ? viewUser.querySelector(`.data_${string}_${i}_href`).src = data[`${string}_${i}_href`] : hideBlock(`.data_${string}_${i}_href`);
+                }
+            });
+
+            docQA('.c-view-user__main--card--block-wrap').forEach(wrap => {
+                if (wrap.querySelectorAll('.c-view-user__main--card--block[hidden]').length == 3) {
+                    wrap.querySelectorAll('.c-view-user__main--card--block')[0].closest('.c-view-user__main--card').hidden = true;
                 }
             });
         }

@@ -46,7 +46,7 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
-		cursor: pointer;
+		// cursor: pointer;
 		& p {
 			z-index: 98;
 		}
@@ -235,7 +235,7 @@ iframe {
 			}
 			&--block-wrap {
 				@extend .u-flex-row;
-				justify-content: space-between;
+				justify-content: space-evenly;
 				margin-top: 16px;
 			}
 			&--block {
