@@ -37,6 +37,12 @@ module.exports = {
       }
     }
     return "";
+  },  
+	
+	encodeCookie: function (cname, cstring) {
+		let encodedString = encodeURIComponent(cstring);
+		let encodedCookie = cname + '=' + encodedString;
+		return cstring;
   },
 
   getAge: function (dob) { // dob param should be date-input.value (do not format it)

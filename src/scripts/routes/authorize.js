@@ -1,3 +1,4 @@
+//runs when user clicks button on initial page href = authorize. sends request to spotify. spotify sends this back to /callback which runs callback.js
 const helper = require('../helper')
 const querystring = require('querystring'); // Parse and stringify URL query strings
 const config = require('../../../secret/config'); // Secret Keys

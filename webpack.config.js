@@ -79,5 +79,5 @@ module.exports = {
             filename: "./../css/[name].css",
             chunkFilename: "./../css/[name]-chunk.css"
         }),
-    ]
+    ],
 };
