@@ -4,15 +4,17 @@ module.exports = function (req, res) {
     const data = req.query,
         criteria = data.query,
         token = data.access_token,
+		  refresh_token = data.refresh_token,
         searchcategory = data.searchcategory;
 
-    search(criteria, token, (error, response, body) => {
+    search(criteria, token, refresh_token, (error, response, body) => {
         if (error) { // General Error
             console.error(error);
             res.send(false);
             return;
         } else if (response.statusCode != 200) { // Error Codes
             const errCode = response.statusCode;
+			  	refreshtoken(token);
             errCode === 401 && res.sendStatus(errCode); // Token expired, re-log in from start
             return;
         } else { // Success
@@ -40,7 +42,7 @@ module.exports = function (req, res) {
                     tracks.push(i, {
                         'id': item.id,
                         'title': item.name,
-                        'thumb': item.images[0].url,
+                        //'thumb': item.images[0].url,
                         'album': false
                     });
                 });
@@ -63,7 +65,7 @@ module.exports = function (req, res) {
     });
 
     // Return the results from spotify api for search
-    function search(criteria, token, callback) {
+    function search(criteria, token, refresh_token, callback) {
         let query = criteria;
         let bearerstring = 'Bearer ' + token;
         let headers = {
@@ -77,4 +79,26 @@ module.exports = function (req, res) {
         };
         request(options, callback);
     }
+	
+	function refreshtoken(access_token) {
+		  var refresh_token = req.query.refresh_token;
+		  var authOptions = {
+			 url: 'https://accounts.spotify.com/api/token',
+			 headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
+			 form: {
+				grant_type: 'refresh_token',
+				refresh_token: refresh_token
+			 },
+			 json: true
+		  };
+
+		  request.post(authOptions, function(error, response, body) {
+			 if (!error && response.statusCode === 200) {
+				var access_token = body.access_token;
+				res.send({
+				  'access_token': access_token
+				});
+			 }
+		  });
+	};
 }
