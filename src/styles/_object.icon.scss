@@ -425,6 +425,11 @@ section .invalid:first-of-type {
 		align-self: flex-end;
 		height: 100%;
 		width: 7%;
+
+		& .fa-check {
+			color: $color-pink-1;
+			font-size: 1.25rem;
+		}
 	}
 }
 
