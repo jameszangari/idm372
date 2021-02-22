@@ -44,6 +44,16 @@
                 <p class="l-connected__item-text">Song Name</p>
             </span>
         </section>
+    <form class="o-form" id="firestore_form" type="strings" hidden>
+        <input id="result_id" type="text" name="artist_0_id">
+        <input id="result_title" type="text" name="artist_0_title">
+        <input id="result_thumb" type="text" name="artist_0_thumb">
+        <input id="result_album" type="text" name="artist_0_album">
+    </form>
+    <div class="o-spotify-select" hidden>
+        <button class="o-spotify-select--close">Done</button>
+        <div class="o-spotify-select--group" id="search_results"></div>
+    </div>
 </div>
 
 <form class="o-form" id="firestore_form" type="strings" hidden></form>
