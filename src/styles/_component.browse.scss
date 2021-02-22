@@ -235,16 +235,21 @@ iframe {
 			}
 			&--block-wrap {
 				@extend .u-flex-row;
-				justify-content: space-evenly;
+				justify-content: space-between;
+				align-items: flex-start;
 				margin-top: 16px;
 			}
 			&--block {
+				width: calc(100%/3);
+				margin-right: 16px;
+				&:last-of-type {
+					margin-right: 0;
+				}
 				a {
 					font-size: 0;
 				}
 				&--img {
-					max-width: 100%;
-					width: 90px;
+					width: 100%;
 					height: 60px;
 					overflow: hidden;
 					object-fit: cover;
