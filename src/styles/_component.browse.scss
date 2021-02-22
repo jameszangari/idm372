@@ -1,44 +1,23 @@
 /*------------------------------------*\
     #BROWSE PAGE
 \*------------------------------------*/
-#l-profile-list,
 .c-user-card {
 	display: flex;
 	flex-direction: column;
-}
-
-#l-profile-list {
-	position: relative;
-	padding-top: 115px;
-	padding-left: 16px;
-	padding-right: 16px;
-	padding-bottom: 16px;
-}
-
-.c-user-card {
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 16px;
 	&:first-of-type {
 		display: none;
 	}
 	border-radius: 26px;
 	overflow: hidden;
-	margin-bottom: 16px;
-	&--overlay {
-		background: linear-gradient(
-			180deg,
-			rgba(0, 0, 0, 0) 0%,
-			rgba(0, 0, 0, 0.25) 48.96%
-		);
-		position: absolute;
-		z-index: 98;
-		height: 300px;
-		width: 345px;
-	}
-	&--top,
-	&--btm {
+	&__figure,
+	&__body {
 		padding: 26px;
 	}
-	&--top {
-		color: white;
+	&__figure {
+		color: $color-gray-5;
 		height: 300px;
 		display: flex;
 		flex-direction: column;
@@ -46,18 +25,21 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
-		// cursor: pointer;
-		& p {
+		cursor: pointer;
+		&-name {
+			margin-bottom: 16px;
+		}
+		&-name, &-pronouns, &-location {
 			z-index: 98;
 		}
 	}
-	&--btm {
+	&__body {
 		padding: 26px;
 		@extend .u-flex-column;
 		color: black;
 		background: $color-gray-5;
 		height: 175px;
-		&--title {
+		&-title {
 			align-self: start;
 			margin-bottom: 8px;
 			font-weight: 700;
@@ -72,16 +54,13 @@
 			}
 		}
 	}
-	&__stats-name {
-		padding-bottom: 16px;
-	}
 }
 
 iframe {
-	height: 5rem;
-	width: 5rem !important;
+	height: 80px;
+	width: 80px !important;
 	max-width: 30%;
-	border-radius: 0.5rem;
+	border-radius: 8px;
 	margin-right: 4px;
 	transform: scale(1.125);
 }
@@ -94,6 +73,7 @@ iframe {
 		width: 70%;
 		height: 90px;
 		overflow-x: hidden;
+		overflow-y: hidden;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -120,7 +100,7 @@ iframe {
 		}
 		&--btm {
 			width: 100%;
-			height: 1.5rem !important;
+			height: 24px !important;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-evenly;
@@ -128,14 +108,14 @@ iframe {
 	}
 }
 
-.c-user-card:nth-of-type(even) .c-user-card--top {
+.c-user-card:nth-of-type(even) .c-user-card__figure {
 	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
 }
-.c-user-card:nth-of-type(odd) .c-user-card--top {
+.c-user-card:nth-of-type(odd) .c-user-card__figure {
 	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
 }
 
-.c-view-user {
+.c-profile {
 	display: none;
 	margin-top: 55px;
 	position: fixed;
@@ -143,17 +123,6 @@ iframe {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	&--overlay {
-		background: linear-gradient(
-			180deg,
-			rgba(0, 0, 0, 0) 0%,
-			rgba(0, 0, 0, 0.25) 48.96%
-		);
-		position: absolute;
-		z-index: 98;
-		height: 375px;
-		width: 100%;
-	}
 	&--open {
 		display: block;
 		top: 0;
@@ -161,7 +130,7 @@ iframe {
 		height: 100%;
 		overflow-y: scroll !important;
 	}
-	&--top {
+	&__header {
 		position: fixed;
 		z-index: 99;
 		top: 35px;
@@ -169,15 +138,15 @@ iframe {
 		width: 100%;
 		background: $color-gray-5;
 		color: black;
-		padding: 1rem;
-		border-radius: 1.5rem 1.5rem 0 0;
+		padding: 16px;
+		border-radius: 24px 24px 0 0;
 		@extend .u-box-shadow;
 		&-heading {
 			font-weight: 600;
 			text-transform: uppercase;
 		}
 	}
-	&--header {
+	&__figure {
 		padding: 26px;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -186,18 +155,21 @@ iframe {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-		& p {
+		&-name {
+			margin-bottom: 16px;
+		}
+		&-name, &-pronouns, &-location {
 			z-index: 98;
 		}
 	}
-	&__main {
+	&__body {
 		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
-		padding: 1rem 1rem 6rem 1rem;
+		padding: 16px 16px 96px 16px;
 		padding-left: 16px;
 		padding-right: 16px;
 		padding-top: 16px;
 		padding-bottom: 136px;
-		&--card {
+		&-card {
 			@extend .u-box-shadow--large;
 			@extend .u-flex-column;
 			justify-content: space-around;
@@ -217,7 +189,7 @@ iframe {
 			border-radius: 26px;
 			color: black;
 			&:last-child {
-				margin-bottom: 90px;
+				margin-bottom: 32px;
 			}
 			&-heading {
 				font-weight: 700;
@@ -266,7 +238,7 @@ iframe {
 			}
 		}
 	}
-	.o-spotify-select--close {
+	.o-modal--close {
 		position: fixed;
 		top: 50px;
 		right: 15px;
@@ -274,24 +246,24 @@ iframe {
 	// Your own profile
 	&--self {
 		z-index: 995;
-		.c-view-user {
+		.c-profile {
 			&--top {
 				display: none;
 			}
-			&__main {
+			&__body {
 				background: $color-blues-1;
 			}
 		}
 	}
 }
 
-.c-view-user:nth-of-type(even) .c-view-user--header {
+.c-profile:nth-of-type(even) .c-profile__figure {
 	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
 }
-.c-view-user:nth-of-type(odd) .c-view-user--header {
+.c-profile:nth-of-type(odd) .c-profile__figure {
 	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
 }
 
 .my-profile-button {
-	color: white;
+	color: $color-gray-5;
 }

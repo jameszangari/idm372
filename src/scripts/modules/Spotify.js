@@ -15,7 +15,7 @@ module.exports = {
   search: function () { // Searches the Spotify database
     const searchForm = docQ('#searchSpotify'),
       search_input = docQ('#search_input'),
-      search_result_wrap = docQ('.o-spotify-select'),
+      search_result_wrap = docQ('.o-modal'),
       choice_wrap = docQ('.o-spotify-choice'),
       cancel_button = docQ('.o-spotify-choice--cancel'),
       choice_area = docQ('.o-spotify-choice--area');
@@ -28,7 +28,7 @@ module.exports = {
       search_results.innerHTML = ''; //clear out previous results
 
       // Modal
-      docQ('.o-spotify-select--close').addEventListener('click', () => {
+      docQ('.o-modal--close').addEventListener('click', () => {
         search_result_wrap.hidden = true;
       });
 
@@ -54,16 +54,16 @@ module.exports = {
           results.forEach(result => {
             if (result.id) { // Skip the empty results (Idk why Spotify returns those...)
               const track_element = document.createElement('div'); // Create a div element (Better to do it this way for adding event listener later)
-              track_element.classList.add('o-spotify-select--track'); // Add the class 'track'
+              track_element.classList.add('o-modal--track'); // Add the class 'track'
 
               // Then add the content
               track_element.innerHTML += `
-                <img class="o-spotify-select--image" src="${result.thumb}">
-                <div class="o-spotify-select--track-info">
+                <img class="o-modal--image" src="${result.thumb}">
+                <div class="o-modal--track-info">
                   <h3 class="track_title">${helper.truncateString(result.title, 50)}</h3>
                   <h5 class="track_artist">${result.artist || ''}</h5>
                 </div>
-                <div class="o-spotify-select--selected" hidden>
+                <div class="o-modal--selected" hidden>
                   <i class="fas fa-check"></i>
                 </div>
               `;
@@ -100,8 +100,8 @@ module.exports = {
               cancel_button.addEventListener('click', rmChoice);
 
               track_element.addEventListener('click', () => { // When user picks a track
-                docQA('.o-spotify-select--track').forEach(track => {
-                  const check = track.querySelector('.o-spotify-select--selected');
+                docQA('.o-modal--track').forEach(track => {
+                  const check = track.querySelector('.o-modal--selected');
                   if (track == track_element) { // The one picked
                     if (!check.hidden) { // If already selected
                       check.hidden = true; // Uncheck
