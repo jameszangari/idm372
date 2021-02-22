@@ -114,6 +114,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     //  Send Messages
     const messageForm = docQ('#messageForm');
     const messageInput = messageForm.querySelector('textarea[name="message"]');
+    const sendBtn = messageForm.querySelector('#messageForm button[type="submit"]');
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
@@ -151,6 +152,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
         sHeight > maxHeight ? newHeight = maxHeight : newHeight = sHeight;
         messageInput.style.height = newHeight + 'px';
+        sendBtn.style.height = newHeight + 'px';
     }
     messageInput.addEventListener('input', resizeInput);
 }
