@@ -10,7 +10,7 @@ const spotifyObject = JSON.parse(spotifyObjectString);
 
 if (typeof spotifyObject == 'object') {
 	 console.log('yeet');
-	 setInterval(getRefreshToken, 3000);
+	 setInterval(getRefreshToken, 3300000); //every 55 minutes
 	
 	//get refresh token
 	function getRefreshToken() {
