@@ -28,7 +28,11 @@
   },
   "chat":
   {
-    "url": "/chat",
+    "url": "/chat"
+  },   
+	"refreshToken":
+  {
+    "url": "/refreshToken",
     "title": "",
     "page": ""
   },  

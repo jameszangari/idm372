@@ -9,7 +9,7 @@ function unixToFromNow(unix) {
 
 let targetInfo;
 function getTargetInfo(threadID) {
-    $.ajax({ //send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -33,7 +33,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     const chatsList = docQ('.l-chat-browse');
 
     // List users
-    $.ajax({ //send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -100,7 +100,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     };
 
     // Get chat history
-    $.ajax({ // Send info to server - GET request
+    $.ajax({
         url: endpoints.chat.url,
         data: {
             uuid: spotifyObject.user_id,
@@ -114,10 +114,11 @@ if (docQ('.l-chat-browse')) { // Browse Page
     //  Send Messages
     const messageForm = docQ('#messageForm');
     const messageInput = messageForm.querySelector('textarea[name="message"]');
+    const sendBtn = messageForm.querySelector('#messageForm button[type="submit"]');
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
-            $.ajax({ //send info to server - GET request
+            $.ajax({
                 url: endpoints.chat.url,
                 data: {
                     uuid: spotifyObject.user_id,
@@ -126,18 +127,15 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     content: messageInput.value
                 }
             }).done(function (response) {
-                if (response.length > 0) {
-                    chatContentDiv.innerHTML += `
-                        <div class="l-chat-view--content--message message-from-me">
-                            <p>${messageInput.value}</p>
-                            <time>${moment.unix(Math.floor(Date.now() / 1000)).format('M/D/YY, h:mm a')}</time>
-                        </div>
-                    `;
-                    messageInput.value = ''; // Clear input
-                    scroll_to_bottom('tell');
-                } else {
-                    // Beginning of chat
-                }
+                console.log('why');
+                chatContentDiv.innerHTML += `
+                    <div class="l-chat-view--content--message message-from-me">
+                        <p>${messageInput.value}</p>
+                        <time>${moment.unix(Math.floor(Date.now() / 1000)).format('M/D/YY, h:mm a')}</time>
+                    </div>
+                `;
+                messageInput.value = ''; // Clear input
+                scroll_to_bottom('tell');
             });
         }
     });
@@ -154,6 +152,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
         sHeight > maxHeight ? newHeight = maxHeight : newHeight = sHeight;
         messageInput.style.height = newHeight + 'px';
+        sendBtn.style.height = newHeight + 'px';
     }
     messageInput.addEventListener('input', resizeInput);
 }

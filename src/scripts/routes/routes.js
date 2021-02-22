@@ -8,10 +8,12 @@ module.exports = function (app) {
   app.use(express.json());
 
   const routes = [
+	 "authorize",
+	 "callback",
+	 "connected",
     "home",
     "login",
-    "authorize",
-    "callback",
+	 "refreshToken",
     "search",
     "update",
     "users",

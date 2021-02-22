@@ -11,7 +11,7 @@ const spotifyObject = JSON.parse(spotifyObjectString);
 
 if (lconnected) { //if on right page
 	function sendrequest(type) {
-		$.ajax({ //send info to server - GET request
+		$.ajax({
 			url: endpoints.connected.url,
 			data: {
 				access_token: spotifyObject.access_token,
@@ -21,7 +21,7 @@ if (lconnected) { //if on right page
 		}).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem
 			// Add tracks to page in search results
 			const form = docQ('#firestore_form');
-			
+
 			if (results.artists.length > 0) {
 				const artists = results.artists;
 				let i = 0;
@@ -35,7 +35,7 @@ if (lconnected) { //if on right page
 					const section = docQ('section.group--artists');
 					const imgEl = section.querySelectorAll('.l-connected__item-image')[i];
 					imgEl.src = artist.thumb;
-					const nameEl =  section.querySelectorAll('.l-connected__item-text')[i];
+					const nameEl = section.querySelectorAll('.l-connected__item-text')[i];
 					nameEl.innerText = helper.truncateString(artist.title, 30);
 					i++;
 				});
@@ -52,7 +52,7 @@ if (lconnected) { //if on right page
 					const section = docQ('section.group--tracks');
 					const imgEl = section.querySelectorAll('.l-connected__item-image')[i];
 					imgEl.src = track.thumb;
-					const nameEl =  section.querySelectorAll('.l-connected__item-text')[i];
+					const nameEl = section.querySelectorAll('.l-connected__item-text')[i];
 					nameEl.innerText = helper.truncateString(track.title, 30);
 					i++;
 				});
