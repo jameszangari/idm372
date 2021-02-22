@@ -3,7 +3,7 @@ var $ = require('jquery');
 module.exports = {
     init: function() {
 
-        if (document.querySelector('.o-spotify-select--close') != null) {
+        if (document.querySelector('.o-modal--close') != null) {
             this.SpotifyToggle();
         }
 
@@ -14,13 +14,13 @@ module.exports = {
     },
     SpotifyToggle: function() {
         // SPOTIFY SEARCH MODAL
-        $('.o-spotify-select--close').on('click', function(e) {
+        $('.o-modal--close').on('click', function(e) {
             e.preventDefault();
-            $('.o-spotify-select--group').toggleClass("o-spotify-select--group-open");
+            $('.o-modal--group').toggleClass("o-modal--group-open");
         });
-        $('.o-spotify-select--close').on('click', function(e) {
+        $('.o-modal--close').on('click', function(e) {
             e.preventDefault();
-            $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open");
+            $('.o-modal--close').toggleClass("o-modal--close-open");
         });
     },
     ToggleButtonState: function() {
