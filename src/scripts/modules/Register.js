@@ -1,6 +1,5 @@
 const endpoints = require('../config/endpoints.json');
 const Lists = require('./Lists');
-const querystring = require('querystring');
 const helper = require('../helper');
 //const express = require('express');
 
@@ -9,28 +8,27 @@ const spotifyObjectString = helper.getCookie('spotify');
 const spotifyObject = JSON.parse(spotifyObjectString);
 
 if (typeof spotifyObject == 'object') {
-	 console.log('yeet');
-	 setInterval(getRefreshToken, 3300000); //every 55 minutes
-	
-	//get refresh token
-	function getRefreshToken() {
-		$.ajax({
-			 url: endpoints.refreshToken.url,
-			 data: {
-				refresh_token: spotifyObject.refresh_token
-			 }
-		}).done(function (res) {
-			//update cookie with new access token
-			let spotifyObjectString = helper.getCookie('spotify');
-			let spotifyObject = JSON.parse(spotifyObjectString);
-			spotifyObject.access_token = res.access_token;
-			spotifyObjectString = JSON.stringify(spotifyObject);
-			newSpotifyCookie = helper.encodeCookie('spotify', spotifyObjectString);
-			document.cookie = newSpotifyCookie;
-		}
-	)}
-}
+    setInterval(getRefreshToken, 3300000); //every 55 minutes
 
+    //get refresh token
+    function getRefreshToken() {
+        $.ajax({
+            url: endpoints.refreshToken.url,
+            data: {
+                refresh_token: spotifyObject.refresh_token
+            }
+        }).done(function (res) {
+            //update cookie with new access token
+            let spotifyObjectString = helper.getCookie('spotify');
+            let spotifyObject = JSON.parse(spotifyObjectString);
+            spotifyObject.access_token = res.access_token;
+            spotifyObjectString = JSON.stringify(spotifyObject);
+            newSpotifyCookie = helper.encodeCookie('spotify', spotifyObjectString);
+            document.cookie = newSpotifyCookie;
+        }
+        )
+    }
+}
 
 module.exports = {
     init: function () {

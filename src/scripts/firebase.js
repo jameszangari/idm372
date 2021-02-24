@@ -1,5 +1,6 @@
 const firebaseAdmin = require('firebase-admin'); // FireBase Functions
 const config = require('../../secret/config'); // Secret Keys
+const functions = require('firebase-functions'); // Extra Functions
 
 module.exports = {
 	init: function () {
@@ -28,5 +29,6 @@ module.exports = {
 	},
 	tstamp: function () {
 		return firebaseAdmin.firestore.FieldValue.serverTimestamp();
-	}
+	},
+	functions: functions
 }
