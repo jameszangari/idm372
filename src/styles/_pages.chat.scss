@@ -58,6 +58,7 @@
 	overflow-y: hidden;
 	&--content {
 		width: 100%;
+		height: calc(100% - 76px);
 		padding: 15px 20px 0;
 		overflow-y: scroll;
 		&--message {

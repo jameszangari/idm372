@@ -25,10 +25,15 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
 
-app.listen(port);
+const server = app.listen(port, () => {
+    require('dns').lookup(require('os').hostname(), function (err, ipv4) { // Log the URL to the host
+        err ? console.log(err) : console.log(
+            'Hosting Local Node Server @ http://localhost' + ':' + port + '\n' + 'Hosting Remote Node Server @ http://' + ipv4 + ':' + port);
+    });
+    require("./src/scripts/routes/routes")(app);
 
-require('dns').lookup(require('os').hostname(), function (err, ipv4) { // Log the URL to the host
-    err ? console.log(err) : console.log(
-        'Hosting Local Node Server @ http://localhost' + ':' + port + '\n' + 'Hosting Remote Node Server @ http://' + ipv4 + ':' + port);
+    // Start WebSocket
+    const io = require('socket.io')(server);
+    const webSocket = require('./src/scripts/webSocket');
+    webSocket.init(io);
 });
-require("./src/scripts/routes/routes")(app);

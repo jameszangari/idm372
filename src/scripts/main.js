@@ -20,12 +20,13 @@ const
     Browse = require('./modules/Browse'),
     Connected = require('./modules/Connected'),
     Images = require('./modules/Images'),
+    webSocket = require('./modules/WebSocket'),
     Chat = require('./modules/Chat');
 
 // Global Logic here
 $(document).ready(() => {
     AddToHome.init();
-    if(document.body.className === 'l-grid--login') {
+    if (document.body.className === 'l-grid--login') {
         addToHomescreen();
     }
     Spotify.init();

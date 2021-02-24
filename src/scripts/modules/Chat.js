@@ -1,5 +1,6 @@
 // Requires
 const helper = require('../helper');
+const WS = require('./WebSocket');
 const endpoints = require('../config/endpoints.json');
 const moment = require('moment');
 
@@ -127,7 +128,6 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     content: messageInput.value
                 }
             }).done(function (response) {
-                console.log('why');
                 chatContentDiv.innerHTML += `
                     <div class="l-chat-view--content--message message-from-me">
                         <p>${messageInput.value}</p>
@@ -155,4 +155,19 @@ if (docQ('.l-chat-browse')) { // Browse Page
         sendBtn.style.height = newHeight + 'px';
     }
     messageInput.addEventListener('input', resizeInput);
+
+    // ===============
+    // Subscription Handler
+    // ===============
+
+    var socket = WS.socket;
+
+    socket.emit('sub-to-thread', {
+        uuid: spotifyObject.user_id,
+        thread: thread
+    });
+    socket.on('new-message', (message) => {
+        console.log('message received', message);
+        appendMessages([message]);
+    });
 }
