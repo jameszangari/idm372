@@ -110,7 +110,7 @@ module.exports = {
         });
 
         function hideCard(el) { // Hides the parent card of the specified field
-            viewUser.querySelector(el).closest('.c-view-user__main--card').hidden = true;
+            viewUser.querySelector(el).closest('.c-profile__body-card--block').hidden = true;
         }
 
         function addGeneralData(el, data) {
@@ -154,7 +154,7 @@ module.exports = {
             close.addEventListener('click', close_user_view);
 
             // Un-hide optional fields
-            viewUser.querySelectorAll('.c-view-user__main--card[hidden], .c-view-user__main--card--block[hidden]').forEach(el => {
+            viewUser.querySelectorAll('.c-profile__body-card--block[hidden], .c-profile__body-card[hidden]').forEach(el => {
                 el.hidden = false;
             });
 
@@ -177,8 +177,7 @@ module.exports = {
             data.bio ? viewUser.querySelector('.js-bio').innerText = data.bio : hideCard('.js-bio');
 
             function hideBlock(el) { // Hides the parent card of the specified field
-                console.log(el, viewUser.querySelector(el));
-                viewUser.querySelector(el).closest('.c-view-user__main--card--block').hidden = true;
+                viewUser.querySelector(el).closest('.c-profile__body-card--block').hidden = true;
             }
 
             ['artist', 'track'].forEach(string => {
@@ -189,9 +188,9 @@ module.exports = {
                 }
             });
 
-            docQA('.c-view-user__main--card--block-wrap').forEach(wrap => {
-                if (wrap.querySelectorAll('.c-view-user__main--card--block[hidden]').length == 3) {
-                    wrap.querySelectorAll('.c-view-user__main--card--block')[0].closest('.c-view-user__main--card').hidden = true;
+            docQA('.c-profile__body-card--block-wrap').forEach(wrap => {
+                if (wrap.querySelectorAll('.c-profile__body-card--block[hidden]').length == 3) {
+                    wrap.closest('.c-profile__body-card').hidden = true;
                 }
             });
         }

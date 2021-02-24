@@ -1,7 +1,6 @@
 const endpoints = require('../config/endpoints.json');
 const Lists = require('./Lists');
 const helper = require('../helper');
-//const express = require('express');
 
 // Cookies
 const shuffleCookie = helper.shuffleCookie();
