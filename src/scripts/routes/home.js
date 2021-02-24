@@ -1,8 +1,8 @@
 const endpoints = require('../config/endpoints.json');
 module.exports = function (req, res) {
-  const spotifyObjectString = req.cookies ? req.cookies['spotify'] : null;
+  const shuffleCookie = req.cookies ? req.cookies['shuffle'] : null;
   // TODO: Redirect user if they're logged in
-  // if (spotifyObjectString) {
+  // if (shuffleCookie) {
   //   var pageTitle = endpoints.home.title;
   //   res.render(endpoints.home.page, {
   //       pageTitle: pageTitle,

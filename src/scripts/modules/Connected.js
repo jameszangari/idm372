@@ -6,16 +6,15 @@ const endpoints = require('../config/endpoints.json');
 const helper = require('../helper');
 
 // Cookies
-const spotifyObjectString = helper.getCookie('spotify');
-const spotifyObject = JSON.parse(spotifyObjectString);
+const shuffleCookie = helper.shuffleCookie();
 
 if (lconnected) { //if on right page
 	function sendrequest(type) {
 		$.ajax({
 			url: endpoints.connected.url,
 			data: {
-				access_token: spotifyObject.access_token,
-				refresh_token: spotifyObject.refresh_token,
+				access_token: shuffleCookie.access_token,
+				refresh_token: shuffleCookie.refresh_token,
 				type: type
 			}
 		}).done(function (results) { //receive info, populate html, add event listeners to tracks to add as anthem

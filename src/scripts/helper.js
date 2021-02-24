@@ -1,3 +1,21 @@
+const endpoints = require('./config/endpoints.json');
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 module.exports = {
   init: function () {
 
@@ -23,26 +41,34 @@ module.exports = {
     return text;
   },
 
-  getCookie: function (cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+  getCookie: getCookie,
+
+  shuffleCookie: function () {
+    // Get the Cookie
+    const
+      cookieString = getCookie('shuffle') || null,
+      cookieObj = JSON.parse(cookieString) || null,
+
+      noCookieNeededPages = [
+        endpoints.login.url,
+        endpoints.tos.url,
+        endpoints.privacy.url,
+        endpoints.home.url,
+      ];
+
+    if (!cookieString && !noCookieNeededPages.includes(window.location.pathname)) {
+      // Redirect to login if there's no spotify cookie AND you are on a page that needs it
+      window.location.href = endpoints.login.url + '?noCookieFound=true';
+    } else {
+      // Return the Cookie
+      return cookieObj;
     }
-    return "";
-  },  
-	
-	encodeCookie: function (cname, cstring) {
-		let encodedString = encodeURIComponent(cstring);
-		let encodedCookie = cname + '=' + encodedString;
-		return cstring;
+  },
+
+  encodeCookie: function (cname, cstring) {
+    let encodedString = encodeURIComponent(cstring);
+    let encodedCookie = cname + '=' + encodedString;
+    return cstring;
   },
 
   getAge: function (dob) { // dob param should be date-input.value (do not format it)

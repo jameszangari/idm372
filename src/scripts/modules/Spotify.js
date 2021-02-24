@@ -3,8 +3,7 @@ const helper = require('../helper');
 const Validate = require('./Validate');
 
 // Cookies
-const spotifyObjectString = helper.getCookie('spotify');
-const spotifyObject = JSON.parse(spotifyObjectString);
+const shuffleCookie = helper.shuffleCookie();
 
 const spotifySearchForm = docQ('#searchSpotify');
 module.exports = {
@@ -42,8 +41,8 @@ module.exports = {
         $.ajax({ //
           url: endpoints.search.url,
           data: {
-            access_token: spotifyObject.access_token,
-            refresh_token: spotifyObject.refresh_token,
+            access_token: shuffleCookie.access_token,
+            refresh_token: shuffleCookie.refresh_token,
             query: query,
             searchcategory: searchcategory
           }
