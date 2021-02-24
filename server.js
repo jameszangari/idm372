@@ -28,7 +28,8 @@ app.set('view engine', 'ejs');
 const server = app.listen(port, () => {
     require('dns').lookup(require('os').hostname(), function (err, ipv4) { // Log the URL to the host
         err ? console.log(err) : console.log(
-            'Hosting Local Node Server @ http://localhost' + ':' + port + '\n' + 'Hosting Remote Node Server @ http://' + ipv4 + ':' + port);
+            'Hosting Locally  @ http://localhost' + ':' + port + '\nHosting Remotely @ http://' + ipv4 + ':' + port
+        );
     });
     require("./src/scripts/routes/routes")(app);
 
