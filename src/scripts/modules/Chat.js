@@ -13,7 +13,7 @@ function getTargetInfo(threadID) {
     $.ajax({
         url: endpoints.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.user_id,
             query: 'get-target-info',
             thread: threadID
         }
@@ -26,8 +26,7 @@ function getTargetInfo(threadID) {
 }
 
 // Cookies
-const spotifyObjectString = helper.getCookie('spotify');
-const spotifyObject = JSON.parse(spotifyObjectString);
+const shuffleCookie = helper.shuffleCookie();
 
 if (docQ('.l-chat-browse')) { // Browse Page
     // quickRefs
@@ -37,7 +36,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     $.ajax({
         url: endpoints.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.user_id,
             query: 'list-chats'
         }
     }).done(function (results) {
@@ -88,7 +87,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     function appendMessages(messages) {
         messages.forEach(message => {
             let fromClass;
-            message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
+            message.from == shuffleCookie.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
 
             chatContentDiv.innerHTML += `
                 <div class="l-chat-view--content--message message-${fromClass}">
@@ -104,7 +103,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     $.ajax({
         url: endpoints.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.user_id,
             query: 'get-history',
             thread: thread
         }
@@ -122,7 +121,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
             $.ajax({
                 url: endpoints.chat.url,
                 data: {
-                    uuid: spotifyObject.user_id,
+                    uuid: shuffleCookie.user_id,
                     query: 'send-message',
                     thread: thread,
                     content: messageInput.value
@@ -163,7 +162,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     var socket = WS.socket;
 
     socket.emit('sub-to-thread', {
-        uuid: spotifyObject.user_id,
+        uuid: shuffleCookie.user_id,
         thread: thread
     });
     socket.on('new-message', (message) => {

@@ -11,22 +11,23 @@ module.exports = {
         const Lists = require('./Lists');
 
         // Cookies
-        const spotifyObjectString = helper.getCookie('spotify');
-        const spotifyObject = JSON.parse(spotifyObjectString);
+        const shuffleCookie = helper.shuffleCookie();
 
         // Elements
         const profile_list = docQ('.js-browse');
         const html = docQ('html');
         const viewUser = docQ('.c-profile');
         const continueBtn = docQ('.continue-button');
+        continueBtn.hidden = true; // Default
         const myProfileButton = docQ('.my-profile-button');
         const backBtn = docQ('.c-header-navigation__button');
+
 
         // Functions
         $.ajax({
             url: endpoints.users.url,
             data: {
-                uuid: spotifyObject.user_id,
+                uuid: shuffleCookie.user_id,
                 query: 'all-users'
             }
         }).done((response) => {
@@ -38,7 +39,7 @@ module.exports = {
             const chatBar = docQ('.o-button-secondary');
             chatBar.hidden = !mode;
             if (target) {
-                chatBar.href = endpoints.chatView.url + '?thread=' + helper.getThread(spotifyObject.user_id, target.uuid);
+                chatBar.href = endpoints.chatView.url + '?thread=' + helper.getThread(shuffleCookie.user_id, target.uuid);
             }
         }
 
@@ -57,7 +58,7 @@ module.exports = {
             $.ajax({
                 url: endpoints.update.url,
                 data: {
-                    uuid: spotifyObject.user_id,
+                    uuid: shuffleCookie.user_id,
                     values: {
                         new_user: false
                     }
@@ -74,7 +75,7 @@ module.exports = {
         $.ajax({
             url: endpoints.users.url,
             data: {
-                target: spotifyObject.user_id,
+                target: shuffleCookie.user_id,
                 query: 'single-user'
             }
         }).done((response) => {
@@ -97,7 +98,6 @@ module.exports = {
                 if (helper.getUrlParam('completed')) {
                     myProfileButton.click();
                     docQ('.c-profile').classList.remove('c-profile--self');
-                    docQ('.c-profile--top-heading').innerText = 'Your Profile';
                     if (docQ('.o-modal--close')) docQ('.o-modal--close').hidden = true;
                     continueBtn.hidden = false;
                     completeProfile();
@@ -144,7 +144,7 @@ module.exports = {
             });
         }
 
-        
+
         // Specific User View
         function displayUser(user) {
             // quickRefs
@@ -171,12 +171,13 @@ module.exports = {
             viewUser.querySelector('.js-top_artists_heading').innerText = data.first_name + "'s Top Artists";
             viewUser.querySelector('.js-top_tracks_heading').innerText = data.first_name + "'s Top Songs";
             // viewUser.querySelector('.js-top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
-            
+
             // Optional Fields
             data.looking_for ? viewUser.querySelector('.js-looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for) : hideCard('.js-looking_for');
             data.bio ? viewUser.querySelector('.js-bio').innerText = data.bio : hideCard('.js-bio');
 
             function hideBlock(el) { // Hides the parent card of the specified field
+                console.log(el, viewUser.querySelector(el));
                 viewUser.querySelector(el).closest('.c-view-user__main--card--block').hidden = true;
             }
 

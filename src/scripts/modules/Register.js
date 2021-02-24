@@ -4,10 +4,9 @@ const helper = require('../helper');
 //const express = require('express');
 
 // Cookies
-const spotifyObjectString = helper.getCookie('spotify');
-const spotifyObject = JSON.parse(spotifyObjectString);
+const shuffleCookie = helper.shuffleCookie();
 
-if (typeof spotifyObject == 'object') {
+if (typeof shuffleCookie == 'object') {
     setInterval(getRefreshToken, 3300000); //every 55 minutes
 
     //get refresh token
@@ -15,15 +14,15 @@ if (typeof spotifyObject == 'object') {
         $.ajax({
             url: endpoints.refreshToken.url,
             data: {
-                refresh_token: spotifyObject.refresh_token
+                refresh_token: shuffleCookie.refresh_token
             }
         }).done(function (res) {
             //update cookie with new access token
-            let spotifyObjectString = helper.getCookie('spotify');
-            let spotifyObject = JSON.parse(spotifyObjectString);
-            spotifyObject.access_token = res.access_token;
-            spotifyObjectString = JSON.stringify(spotifyObject);
-            newSpotifyCookie = helper.encodeCookie('spotify', spotifyObjectString);
+            let shuffleCookieString = helper.getCookie('shuffle');
+            let shuffleCookie = JSON.parse(shuffleCookieString);
+            shuffleCookie.access_token = res.access_token;
+            shuffleCookieString = JSON.stringify(shuffleCookie);
+            newSpotifyCookie = helper.encodeCookie('shuffle', shuffleCookieString);
             document.cookie = newSpotifyCookie;
         }
         )
@@ -83,7 +82,7 @@ module.exports = {
                     $.ajax({
                         url: endpoints.update.url,
                         data: {
-                            uuid: spotifyObject.user_id,
+                            uuid: shuffleCookie.user_id,
                             values: obj
                         }
                     }).done((response) => {
