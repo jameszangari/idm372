@@ -235,6 +235,7 @@ section .invalid:first-of-type {
 		&__label {
 			font-family: $font-gellix;
 			font-weight: 500;
+			text-transform: uppercase;
 			font-size: 20px;
 			line-height: 1;
 			padding: 10px 20px;
