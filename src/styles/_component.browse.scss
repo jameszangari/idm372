@@ -7,9 +7,6 @@
 	margin-left: 16px;
 	margin-right: 16px;
 	margin-top: 16px;
-	&:first-of-type {
-		display: none;
-	}
 	border-radius: 26px;
 	overflow: hidden;
 	&__figure,
@@ -209,7 +206,7 @@ iframe {
 				}
 			}
 			& .js-looking_for {
-				margin-top: 10px
+				margin-top: 10px;
 			}
 			&--block-wrap {
 				@extend .u-flex-row;

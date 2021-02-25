@@ -8,12 +8,12 @@ module.exports = function (app) {
   app.use(express.json());
 
   const routes = [
-	 "authorize",
-	 "callback",
-	 "connected",
+    "authorize",
+    "callback",
+    "connected",
     "home",
     "login",
-	 "refreshToken",
+    "refreshToken",
     "search",
     "update",
     "users",
@@ -31,7 +31,6 @@ module.exports = function (app) {
     "registerConnected",
     "registerProfile",
     "registerAnthem",
-    "registerArtist",
     "registerPlaylist",
     "registerImages",
     "registerBio",
