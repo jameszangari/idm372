@@ -22,9 +22,9 @@ function toggleSubmitBtn(mode, forceText) {
     if (forceText) submitBtn.innerText = forceText;
 }
 
-const form = docQ(submitBtn.dataset.form);
 
 function checkFormForSkip() {
+    const form = docQ(submitBtn.dataset.form);
     if (form.querySelectorAll('[required]').length == 0 && !!submitBtn) {
         // If there's a form to submit but no required inputs...
         if (form.querySelectorAll('input[value], textarea[value], select[value]').length > 0) {
@@ -40,6 +40,7 @@ function checkFormForSkip() {
 
 if (submitBtn) { // If there's a form
     // quickRefs
+    const form = docQ(submitBtn.dataset.form);
     const type = form.getAttribute('type');
 
     if (type === 'checkMulti') {
