@@ -1,5 +1,5 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
-    <%- include('../../_components/header-navigation', { title: endpoints.registerImages.title }); %>
+    <%- include('../../_components/header-navigation', { title: endpoints.pages.registerImages.title }); %>
 
         <h1 class="l-grid__header u-heading-2 u-align-center">Add pictures of yourself</h1>
 
@@ -15,7 +15,7 @@
         </div>
 
     <%- include('../../_components/buttons', {
-        url: endpoints.browse.url + '?completed=true',
+        url: endpoints.pages.browse.url + '?completed=true',
         label: 'Next',
         classnames: 'o-button-submit'
     }); %>

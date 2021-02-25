@@ -1,0 +1,30 @@
+<%- include('../../_partials/header', {pageTitle: pageTitle}); %>
+
+<%- include('../../_components/header-navigation', { 
+    title: endpoints.pages.registerGenres.title
+}); %>
+    
+    <h2 class="l-grid__header u-heading-2 u-align-center">Show your Connections your favorite genres.</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Rank them so they know what you like best!</h2>
+
+    <form class="o-search-form" id="searchSpotify">
+        <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
+            placeholder="SEARCH">
+        <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
+            class="fas fa-search"></i></button>
+    </form>
+
+    <form class="o-form" id="firestore_form" type="strings" hidden>
+        <input class="o-form--input" type="text" name="genre_0">
+        <input class="o-form--input" type="text" name="genre_1">
+        <input class="o-form--input" type="text" name="genre_2">
+    </form>
+
+    <%- include('../../_components/buttons', { 
+        url: endpoints.pages.registerConnected.url, 
+        label: 'Next',
+        classnames: 'o-button-submit',
+        form: '#firestore_form'
+    }); %>
+
+<%- include('../../_partials/footer'); %>

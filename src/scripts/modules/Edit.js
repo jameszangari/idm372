@@ -3,7 +3,7 @@ const helper = require('../helper');
 const pathLocation = window.location.pathname;
 
 if (docQ('.js-edit')) {
-    if (pathLocation == endpoints.browse.url) {
+    if (pathLocation == endpoints.pages.browse.url) {
         // If you're on the browse page...
         const
             allEditDivs = docQA('[data-editLink]'),

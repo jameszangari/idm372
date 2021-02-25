@@ -1,7 +1,7 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerProfile.title
+    title: endpoints.pages.registerProfile.title
 }); %>
 
     <form class="o-form" id="firestore_form" type="strings">
@@ -23,7 +23,7 @@
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerAnthem.url, 
+        url: endpoints.pages.registerAnthem.url, 
         label: 'Next',
         classnames: 'o-button-submit',
         form: '#firestore_form'

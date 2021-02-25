@@ -1,7 +1,7 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerAnthem.title
+    title: endpoints.pages.registerAnthem.title
 }); %>
     
     <h2 class="l-grid__header u-heading-2 u-align-center">Choose your Anthem, a song that others can play while viewing your profile</h2>
@@ -31,7 +31,7 @@
     </div>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerPlaylist.url, 
+        url: endpoints.pages.registerPlaylist.url, 
         label: 'Next',
         classnames: 'o-button-submit',
         form: '#firestore_form'

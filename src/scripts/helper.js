@@ -52,14 +52,14 @@ module.exports = {
       cookieObj = JSON.parse(cookieString) || null,
 
       noCookieNeededPages = [
-        endpoints.login.url,
-        endpoints.tos.url,
-        endpoints.privacy.url,
+        endpoints.pages.login.url,
+        endpoints.pages.tos.url,
+        endpoints.pages.privacy.url,
       ];
 
     if (!cookieString && !noCookieNeededPages.includes(window.location.pathname)) {
       // Redirect to login if there's no spotify cookie AND you are on a page that needs it
-      window.location.href = endpoints.login.url + '?noCookieFound=true';
+      window.location.href = endpoints.pages.login.url + '?noCookieFound=true';
     } else {
       // Return the Cookie
       return cookieObj;

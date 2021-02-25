@@ -144,7 +144,7 @@ module.exports = function (req, res) {
 
     // Route user based on profile status
     let url;
-    user_status ? url = endpoints.registerProfile.url : url = endpoints.browse.url;
+    user_status ? url = endpoints.pages.registerProfile.url : url = endpoints.pages.browse.url;
     return res.redirect(url);
   }
 }

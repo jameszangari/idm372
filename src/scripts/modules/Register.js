@@ -11,7 +11,7 @@ if (typeof shuffleCookie == 'object') {
     //get refresh token
     function getRefreshToken() {
         $.ajax({
-            url: endpoints.refreshToken.url,
+            url: endpoints.routes.refreshToken.url,
             data: {
                 refresh_token: shuffleCookie.refresh_token
             }
@@ -79,7 +79,7 @@ module.exports = {
             function push_data(obj) {
                 if (Object.keys(obj).length > 0) { // If theres values
                     $.ajax({
-                        url: endpoints.update.url,
+                        url: endpoints.routes.update.url,
                         data: {
                             uuid: shuffleCookie.user_id,
                             values: obj

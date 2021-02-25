@@ -1,5 +1,5 @@
 <%- include('../_partials/header', {pageTitle: pageTitle}); %>
-    <%- include('../_components/header-navigation--home', { title: endpoints.browse.title }); %>
+    <%- include('../_components/header-navigation--home', { title: endpoints.pages.browse.title }); %>
 
         <div class="js-browse js-edit">
             <div class="c-user-card">
@@ -46,15 +46,15 @@
                 <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
             </div>
             <div class="c-profile__body">
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.registerBio.url; %>">
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerBio.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3">About Me</h2>
                     <p class="c-profile__body-card-body u-paragraph js-bio"></p>
                 </div>
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.registerLookingFor.url; %>">
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerLookingFor.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3">Looking For</h2>
                     <p class="js-looking_for"></p>
                 </div>
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.registerAnthem.url; %>">
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerAnthem.url; %>">
                     <h2
                         class="c-profile__body-card-heading c-profile__body-card-heading-anthem u-heading-3 js-anthem_heading">
                     </h2>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.registerConnected.url; %>">
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_artists_heading"></h2>
                     <div class="c-profile__body-card--block-wrap">
                         <div class="c-profile__body-card--block">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.registerConnected.url; %>">
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_tracks_heading"></h2>
                     <div class="c-profile__body-card--block-wrap">
                         <div class="c-profile__body-card--block">
@@ -122,14 +122,14 @@
                 </div>
                 <a class="o-button-secondary">Message</a>
                 <!-- Disabled until we add this data category -->
-                <!-- <div class="c-profile__body-card" data-editLink="<%- endpoints.registerPlaylist.url; %>">
+                <!-- <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerPlaylist.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_playlist_heading"></h2>
                 </div> -->
             </div>
         </div>
 
         <%- include('../_components/buttons', { 
-            url: endpoints.browse.url, 
+            url: endpoints.pages.browse.url, 
             label: 'Continue',
             classnames: 'o-button-secondary continue-button'
         }); %>

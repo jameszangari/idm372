@@ -54,7 +54,7 @@
 
 -   All pages live inside the `views` folder at the root and use the `.ejs` templating language
 -   The url, page title, and location of the `.ejs` templates are stored as values in `src/scripts/config/endpoints.json`
-    -   This allows us to dynamically changes these values globally so that we don't have to manually change each value on each template e.g. `endpoints.registerAnthem.url`
+    -   This allows us to dynamically changes these values globally so that we don't have to manually change each value on each template e.g. `endpoints.pages.registerAnthem.url`
 -   In `src/scripts/routes`, there is a file called `routes.js` which renders these pages
 
 #### Creating New Pages

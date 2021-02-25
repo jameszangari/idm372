@@ -1,132 +1,114 @@
 {
-  "login":
-  {
-    "url": "/login",
-    "title": "Login",
-    "page": "pages/login",
-    "bodyclassName": "l-grid--login"
+  "routes": {
+    "authorize": {
+      "url": "/authorize"
+    },
+    "callback": {
+      "url": "/callback"
+    },
+    "connected": {
+      "url": "/connected"
+    },
+    "refreshToken": {
+      "url": "/refreshToken"
+    },
+    "search": {
+      "url": "/search"
+    },
+    "update": {
+      "url": "/update"
+    },
+    "users": {
+      "url": "/users"
+    },
+    "chat": {
+      "url": "/chat"
+    }
   },
-  "authorize":
-  {
-    "url": "/authorize"
-  },
-  "callback":
-  {
-    "url": "/callback"
-  },
-  "connected":
-  {
-    "url": "/connected"
-  },
-  "refreshToken":
-  {
-    "url": "/refreshToken"
-  },
-  "search":
-  {
-    "url": "/search"
-  },
-  "update":
-  {
-    "url": "/update"
-  },
-  "users":
-  {
-    "url": "/users"
-  },
-  "chat":
-  {
-    "url": "/chat"
-  },
-  "tos":
-  {
-    "url": "/tos",
-    "title": "Terms",
-    "page": "pages/tos",
-    "bodyclassName": "l-grid"
-  },
-  "privacy":
-  {
-    "url": "/privacy",
-    "title": "Privacy",
-    "page": "pages/privacy",
-    "bodyclassName": "l-grid"
-  },
-  "registerProfile":
-  {
-    "url": "/register/profile",
-    "title": "Set Up Profile",
-    "page": "pages/register/profile",
-    "bodyclassName": "l-grid"
-  },
-  "registerAnthem":
-  {
-    "url": "/register/anthem",
-    "title": "Set Up Profile",
-    "page": "pages/register/anthem",
-    "bodyclassName": "l-grid"
-  },
-  "registerPlaylist":
-  {
-    "url": "/register/playlist",
-    "title": "Set Up Profile",
-    "page": "pages/register/playlist",
-    "bodyclassName": "l-grid"
-  },
-  "registerGenres":
-  {
-    "url": "/register/genres",
-    "title": "Set Up Profile",
-    "page": "pages/register/genres",
-    "bodyclassName": "l-grid"
-  },
-  "registerConnected":
-  {
-    "url": "/register/connected",
-    "title": "Connected",
-    "page": "pages/register/connected",
-    "bodyclassName": "l-grid"
-  },
-  "registerLookingFor":
-  {
-    "url": "/register/looking-for",
-    "title": "Set Up Profile",
-    "page": "pages/register/looking-for",
-    "bodyclassName": "l-grid"
-  },
-  "registerBio":
-  {
-    "url": "/register/bio",
-    "title": "Set Up Profile",
-    "page": "pages/register/bio",
-    "bodyclassName": "l-grid"
-  },
-  "registerImages":
-  {
-    "url": "/register/images",
-    "title": "Set Up Profile",
-    "page": "pages/register/images",
-    "bodyclassName": "l-grid"
-  },
-  "browse":
-  {
-    "url": "/browse",
-    "title": "Browse",
-    "page": "pages/browse",
-    "bodyclassName": "l-grid"
-  },
-  "chatBrowse":
-  {
-    "url": "/chat/browse",
-    "title": "Chats",
-    "page": "pages/chat/browse",
-    "bodyclassName": "l-grid"
-  },
-  "chatView":
-  {
-    "url": "/chat/view",
-    "title": "Chat with [Name]",
-    "page": "pages/chat/view",
-    "bodyclassName": "l-grid"
+  "pages": {
+    "login": {
+      "url": "/login",
+      "title": "Login",
+      "page": "pages/login",
+      "bodyclassName": "l-grid--login"
+    },
+    "tos": {
+      "url": "/tos",
+      "title": "Terms",
+      "page": "pages/tos",
+      "bodyclassName": "l-grid"
+    },
+    "privacy": {
+      "url": "/privacy",
+      "title": "Privacy",
+      "page": "pages/privacy",
+      "bodyclassName": "l-grid"
+    },
+    "registerProfile": {
+      "url": "/register/profile",
+      "title": "Set Up Profile",
+      "page": "pages/register/profile",
+      "bodyclassName": "l-grid"
+    },
+    "registerAnthem": {
+      "url": "/register/anthem",
+      "title": "Set Up Profile",
+      "page": "pages/register/anthem",
+      "bodyclassName": "l-grid"
+    },
+    "registerPlaylist": {
+      "url": "/register/playlist",
+      "title": "Set Up Profile",
+      "page": "pages/register/playlist",
+      "bodyclassName": "l-grid"
+    },
+    "registerGenres": {
+      "url": "/register/genres",
+      "title": "Set Up Profile",
+      "page": "pages/register/genres",
+      "bodyclassName": "l-grid"
+    },
+    "registerConnected": {
+      "url": "/register/connected",
+      "title": "Connected",
+      "page": "pages/register/connected",
+      "bodyclassName": "l-grid"
+    },
+    "registerLookingFor": {
+      "url": "/register/looking-for",
+      "title": "Set Up Profile",
+      "page": "pages/register/looking-for",
+      "bodyclassName": "l-grid"
+    },
+    "registerBio": {
+      "url": "/register/bio",
+      "title": "Set Up Profile",
+      "page": "pages/register/bio",
+      "bodyclassName": "l-grid"
+    },
+    "registerImages": {
+      "url": "/register/images",
+      "title": "Set Up Profile",
+      "page": "pages/register/images",
+      "bodyclassName": "l-grid"
+    },
+    "browse": {
+      "url": "/browse",
+      "title": "Browse",
+      "page": "pages/browse",
+      "bodyclassName": "l-grid"
+    },
+    "chatBrowse": {
+      "url": "/chat/browse",
+      "title": "Chats",
+      "page": "pages/chat/browse",
+      "bodyclassName": "l-grid"
+    },
+    "chatView": {
+      "url": "/chat/view",
+      "title": "Chat with [Name]",
+      "page": "pages/chat/view",
+      "bodyclassName": "l-grid"
+    }
   }
 }

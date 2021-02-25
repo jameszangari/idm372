@@ -1,7 +1,7 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerConnected.title
+    title: endpoints.pages.registerConnected.title
 }); %>
 
     <h2 class="l-grid__header u-heading-2 u-align-center">Here’s what we found from 
@@ -49,7 +49,7 @@
     <form class="o-form" id="firestore_form" type="strings" hidden></form>
 
 <%- include('../../_components/buttons', {
-    url: endpoints.registerLookingFor.url,
+    url: endpoints.pages.registerLookingFor.url,
     label: 'Continue',
     classnames: 'o-button-submit',
     form: '#firestore_form'

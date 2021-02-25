@@ -11,7 +11,7 @@ const shuffleCookie = helper.shuffleCookie();
 if (lconnected) { //if on right page
 	function sendrequest(type) {
 		$.ajax({
-			url: endpoints.connected.url,
+			url: endpoints.routes.connected.url,
 			data: {
 				access_token: shuffleCookie.access_token,
 				refresh_token: shuffleCookie.refresh_token,

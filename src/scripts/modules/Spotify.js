@@ -39,7 +39,7 @@ module.exports = {
         Validate.toggleInvalid(false, search_input);
 
         $.ajax({ //
-          url: endpoints.search.url,
+          url: endpoints.routes.search.url,
           data: {
             access_token: shuffleCookie.access_token,
             refresh_token: shuffleCookie.refresh_token,

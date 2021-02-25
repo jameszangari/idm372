@@ -82,7 +82,7 @@ if (submitBtn) { // If there's a form
 
     const urlPathname = window.location.pathname;
 
-    if (urlPathname == endpoints.registerAnthem.url) {
+    if (urlPathname == endpoints.pages.registerAnthem.url) {
         submitBtn.addEventListener('click', () => {
             const
                 invalids = form.querySelectorAll('input:invalid'),
@@ -94,7 +94,7 @@ if (submitBtn) { // If there's a form
                 toggleInvalid(false, searchInput);
             }
         });
-    } else if (urlPathname == endpoints.registerConnected.url) {
+    } else if (urlPathname == endpoints.pages.registerConnected.url) {
         toggleSubmitBtn('submit', 'continue'); // Default
     }
 

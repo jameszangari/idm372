@@ -11,7 +11,7 @@ function unixToFromNow(unix) {
 let targetInfo;
 function getTargetInfo(threadID) {
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
             uuid: shuffleCookie.user_id,
             query: 'get-target-info',
@@ -34,7 +34,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
     // List users
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
             uuid: shuffleCookie.user_id,
             query: 'list-chats'
@@ -43,7 +43,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
         if (results.length > 0) {
             results.forEach(thread => {
                 chatsList.innerHTML += `
-                <a class="l-chat-browse--user-item" href="${endpoints.chatView.url + '/?thread=' + thread.thread_id}">
+                <a class="l-chat-browse--user-item" href="${endpoints.pages.chatView.url + '/?thread=' + thread.thread_id}">
                     <div class="l-chat-browse--user-item--img-area">
                         <img class="l-chat-browse--user-item--img-area--img"
                             src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
@@ -101,7 +101,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
     // Get chat history
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
             uuid: shuffleCookie.user_id,
             query: 'get-history',
@@ -119,7 +119,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
         e.preventDefault();
         if (messageInput.value) {
             $.ajax({
-                url: endpoints.chat.url,
+                url: endpoints.routes.chat.url,
                 data: {
                     uuid: shuffleCookie.user_id,
                     query: 'send-message',

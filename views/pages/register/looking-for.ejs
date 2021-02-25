@@ -1,7 +1,7 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerLookingFor.title
+    title: endpoints.pages.registerLookingFor.title
 }); %>
     
     <form class="o-form" id="firestore_form" type="checkMulti">
@@ -10,7 +10,7 @@
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerBio.url, 
+        url: endpoints.pages.registerBio.url, 
         label: 'skip',
         classnames: 'o-button-skip',
         form: '#firestore_form'
