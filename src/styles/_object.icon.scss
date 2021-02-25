@@ -208,6 +208,12 @@ section .invalid:first-of-type {
 				outline: none;
 			}
 		}
+		&-characters {
+			text-align: right;
+			margin-top: 10px;
+			margin-right: 10px;
+			color: $color-gray-3;
+		}
 	}
 	&__heading {
 		@extend .u-flex-row;

@@ -11,6 +11,10 @@ module.exports = {
             this.ToggleButtonState();
         }
 
+        if (document.querySelector('#js-textarea') != null) {
+            this.maxCharacters();
+        }
+
     },
     SpotifyToggle: function() {
         // SPOTIFY SEARCH MODAL
@@ -36,5 +40,22 @@ module.exports = {
                 break;
             default: 
         }
-    }
+    },
+    maxCharacters: function() {
+        // Check if element has class name before running script
+        if (document.querySelector('#js-textarea') == null) {
+          return;
+        }
+        $(document).ready(function() {
+          var text_max = 500;
+          $('#js-characters').html(0 + '/500' + ' characters remaining');
+    
+          $('#js-textarea').keyup(function() {
+              var text_length = $('#js-textarea').val().length;
+              var text_remaining = 0 + text_length;
+    
+              $('#js-characters').html(text_remaining + '/500' + ' characters remaining');
+          });
+        });
+      },
 }

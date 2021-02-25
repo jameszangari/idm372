@@ -24,6 +24,8 @@ module.exports = {
     this.getAge();
     this.rm_events();
     this.truncateString();
+    this.getUrlParam();
+    this.getThread();
 
   },
 
@@ -108,6 +110,7 @@ module.exports = {
       url = new URL(location);
     return url.searchParams.get(param);
   },
+
   getThread: function (uuid1, uuid2) {
     // Determines what the thread_id will be based on the two uuid's supplied
     let thread_id;
