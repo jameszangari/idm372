@@ -1,11 +1,4 @@
 {
-  "home":
-  {
-    "url": "/",
-    "title": "home",
-    "page": "pages/home",
-    "bodyclassName": "l-grid"
-  },
   "login":
   {
     "url": "/login",
@@ -13,55 +6,43 @@
     "page": "pages/login",
     "bodyclassName": "l-grid--login"
   },
-  "users":
+  "authorize":
   {
-    "url": "/users",
-    "title": "",
-    "page": "",
-    "bodyclassName": "l-grid"
+    "url": "/authorize"
+  },
+  "callback":
+  {
+    "url": "/callback"
+  },
+  "connected":
+  {
+    "url": "/connected"
+  },
+  "refreshToken":
+  {
+    "url": "/refreshToken"
   },
   "search":
   {
-    "url": "/search",
-    "title": "",
-    "page": ""
+    "url": "/search"
+  },
+  "update":
+  {
+    "url": "/update"
+  },
+  "users":
+  {
+    "url": "/users"
   },
   "chat":
   {
     "url": "/chat"
-  },   
-	"refreshToken":
-  {
-    "url": "/refreshToken",
-    "title": "",
-    "page": ""
-  },  
-  "connected":
-  {
-    "url": "/connected",
-    "title": "",
-    "page": "",
-    "bodyclassName": "l-grid"
   },
-  "update":
+  "home":
   {
-    "url": "/update",
-    "title": "",
-    "page": "",
-    "bodyclassName": "l-grid"
-  },
-  "callback":
-  {
-    "url": "/callback",
-    "title": "",
-    "page": "",
-    "bodyclassName": "l-grid"
-  },
-  "authorize":
-  {
-    "url": "/authorize",
-    "title": "Authorize",
-    "page": "pages/login",
+    "url": "/",
+    "title": "home",
+    "page": "pages/home",
     "bodyclassName": "l-grid"
   },
   "tos":
@@ -76,20 +57,6 @@
     "url": "/privacy",
     "title": "Privacy",
     "page": "pages/privacy",
-    "bodyclassName": "l-grid"
-  },
-  "browse":
-  {
-    "url": "/browse",
-    "title": "Browse",
-    "page": "pages/browse",
-    "bodyclassName": "l-grid"
-  },
-  "registerConnected":
-  {
-    "url": "/register/connected",
-    "title": "Connected",
-    "page": "pages/register/connected",
     "bodyclassName": "l-grid"
   },
   "registerProfile":
@@ -113,11 +80,25 @@
     "page": "pages/register/playlist",
     "bodyclassName": "l-grid"
   },
-  "registerImages":
+  "registerGenres":
   {
-    "url": "/register/images",
+    "url": "/register/genres",
     "title": "Set Up Profile",
-    "page": "pages/register/images",
+    "page": "pages/register/genres",
+    "bodyclassName": "l-grid"
+  },
+  "registerConnected":
+  {
+    "url": "/register/connected",
+    "title": "Connected",
+    "page": "pages/register/connected",
+    "bodyclassName": "l-grid"
+  },
+  "registerLookingFor":
+  {
+    "url": "/register/looking-for",
+    "title": "Set Up Profile",
+    "page": "pages/register/looking-for",
     "bodyclassName": "l-grid"
   },
   "registerBio":
@@ -127,11 +108,18 @@
     "page": "pages/register/bio",
     "bodyclassName": "l-grid"
   },
-  "registerLookingFor":
+  "registerImages":
   {
-    "url": "/register/looking-for",
+    "url": "/register/images",
     "title": "Set Up Profile",
-    "page": "pages/register/looking-for",
+    "page": "pages/register/images",
+    "bodyclassName": "l-grid"
+  },
+  "browse":
+  {
+    "url": "/browse",
+    "title": "Browse",
+    "page": "pages/browse",
     "bodyclassName": "l-grid"
   },
   "chatBrowse":

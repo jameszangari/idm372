@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const firebase = require('../firebase'); // FireBase Functions
 
 module.exports = function (app) {
@@ -8,36 +8,36 @@ module.exports = function (app) {
   app.use(express.json());
 
   const routes = [
-    "authorize",
-    "callback",
-    "connected",
-    "home",
-    "login",
-    "refreshToken",
-    "search",
-    "update",
-    "users",
-    "connected",
-    "chat",
+    'login',
+    'authorize',
+    'callback',
+    'connected',
+    'refreshToken',
+    'search',
+    'update',
+    'users',
+    'chat',
   ];
-
+  
   routes.forEach(route => {
     app.get(endpoints[route].url, require('./' + route));
   });
-
+  
   const pages = [
-    "tos",
-    "privacy",
-    "registerConnected",
-    "registerProfile",
-    "registerAnthem",
-    "registerPlaylist",
-    "registerImages",
-    "registerBio",
-    "registerLookingFor",
-    "browse",
-    "chatBrowse",
-    "chatView",
+    'home',
+    'tos',
+    'privacy',
+    'registerProfile',
+    'registerAnthem',
+    'registerPlaylist',
+    'registerGenres',
+    'registerConnected',
+    'registerLookingFor',
+    'registerBio',
+    'registerImages',
+    'browse',
+    'chatBrowse',
+    'chatView',
   ];
 
   pages.forEach(page => {
