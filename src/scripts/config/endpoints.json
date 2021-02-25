@@ -1,29 +1,13 @@
 {
   "routes": {
-    "authorize": {
-      "url": "/authorize"
-    },
-    "callback": {
-      "url": "/callback"
-    },
-    "connected": {
-      "url": "/connected"
-    },
-    "refreshToken": {
-      "url": "/refreshToken"
-    },
-    "search": {
-      "url": "/search"
-    },
-    "update": {
-      "url": "/update"
-    },
-    "users": {
-      "url": "/users"
-    },
-    "chat": {
-      "url": "/chat"
-    }
+    "authorize": { "url": "/authorize" },
+    "callback": { "url": "/callback" },
+    "connected": { "url": "/connected" },
+    "refreshToken": { "url": "/refreshToken" },
+    "search": { "url": "/search" },
+    "update": { "url": "/update" },
+    "users": { "url": "/users" },
+    "chat": { "url": "/chat" }
   },
   "pages": {
     "login": {
