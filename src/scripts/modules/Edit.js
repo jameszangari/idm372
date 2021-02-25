@@ -11,7 +11,6 @@ if (docQ('.js-edit')) {
             closeProfileBtns = docQA('.c-header-navigation__button, .o-modal--close');
 
         function addEditBtns() {
-            console.log('ADD ANCHORS');
             allEditDivs.forEach(el => {
                 const editAnchor = document.createElement('a');
                 editAnchor.classList.add('c-profile__body-card__edit');
@@ -21,7 +20,6 @@ if (docQ('.js-edit')) {
         }
 
         function rmEditBtns() {
-            console.log('REMOVE ANCHORS');
             allEditDivs.forEach(el => {
                 const editBtn = el.querySelector('.c-profile__body-card__edit');
                 editBtn && editBtn.remove();
