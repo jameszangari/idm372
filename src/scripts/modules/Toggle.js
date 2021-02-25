@@ -43,13 +43,13 @@ module.exports = {
     },
     maxCharacters: function() {
         $(document).ready(function() {
-          $('#js-characters').html(0 + '/500' + ' characters remaining');
+          $('#js-characters').html(0 + '/280' + ' characters remaining');
     
           $('#js-textarea').keyup(function() {
               var text_length = $('#js-textarea').val().length;
               var text_remaining = 0 + text_length;
     
-              $('#js-characters').html(text_remaining + '/500' + ' characters remaining');
+              $('#js-characters').html(text_remaining + '/280' + ' characters remaining');
           });
         });
       },
