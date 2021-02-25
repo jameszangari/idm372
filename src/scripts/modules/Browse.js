@@ -125,11 +125,11 @@ module.exports = {
 
         // User Cards
         function listUsers(users) {
-            users.forEach(user => {
+            $.each(users, (i, user) => {
                 // quickRefs
                 const data = user.data;
-                const card = docQA('.c-user-card')[0];
-                const cloneCard = card.cloneNode(true);
+                const ogCard = docQA('.c-user-card')[0];
+                const cloneCard = ogCard.cloneNode(true);
 
                 // General Data
                 addGeneralData(cloneCard, data);
@@ -141,6 +141,9 @@ module.exports = {
                         toggleChatBar(true, user);
                         docQ('.c-profile').classList.remove('c-profile--self');
                     });
+
+                // Delete original card
+                i + 1 == users.length && ogCard.remove();
             });
         }
 
