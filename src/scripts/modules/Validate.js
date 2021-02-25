@@ -1,8 +1,12 @@
-const next = docQ('[data-form]');
+const endpoints = require('../config/endpoints.json');
+const submitBtn = docQ('[data-form]');
 
 function toggleInvalid(add, input, message) {
-    if (input.nextSibling.classList == 'invalid_desc') {
-        input.nextSibling.remove();
+    const nextSibling = input.nextSibling;
+    if (nextSibling) {
+        if (nextSibling.className == 'invalid_desc') {
+            nextSibling.remove();
+        }
     }
     if (add == true) {
         input.classList.add('invalid');
@@ -12,10 +16,86 @@ function toggleInvalid(add, input, message) {
     }
 }
 
-if (next) { // If there's a form
+function toggleSubmitBtn(mode, forceText) {
+    submitBtn.className = `o-button-${mode}`;
+    mode == 'skip' ? submitBtn.innerText = 'skip' : submitBtn.innerText = 'next';
+    if (forceText) submitBtn.innerText = forceText;
+}
+
+const form = docQ(submitBtn.dataset.form);
+
+function checkFormForSkip() {
+    if (form.querySelectorAll('[required]').length == 0 && !!submitBtn) {
+        // If there's a form to submit but no required inputs...
+        if (form.querySelectorAll('input[value], textarea[value], select[value]').length > 0) {
+            // If any have value by default
+            toggleSubmitBtn('submit');
+        } else {
+            toggleSubmitBtn('skip');
+        }
+    } else if (form.querySelectorAll('[required]').length > 0 && !!submitBtn) {
+        toggleSubmitBtn('submit');
+    }
+}
+
+if (submitBtn) { // If there's a form
     // quickRefs
-    const form = docQ(next.dataset.form),
-        type = form.getAttribute('type');
+    const type = form.getAttribute('type');
+
+    if (type === 'checkMulti') {
+        setTimeout(() => {
+            if (form.querySelectorAll('[required]').length == 0) {
+                // If there's nothing required...
+                const allCheckBoxes = docQA('input[type="checkbox"]');
+
+                allCheckBoxes.forEach(el => {
+                    el.addEventListener('change', () => {
+                        // Check if there's anything checks
+                        const check = form.querySelectorAll('[type="checkbox"]:checked').length > 0;
+                        check ? toggleSubmitBtn('submit') : toggleSubmitBtn('skip');
+                    });
+                });
+            }
+        }, 400); // Wait for options to load
+    } else if (type === 'strings') {
+        if (form.querySelectorAll('[required]').length == 0) {
+            // If there's nothing required...
+            const allInputs = docQA('input[type="text"], textarea');
+
+            allInputs.forEach(el => {
+                el.addEventListener('input', () => {
+                    // Check if there's anything checks
+                    const array = [];
+                    el.value.trim() && array.push(el.value.trim());
+
+                    const check = array.length > 0;
+                    check ? toggleSubmitBtn('submit') : toggleSubmitBtn('skip');
+                });
+            });
+        }
+    }
+
+    // Toggle Skip Button Mode
+
+    checkFormForSkip();
+
+    const urlPathname = window.location.pathname;
+
+    if (urlPathname == endpoints.registerAnthem.url) {
+        submitBtn.addEventListener('click', () => {
+            const
+                invalids = form.querySelectorAll('input:invalid'),
+                searchInput = docQ('#search_input');
+            if (invalids.length > 0) {
+                // Display custom error message for this form
+                toggleInvalid(true, searchInput, 'Anthems are is required for Shuffle.');
+            } else if (invalids.length == 0) {
+                toggleInvalid(false, searchInput);
+            }
+        });
+    } else if (urlPathname == endpoints.registerConnected.url) {
+        toggleSubmitBtn('submit', 'continue'); // Default
+    }
 
     // Toggles UI validity of inputs
 
@@ -105,13 +185,13 @@ if (next) { // If there's a form
             valids = form.querySelectorAll(':valid');
 
         // Call respective function to handle
-        type === 'strings' && invalid_strings_form(form, invalids, valids);
-        type === 'checkOne' && invalid_checkOne_form(form, invalids, valids);
+        type === 'strings' && invalid_strings_form(invalids, valids);
+        type === 'checkOne' && invalid_checkOne_form(form, invalids);
 
         // ===== Functions per invalid form type =====
 
         // Invalid string type forms
-        function invalid_strings_form(form, invalids, valids) {
+        function invalid_strings_form(invalids, valids) {
             invalids.forEach(el => { // Located an invalid input
                 el.type != 'date' ? toggleInvalid(true, el, 'This field is required.') : validateDateInput(el);
             });
@@ -121,7 +201,7 @@ if (next) { // If there's a form
         }
 
         // Invalid Check 1 per section type forms
-        function invalid_checkOne_form(form, invalids, valids) {
+        function invalid_checkOne_form(form, invalids) {
             const sections = form.querySelectorAll('section');
             sections.forEach(section => {
                 section.classList.remove('invalid');
@@ -160,13 +240,13 @@ if (next) { // If there's a form
     function addCheck(section) {
         section.querySelector('.section-title').classList.add('section-checked');
     }
-    
+
     function rmCheck(section) {
         section.querySelector('.section-title').classList.remove('section-checked');
     }
 
     const allRequired = document.querySelectorAll('.form-section input, .form-section select');
-        if (allRequired.length > 0) {
+    if (allRequired.length > 0) {
         allRequired.forEach(el => {
             el.addEventListener('change', () => { checkInput(el); });
         });
@@ -203,8 +283,8 @@ if (next) { // If there's a form
         });
     }
 
-    // What happens when you click the next button
-    next.addEventListener('click', function (e) {
+    // What happens when you click the submit button
+    submitBtn.addEventListener('click', function (e) {
         if (form.checkValidity()) { // If form is valid
             submitForm();
         } else { // Handle invalid form
@@ -214,5 +294,7 @@ if (next) { // If there's a form
 }
 
 module.exports = {
-    toggleInvalid: toggleInvalid
+    toggleInvalid: toggleInvalid,
+    toggleSubmitBtn: toggleSubmitBtn,
+    checkFormForSkip: checkFormForSkip
 }

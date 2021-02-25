@@ -81,14 +81,34 @@
 	}
 	&-submit {
 		@extend .o-button;
+		background: $color-pink-1;
+		text-transform: uppercase;
+		position: fixed;
+		bottom: 3%;
+		left: 50%;
+		transform: translateX(-50%);
 		font-family: $font-gellix;
 		font-size: 20px;
 		font-weight: 800;
-		display: block;
-		margin: 0 auto;
-		text-transform: uppercase;
-		margin-bottom: 3%;
-		background: $color-pink-1;
+		&:hover {
+			background: $color-pink-hover;
+		}
+	}
+	&-skip {
+		@extend .o-button;
+		background: transparent;
+		text-transform: capitalize;
+		text-decoration: underline;
+		position: fixed;
+		bottom: 3%;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: $font-vcr;
+		font-size: 20px;
+		font-weight: 500;
+		&:hover {
+			background: $color-bright-blue-hover;
+		}
 	}
 }
 
@@ -122,8 +142,7 @@
 	}
 	button[type="submit"] {
 		min-height: 52px;
-		background: linear-gradient(90deg, #f72585 0%, #ff7854 100%),
-			#dadada;
+		background: linear-gradient(90deg, #f72585 0%, #ff7854 100%), #dadada;
 		color: $color-gray-5;
 	}
 }
@@ -351,7 +370,8 @@ section .invalid:first-of-type {
 		padding-top: 16px;
 		line-height: 1;
 		transition: opacity 0.3s ease;
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			opacity: 0.5;
 		}
 	}
