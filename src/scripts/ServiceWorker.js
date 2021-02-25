@@ -8,7 +8,6 @@ var urlsToCache = [
     '/register/bio',
     '/register/images',
     '/register/anthem',
-    '/register/artist',
     '/register/playlist',
     '/register/connected',
     '/browse',

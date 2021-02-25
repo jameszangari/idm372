@@ -106,13 +106,6 @@
     "page": "pages/register/anthem",
     "bodyclassName": "l-grid"
   },
-  "registerArtist":
-  {
-    "url": "/register/artist",
-    "title": "Set Up Profile",
-    "page": "pages/register/artist",
-    "bodyclassName": "l-grid"
-  },
   "registerPlaylist":
   {
     "url": "/register/playlist",
