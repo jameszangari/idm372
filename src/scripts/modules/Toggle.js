@@ -43,7 +43,6 @@ module.exports = {
     },
     maxCharacters: function() {
         $(document).ready(function() {
-          var text_max = 500;
           $('#js-characters').html(0 + '/500' + ' characters remaining');
     
           $('#js-textarea').keyup(function() {
