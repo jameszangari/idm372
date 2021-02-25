@@ -110,7 +110,7 @@ module.exports = {
         });
 
         function hideCard(el) { // Hides the parent card of the specified field
-            viewUser.querySelector(el).closest('.c-profile__body-card--block').hidden = true;
+            viewUser.querySelector(el).closest('.c-profile__body-card').hidden = true;
         }
 
         function addGeneralData(el, data) {
