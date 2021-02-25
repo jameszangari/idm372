@@ -66,7 +66,7 @@ module.exports = {
                   <i class="fas fa-check"></i>
                 </div>
               `;
-              // <h5 class="track_artist">${artist + (artist ? ' - ' + artist : '')}</h5>
+
 
               // Add the track element to the DOM
               search_results.appendChild(track_element);
@@ -77,6 +77,7 @@ module.exports = {
                 });
                 choice_area.innerHTML = '';
                 choice_wrap.hidden = true;
+                docQA('#firestore_form :invalid').length == 0 && Validate.toggleSubmitBtn('skip');
               }
 
               function displayChoice(result) { // Display choice
@@ -86,6 +87,8 @@ module.exports = {
                 if (docQ('input#result_artist')) docQ('input#result_artist').value = result.artist; // This one is optional for artist search
                 docQ('input#result_thumb').value = result.thumb;
                 docQ('input#result_album').value = result.album;
+
+                Validate.toggleSubmitBtn('submit');
 
                 choice_area.innerHTML = `
                   <img class="o-spotify-choice--image" src="${result.thumb}">

@@ -14,11 +14,11 @@
     </form>
 
     <form class="o-form" id="firestore_form" type="strings" hidden>
-        <input class="o-form--input" id="result_id" type="text" name="anthem_id">
-        <input class="o-form--input" id="result_title" type="text" name="anthem_title">
-        <input class="o-form--input" id="result_artist" type="text" name="anthem_artist">
-        <input class="o-form--input" id="result_thumb" type="text" name="anthem_thumb">
-        <input class="o-form--input" id="result_album" type="text" name="anthem_album">
+        <input class="o-form--input" id="result_id" type="text" name="anthem_id" required>
+        <input class="o-form--input" id="result_title" type="text" name="anthem_title" required>
+        <input class="o-form--input" id="result_artist" type="text" name="anthem_artist" required>
+        <input class="o-form--input" id="result_thumb" type="text" name="anthem_thumb" required>
+        <input class="o-form--input" id="result_album" type="text" name="anthem_album" required>
     </form>
 
     <div class="o-modal" hidden>
@@ -33,7 +33,7 @@
     <%- include('../../_components/buttons', { 
         url: endpoints.registerArtist.url, 
         label: 'Next',
-        classnames: 'o-button-primary',
+        classnames: 'o-button-submit',
         form: '#firestore_form'
     }); %>
 

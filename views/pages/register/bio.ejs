@@ -4,7 +4,6 @@
     title: endpoints.registerBio.title
 }); %>
 
-
     <form class="o-form" id="firestore_form" type="strings">
         <section class="form-section">
             <h2 class="section-title l-grid__header u-heading-2 u-align-center">Write a short bio about yourself</h2>
@@ -14,8 +13,8 @@
 
     <%- include('../../_components/buttons', { 
         url: endpoints.registerImages.url, 
-        label: 'Next',
-        classnames: 'o-button-primary',
+        label: 'skip',
+        classnames: 'o-button-skip',
         form: '#firestore_form'
     }); %>
 
