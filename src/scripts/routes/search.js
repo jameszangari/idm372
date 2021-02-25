@@ -1,7 +1,9 @@
 const request = require('request');
+const config = require('../../../secret/config'); // Secret Keys
 
 module.exports = function (req, res) {
-    const data = req.query,
+    const
+        data = req.query,
         criteria = data.query,
         token = data.access_token,
         refresh_token = data.refresh_token,
@@ -42,7 +44,7 @@ module.exports = function (req, res) {
                     tracks.push(i, {
                         'id': item.id,
                         'title': item.name,
-                        //'thumb': item.images[0].url,
+                        'thumb': item.images[0].url,
                         'album': false
                     });
                 });
@@ -84,7 +86,7 @@ module.exports = function (req, res) {
         var refresh_token = req.query.refresh_token;
         var authOptions = {
             url: 'https://accounts.spotify.com/api/token',
-            headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
+            headers: { 'Authorization': 'Basic ' + (Buffer.from(config.client_id + ':' + config.client_secret).toString('base64')) },
             form: {
                 grant_type: 'refresh_token',
                 refresh_token: refresh_token

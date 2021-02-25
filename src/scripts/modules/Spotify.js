@@ -67,9 +67,13 @@ module.exports = {
                 </div>
               `;
 
-
               // Add the track element to the DOM
               search_results.appendChild(track_element);
+
+              // Adjust img size
+              const img = track_element.querySelector('.o-modal--image');
+              const imgCoords = img.getBoundingClientRect();
+              img.style.width = imgCoords.height + 'px';
 
               function rmChoice() { // Hide choice
                 docQA('#firestore_form input').forEach(input => {

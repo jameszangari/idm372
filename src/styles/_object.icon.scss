@@ -431,7 +431,7 @@ section .invalid:first-of-type {
 	&--image {
 		height: 100%;
 		width: auto;
-		max-width: 25%;
+		object-fit: cover;
 		margin-right: 16px;
 	}
 	&--track-info {
