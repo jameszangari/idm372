@@ -29,7 +29,9 @@
 		&-name {
 			margin-bottom: 16px;
 		}
-		&-name, &-pronouns, &-location {
+		&-name,
+		&-pronouns,
+		&-location {
 			z-index: 98;
 		}
 	}
@@ -158,7 +160,9 @@ iframe {
 		&-name {
 			margin-bottom: 16px;
 		}
-		&-name, &-pronouns, &-location {
+		&-name,
+		&-pronouns,
+		&-location {
 			z-index: 98;
 		}
 	}
@@ -212,7 +216,7 @@ iframe {
 				margin-top: 16px;
 			}
 			&--block {
-				width: calc(100%/3);
+				width: calc(100% / 3);
 				margin-right: 16px;
 				&:last-of-type {
 					margin-right: 0;
@@ -235,6 +239,22 @@ iframe {
 			}
 			&-body {
 				margin-top: 10px;
+			}
+			&__edit {
+				@extend .u-flex-center;
+				background-color: $color-pink-2;
+				height: 32px;
+				width: 32px;
+				border-radius: 50%;
+				position: absolute;
+				right: -0.5rem;
+				top: -0.5rem;
+				&::before {
+					color: white;
+					font-family: "Font Awesome 5 Free";
+					font-weight: 900;
+					content: "\f303";
+				}
 			}
 		}
 	}

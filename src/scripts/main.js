@@ -21,7 +21,8 @@ const
     Connected = require('./modules/Connected'),
     Images = require('./modules/Images'),
     webSocket = require('./modules/WebSocket'),
-    Chat = require('./modules/Chat');
+    Chat = require('./modules/Chat'),
+    Edit = require('./modules/Edit');
 
 // Global Logic here
 $(document).ready(() => {
