@@ -209,6 +209,9 @@ iframe {
 					}
 				}
 			}
+			& .js-looking_for {
+				margin-top: 10px
+			}
 			&--block-wrap {
 				@extend .u-flex-row;
 				justify-content: space-between;
