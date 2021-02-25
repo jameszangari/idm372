@@ -202,11 +202,19 @@ section .invalid:first-of-type {
 			overflow-y: scroll;
 			height: 200px;
 			padding: 30px;
-			text-align: center;
+			text-align: left;
+			text-align-last: left;
+			line-height: 20px;
 			width: 100%;
 			&:focus {
 				outline: none;
 			}
+		}
+		&-characters {
+			text-align: right;
+			margin-top: 10px;
+			margin-right: 10px;
+			color: $color-gray-3;
 		}
 	}
 	&__heading {
