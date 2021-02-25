@@ -10,7 +10,15 @@ if (docQ('.js-edit')) {
             myProfileBtn = docQ('.my-profile-button'),
             closeProfileBtns = docQA('.c-header-navigation__button, .o-modal--close');
 
+        function rmEditBtns() {
+            allEditDivs.forEach(el => {
+                const editBtn = el.querySelector('.c-profile__body-card__edit');
+                editBtn && editBtn.remove();
+            });
+        }
+
         function addEditBtns() {
+            rmEditBtns(); // In case of duplicates
             allEditDivs.forEach(el => {
                 const editAnchor = document.createElement('a');
                 editAnchor.classList.add('c-profile__body-card__edit');
@@ -19,15 +27,9 @@ if (docQ('.js-edit')) {
             });
         }
 
-        function rmEditBtns() {
-            allEditDivs.forEach(el => {
-                const editBtn = el.querySelector('.c-profile__body-card__edit');
-                editBtn && editBtn.remove();
-            });
-        }
-
         // Action(s) that will ADD the edit buttons
         myProfileBtn.addEventListener('click', addEditBtns);
+        helper.getUrlParam('completed') && addEditBtns();
 
         // Action(s) that will REMOVE the edit buttons
         closeProfileBtns.forEach(el => {
