@@ -1,11 +1,14 @@
-const express = require('express');
-const firebase = require('../firebase'); // FireBase Functions
-
 module.exports = function (app) {
+  const express = require('express');
+  const firebase = require('../firebase'); // FireBase Functions
   const endpoints = require('../config/endpoints.json');
 
   firebase.init();
   app.use(express.json());
+
+  app.get('/', function (req, res) {
+    res.redirect(endpoints.login.url);
+  });
 
   const routes = [
     'login',
@@ -24,7 +27,7 @@ module.exports = function (app) {
   });
   
   const pages = [
-    'home',
+    'login',
     'tos',
     'privacy',
     'registerProfile',

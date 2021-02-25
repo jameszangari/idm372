@@ -55,7 +55,6 @@ module.exports = {
         endpoints.login.url,
         endpoints.tos.url,
         endpoints.privacy.url,
-        endpoints.home.url,
       ];
 
     if (!cookieString && !noCookieNeededPages.includes(window.location.pathname)) {

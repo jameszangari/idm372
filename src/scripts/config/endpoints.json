@@ -38,13 +38,6 @@
   {
     "url": "/chat"
   },
-  "home":
-  {
-    "url": "/",
-    "title": "home",
-    "page": "pages/home",
-    "bodyclassName": "l-grid"
-  },
   "tos":
   {
     "url": "/tos",
