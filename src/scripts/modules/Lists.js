@@ -185,7 +185,7 @@ const lists = {
         'et': 'anime',
         'eu': 'grunge',
         'ev': 'electronic trap',
-        'ew': 'outlaw countr',
+        'ew': 'outlaw country',
     }
 }
 

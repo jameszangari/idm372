@@ -22,7 +22,8 @@ const
     Images = require('./modules/Images'),
     webSocket = require('./modules/WebSocket'),
     Chat = require('./modules/Chat'),
-    Edit = require('./modules/Edit');
+    Edit = require('./modules/Edit'),
+    Sort = require('./modules/Drag');
 
 // Global Logic here
 $(document).ready(() => {

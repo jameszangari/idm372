@@ -79,7 +79,7 @@ module.exports = {
             function push_data(obj) {
                 if (Object.keys(obj).length > 0) { // If theres values
                     $.ajax({
-                        url: endpoints.routes.update,
+                        url: endpoints.routes.update.url,
                         data: {
                             uuid: shuffleCookie.user_id,
                             values: obj

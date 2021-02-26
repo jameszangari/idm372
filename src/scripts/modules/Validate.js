@@ -96,6 +96,8 @@ if (submitBtn) { // If there's a form
         });
     } else if (urlPathname == endpoints.pages.registerConnected.url) {
         toggleSubmitBtn('submit', 'continue'); // Default
+    } else if (urlPathname == endpoints.pages.registerGenres.url) {
+        toggleSubmitBtn('submit', 'next'); // Default
     }
 
     // Toggles UI validity of inputs

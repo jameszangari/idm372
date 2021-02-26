@@ -6,39 +6,42 @@
     
     <h2 class="l-grid__header u-heading-2 u-align-center">Show your Connections your favorite genres.</h2>
     <h2 class="l-grid__header u-heading-2 u-align-center">Rank them so they know what you like best!</h2>
-
-    <div class="o-draggable">
-        <div class="item">
-            <div class="numeral">1.</div>
-            <div class="title">Indie</div>
-            <div class="edit-wrap">
-                <div class="edit-icon"></div>
-            </div>
-            <div class="handle-icon"></div>
-        </div>
-        <div class="item">
-            <div class="numeral">2.</div>
-            <div class="title">Rock</div>
-            <div class="edit-wrap">
-                <div class="edit-icon"></div>
-            </div>
-            <div class="handle-icon"></div>
-        </div>
-        <div class="item">
-            <div class="numeral">3.</div>
-            <div class="title">Pop</div>
-            <div class="edit-wrap">
-                <div class="edit-icon"></div>
-            </div>
-            <div class="handle-icon"></div>
-        </div>
-    </div>
-
-    <form class="o-form" id="firestore_form" type="strings" hidden>
-        <select name="genres_0" data-list="genres"></select>
-        <select name="genres_1" data-list="genres"></select>
-        <select name="genres_2" data-list="genres"></select>
+    
+    <form class="o-form" id="firestore_form" type="strings">
+        <ul class="o-draggable js-drag">
+            <li class="drag-item">
+                <div class="numeral">1.</div>
+                <select class="title" name="genres_0" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">2.</div>
+                <select class="title" name="genres_1" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">3.</div>
+                <select class="title" name="genres_2" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+        </ul>
     </form>
+
 
     <%- include('../../_components/buttons', { 
         url: endpoints.pages.registerConnected.url, 
