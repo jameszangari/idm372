@@ -516,3 +516,46 @@ section .invalid:first-of-type {
 	color: $color-pink-1;
 	margin-left: 32px;
 }
+
+.handle-icon {
+	&::before {
+		content: "\f0c9";
+		font-family: "FontAwesome";
+		font-size: 26px;
+	}
+}
+
+.o-draggable {
+	@extend .u-flex-column;
+	width: 100%;
+	padding: 0 1rem;
+	.item {
+		@extend .u-flex-row;
+		width: 100%;
+		background-color: $color-gray-5;
+		color: black;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		border-radius: 1rem;
+		.numeral {
+			width: 10%;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.title {
+			width: 40%;
+			font-size: 24px;
+		}
+		.edit-wrap {
+			width: 25%;
+			.edit-icon {
+				margin-left: auto;
+			}
+		}
+		.handle-icon {
+			width: 25%;
+			text-align: right;
+			color: $color-gray-3;
+		}
+	}
+}

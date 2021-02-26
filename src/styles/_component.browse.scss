@@ -113,6 +113,20 @@ iframe {
 	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
 }
 
+.edit-icon {
+	@extend .u-flex-center;
+	background-color: $color-pink-2;
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	&::before {
+		color: white;
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		content: "\f303";
+	}
+}
+
 .c-profile {
 	display: none;
 	margin-top: 55px;
@@ -240,20 +254,10 @@ iframe {
 				margin-top: 10px;
 			}
 			&__edit {
-				@extend .u-flex-center;
-				background-color: $color-pink-2;
-				height: 32px;
-				width: 32px;
-				border-radius: 50%;
+				@extend .edit-icon;
 				position: absolute;
 				right: -0.5rem;
 				top: -0.5rem;
-				&::before {
-					color: white;
-					font-family: "Font Awesome 5 Free";
-					font-weight: 900;
-					content: "\f303";
-				}
 			}
 		}
 	}
