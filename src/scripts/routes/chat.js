@@ -65,11 +65,10 @@ module.exports = async function (req, res) {
                     res.send(false);
                 });
 
+                const send = res.send(threadsArray);
+
                 if (i != docRef.size) {
                 } else { // When done
-                    function send() {
-                        res.send(threadsArray);
-                    }
                     function checkArray() { // Check array before sending
                         if (docRef.size == threadsArray.length) {
                             send();
@@ -101,11 +100,10 @@ module.exports = async function (req, res) {
                     messageArray.push(message.data())
                 });
 
+                const send = res.send(messageArray);
+
                 if (i != messages.size) { // Check array before sending
                 } else { // When done
-                    function send() {
-                        res.send(messageArray);
-                    }
                     function checkArray() { // Check if data is ready
                         console.log('Checking Messages Array');
                         if (messages.size == messageArray.length) {
