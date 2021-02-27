@@ -50,7 +50,7 @@ const lists = {
         'o': 'edm',
         'p': 'vaporwave',
         'q': 'latin pop',
-        'r': 'tropical house',
+        'r': 'jazz',
         's': 'classic rock',
         't': 'album rock',
         'u': 'mellow gold',
