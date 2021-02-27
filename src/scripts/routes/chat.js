@@ -65,7 +65,7 @@ module.exports = async function (req, res) {
                     res.send(false);
                 });
 
-                const send = res.send(threadsArray);
+                const send = () => { res.send(threadsArray) };
 
                 if (i != docRef.size) {
                 } else { // When done
@@ -100,7 +100,7 @@ module.exports = async function (req, res) {
                     messageArray.push(message.data())
                 });
 
-                const send = res.send(messageArray);
+                const send = () => { res.send(messageArray) };
 
                 if (i != messages.size) { // Check array before sending
                 } else { // When done
