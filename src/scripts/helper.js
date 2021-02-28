@@ -48,7 +48,7 @@ module.exports = {
   shuffleCookie: function () {
     // Get the Cookie
     const
-      cookieString = getCookie('shuffle') || null,
+      cookieString = getCookie('spotify') || null,
       cookieObj = JSON.parse(cookieString) || null,
 
       noCookieNeededPages = [

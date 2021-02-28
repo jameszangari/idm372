@@ -5,7 +5,7 @@ const firebase = require('../firebase'); // FireBase Functions
 const endpoints = require('../config/endpoints.json');
 
 module.exports = function (req, res) {
-  res.clearCookie('shuffle');
+  res.clearCookie('spotify');
   const stateKey = 'spotify_auth_state';
 
   // Authorization Check
@@ -108,14 +108,14 @@ module.exports = function (req, res) {
 
   function redirect_to_shuffle(res, docRef, obj, user_id, user_status, access_token, refresh_token, req) {
     // Set Cookie Data
-    res.clearCookie('shuffle');
+    res.clearCookie('spotify');
     var spotifyObject = {
       user_id: user_id,
       new_user: user_status,
       access_token: access_token,
       refresh_token: refresh_token
     };
-    res.cookie('shuffle', JSON.stringify(spotifyObject));
+    res.cookie('spotify', JSON.stringify(spotifyObject));
 
     // Handle login updates
     if (user_status) { // New Users
