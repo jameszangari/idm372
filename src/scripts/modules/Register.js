@@ -5,29 +5,6 @@ const helper = require('../helper');
 // Cookies
 const shuffleCookie = helper.shuffleCookie();
 
-if (typeof shuffleCookie == 'object') {
-    setInterval(getRefreshToken, 3300000); //every 55 minutes
-
-    //get refresh token
-    function getRefreshToken() {
-        $.ajax({
-            url: endpoints.routes.refreshToken.url,
-            data: {
-                refresh_token: shuffleCookie.refresh_token
-            }
-        }).done(function (res) {
-            //update cookie with new access token
-            let shuffleCookieString = helper.getCookie('shuffle');
-            let shuffleCookie = JSON.parse(shuffleCookieString);
-            shuffleCookie.access_token = res.access_token;
-            shuffleCookieString = JSON.stringify(shuffleCookie);
-            newSpotifyCookie = helper.encodeCookie('shuffle', shuffleCookieString);
-            document.cookie = newSpotifyCookie;
-        }
-        )
-    }
-}
-
 module.exports = {
     init: function () {
         if (docQ('#firestore_form')) this.update(); else return;

@@ -21,10 +21,10 @@ const
     Connected = require('./modules/Connected'),
     Images = require('./modules/Images'),
     webSocket = require('./modules/WebSocket'),
-    Chat = require('./modules/Chat'),
     Edit = require('./modules/Edit'),
+    RefreshToken = require('./modules/RefreshToken'),
+    Chat = require('./modules/Chat'),
     Sort = require('./modules/Drag');
-
 // Global Logic here
 $(document).ready(() => {
     AddToHome.init();
