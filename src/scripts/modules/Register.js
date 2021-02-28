@@ -89,10 +89,12 @@ module.exports = {
 
         // Add all select options if it's on the page
         Object.keys(lists).forEach(listKey => {
-            const form = docQ(`select[name="${listKey}"]`);
-            if (form) {
-                Object.keys(lists[listKey]).forEach(key => {
-                    form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+            const forms = docQA(`select[data-list="${listKey}"]`);
+            if (forms.length > 0) {
+                forms.forEach(form => {
+                    Object.keys(lists[listKey]).forEach(key => {
+                        form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+                    });
                 });
             }
         });

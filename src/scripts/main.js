@@ -23,8 +23,8 @@ const
     webSocket = require('./modules/WebSocket'),
     Edit = require('./modules/Edit'),
     RefreshToken = require('./modules/RefreshToken'),
-    Chat = require('./modules/Chat');
-
+    Chat = require('./modules/Chat'),
+    Sort = require('./modules/Drag');
 // Global Logic here
 $(document).ready(() => {
     AddToHome.init();

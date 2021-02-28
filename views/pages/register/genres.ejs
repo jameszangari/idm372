@@ -6,19 +6,42 @@
     
     <h2 class="l-grid__header u-heading-2 u-align-center">Show your Connections your favorite genres.</h2>
     <h2 class="l-grid__header u-heading-2 u-align-center">Rank them so they know what you like best!</h2>
-
-    <form class="o-search-form" id="searchSpotify">
-        <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
-            placeholder="SEARCH">
-        <button class="o-search-form--button" type="submit" id="search_spotify_button"><i
-            class="fas fa-search"></i></button>
+    
+    <form class="o-form" id="firestore_form" type="strings">
+        <ul class="o-draggable js-drag">
+            <li class="drag-item">
+                <div class="numeral">1.</div>
+                <select class="title" name="genres_0_title" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">2.</div>
+                <select class="title" name="genres_1_title" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">3.</div>
+                <select class="title" name="genres_2_title" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+        </ul>
     </form>
 
-    <form class="o-form" id="firestore_form" type="strings" hidden>
-        <input class="o-form--input" type="text" name="genre_0">
-        <input class="o-form--input" type="text" name="genre_1">
-        <input class="o-form--input" type="text" name="genre_2">
-    </form>
 
     <%- include('../../_components/buttons', { 
         url: endpoints.pages.registerConnected.url, 
