@@ -205,26 +205,26 @@ module.exports = {
                 data[`genres_${i}_title`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}_title`], 12)) : hideBlock(`.js-genres_${i}_title`);
                 data[`genres_${i}_title`] ? viewUser.querySelector(`.js-genres_${i}_thumb`).src = 'http://hunterhdesign.com/drexel/idm372/genre-imgs/' + Lists.decipherCodes('genres', data[`genres_${i}_title`]) + '.jpeg' : hideBlock(`.js-genres_${i}_thumb`);
             }
-			  
-			   // Top Playlist
-				data[`first_name`] ? viewUser.querySelector(`.js-playlist_heading`).innerText = `${data[`first_name`]}'s Favorite Playlist` : hideBlock(`.js-playlist_heading`); //title of block
-			   data[`playlist_thumb`] ? viewUser.querySelector(`.c-profile-playlist__image`).src = data[`playlist_thumb`] : hideBlock(`.c-profile-playlist__image`); //playlist image
-			   data[`playlist_title`] ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data[`playlist_title`], 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
-			   data[`playlist_artist`] ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data[`playlist_artist`]}` : hideBlock(`.c-profile-playlist__author`); //playlist author
-			  
-			   // Playlist Songs
-			   const shuffleCookie = helper.shuffleCookie();
-			   $.ajax({
-				 url: endpoints.routes.playlist.url,
-				 data: {
-					refresh_token: shuffleCookie.refresh_token,
-					access_token: shuffleCookie.access_token,
-					playlist: data[`playlist_id`]
-				 }
-				}).done(function (res) {
-					viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML = '';
-					for (i = 0; i < 5; i++) {
-						viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML += `
+
+            // Top Playlist
+            data[`first_name`] ? viewUser.querySelector(`.js-playlist_heading`).innerText = `${data[`first_name`]}'s Favorite Playlist` : hideBlock(`.js-playlist_heading`); //title of block
+            data[`playlist_thumb`] ? viewUser.querySelector(`.c-profile-playlist__image`).src = data[`playlist_thumb`] : hideBlock(`.c-profile-playlist__image`); //playlist image
+            data[`playlist_title`] ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data[`playlist_title`], 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
+            data[`playlist_artist`] ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data[`playlist_artist`]}` : hideBlock(`.c-profile-playlist__author`); //playlist author
+
+            // Playlist Songs
+            const shuffleCookie = helper.shuffleCookie();
+            $.ajax({
+                url: endpoints.routes.playlist.url,
+                data: {
+                    refresh_token: shuffleCookie.refresh_token,
+                    access_token: shuffleCookie.access_token,
+                    playlist: data[`playlist_id`]
+                }
+            }).done(function (res) {
+                viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML = '';
+                for (i = 0; i < 5; i++) {
+                    viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML += `
 						<div class='c-profile-playlist__songs-list__item'> 
 							<span class='c-profile-playlist__songs-list__item__title'>
 								${helper.truncateString(res.items[i].track.name, 12)} 
@@ -236,9 +236,8 @@ module.exports = {
 								${helper.millisToMinutesAndSeconds(res.items[i].track.duration_ms)}
 							</span> 
 						</div>`;
-					}
-				})
-			  
+                }
+            })
         }
     }
 }

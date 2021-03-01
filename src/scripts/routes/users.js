@@ -29,8 +29,6 @@ module.exports = async function (req, res) {
 
         queryAll().then(results => {
             for (i = 0; i < results.length; i++) {
-                // console.log(results[i].data());
-                console.log(i, results.length);
                 if (results[i].id != data.uuid) { // Don't include the user performing the query
                     // Truncate sensitive data, don't want this stuff going to clients
                     const data = results[i].data();
