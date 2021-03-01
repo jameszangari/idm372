@@ -7,7 +7,8 @@
     "search": { "url": "/search" },
     "update": { "url": "/update" },
     "users": { "url": "/users" },
-    "chat": { "url": "/chat" }
+    "chat": { "url": "/chat" },
+    "playlist": { "url": "/playlist" }
   },
   "pages": {
     "login": {
