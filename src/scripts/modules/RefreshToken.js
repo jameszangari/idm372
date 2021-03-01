@@ -27,8 +27,8 @@ if (document.cookie) { //runs if the cookie exists - either return user or logge
 			spotifyObjectString = JSON.stringify(spotifyObject);
 			newSpotifyCookie = helper.encodeCookie('spotify', spotifyObjectString);
 			document.cookie = newSpotifyCookie;
-		}
-	)}
+		})
+	}
 	
 	getRefreshToken(); //run once on load - if token is already expired, will be fixed. 
 	setInterval(getRefreshToken, 3540000); //every 59 minutes, if the script hasnt reloaded, run it again.

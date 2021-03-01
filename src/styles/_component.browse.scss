@@ -291,3 +291,47 @@ iframe {
 .my-profile-button {
 	color: $color-gray-5;
 }
+
+.c-profile-playlist {
+	display: flex;
+	margin: 1rem 0;
+	align-items: center;
+	&__image {
+		width: 60px;
+		height: 60px;
+		margin-right: 1.5rem;
+		border-radius: 8px;
+	}
+	&__title {
+		font-family: $font-gellix;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	&__author {
+		font-family: $font-gellix;
+		font-size: 14px;
+		font-weight: 500;
+		color: $color-gray-3;
+	}
+	&__songs-list {
+		&__item {
+			padding: 7px 0;
+			border-bottom: 1px solid $color-gray-4;
+			&__artist {
+				font-size: 14px;
+				color: $color-gray-3;
+				width: 50%;
+				float: left;
+			}
+			&__title {
+				float: left;
+				width: 40%;
+				overflow: hidden;
+			}
+			&__time {
+				font-size: 14px;
+				color: $color-gray-3;
+			}
+		}
+	}
+}

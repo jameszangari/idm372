@@ -115,5 +115,11 @@ module.exports = {
     let thread_id;
     uuid1 > uuid2 ? thread_id = uuid1 + '-' + uuid2 : thread_id = uuid2 + '-' + uuid1;
     return 'thread-' + thread_id;
+  },
+	
+  millisToMinutesAndSeconds: function(millis) {
+	  var minutes = Math.floor(millis / 60000);
+	  var seconds = ((millis % 60000) / 1000).toFixed(0);
+	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 }
