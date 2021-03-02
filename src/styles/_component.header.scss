@@ -46,6 +46,7 @@
     & .fas {
         font-size: 24px;
         transition: opacity .3s;
+        color: $color-gray-5;
         &:hover {
             opacity: 0.75;
         }
