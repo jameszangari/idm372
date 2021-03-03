@@ -1,7 +1,5 @@
-const helper = require('../helper');
 module.exports = {
     init: function () {
-
         if (document.querySelector('.js-browse') == null) {
             return;
         }
@@ -168,6 +166,8 @@ module.exports = {
             function hideBlock(el) {
                 // Finds the closest --block of the given element
                 viewUser.querySelector(el).closest('.c-profile__body-card--block').hidden = true;
+                const divider = viewUser.querySelector(el).closest('.c-profile__body-card').querySelector('.divider')
+                if (divider) divider.hidden = true;
             }
 
             // Display the user
@@ -185,8 +185,10 @@ module.exports = {
             viewUser.querySelector('.js-top_genres_heading').innerText = data.first_name + "'s Top Genres";
             // viewUser.querySelector('.js-top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
 
-            // Looking For
-            data.looking_for ? viewUser.querySelector('.js-looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for) : hideCard('.js-looking_for');
+            // Looking For & Who Are You
+            ['looking_for', 'who_are_you'].forEach(string => {
+                data[string] ? viewUser.querySelector(`.js-${string}`).innerText = Lists.decipherCodes(string, data[string]) : hideBlock(`.js-${string}`);
+            });
 
             // Bio
             data.bio ? viewUser.querySelector('.js-bio').innerText = data.bio : hideCard('.js-bio');
@@ -211,6 +213,13 @@ module.exports = {
             data[`playlist_thumb`] ? viewUser.querySelector(`.c-profile-playlist__image`).src = data[`playlist_thumb`] : hideBlock(`.c-profile-playlist__image`); //playlist image
             data[`playlist_title`] ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data[`playlist_title`], 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
             data[`playlist_artist`] ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data[`playlist_artist`]}` : hideBlock(`.c-profile-playlist__author`); //playlist author
+
+            // Hide any cards where all 3 blocks are hodden (due to insufficient data)
+            docQA('.c-profile__body-card--block-wrap').forEach(wrap => {
+                if (wrap.querySelectorAll('.c-profile__body-card--block[hidden]').length == wrap.querySelectorAll('.c-profile__body-card--block').length) {
+                    wrap.closest('.c-profile__body-card').hidden = true;
+                }
+            });
 
             // Playlist Songs
             const shuffleCookie = helper.shuffleCookie();

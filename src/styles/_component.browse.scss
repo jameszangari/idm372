@@ -219,7 +219,8 @@ iframe {
 					}
 				}
 			}
-			& .js-looking_for {
+			& .js-looking_for,
+			.js-who_are_you {
 				margin-top: 10px;
 			}
 			&--block-wrap {
@@ -259,6 +260,15 @@ iframe {
 				position: absolute;
 				right: -8px;
 				top: -8px;
+			}
+			.full-width {
+				width: 100%;
+			}
+			.divider {
+				height: 2px;
+				width: 100%;
+				background-color: black;
+				margin: 1rem 0;
 			}
 		}
 	}

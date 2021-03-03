@@ -4,10 +4,6 @@ const WS = require('./WebSocket');
 const endpoints = require('../config/endpoints.json');
 const moment = require('moment');
 
-function unixToFromNow(unix) {
-    return moment.unix(unix).fromNow();
-}
-
 let targetInfo;
 function getTargetInfo(threadID) {
     $.ajax({
@@ -51,7 +47,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     <div class="l-chat-browse--user-item--main">
                         <div class="l-chat-browse--user-item--main--top">
                             <h2 class="l-chat-browse--user-item--main--top--name">${thread.target_name}</h2>
-                            <p class="l-chat-browse--user-item--main--top--time">${unixToFromNow(thread.last_activity._seconds)}</p>
+                            <p class="l-chat-browse--user-item--main--top--time">${helper.unixToFromNow(thread.last_activity._seconds)}</p>
                         </div>
                         <div class="l-chat-browse--user-item--main--btm">
                             <p class="l-chat-browse--user-item--main--btm--preview">

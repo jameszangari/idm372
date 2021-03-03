@@ -65,6 +65,12 @@
       "page": "pages/register/looking-for",
       "bodyclassName": "l-grid"
     },
+    "registerWhoAreYou": {
+      "url": "/register/who-are-you",
+      "title": "Set Up Profile",
+      "page": "pages/register/who-are-you",
+      "bodyclassName": "l-grid"
+    },
     "registerBio": {
       "url": "/register/bio",
       "title": "Set Up Profile",

@@ -32,6 +32,16 @@ const lists = {
         'h': 'Jam buddies',
         'i': 'Music discussion',
     },
+    who_are_you: {
+        'a': 'Not sure yet',
+        'b': 'Listener',
+        'c': 'Dancer',
+        'd': 'Singer',
+        'e': 'Musician',
+        'f': 'DJ',
+        'g': 'Producer',
+        'h': 'Concert Goer',
+    },
     genres: {
         'a': 'pop',
         'b': 'dance pop',

@@ -74,26 +74,24 @@ module.exports = {
 
         // Add all looking for options
         const lists = Lists.lists;
-        const looking_for_list = lists.looking_for;
-        const lookingForSection = docQ('section[name="looking_for"]');
-        if (lookingForSection) {
-            Object.keys(looking_for_list).forEach(key => {
-                lookingForSection.innerHTML += `
-                    <label class="o-form--checkbox">
-                        <input class="o-form--checkbox__input" type="checkbox" value="${key}">
-                        <span class="o-form--checkbox__label">${looking_for_list[key]}</span>
-                    </label>
-                `;
-            });
-        }
 
         // Add all select options if it's on the page
         Object.keys(lists).forEach(listKey => {
-            const forms = docQA(`select[data-list="${listKey}"]`);
-            if (forms.length > 0) {
-                forms.forEach(form => {
+            const listsElements = docQA(`[data-list="${listKey}"]`);
+            if (listsElements.length > 0) {
+                listsElements.forEach(listEl => {
+                    const listType = listEl.dataset.listtype;
                     Object.keys(lists[listKey]).forEach(key => {
-                        form.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+                        if (listType == 'select') {
+                            listEl.innerHTML += `<option value=${key}>${lists[listKey][key]}</option>`;
+                        } else if (listType == 'checkboxes') {
+                            listEl.innerHTML += `
+                                <label class="o-form--checkbox">
+                                    <input class="o-form--checkbox__input" type="checkbox" value="${key}">
+                                    <span class="o-form--checkbox__label">${lists[listKey][key]}</span>
+                                </label>
+                            `;
+                        }
                     });
                 });
             }

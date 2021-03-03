@@ -1,4 +1,3 @@
-const endpoints = require('./config/endpoints.json');
 
 function getCookie(cname) {
   var name = cname + "=";
@@ -18,7 +17,7 @@ function getCookie(cname) {
 
 module.exports = {
   init: function () {
-
+    
     this.generateRandomString();
     this.getCookie();
     this.getAge();
@@ -26,37 +25,38 @@ module.exports = {
     this.truncateString();
     this.getUrlParam();
     this.getThread();
-
+    
   },
-
+  
   /** Generates a random string containing numbers and letters
-    * @param  {number} length // The length of the string
-    * @return {string} // The generated string
-  */
+   * @param  {number} length // The length of the string
+   * @return {string} // The generated string
+   */
   generateRandomString: function (length) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
+    
     for (i = 0; i < length; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
   },
-
+  
   getCookie: getCookie,
-
+  
   shuffleCookie: function () {
+    const endpoints = require('./config/endpoints.json');
     // Get the Cookie
     const
-      cookieString = getCookie('spotify') || null,
-      cookieObj = JSON.parse(cookieString) || null,
-
-      noCookieNeededPages = [
-        endpoints.pages.login.url,
-        endpoints.pages.tos.url,
-        endpoints.pages.privacy.url,
-      ];
-
+    cookieString = getCookie('spotify') || null,
+    cookieObj = JSON.parse(cookieString) || null,
+    
+    noCookieNeededPages = [
+      endpoints.pages.login.url,
+      endpoints.pages.tos.url,
+      endpoints.pages.privacy.url,
+    ];
+    
     if (!cookieString && !noCookieNeededPages.includes(window.location.pathname)) {
       // Redirect to login if there's no spotify cookie AND you are on a page that needs it
       window.location.href = endpoints.pages.login.url + '?noCookieFound=true';
@@ -114,8 +114,13 @@ module.exports = {
   },
 	
   millisToMinutesAndSeconds: function(millis) {
-	  var minutes = Math.floor(millis / 60000);
-	  var seconds = ((millis % 60000) / 1000).toFixed(0);
-	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  },
+
+  unixToFromNow: function(unix) {
+    const moment = require('moment');
+    return moment.unix(unix).fromNow();
   }
 }

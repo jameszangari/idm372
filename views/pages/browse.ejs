@@ -46,14 +46,24 @@
                 <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
             </div>
             <div class="c-profile__body">
+                <!-- Bio -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerBio.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3">About Me</h2>
                     <p class="c-profile__body-card-body u-paragraph js-bio"></p>
                 </div>
+                <!-- Looking For & Who Am I -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerLookingFor.url; %>">
-                    <h2 class="c-profile__body-card-heading u-heading-3">Looking For</h2>
-                    <p class="js-looking_for"></p>
+                    <div class="c-profile__body-card--block full-width">
+                        <h2 class="c-profile__body-card-heading u-heading-3">Looking For:</h2>
+                        <p class="js-looking_for"></p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="c-profile__body-card--block full-width">
+                        <h2 class="c-profile__body-card-heading u-heading-3">I Am A:</h2>
+                        <p class="js-who_are_you">Listener, Concert goer</p>
+                    </div>
                 </div>
+                <!-- Anthem -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerAnthem.url; %>">
                     <h2
                         class="c-profile__body-card-heading c-profile__body-card-heading-anthem u-heading-3 js-anthem_heading">
@@ -80,6 +90,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Top Artists -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_artists_heading"></h2>
                     <div class="c-profile__body-card--block-wrap">
@@ -100,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Top Songs -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_tracks_heading"></h2>
                     <div class="c-profile__body-card--block-wrap">
@@ -120,6 +132,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Genres -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerGenres.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-top_genres_heading"></h2>
                     <div class="c-profile__body-card--block-wrap">
@@ -137,26 +150,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerGenres.url; %>">
+                <!-- Playlist -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerPlaylist.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3 js-playlist_heading"></h2>
                     <div class="c-profile-playlist">
-							  <img class="c-profile-playlist__image" src="">
-							  <div class="c-profile-playlist__info">
-									<h3 class="c-profile-playlist__title"></h3>
-									<h5 class="c-profile-playlist__author"></h5>
-							  </div>
-						  </div>
-               	  <div class='c-profile-playlist__songs-list'>
-               	  </div>
+                        <img class="c-profile-playlist__image">
+                        <div class="c-profile-playlist__info">
+							<h3 class="c-profile-playlist__title"></h3>
+							<h5 class="c-profile-playlist__author"></h5>
+                        </div>
+                    </div>
+                    <div class='c-profile-playlist__songs-list'></div>
                 </div>
+                <!-- Message Button -->
                 <a class="o-button-secondary">Message</a>
-                <!-- Disabled until we add this data category -->
-                <!-- <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerPlaylist.url; %>">
-                    <h2 class="c-profile__body-card-heading u-heading-3 js-top_playlist_heading"></h2>
-                </div> -->
             </div>
         </div>
 
+        <!-- Continue button for profile complete page -->
         <%- include('../_components/buttons', { 
             url: endpoints.pages.browse.url, 
             label: 'Continue',
