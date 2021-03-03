@@ -16,7 +16,7 @@ module.exports = {
       search_input = docQ('#search_input'),
       search_result_wrap = docQ('.o-modal'),
       choice_wrap = docQ('.o-spotify-choice'),
-      cancel_button = docQ('.o-spotify-choice--cancel'),
+      cancel_button = docQ('.o-spotify-choice--edit'),
       choice_area = docQ('.o-spotify-choice--area');
 
     searchForm.addEventListener('submit', (event) => {

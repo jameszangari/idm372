@@ -323,19 +323,22 @@ iframe {
 		&__item {
 			padding: 7px 0;
 			border-bottom: 1px solid $color-gray-4;
+			display: flex;
+			flex-direction: row;
 			&__artist {
 				font-size: 14px;
 				color: $color-gray-3;
 				width: 50%;
-				float: left;
+				// float: left;
 			}
 			&__title {
-				float: left;
-				width: 40%;
+				// float: left;
+				width: 60%;
 				overflow: hidden;
 			}
 			&__time {
 				font-size: 14px;
+				width: 10%;
 				color: $color-gray-3;
 			}
 		}

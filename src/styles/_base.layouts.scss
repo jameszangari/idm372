@@ -15,7 +15,16 @@
 	margin: 0 auto;
 	padding-bottom: 96px; // for next button space
 	&__header {
-		padding: 40px 16px;
+		&:first-of-type {
+			padding-top: 40px;
+			padding-left: 16px;
+			padding-right: 16px;
+			padding-bottom: 16px;
+		}
+		padding-top: 16px;
+		padding-left: 16px;
+		padding-right: 16px;
+		padding-bottom: 40px;
 	}
 	&--login {
 		position: relative;
@@ -116,7 +125,9 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		margin-top: 44px;
+		&:last-of-type {
+			margin-top: 40px;
+		}
 		& .u-heading-2 {
 			font-weight: 800;
 		}

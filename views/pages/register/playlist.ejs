@@ -4,7 +4,9 @@
     title: endpoints.pages.registerPlaylist.title
 }); %>
 
-    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your favorite playlist</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Choose a playlist that you love to listen to!</h2>
+
+    <h2 class="l-grid__header u-heading-2 u-align-center">Other users will be able to see this on your profile.</h2>
 
     <form class="o-search-form" id="searchSpotify">
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="playlist"
@@ -27,7 +29,7 @@
     </div>
 
     <div class="o-spotify-choice" hidden>
-        <button onclick="return confirm('Are you sure you want to Delete?');" class="o-spotify-choice--cancel"></button>
+        <button class="o-spotify-choice--edit"></button>
         <div class="o-spotify-choice--area"></div>
     </div>
 
