@@ -1,7 +1,7 @@
 const config = require('../../../secret/config'); // Secret Keys
 const request = require("request");
 
-module.exports = function(req, res) {
+module.exports = function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -15,15 +15,15 @@ module.exports = function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
         'access_token': access_token
       });
     }
-	 else {
-		 //console.log(response);
-	 }
+    else {
+      //console.log(response);
+    }
   });
 };

@@ -19,7 +19,6 @@ if (docQ('input[type="file"]')) {
 
     function setImage(input, button) {
         button_before = button.querySelector('::before');
-        console.log('BEFORE = ' + button_before);
 
         if (input.files) {
             var reader = new FileReader();

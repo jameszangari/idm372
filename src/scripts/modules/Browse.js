@@ -1,3 +1,4 @@
+
 module.exports = {
     init: function () {
         if (document.querySelector('.js-browse') == null) {
@@ -204,8 +205,8 @@ module.exports = {
 
             // Top 3 Genres
             for (i = 0; i < 3; i++) {
-                data[`genres_${i}_title`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}_title`], 12)) : hideBlock(`.js-genres_${i}_title`);
-                data[`genres_${i}_title`] ? viewUser.querySelector(`.js-genres_${i}_thumb`).src = 'http://hunterhdesign.com/drexel/idm372/genre-imgs/' + Lists.decipherCodes('genres', data[`genres_${i}_title`]) + '.jpeg' : hideBlock(`.js-genres_${i}_thumb`);
+                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}`], 12)) : hideBlock(`.js-genres_${i}_title`);
+                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_thumb`).src = 'http://hunterhdesign.com/drexel/idm372/genre-imgs/' + Lists.decipherCodes('genres', data[`genres_${i}`]) + '.jpeg' : hideBlock(`.js-genres_${i}_thumb`);
             }
 
             // Top Playlist
@@ -246,7 +247,7 @@ module.exports = {
 							</span> 
 						</div>`;
                 }
-            })
+            });
         }
     }
 }

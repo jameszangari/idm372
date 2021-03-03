@@ -16,10 +16,7 @@ module.exports = async function (req, res) {
                     .where('new_user', '==', 'false') // Only include completed profiles
                     .get(),
 
-                [
-                    query1Snapshot,
-                    query2Snapshot
-                ] = await Promise.all([query1, query2]);
+                [query1Snapshot, query2Snapshot] = await Promise.all([query1, query2]);
 
             const query1Array = query1Snapshot.docs;
             const query2Array = query2Snapshot.docs;

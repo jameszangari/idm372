@@ -170,7 +170,6 @@ if (docQ('.l-chat-browse')) { // Browse Page
         thread: thread
     });
     socket.on('new-message', (message) => {
-        console.log('message received', message);
         appendMessages([message]);
     });
 }
