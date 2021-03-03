@@ -110,6 +110,18 @@
 			background: $color-bright-blue-hover;
 		}
 	}
+	&-static {
+		@extend .o-button;
+		background: $color-bright-blue;
+		font-family: $font-gellix;
+		font-size: 20px;
+		font-weight: 800;
+		text-transform: uppercase;
+		padding: 16px;
+		&:hover {
+			background: $color-bright-blue-hover;
+		}
+	}
 }
 
 /*------------------------------------*\

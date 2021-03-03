@@ -98,13 +98,15 @@
 
 .no-results {
 	@extend .u-flex-column;
-	padding-top: 50%;
-	max-width: 192px;
+	padding-top: 15vh;
+	max-width: 300px;
 	margin: auto;
 	text-align: center;
 	&--icon {
 		width: 96px;
-		margin-bottom: 32px;
+	}
+	h2 {
+		margin: 32px 0;
 	}
 }
 
