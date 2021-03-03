@@ -57,6 +57,21 @@ if (submitBtn) { // If there's a form
                     });
                 });
             }
+
+            const notSure = form.querySelector('input[value="a"]');
+            const allCheckBoxes = form.querySelectorAll('input[type="checkbox"]');
+            
+            allCheckBoxes.forEach(el => {
+                el.addEventListener('click', () => {
+                    if (el != notSure) {
+                        notSure.checked = false;
+                    } else {
+                        allCheckBoxes.forEach(el => {
+                            if (el != notSure) el.checked = false;
+                        });
+                    }
+                });
+            });
         }, 400); // Wait for options to load
     } else if (type === 'strings') {
         if (form.querySelectorAll('[required]').length == 0) {
