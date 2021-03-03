@@ -115,6 +115,13 @@ if (docQ('.l-chat-browse')) { // Browse Page
     const messageForm = docQ('#messageForm');
     const messageInput = messageForm.querySelector('textarea[name="message"]');
     const sendBtn = messageForm.querySelector('#messageForm button[type="submit"]');
+
+    messageForm.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        e.keyCode == 13 && sendBtn.click();
+    });
+
+    // Send a message
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
@@ -124,7 +131,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                     uuid: shuffleCookie.user_id,
                     query: 'send-message',
                     thread: thread,
-                    content: messageInput.value
+                    content: messageInput.value.trim()
                 }
             }).done(function (response) {
                 chatContentDiv.innerHTML += `
@@ -135,6 +142,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                 `;
                 messageInput.value = ''; // Clear input
                 scroll_to_bottom('tell');
+                resizeInput();
             });
         }
     });
