@@ -5,12 +5,13 @@ module.exports = function (req, res) {
         // quickRefs
         data = req.body,
         docRef = firebase.db().collection('users').doc(data.uuid),
-        dbObj = data.values.dbObj,
         photos = data.values.photos;
 
     // Push data to FireStore
     if (photos) {
+        const dbObj = data.values.dbObj;
         updateUser(dbObj);
+
         let i = 0;
         Object.keys(photos).forEach(key => {
             i++;
