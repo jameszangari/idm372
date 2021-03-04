@@ -31,13 +31,13 @@ if (docQ('.js-images')) {
             reader.onload = function (e) {
                 if (file.size < (maxFileSize * 1024 * 1024)) {
                     // file.size is in bytes so you multiply by 1024^2
-                    require('./Validate').toggleInvalid(false, input);
+                    require('./Validate').toggleInvalid(false, input.closest('form'));
                     const URI = e.target.result;
                     button.style.backgroundImage = `url(${URI})`;
                     button.classList.add('file-selected');
                     input.dataset.uri = URI;
                 } else {
-                    require('./Validate').toggleInvalid(true, input, 'Files must be under 3 MB');
+                    require('./Validate').toggleInvalid(true, input.closest('form'), 'Files must be under 3 MB');
                     button.style.backgroundImage = 'none';
                     button.classList.remove('file-selected');
                     input.dataset.uri = '';

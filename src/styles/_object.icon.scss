@@ -54,9 +54,10 @@
 		background-position: center;
 		color: $color-gray-5;
 		padding: 20px 24px;
-		height: 100px;
-		width: 100px;
+		height: 80px;
+		width: 80px;
 		border-radius: 12px;
+		margin: 0 .5rem;
 		&:last-of-type {
 			margin-right: 0;
 		}
@@ -74,9 +75,26 @@
 		}
 		&__group {
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			justify-content: space-evenly;
 			align-items: center;
+			margin-top: 5vh;
+			&__section {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+				align-items: center;
+				margin-bottom: 1rem;
+				&:first-of-type {
+					.o-button-upload {
+						width: 120px;
+						height: 120px;
+					}
+				}
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 	&-submit {

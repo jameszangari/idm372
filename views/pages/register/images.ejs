@@ -4,14 +4,21 @@
         <h1 class="l-grid__header u-heading-2 u-align-center">Add a picture of yourself for your profile! Be Authentic!</h1>
 
         <form type="images" class="o-button-upload__group u-flex-center js-images" id="firestore_form">
-            <button class="o-button-upload" data-index="0"></button>
-            <input type="file" class="js-profile-picture" data-index="0" name="pp_0" accept=".jpg,.png" hidden></button>
+            <section class="o-button-upload__group__section">
+                <button class="o-button-upload" data-index="0"></button>
+                <input type="file" class="js-profile-picture" data-index="0" name="pp_0" accept=".jpg,.png" hidden></button>
+            </section>
 
-            <button class="o-button-upload" data-index="1"></button>
-            <input type="file" class="js-profile-picture" data-index="1" name="pp_1" accept=".jpg,.png" hidden></button>
-
-            <button class="o-button-upload" data-index="2"></button>
-            <input type="file" class="js-profile-picture" data-index="2" name="pp_2" accept=".jpg,.png" hidden></button>
+            <section class="o-button-upload__group__section">
+                <button class="o-button-upload" data-index="1"></button>
+                <input type="file" class="js-profile-picture" data-index="1" name="pp_1" accept=".jpg,.png" hidden></button>
+                
+                <button class="o-button-upload" data-index="2"></button>
+                <input type="file" class="js-profile-picture" data-index="2" name="pp_2" accept=".jpg,.png" hidden></button>
+                
+                <button class="o-button-upload" data-index="3"></button>
+                <input type="file" class="js-profile-picture" data-index="3" name="pp_3" accept=".jpg,.png" hidden></button>
+            </section>
         </form>
 
     <%- include('../../_components/buttons', {
