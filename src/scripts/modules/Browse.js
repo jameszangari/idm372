@@ -1,19 +1,18 @@
+// Cookies
 
 module.exports = {
     init: function () {
         if (document.querySelector('.js-browse') == null) {
             return;
         }
+        const
+            helper = require('../helper'),
+            shuffleCookie = helper.shuffleCookie();
 
         // Required
         const
             endpoints = require('../config/endpoints.json'),
-            helper = require('../helper'),
             Lists = require('./Lists'),
-
-            // Cookies
-            shuffleCookie = helper.shuffleCookie(),
-
             // Elements
             profile_list = docQ('.js-browse'),
             html = docQ('html'),
@@ -187,7 +186,8 @@ module.exports = {
             for (i = 1; i < 4; i++) {
                 const image = viewUser.querySelector(`.js-pp_${i}`);
                 if (image) {
-                    (data[`pp_${i}`] && data[`pp_${i}`].includes(shuffleCookie.user_id)) ? image.style = `background-image: url(${data[`pp_${i}`]});` : image.style = '';
+                    const link = data[`pp_${i}`];
+                    (!!link && link.includes(helper.shuffleCookie().user_id)) ? image.style = `background-image: url(${link});` : image.style = '';
                 }
             }
 
