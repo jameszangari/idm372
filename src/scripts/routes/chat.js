@@ -105,7 +105,6 @@ module.exports = async function (req, res) {
                 if (i != messages.size) { // Check array before sending
                 } else { // When done
                     function checkArray() { // Check if data is ready
-                        console.log('Checking Messages Array');
                         if (messages.size == messageArray.length) {
                             send();
                         } else {
