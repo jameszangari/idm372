@@ -117,7 +117,7 @@ module.exports = {
         function addGeneralData(el, data) {
             // The data that appears on both the user list cards and on the profile view
             // Meant to be re-usable
-            (data.pp_0 && data.pp_0 != 'false') ? el.querySelector('.js-pp_0').style = `background-image: url(${data.pp_0});` : el.querySelector('.js-pp_0').style = '';
+            (data.pp_0 && data.pp_0.includes(helper.shuffleCookie().user_id)) ? el.querySelector('.js-pp_0').style = `background-image: url(${data.pp_0});` : el.querySelector('.js-pp_0').style = '';
             data.pronouns ? el.querySelector('.js-pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.js-pronouns').hidden = true;
             el.querySelector('.js-first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
             el.querySelector('.js-location').innerText = 'Philadelphia';
