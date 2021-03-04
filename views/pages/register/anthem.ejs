@@ -4,7 +4,9 @@
     title: endpoints.pages.registerAnthem.title
 }); %>
     
-    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your Anthem, a song that others can play while viewing your profile</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Choose a song that 
+        represents you, your Anthem!</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">This will be displayed on your profile for other music lovers to see. Be Creative!</h2>
 
     <form class="o-search-form" id="searchSpotify">
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="track"
@@ -26,7 +28,7 @@
         <div class="o-modal--group" id="search_results"></div>
     </div>
     <div class="o-spotify-choice" hidden>
-        <button onclick="return confirm('Are you sure you want to Delete?');" class="o-spotify-choice--cancel"></button>
+        <button class="o-spotify-choice--edit"></button>
         <div class="o-spotify-choice--area"></div>
     </div>
 

@@ -519,6 +519,11 @@ section .invalid:first-of-type {
 			color: $color-gray-2;
 		}
 	}
+	&--edit {
+		@extend .edit-icon;
+		position: absolute;
+		transform: translate(64px, -88px);
+	}
 }
 
 .section-checked::after {
