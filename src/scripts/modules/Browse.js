@@ -183,6 +183,11 @@ module.exports = {
             // General Data
             addGeneralData(viewUser, data);
 
+            // Profile pics 2 and 3
+            for (i = 1; i < 3; i++) {
+                (data[`pp_${i}`] && data[`pp_${i}`] != 'false') ? el.querySelector(`.js-pp_${i}`).style = `background-image: url(${data[`pp_${i}`]});` : el.querySelector('.js-pp_0').style = '';
+            }
+
             // Card Titles
             viewUser.querySelector('.js-first_name_1').innerText = data.first_name;
             viewUser.querySelector('.js-top_artists_heading').innerText = data.first_name + "'s Top Artists";
