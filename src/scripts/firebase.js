@@ -19,11 +19,17 @@ module.exports = {
 		array[1] == uuid ? targetUUID = array[2] : targetUUID = array[1];
 		return targetUUID;
 	},
-	getName: function (uuid) { // Turns UUID strings into first_name
+	getBaseInfo: function (uuid) { // Turns UUID strings into first_name
 		return new Promise(async function (resolve, reject) {
 			const docRef = await admin.firestore().collection('users').doc(uuid);
 			docRef.get().then(function (doc) {
-				resolve(doc.data().first_name)
+				const data = doc.data();
+				let picLink;
+				data.pp_0 && data.pp_0.includes('shuffle') ? picLink = data.pp_0 : picLink = false;
+				resolve({
+					name: data.first_name,
+					pp_0: picLink
+				});
 			}).catch(function (error) {
 				reject(Error(error));
 			});
