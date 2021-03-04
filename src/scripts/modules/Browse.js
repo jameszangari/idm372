@@ -184,8 +184,11 @@ module.exports = {
             addGeneralData(viewUser, data);
 
             // Profile pics 2 and 3
-            for (i = 1; i < 3; i++) {
-                (data[`pp_${i}`] && data[`pp_${i}`] != 'false') ? viewUser.querySelector(`.js-pp_${i}`).style = `background-image: url(${data[`pp_${i}`]});` : viewUser.querySelector('.js-pp_0').style = '';
+            for (i = 1; i < 4; i++) {
+                const image = viewUser.querySelector(`.js-pp_${i}`);
+                if (image) {
+                    (data[`pp_${i}`] && data[`pp_${i}`] != 'false') ? image.style = `background-image: url(${data[`pp_${i}`]});` : image.style = '';
+                }
             }
 
             // Card Titles
