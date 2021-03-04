@@ -5,7 +5,10 @@
     "connected": { "url": "/connected" },
     "refreshToken": { "url": "/refreshToken" },
     "search": { "url": "/search" },
-    "update": { "url": "/update" },
+    "update": {
+      "url": "/update",
+      "method": "post"
+    },
     "users": { "url": "/users" },
     "chat": { "url": "/chat" },
     "playlist": { "url": "/playlist" }

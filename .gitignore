@@ -83,4 +83,5 @@ node_modules
 ##################################
 .env
 env
-public/dist/js/ServiceWorker.js
+public/dist/*
+secret/google-credentials.json

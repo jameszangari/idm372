@@ -23,6 +23,7 @@
 		"ie 11"
 	],
 	"dependencies": {
+		"@google-cloud/storage": "^5.8.1",
 		"browserslist": "^4.6.3",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.4",
@@ -32,7 +33,7 @@
 		"express-session": "^1.17.1",
 		"firebase": "^7.24.0",
 		"firebase-admin": "^9.4.1",
-		"firebase-functions": "^3.13.2",
+		"image-data-uri": "^2.0.1",
 		"jquery": "^3.1.0",
 		"lozad": "^1.14.0",
 		"moment": "^2.29.1",

@@ -6,22 +6,23 @@ module.exports = {
         }
 
         // Required
-        const endpoints = require('../config/endpoints.json');
-        const helper = require('../helper');
-        const Lists = require('./Lists');
+        const
+            endpoints = require('../config/endpoints.json'),
+            helper = require('../helper'),
+            Lists = require('./Lists'),
 
-        // Cookies
-        const shuffleCookie = helper.shuffleCookie();
+            // Cookies
+            shuffleCookie = helper.shuffleCookie(),
 
-        // Elements
-        const profile_list = docQ('.js-browse');
-        const html = docQ('html');
-        const viewUser = docQ('.c-profile');
-        const continueBtn = docQ('.continue-button');
+            // Elements
+            profile_list = docQ('.js-browse'),
+            html = docQ('html'),
+            viewUser = docQ('.c-profile'),
+            continueBtn = docQ('.continue-button'),
+            myProfileButton = docQ('.my-profile-button'),
+            backBtn = docQ('.c-header-navigation__button');
+
         continueBtn.hidden = true; // Default
-        const myProfileButton = docQ('.my-profile-button');
-        const backBtn = docQ('.c-header-navigation__button');
-
 
         // Functions
         $.ajax({
@@ -57,6 +58,7 @@ module.exports = {
             // Sets the new_user field to false, allowing them to be seen
             $.ajax({
                 url: endpoints.routes.update.url,
+                method: endpoints.routes.update.method,
                 data: {
                     uuid: shuffleCookie.user_id,
                     values: {
@@ -116,6 +118,7 @@ module.exports = {
         function addGeneralData(el, data) {
             // The data that appears on both the user list cards and on the profile view
             // Meant to be re-usable
+            (data.pp_0 && data.pp_0 != 'false') ? el.querySelector('.js-pp_0').style = `background-image: url(${data.pp_0});` : el.querySelector('.js-pp_0').style = '';
             data.pronouns ? el.querySelector('.js-pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.js-pronouns').hidden = true;
             el.querySelector('.js-first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
             el.querySelector('.js-location').innerText = 'Philadelphia';
@@ -129,9 +132,10 @@ module.exports = {
         function listUsers(users) {
             $.each(users, (i, user) => {
                 // quickRefs
-                const data = user.data;
-                const ogCard = docQA('.c-user-card')[0];
-                const cloneCard = ogCard.cloneNode(true);
+                const
+                    data = user.data,
+                    ogCard = docQA('.c-user-card')[0],
+                    cloneCard = ogCard.cloneNode(true);
 
                 // General Data
                 addGeneralData(cloneCard, data);

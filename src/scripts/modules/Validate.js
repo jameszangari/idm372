@@ -60,7 +60,7 @@ if (submitBtn) { // If there's a form
 
             const notSure = form.querySelector('input[value="a"]');
             const allCheckBoxes = form.querySelectorAll('input[type="checkbox"]');
-            
+
             allCheckBoxes.forEach(el => {
                 el.addEventListener('click', () => {
                     if (el != notSure) {
@@ -111,7 +111,7 @@ if (submitBtn) { // If there's a form
         });
     } else if (urlPathname == endpoints.pages.registerConnected.url) {
         toggleSubmitBtn('submit', 'continue'); // Default
-    } else if (urlPathname == endpoints.pages.registerGenres.url) {
+    } else if (urlPathname == endpoints.pages.registerGenres.url || urlPathname == endpoints.pages.registerImages.url) {
         toggleSubmitBtn('submit', 'next'); // Default
     }
 

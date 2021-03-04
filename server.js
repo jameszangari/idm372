@@ -7,6 +7,7 @@ const express = require('express'); // Web Server Framework
 const cors = require('cors'); // Cross-origin Access
 const cookieParser = require('cookie-parser'); // Headers Cookies
 const path = require('path');
+const cp = require('child_process');
 
 // ====================
 // Start Express Server
@@ -20,7 +21,8 @@ const port = process.env.PORT || 8888;
 app.use(express.static(path.join(__dirname, 'public')))
     .use(cors())
     .use(cookieParser())
-    .use(express.urlencoded({ extended: true }));
+    .use(express.urlencoded({ extended: true, limit: '20mb' }))
+    .use(express.json({ limit: '20mb' }));
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');

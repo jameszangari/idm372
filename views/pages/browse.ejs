@@ -3,7 +3,7 @@
 
         <div class="js-browse js-edit">
             <div class="c-user-card">
-                <div class="c-user-card__figure">
+                <div class="c-user-card__figure js-pp_0">
                     <p class="c-user-card__figure-name u-heading-1 u-box-shadow--text js-first_name"></p>
                     <p class="c-user-card__figure-pronouns u-heading-4 u-box-shadow--text js-pronouns"></p>
                     <p class="c-user-card__figure-location u-heading-3 u-box-shadow--text js-location"></p>
@@ -40,7 +40,7 @@
                 <h2 class="c-profile__header-heading u-heading-1 u-align-center js-first_name_1"></h2>
                 <button class="o-modal--close">Done</button>
             </div>
-            <div class="c-profile__figure">
+            <div class="c-profile__figure js-pp_0">
                 <p class="c-profile__figure-name u-heading-1 u-box-shadow--text js-first_name"></p>
                 <p class="c-profile__figure-pronouns u-heading-3 u-box-shadow--text js-pronouns"></p>
                 <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
@@ -156,8 +156,8 @@
                     <div class="c-profile-playlist">
                         <img class="c-profile-playlist__image">
                         <div class="c-profile-playlist__info">
-							<h3 class="c-profile-playlist__title"></h3>
-							<h5 class="c-profile-playlist__author"></h5>
+                            <h3 class="c-profile-playlist__title"></h3>
+                            <h5 class="c-profile-playlist__author"></h5>
                         </div>
                     </div>
                     <div class='c-profile-playlist__songs-list'></div>
@@ -168,11 +168,8 @@
         </div>
 
         <!-- Continue button for profile complete page -->
-        <%- include('../_components/buttons', { 
-            url: endpoints.pages.browse.url, 
-            label: 'Continue',
-            classnames: 'o-button-secondary continue-button'
-        }); %>
+        <%- include('../_components/buttons', { url: endpoints.pages.browse.url, label: 'Continue' ,
+            classnames: 'o-button-secondary continue-button' }); %>
 
-    <%- include('../_components/footer-navigation'); %>
-<%- include('../_partials/footer'); %>
+            <%- include('../_components/footer-navigation'); %>
+                <%- include('../_partials/footer'); %>

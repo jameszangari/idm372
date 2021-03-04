@@ -1,15 +1,17 @@
-const firebaseAdmin = require('firebase-admin'); // FireBase Functions
+const admin = require('firebase-admin'); // FireBase Functions
 const config = require('../../secret/config'); // Secret Keys
-const functions = require('firebase-functions'); // Extra Functions
+const moment = require('moment'); // Secret Keys
 
 module.exports = {
 	init: function () {
-		firebaseAdmin.initializeApp({ // Init Admin SDK w/ Keys
-			credential: firebaseAdmin.credential.cert(config)
+		admin.initializeApp({ // Init Admin SDK w/ Keys
+			credential: admin.credential.cert(config),
+			databaseURL: 'https://shuffle-devtest.firebaseio.com',
+			storageBucket: 'gs://shuffle-devtest.appspot.com'
 		});
 	},
 	db: function () {
-		return firebaseAdmin.firestore();
+		return admin.firestore();
 	},
 	getTargetUUID: function (threadID, uuid) {
 		const array = threadID.split('-');
@@ -19,7 +21,7 @@ module.exports = {
 	},
 	getName: function (uuid) { // Turns UUID strings into first_name
 		return new Promise(async function (resolve, reject) {
-			const docRef = await firebaseAdmin.firestore().collection('users').doc(uuid);
+			const docRef = await admin.firestore().collection('users').doc(uuid);
 			docRef.get().then(function (doc) {
 				resolve(doc.data().first_name)
 			}).catch(function (error) {
@@ -28,7 +30,19 @@ module.exports = {
 		});
 	},
 	tstamp: function () {
-		return firebaseAdmin.firestore.FieldValue.serverTimestamp();
+		return admin.firestore.FieldValue.serverTimestamp();
 	},
-	functions: functions
+	getStorageURL: (filePath) => {
+		return new Promise(async function (resolve, reject) {
+			await admin.storage().bucket().file(filePath).getSignedUrl({
+				version: 'v2',
+				action: 'read',
+				expires: moment().add(5, 'y') // 5 years
+			}).then(function (resp) {
+				resolve(resp);
+			}).catch(function (error) {
+				reject(Error(error));
+			});
+		});
+	}
 }
