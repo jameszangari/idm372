@@ -21,7 +21,7 @@ module.exports = function (req, res) {
                 ext = URI.split('data:image/').pop().split(';')[0],
                 fileName = data.uuid + '-' + key + '.' + ext;
 
-            const filePath = `public/images/${fileName}`;
+            const filePath = `public/images/temp/${fileName}`;
 
             imageDataURI.outputFile(URI, filePath).then(() => {
                 uploadFile(filePath, fileName, key);
@@ -38,21 +38,20 @@ module.exports = function (req, res) {
                     cacheControl: 'no-cache',
                 }
             }).then((response) => {
-                // console.log(response);
                 fs.unlinkSync(filePath);
 
                 firebase.getStorageURL(fileName).then((URL) => {
-                    // console.log(URL);
                     addLinksToUser(key, URL[0]);
-                });
+                    // console.log(URL[0]);
+                }).catch((error) => { console.log(error); res.send(false); });
 
             }).catch((error) => { console.log(error); res.send(false); });
         }
 
         function addLinksToUser(key, URL) {
+            console.log(key, URL);
             // Adds links to the user doc
             docRef.update({ [key]: URL }).then(() => {
-                // res.send(true);
             }).catch(function (error) { console.error(error); res.send(false); });
         }
     } else {

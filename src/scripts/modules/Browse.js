@@ -187,7 +187,7 @@ module.exports = {
             for (i = 1; i < 4; i++) {
                 const image = viewUser.querySelector(`.js-pp_${i}`);
                 if (image) {
-                    (data[`pp_${i}`] && data[`pp_${i}`] != 'false') ? image.style = `background-image: url(${data[`pp_${i}`]});` : image.style = '';
+                    (data[`pp_${i}`] && data[`pp_${i}`].includes(shuffleCookie.user_id)) ? image.style = `background-image: url(${data[`pp_${i}`]});` : image.style = '';
                 }
             }
 
@@ -225,7 +225,7 @@ module.exports = {
             data.playlist_thumb ? viewUser.querySelector(`.c-profile-playlist__image`).src = data.playlist_thumb : hideBlock(`.c-profile-playlist__image`); //playlist image
             data.playlist_title ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data.playlist_title, 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
             data.playlist_artist ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data.playlist_artist}` : hideBlock(`.c-profile-playlist__author`); //playlist author
-            
+
             // Playlist Songs
             const shuffleCookie = helper.shuffleCookie();
             $.ajax({
