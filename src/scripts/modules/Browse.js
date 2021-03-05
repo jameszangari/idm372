@@ -101,6 +101,7 @@ module.exports = {
                     docQ('.c-profile').classList.remove('c-profile--self');
                     if (docQ('.o-modal--close')) docQ('.o-modal--close').hidden = true;
                     continueBtn.hidden = false;
+                    docQ('.o-faux').hidden = true;
                     completeProfile();
                 } else {
                     continueBtn.hidden = true;
