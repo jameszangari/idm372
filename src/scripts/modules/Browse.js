@@ -183,8 +183,8 @@ module.exports = {
             // General Data
             addGeneralData(viewUser, data);
 
-            // Profile pics 2 and 3
-            for (let i = 1; i < 3; i++) {
+            // Profile pics 2, 3 and 4
+            for (i = 1; i < 4; i++) {
                 const image = viewUser.querySelector(`.js-pp_${i}`);
                 if (image) {
                     (data[`pp_${i}`] && data[`pp_${i}`].includes('shuffle')) ? image.src = `${data[`pp_${i}`]}` : image.src = '';
