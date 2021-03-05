@@ -84,10 +84,10 @@
 		border-radius: 50px;
 		position: absolute;
 		bottom: 100px;
-		transition: all .3s;
+		transition: all 0.3s;
 		&:hover {
 			background: $color-gray-2;
-			color: #1ED760;
+			color: #1ed760;
 		}
 		&:before {
 			content: "\f1bc";
@@ -152,11 +152,10 @@
 	}
 }
 
-
 /*------------------------------------*\
     #LANDSCAPE/PORTRAIT LAYOUTS
 \*------------------------------------*/
-@media all and (orientation:portrait) {
+@media all and (orientation: portrait) {
 	.l-portrait-lock {
 		display: none;
 	}
@@ -164,7 +163,7 @@
 		display: flex;
 	}
 }
-@media all and (orientation:landscape) {
+@media all and (orientation: landscape) {
 	.l-login {
 		display: none;
 	}
@@ -174,11 +173,13 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		@include ShuffleAnimatedGradient ($color-bright-blue, $color-purple);
+		@include ShuffleAnimatedGradient($color-bright-blue, $color-purple);
 		height: 100vh;
-		width: 100%;
+		width: 100vw;
 		padding: 50px;
 		position: fixed;
+		top: 0;
+		left: 0;
 		z-index: 999;
 		&__heading {
 			font-family: $font-vcr;
@@ -189,7 +190,8 @@
 			padding-top: 24px;
 			font-size: 18px;
 		}
-		&__heading, &__body {
+		&__heading,
+		&__body {
 			text-align: center;
 			max-width: 500px;
 			margin: 0 auto;
