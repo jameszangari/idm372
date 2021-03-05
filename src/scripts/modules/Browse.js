@@ -224,7 +224,7 @@ module.exports = {
 
             // Top Playlist
             data.playlist_thumb ? viewUser.querySelector(`.c-profile-playlist__image`).src = data.playlist_thumb : hideBlock(`.c-profile-playlist__image`); //playlist image
-            data.playlist_title ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data.playlist_title, 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
+            data.playlist_title ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data.playlist_title, 24) : hideBlock(`.c-profile-playlist__title`); //playlist title
             data.playlist_artist ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data.playlist_artist}` : hideBlock(`.c-profile-playlist__author`); //playlist author
 
             // Playlist Songs

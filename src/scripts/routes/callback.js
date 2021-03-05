@@ -41,7 +41,7 @@ module.exports = function (req, res) {
 
 				// ===== SEND INFO FROM RESPONSE BACK TO FIREBASE =====
 				request.get(options, function (error, response, body) {
-					getDialogue(body).then(userObj => {
+					getUserData(body).then(userObj => {
 						redirect_to_shuffle(res, {
 							uuid: body.id,
 							email: userObj.email,
@@ -59,12 +59,10 @@ module.exports = function (req, res) {
 		});
 	}
 
-	function getDialogue(body) {
-		return new Promise(function (resolve, reject) {
-			resolve({
-				"email": body.email
-			});
-		})
+	function getUserData(body) {
+		return new Promise((resolve, reject) => {
+			body ? resolve({ "email": body.email }) : reject(Error(error));
+		});
 	}
 
 	function redirect_to_shuffle(res, spotifyData) {
@@ -77,9 +75,9 @@ module.exports = function (req, res) {
 		const docRef = firebase.db().collection('users').doc(spotifyData.uuid);
 		docRef.get().then((doc) => {
 			const docData = doc.data();
-
-			let method;
-			let profileComplete;
+			let
+				method,
+				profileComplete;
 
 			if (doc.exists) {
 				method = 'update';

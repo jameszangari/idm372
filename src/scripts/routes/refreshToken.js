@@ -1,29 +1,22 @@
-const config = require('../../../secret/config'); // Secret Keys
-const request = require("request");
-
 module.exports = function (req, res) {
-
-  // requesting access token from refresh token
-  var refresh_token = req.query.refresh_token;
-  var authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    headers: { 'Authorization': 'Basic ' + (Buffer.from(config.client_id + ':' + config.client_secret).toString('base64')) },
-    form: {
-      grant_type: 'refresh_token',
-      refresh_token: refresh_token
-    },
-    json: true
-  };
+  const
+    config = require('../../../secret/config'),
+    request = require('request'),
+    authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      headers: { 'Authorization': 'Basic ' + (Buffer.from(config.client_id + ':' + config.client_secret).toString('base64')) },
+      form: {
+        grant_type: 'refresh_token',
+        refresh_token: req.query.refresh_token
+      },
+      json: true
+    };
 
   request.post(authOptions, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var access_token = body.access_token;
-      res.send({
-        'access_token': access_token
-      });
-    }
-    else {
-      //console.log(response);
+    if (!error && response.statusCode == 200) {
+      res.send({ access_token: body.access_token });
+    } else {
+      console.error('Error getting refresh token: ' + response.statusCode);
     }
   });
 };

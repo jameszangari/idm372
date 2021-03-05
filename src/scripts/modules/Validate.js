@@ -10,7 +10,7 @@ function toggleInvalid(add, input, message) {
     }
     if (add == true) {
         input.classList.add('invalid');
-        input.insertAdjacentHTML('afterend', `<p class="invalid_desc">${message}</>`);
+        input.insertAdjacentHTML('afterend', `<p class="invalid_desc">${message}</p>`);
     } else {
         input.classList.remove('invalid');
     }
@@ -142,18 +142,18 @@ if (submitBtn) { // If there's a form
             }
         });
     }
-    
+
     // Set validation listeners for all date inputs
     const date_inputs = docQA('input[type="date"]');
     if (date_inputs.length > 0) { // If there's string input(s)
-    date_inputs.forEach(el => {
-        if (el.required) {
-            el.addEventListener('change', () => {
-                validateDateInput(el);
-            });
-        }
-    });
-}
+        date_inputs.forEach(el => {
+            if (el.required) {
+                el.addEventListener('change', () => {
+                    validateDateInput(el);
+                });
+            }
+        });
+    }
 
 
     function validateDateInput(el) {
@@ -232,7 +232,7 @@ if (submitBtn) { // If there's a form
                 const invalid_section = el.closest('section');
                 const el_siblings = invalid_section.querySelectorAll('[type="checkbox"]');
                 invalid_section.classList.add('invalid'); // Located an invalid input
-                invalid_section.querySelector('.u-heading-2').insertAdjacentHTML('afterend', '<p class="invalid_desc">This section requires input</>');
+                invalid_section.querySelector('.u-heading-2').insertAdjacentHTML('afterend', '<p class="invalid_desc">This section requires input</p>');
                 el_siblings.forEach(el => {
                     el.addEventListener('click', () => {
                         invalid_section.classList.remove('invalid');
