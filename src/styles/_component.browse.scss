@@ -30,7 +30,7 @@
 			z-index: 98;
 		}
 		&-picture {
-			height: 343px;
+			height: 100%;
 			width: 100%;
 			object-fit: cover;
 		}
@@ -115,7 +115,7 @@ iframe {
 }
 
 .c-user-card .c-user-card__figure {
-	background-image: url('http://jamescliff.com/shuffle/default-profile.png');
+	background-image: url("http://jamescliff.com/shuffle/default-profile.png");
 }
 
 .edit-icon {
@@ -133,47 +133,53 @@ iframe {
 }
 
 .c-profile {
-	// display: none;
-	visibility: hidden;
-	margin-top: 55px;
 	position: fixed;
-	top: 0;
+	visibility: hidden;
+	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: fit-content;
 	overflow-x: hidden;
+	color: black;
 	&--open {
-		// display: block;
 		visibility: visible;
-		top: 0;
+		// top: 0;
 		z-index: 996;
-		height: 100%;
+		// height: 100%;
 		overflow-y: scroll !important;
 	}
 	&__header {
-		position: fixed;
-		z-index: 99;
-		top: 35px;
-		text-align: center;
-		width: 100%;
-		background: $color-gray-5;
-		color: black;
-		padding: 16px;
-		border-radius: 24px 24px 0 0;
 		@extend .u-box-shadow;
+		background: $color-gray-5;
+		border-radius: 24px 24px 0 0;
+		width: 100%;
+		height: fit-content;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+		transform: translateY(2px);
 		&-heading {
-			font-weight: 600;
 			text-transform: uppercase;
+			font-weight: bold;
+			width: fit-content;
+		}
+		.o-faux {
+			width: 50px;
+			opacity: 0;
 		}
 	}
 	&__figure {
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
-		height: 375px;
+		height: 320px;
+		width: 100vw;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+		color: $color-gray-5;
 		&-name {
 			margin-bottom: 16px;
 		}
@@ -183,7 +189,6 @@ iframe {
 			z-index: 98;
 		}
 		&-picture {
-			margin-bottom: -60px;
 			min-width: 100vw;
 			height: 480px;
 			object-fit: cover;
@@ -193,35 +198,40 @@ iframe {
 			padding: 26px;
 			margin-bottom: 16px;
 		}
+		* {
+			max-height: 320px !important;
+		}
 	}
 	&__body {
 		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
-		padding: 16px 16px 96px 16px;
-		padding-left: 16px;
-		padding-right: 16px;
-		padding-top: 16px;
-		padding-bottom: 136px;
+		padding: 0 1rem calc(52px + 6vh) 1rem;
+		width: 100%;
+		overflow-y: scroll;
+		height: 82vh;
+		max-height: calc(100vh - 80px);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
 		&-card {
 			@extend .u-box-shadow--large;
 			@extend .u-flex-column;
 			justify-content: space-around;
 			align-items: unset;
+			width: 100%;
+			background: $color-gray-5;
+			padding: 26px 26px 28px 26px;
+			margin-bottom: 16px;
+			border-radius: 26px;
+			color: black;
 			&-horizontal {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
 			}
-			background: $color-gray-5;
-			padding-left: 26px;
-			padding-right: 26px;
-			padding-top: 26px;
-			padding-bottom: 28px;
-			margin-bottom: 16px;
-			border-radius: 26px;
-			color: black;
-			&:last-child {
-				margin-bottom: 32px;
+			&:last-of-type {
+				margin-bottom: 0;
 			}
 			&-heading {
 				font-weight: 700;
@@ -290,27 +300,24 @@ iframe {
 			}
 		}
 	}
-	.o-modal--close {
-		position: fixed;
-		top: 50px;
-		right: 15px;
-	}
 	// Your own profile
 	&--self {
 		z-index: 995;
 		.c-profile {
-			&--top {
+			&__header {
 				display: none;
 			}
 			&__body {
 				background: $color-blues-1;
+				height: calc(100vh - 100px);
 			}
 		}
 	}
 }
 
 .c-profile .c-profile__figure {
-	background-image: url('http://jamescliff.com/shuffle/default-profile.png');
+	margin-bottom: 1rem;
+	background-image: url("http://jamescliff.com/shuffle/default-profile.png");
 }
 
 .c-profile-playlist {

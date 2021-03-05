@@ -4,9 +4,7 @@
         <div class="js-browse js-edit">
             <div class="c-user-card">
                 <div class="c-user-card__figure">
-                    <div class="c-user-card__figure-carousel">
-                        <img class="c-user-card__figure-picture js-pp_0">
-                    </div>
+                    <img class="c-user-card__figure-picture js-pp_0">
                     <span class="c-user-card__figure-info u-box-shadow--text">
                         <p class="c-user-card__figure-name u-heading-1 js-first_name"></p>
                         <p class="c-user-card__figure-pronouns u-heading-4 js-pronouns"></p>
@@ -42,23 +40,25 @@
 
         <div class="c-profile">
             <div class="c-profile__header">
+                <div class="o-faux"></div>
                 <h2 class="c-profile__header-heading u-heading-1 u-align-center js-first_name_1"></h2>
                 <button class="o-modal--close">Done</button>
             </div>
-            <div class="c-profile__figure">
-                <div class="js-slick-carousel">
-                    <img class="c-profile__figure-picture js-pp_0">
-                    <img class="c-profile__figure-picture js-pp_1">
-                    <img class="c-profile__figure-picture js-pp_2">
-                    <img class="c-profile__figure-picture js-pp_3">
-                </div>
-                <span class="c-profile__figure-info">
-                    <p class="c-profile__figure-name u-heading-1 u-box-shadow--text js-first_name"></p>
-                    <p class="c-profile__figure-pronouns u-heading-3 u-box-shadow--text js-pronouns"></p>
-                    <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
-                </span>
-            </div>
             <div class="c-profile__body">
+                <!-- Profile Pics -->
+                <div class="c-profile__figure">
+                    <div class="js-slick-carousel">
+                        <img class="c-profile__figure-picture js-pp_0">
+                        <img class="c-profile__figure-picture js-pp_1">
+                        <img class="c-profile__figure-picture js-pp_2">
+                        <img class="c-profile__figure-picture js-pp_3">
+                    </div>
+                    <span class="c-profile__figure-info">
+                        <p class="c-profile__figure-name u-heading-1 u-box-shadow--text js-first_name"></p>
+                        <p class="c-profile__figure-pronouns u-heading-3 u-box-shadow--text js-pronouns"></p>
+                        <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
+                    </span>
+                </div>
                 <!-- Bio -->
                 <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerBio.url; %>">
                     <h2 class="c-profile__body-card-heading u-heading-3">About Me</h2>
@@ -184,7 +184,7 @@
         <%- include('../_components/buttons', { url: endpoints.pages.browse.url, label: 'Continue' ,
             classnames: 'o-button-secondary continue-button' }); %>
 
-        <%- include('../_components/settings'); %>
+            <%- include('../_components/settings'); %>
 
-    <%- include('../_components/footer-navigation'); %>
-<%- include('../_partials/footer'); %>
+                <%- include('../_components/footer-navigation'); %>
+                    <%- include('../_partials/footer'); %>
