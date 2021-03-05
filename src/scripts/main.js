@@ -24,6 +24,7 @@ const
     Edit = require('./modules/Edit'),
     RefreshToken = require('./modules/RefreshToken'),
     Chat = require('./modules/Chat'),
+    Settings = require('./modules/Settings'),
     Sort = require('./modules/Drag');
 // Global Logic here
 $(document).ready(() => {

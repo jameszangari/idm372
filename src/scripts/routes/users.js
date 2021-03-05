@@ -1,4 +1,10 @@
 const firebase = require('../firebase'); // FireBase Functions
+const endpoints = require('../config/endpoints');
+
+function logout(res) {
+    res.clearCookie('spotify');
+    res.redirect(endpoints.pages.login.url);
+}
 
 module.exports = async function (req, res) {
     // quickRefs
@@ -48,5 +54,18 @@ module.exports = async function (req, res) {
             uuid: snapshot.id,
             data: snapshot.data()
         });
+    } else if (data.query == 'delete-user') {
+        if (JSON.parse(req.cookies.spotify).user_id == data.target) {
+            const docRef = firebase.db().collection('users').doc(data.target);
+            docRef.delete().then(() => {
+                console.log(`Deleted user: ${data.uuid}`);
+                logout(res);
+            }).catch((error) => {
+                console.error('Error deleting user document: ', error);
+                res.send(false);
+            });
+        }
+    } else if (data.query == 'logout') {
+        logout(res);
     }
 }
