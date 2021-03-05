@@ -85,3 +85,4 @@ node_modules
 env
 public/dist/*
 secret/google-credentials.json
+public/images/temp/*

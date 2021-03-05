@@ -42,7 +42,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                 <a class="l-chat-browse--user-item" href="${endpoints.pages.chatView.url + '/?thread=' + thread.thread_id}">
                     <div class="l-chat-browse--user-item--img-area">
                         <img class="l-chat-browse--user-item--img-area--img"
-                            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                            src="${thread.pp_0 ? thread.pp_0 : 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}">
                     </div>
                     <div class="l-chat-browse--user-item--main">
                         <div class="l-chat-browse--user-item--main--top">

@@ -1,19 +1,18 @@
+// Cookies
 
 module.exports = {
     init: function () {
         if (document.querySelector('.js-browse') == null) {
             return;
         }
+        const
+            helper = require('../helper'),
+            shuffleCookie = helper.shuffleCookie();
 
         // Required
         const
             endpoints = require('../config/endpoints.json'),
-            helper = require('../helper'),
             Lists = require('./Lists'),
-
-            // Cookies
-            shuffleCookie = helper.shuffleCookie(),
-
             // Elements
             profile_list = docQ('.js-browse'),
             html = docQ('html'),
@@ -197,7 +196,7 @@ module.exports = {
             viewUser.querySelector('.js-top_artists_heading').innerText = data.first_name + "'s Top Artists";
             viewUser.querySelector('.js-top_tracks_heading').innerText = data.first_name + "'s Top Songs";
             viewUser.querySelector('.js-top_genres_heading').innerText = data.first_name + "'s Top Genres";
-            // viewUser.querySelector('.js-top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+            viewUser.querySelector('.js-playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
 
             // Looking For & Who Are You
             ['looking_for', 'who_are_you'].forEach(string => {
@@ -218,22 +217,14 @@ module.exports = {
 
             // Top 3 Genres
             for (i = 0; i < 3; i++) {
-                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}`], 12)) : hideBlock(`.js-genres_${i}_title`);
+                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}`]), 12) : hideBlock(`.js-genres_${i}_title`);
                 data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_thumb`).src = 'http://hunterhdesign.com/drexel/idm372/genre-imgs/' + Lists.decipherCodes('genres', data[`genres_${i}`]) + '.jpeg' : hideBlock(`.js-genres_${i}_thumb`);
             }
 
             // Top Playlist
-            data[`first_name`] ? viewUser.querySelector(`.js-playlist_heading`).innerText = `${data[`first_name`]}'s Favorite Playlist` : hideBlock(`.js-playlist_heading`); //title of block
-            data[`playlist_thumb`] ? viewUser.querySelector(`.c-profile-playlist__image`).src = data[`playlist_thumb`] : hideBlock(`.c-profile-playlist__image`); //playlist image
-            data[`playlist_title`] ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data[`playlist_title`], 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
-            data[`playlist_artist`] ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data[`playlist_artist`]}` : hideBlock(`.c-profile-playlist__author`); //playlist author
-
-            // Hide any cards where all 3 blocks are hodden (due to insufficient data)
-            docQA('.c-profile__body-card--block-wrap').forEach(wrap => {
-                if (wrap.querySelectorAll('.c-profile__body-card--block[hidden]').length == wrap.querySelectorAll('.c-profile__body-card--block').length) {
-                    wrap.closest('.c-profile__body-card').hidden = true;
-                }
-            });
+            data.playlist_thumb ? viewUser.querySelector(`.c-profile-playlist__image`).src = data.playlist_thumb : hideBlock(`.c-profile-playlist__image`); //playlist image
+            data.playlist_title ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data.playlist_title, 12) : hideBlock(`.c-profile-playlist__title`); //playlist title
+            data.playlist_artist ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data.playlist_artist}` : hideBlock(`.c-profile-playlist__author`); //playlist author
 
             // Playlist Songs
             const shuffleCookie = helper.shuffleCookie();
@@ -242,23 +233,30 @@ module.exports = {
                 data: {
                     refresh_token: shuffleCookie.refresh_token,
                     access_token: shuffleCookie.access_token,
-                    playlist: data[`playlist_id`]
+                    playlist: data.playlist_id
                 }
             }).done(function (res) {
                 viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML = '';
                 for (i = 0; i < 5; i++) {
                     viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML += `
-						<div class='c-profile-playlist__songs-list__item'> 
-							<span class='c-profile-playlist__songs-list__item__title'>
-								${helper.truncateString(res.items[i].track.name, 12)} 
-							</span>
-							<span class='c-profile-playlist__songs-list__item__artist'> 
-								by ${helper.truncateString(res.items[i].track.artists[0].name, 15)} 
-							</span>
-							<span class='c-profile-playlist__songs-list__item__time'> 
-								${helper.millisToMinutesAndSeconds(res.items[i].track.duration_ms)}
-							</span> 
-						</div>`;
+                    <div class='c-profile-playlist__songs-list__item'> 
+                    <span class='c-profile-playlist__songs-list__item__title'>
+                    ${helper.truncateString(res.items[i].track.name, 12)} 
+                    </span>
+                    <span class='c-profile-playlist__songs-list__item__artist'> 
+                    by ${helper.truncateString(res.items[i].track.artists[0].name, 15)} 
+                    </span>
+                    <span class='c-profile-playlist__songs-list__item__time'> 
+                    ${helper.millisToMinutesAndSeconds(res.items[i].track.duration_ms)}
+                    </span> 
+                    </div>`;
+                }
+            });
+
+            // Hide any cards where all 3 blocks are hidden (due to insufficient data)
+            docQA('.c-profile__body-card--block-wrap').forEach(wrap => {
+                if (wrap.querySelectorAll('.c-profile__body-card--block[hidden]').length == wrap.querySelectorAll('.c-profile__body-card--block').length) {
+                    wrap.closest('.c-profile__body-card').hidden = true;
                 }
             });
         }
