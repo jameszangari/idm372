@@ -93,7 +93,6 @@ module.exports = function (req, res) {
 				profileComplete = false;
 			}
 
-
 			docRef[method]({
 				email: spotifyData.email,
 				profileComplete: profileComplete

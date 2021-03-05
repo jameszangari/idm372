@@ -10,7 +10,7 @@ module.exports = async function (req, res) {
     // quickRefs
     const data = req.query;
     const users = [];
-    const shuffleCookie = JSON.parse(req.cookies.spotify);
+    const shuffleCookie = JSON.parse(req.cookies.shuffle);
 
     // Queries
     if (data.query == 'all-users') {
