@@ -187,7 +187,8 @@ module.exports = {
             for (i = 1; i < 4; i++) {
                 const image = viewUser.querySelector(`.js-pp_${i}`);
                 if (image) {
-                    (data[`pp_${i}`] && data[`pp_${i}`].includes('shuffle')) ? image.src = `${data[`pp_${i}`]}` : image.src = '';
+                    const link = data[`pp_${i}`];
+                    (link && link.includes('shuffle')) ? image.src = `${link}` : image.src = '';
                 }
             }
 
