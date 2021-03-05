@@ -1,0 +1,35 @@
+/*------------------------------------*\
+    #SLICK CAROUSEL OVERRIDES
+\*------------------------------------*/
+/* the slides */
+.slick-slide {
+    margin: 0 10px;
+}
+.slick-list {
+    margin: 0 -10px;
+}
+.slide:not(:first-of-type) {
+    display: none;
+}
+.slider.slick-initialized .slide:not(:first-of-type) {
+    display:block;
+}
+/* dots */
+.slick-dots {
+    position: absolute;
+    bottom: 10px;
+    z-index: 98;
+}
+.slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
+.slick-dots li button::before {
+    color: $color-gray-5;
+    opacity: 1;
+    font-size: 16px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+}
+.slick-dots li.slick-active button::before {
+    color: $color-pink-1;
+    opacity: 1;
+}
