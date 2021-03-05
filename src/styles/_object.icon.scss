@@ -58,9 +58,6 @@
 		width: 80px;
 		border-radius: 12px;
 		margin: 0 .5rem;
-		&:last-of-type {
-			margin-right: 0;
-		}
 		&:hover {
 			background: $color-bright-blue-hover;
 			border: none;

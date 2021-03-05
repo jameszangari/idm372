@@ -1,4 +1,4 @@
-const config = require('../../../secret/config'); // Secret Keys
+// const config = require('../../../secret/config'); // Secret Keys
 const request = require("request");
 
 module.exports = function (req, res) {

@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 module.exports = config = {
-
 	// SPOTIFY
 	client_id: process.env.SECRET_SPOTIFY_CLIENT_ID,
 	client_secret: process.env.SECRET_SPOTIFY_CLIENT,
@@ -18,5 +17,4 @@ module.exports = config = {
 	token_uri: "https://oauth2.googleapis.com/token",
 	auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
 	client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fppxu%40shuffle-devtest.iam.gserviceaccount.com"
-
 }

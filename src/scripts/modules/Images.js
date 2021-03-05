@@ -3,6 +3,7 @@ if (docQ('.js-images')) {
     const inputs = docQA('.js-profile-picture');
     const form = docQ('#firestore_form');
     const maxFileSize = 5; // In MB
+    const Validate = require('./Validate');
 
     buttons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -12,11 +13,25 @@ if (docQ('.js-images')) {
         });
     });
 
+    function addValidityCheck(input) {
+        const section = input.closest('.form-section');
+        const clone = section.cloneNode(true);
+        const tempForm = document.createElement('form');
+        tempForm.appendChild(clone);
+
+        if (tempForm.checkValidity()) { // Handle valid
+            Validate.toggleInvalid(false, input.closest('section'));
+        } else {
+            Validate.toggleInvalid(true, input.closest('section'), 'At least 1 photo is required for Shuffle.');
+        }
+    }
+
     inputs.forEach(input => {
         input.addEventListener('change', (e) => {
             e.preventDefault();
             const button = docQ(`button[data-index="${input.dataset.index}"]`);
             setImage(input, button);
+            addValidityCheck(input);
         });
     });
 

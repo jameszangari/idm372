@@ -22,7 +22,6 @@ function toggleSubmitBtn(mode, forceText) {
     if (forceText) submitBtn.innerText = forceText;
 }
 
-
 function checkFormForSkip() {
     const form = docQ(submitBtn.dataset.form);
     if (form.querySelectorAll('[required]').length == 0 && !!submitBtn) {
@@ -143,18 +142,19 @@ if (submitBtn) { // If there's a form
             }
         });
     }
-
+    
     // Set validation listeners for all date inputs
     const date_inputs = docQA('input[type="date"]');
     if (date_inputs.length > 0) { // If there's string input(s)
-        date_inputs.forEach(el => {
-            if (el.required) {
-                el.addEventListener('change', () => {
-                    validateDateInput(el);
-                });
-            }
-        });
-    }
+    date_inputs.forEach(el => {
+        if (el.required) {
+            el.addEventListener('change', () => {
+                validateDateInput(el);
+            });
+        }
+    });
+}
+
 
     function validateDateInput(el) {
         const value = el.value, min = el.getAttribute('min'), max = el.getAttribute('max');
@@ -205,6 +205,7 @@ if (submitBtn) { // If there's a form
         // Call respective function to handle
         type === 'strings' && invalid_strings_form(invalids, valids);
         type === 'checkOne' && invalid_checkOne_form(form, invalids);
+        type === 'images' && invalid_images_form(form, invalids);
 
         // ===== Functions per invalid form type =====
 
@@ -240,6 +241,12 @@ if (submitBtn) { // If there's a form
                 });
             });
         }
+
+        function invalid_images_form(form, invalids) {
+            invalids.forEach(input => {
+                toggleInvalid(true, input.closest('section'), 'At least 1 photo is required for Shuffle.');
+            });
+        }
     }
 
     // Check single input (not entire form)
@@ -264,7 +271,7 @@ if (submitBtn) { // If there's a form
     }
 
     const allRequired = document.querySelectorAll('.form-section input, .form-section select');
-    if (allRequired.length > 0) {
+    if (allRequired.length > 0 && type != 'images') {
         allRequired.forEach(el => {
             el.addEventListener('change', () => { checkInput(el); });
         });
