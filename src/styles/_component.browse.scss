@@ -9,7 +9,6 @@
 	margin-top: 16px;
 	border-radius: 26px;
 	overflow: hidden;
-	&__figure,
 	&__body {
 		padding: 26px;
 	}
@@ -18,18 +17,27 @@
 		height: 300px;
 		display: flex;
 		flex-direction: column;
-		justify-content: flex-end;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
 		cursor: pointer;
 		&-name {
-			margin-bottom: 16px;
+			margin-bottom: 10px;
 		}
 		&-name,
 		&-pronouns,
 		&-location {
 			z-index: 98;
+		}
+		&-picture {
+			height: 343px;
+			width: 100%;
+			object-fit: cover;
+		}
+		&-info {
+			position: absolute;
+			padding: 26px;
+			margin-top: 160px;
 		}
 	}
 	&__body {
@@ -106,11 +114,8 @@ iframe {
 	}
 }
 
-.c-user-card:nth-of-type(even) .c-user-card__figure {
-	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
-}
-.c-user-card:nth-of-type(odd) .c-user-card__figure {
-	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
+.c-user-card .c-user-card__figure {
+	background-image: url('http://jamescliff.com/shuffle/default-profile.png');
 }
 
 .edit-icon {
@@ -128,7 +133,8 @@ iframe {
 }
 
 .c-profile {
-	display: none;
+	// display: none;
+	visibility: hidden;
 	margin-top: 55px;
 	position: fixed;
 	top: 0;
@@ -137,7 +143,8 @@ iframe {
 	height: 100%;
 	overflow-x: hidden;
 	&--open {
-		display: block;
+		// display: block;
+		visibility: visible;
 		top: 0;
 		z-index: 996;
 		height: 100%;
@@ -160,7 +167,6 @@ iframe {
 		}
 	}
 	&__figure {
-		padding: 26px;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -175,6 +181,17 @@ iframe {
 		&-pronouns,
 		&-location {
 			z-index: 98;
+		}
+		&-picture {
+			margin-bottom: -60px;
+			min-width: 100vw;
+			height: 480px;
+			object-fit: cover;
+		}
+		&-info {
+			position: absolute;
+			padding: 26px;
+			margin-bottom: 16px;
 		}
 	}
 	&__body {
@@ -292,11 +309,8 @@ iframe {
 	}
 }
 
-.c-profile:nth-of-type(even) .c-profile__figure {
-	background-image: url("https://beehy.pe/wp-content/uploads/2017/09/Noah-Slee-Otherland.jpg");
-}
-.c-profile:nth-of-type(odd) .c-profile__figure {
-	background-image: url("https://i.pinimg.com/236x/ef/87/a1/ef87a1e7df60c0a56707188e97696290.jpg");
+.c-profile .c-profile__figure {
+	background-image: url('http://jamescliff.com/shuffle/default-profile.png');
 }
 
 .c-profile-playlist {

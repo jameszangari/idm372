@@ -1,5 +1,6 @@
 // Import our styles
 import './../styles/main.scss';
+// import Carousel from './modules/Carousel';
 
 // Theme Scripts
 var $ = require('jquery');
@@ -15,6 +16,7 @@ const
     AddToHome = require('./modules/AddToHome'),
     Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
+    Carousel = require('./modules/Carousel'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
     Browse = require('./modules/Browse'),
@@ -25,6 +27,7 @@ const
     RefreshToken = require('./modules/RefreshToken'),
     Chat = require('./modules/Chat'),
     Sort = require('./modules/Drag');
+
 // Global Logic here
 $(document).ready(() => {
     AddToHome.init();
@@ -35,4 +38,5 @@ $(document).ready(() => {
     Browse.init();
     Register.init();
     Toggle.init();
+    Carousel.init();
 });
