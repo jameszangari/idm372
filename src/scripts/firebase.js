@@ -38,7 +38,7 @@ module.exports = {
 	tstamp: function () {
 		return admin.firestore.FieldValue.serverTimestamp();
 	},
-	getStorageURL: (filePath) => {
+	getStorageURL: function (filePath) {
 		return new Promise(async function (resolve, reject) {
 			await admin.storage().bucket().file(filePath).getSignedUrl({
 				version: 'v2',
@@ -46,6 +46,19 @@ module.exports = {
 				expires: moment().add(5, 'y') // 5 years
 			}).then(function (resp) {
 				resolve(resp);
+			}).catch(function (error) {
+				reject(Error(error));
+			});
+		});
+	},
+	isUserValid: function (uuid) {
+		return new Promise(async function (resolve, reject) {
+			const docRef = await admin.firestore().collection('users').doc(uuid);
+			docRef.get().then(function (doc) {
+				const docData = doc.data();
+				let profileComplete;
+				(docData.profileComplete == true || docData.profileComplete == 'true') ? profileComplete = true : profileComplete = false;
+				resolve(profileComplete);
 			}).catch(function (error) {
 				reject(Error(error));
 			});

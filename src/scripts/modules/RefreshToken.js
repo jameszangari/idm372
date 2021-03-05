@@ -9,7 +9,7 @@ if (document.cookie) { //runs if the cookie exists - either return user or logge
 	function getRefreshToken() {
 
 		//get your cookies
-		let spotifyObjectString = helper.getCookie('spotify');
+		let spotifyObjectString = helper.getCookie('shuffle');
 		let spotifyObject = JSON.parse(spotifyObjectString);
 
 		//make request to spotify
@@ -20,12 +20,12 @@ if (document.cookie) { //runs if the cookie exists - either return user or logge
 			}
 		}).done(function (res) {
 			//update cookie with new access token
-			let spotifyObjectString = helper.getCookie('spotify');
+			let spotifyObjectString = helper.getCookie('shuffle');
 			let spotifyObject = JSON.parse(spotifyObjectString);
 			console.log('Refreshed Token');
 			spotifyObject.access_token = res.access_token;
 			spotifyObjectString = JSON.stringify(spotifyObject);
-			newSpotifyCookie = helper.encodeCookie('spotify', spotifyObjectString);
+			newSpotifyCookie = helper.encodeCookie('shuffle', spotifyObjectString);
 			document.cookie = newSpotifyCookie;
 		})
 	}

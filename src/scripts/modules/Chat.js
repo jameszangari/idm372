@@ -9,7 +9,7 @@ function getTargetInfo(threadID) {
     $.ajax({
         url: endpoints.routes.chat.url,
         data: {
-            uuid: shuffleCookie.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'get-target-info',
             thread: threadID
         }
@@ -32,7 +32,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     $.ajax({
         url: endpoints.routes.chat.url,
         data: {
-            uuid: shuffleCookie.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'list-chats'
         }
     }).done(function (results) {
@@ -83,7 +83,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     function appendMessages(messages) {
         messages.forEach(message => {
             let fromClass;
-            message.from == shuffleCookie.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
+            message.from == shuffleCookie.uuid ? fromClass = 'from-me' : fromClass = 'from-them';
 
             chatContentDiv.innerHTML += `
                 <div class="l-chat-view--content--message message-${fromClass}">
@@ -99,7 +99,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     $.ajax({
         url: endpoints.routes.chat.url,
         data: {
-            uuid: shuffleCookie.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'get-history',
             thread: thread
         }
@@ -124,7 +124,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
             $.ajax({
                 url: endpoints.routes.chat.url,
                 data: {
-                    uuid: shuffleCookie.user_id,
+                    uuid: shuffleCookie.uuid,
                     query: 'send-message',
                     thread: thread,
                     content: messageInput.value.trim()
@@ -166,7 +166,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     var socket = WS.socket;
 
     socket.emit('sub-to-thread', {
-        uuid: shuffleCookie.user_id,
+        uuid: shuffleCookie.uuid,
         thread: thread
     });
     socket.on('new-message', (message) => {

@@ -22,7 +22,7 @@ if (docQ('.js-settings')) {
                 url: endpoints.routes.users.url,
                 data: {
                     query: deleteUserBtn.dataset.query,
-                    target: shuffleCookie.user_id
+                    target: shuffleCookie.uuid
                 }
             }).done(function (res) {
                 console.log('Deleted Account');

@@ -83,11 +83,14 @@ module.exports = {
 
             function push_data(obj, endpoint) {
                 if (Object.keys(obj).length > 0) { // If theres values
+                    next.disabled = true;
+                    next.innerText = 'Uploading...'
+
                     $.ajax({
                         method: endpoint.method || 'get', // Get is default
                         url: endpoint.url,
                         data: {
-                            uuid: shuffleCookie.user_id,
+                            uuid: shuffleCookie.uuid,
                             values: obj
                         }
                     }).done((response) => {

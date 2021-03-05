@@ -1,6 +1,5 @@
 // Import our styles
 import './../styles/main.scss';
-// import Carousel from './modules/Carousel';
 
 // Theme Scripts
 var $ = require('jquery');
@@ -27,6 +26,7 @@ const
     RefreshToken = require('./modules/RefreshToken'),
     Chat = require('./modules/Chat'),
     Settings = require('./modules/Settings'),
+    CheckUser = require('./modules/CheckUser'),
     Sort = require('./modules/Drag');
 
 // Global Logic here

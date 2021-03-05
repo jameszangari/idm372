@@ -47,7 +47,7 @@ module.exports = {
       endpoints = require('./config/endpoints.json'),
       // Get the Cookie
 
-      cookieString = getCookie('spotify') || null,
+      cookieString = getCookie('shuffle') || null,
       cookieObj = JSON.parse(cookieString) || null,
 
       noCookieNeededPages = [

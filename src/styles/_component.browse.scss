@@ -204,7 +204,7 @@ iframe {
 		}
 	}
 	&__body {
-		background: linear-gradient(180deg, #4361ee 0%, #7209b7 100%);
+		background: $color-blues-1;
 		padding: 0 1rem calc(52px + 6vh) 1rem;
 		width: 100%;
 		overflow-y: scroll;

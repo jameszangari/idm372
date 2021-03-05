@@ -27,7 +27,7 @@ module.exports = {
         $.ajax({
             url: endpoints.routes.users.url,
             data: {
-                uuid: shuffleCookie.user_id,
+                uuid: shuffleCookie.uuid,
                 query: 'all-users'
             }
         }).done((response) => {
@@ -39,7 +39,7 @@ module.exports = {
             const chatBar = docQ('.o-button-secondary');
             chatBar.hidden = !mode;
             if (target) {
-                chatBar.href = endpoints.pages.chatView.url + '?thread=' + helper.getThread(shuffleCookie.user_id, target.uuid);
+                chatBar.href = endpoints.pages.chatView.url + '?thread=' + helper.getThread(shuffleCookie.uuid, target.uuid);
             }
         }
 
@@ -54,14 +54,14 @@ module.exports = {
         }
 
         function completeProfile() {
-            // Sets the new_user field to false, allowing them to be seen
+            // Sets the profileComplete field to false, allowing them to be seen
             $.ajax({
                 url: endpoints.routes.update.url,
                 method: endpoints.routes.update.method,
                 data: {
-                    uuid: shuffleCookie.user_id,
+                    uuid: shuffleCookie.uuid,
                     values: {
-                        new_user: false
+                        profileComplete: true
                     }
                 }
             }).done((response) => {
@@ -76,7 +76,7 @@ module.exports = {
         $.ajax({
             url: endpoints.routes.users.url,
             data: {
-                target: shuffleCookie.user_id,
+                target: shuffleCookie.uuid,
                 query: 'single-user'
             }
         }).done((response) => {
