@@ -95,7 +95,13 @@ module.exports = {
                         }
                     }).done((response) => {
                         // Do stuff after
-                        response ? window.location.href = nextUrl : console.error('There was a server error...');
+                        if (response) {
+                            window.location.href = nextUrl;
+                        } else {
+                            console.error('There was a server error...');
+                            next.disabled = false;
+                            next.innerText = next.dataset.label;
+                        }
                     });
                 } else { // Skip
                     window.location.href = nextUrl;
