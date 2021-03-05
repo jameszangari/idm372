@@ -79,10 +79,20 @@ module.exports = function (req, res) {
 			const docData = doc.data();
 
 			let method;
-			doc.exists ? method = 'update' : method = 'set';
-
 			let profileComplete;
-			(docData.profileComplete == true || docData.profileComplete == 'true') ? profileComplete = true : profileComplete = false;
+
+			if (doc.exists) {
+				method = 'update';
+				if (!!docData.profileComplete) {
+					(docData.profileComplete == true || docData.profileComplete == 'true') ? profileComplete = true : profileComplete = false;
+				} else {
+					profileComplete = false;
+				}
+			} else {
+				method = 'set';
+				profileComplete = false;
+			}
+
 
 			docRef[method]({
 				email: spotifyData.email,

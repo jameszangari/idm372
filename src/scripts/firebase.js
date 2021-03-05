@@ -57,7 +57,15 @@ module.exports = {
 			docRef.get().then(function (doc) {
 				const docData = doc.data();
 				let profileComplete;
-				(docData.profileComplete == true || docData.profileComplete == 'true') ? profileComplete = true : profileComplete = false;
+				if (doc.exists) {
+					if (!!docData.profileComplete) {
+						(docData.profileComplete == true || docData.profileComplete == 'true') ? profileComplete = true : profileComplete = false;
+					} else {
+						profileComplete = false;
+					}
+				} else {
+					profileComplete = false;
+				}
 				resolve(profileComplete);
 			}).catch(function (error) {
 				reject(Error(error));
