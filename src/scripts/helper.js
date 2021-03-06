@@ -1,51 +1,79 @@
+
+function getCookie(cname) {
+  const name = cname + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 module.exports = {
   init: function () {
-
     this.generateRandomString();
     this.getCookie();
     this.getAge();
     this.rm_events();
     this.truncateString();
-
+    this.getUrlParam();
+    this.getThread();
   },
 
   /** Generates a random string containing numbers and letters
-    * @param  {number} length // The length of the string
-    * @return {string} // The generated string
-  */
+   * @param  {number} length // The length of the string
+   * @return {string} // The generated string
+   */
   generateRandomString: function (length) {
-    var text = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
   },
 
-  getCookie: function (cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+  getCookie: getCookie,
+
+  shuffleCookie: function () {
+    const
+      endpoints = require('./config/endpoints.json'),
+      // Get the Cookie
+
+      cookieString = getCookie('shuffle') || null,
+      cookieObj = JSON.parse(cookieString) || null,
+
+      noCookieNeededPages = [
+        endpoints.pages.login.url,
+        endpoints.pages.tos.url,
+        endpoints.pages.privacy.url,
+      ];
+
+    if (!cookieString && !noCookieNeededPages.includes(window.location.pathname)) {
+      // Redirect to login if there's no spotify cookie AND you are on a page that needs it
+      window.location.href = endpoints.pages.login.url + '?noCookieFound=true';
+    } else {
+      // Return the Cookie
+      return cookieObj;
     }
-    return "";
+  },
+
+  encodeCookie: function (cname, cstring) {
+    let encodedString = encodeURIComponent(cstring);
+    let encodedCookie = cname + '=' + encodedString;
+    return cstring;
   },
 
   getAge: function (dob) { // dob param should be date-input.value (do not format it)
-    var year = Number(dob.substr(0, 4));
-    var month = Number(dob.substr(4, 2)) - 1;
-    var day = Number(dob.substr(6, 2));
-    var today = new Date();
-    var age = today.getFullYear() - year;
-    today.getMonth() < month || (today.getMonth() == month && today.getDate() < day) && age--
+    const Bday = new Date(dob);
+    const age = Math.floor((Date.now() - Bday) / (31557600000));
     return age;
   },
 
@@ -76,10 +104,22 @@ module.exports = {
       url = new URL(location);
     return url.searchParams.get(param);
   },
+
   getThread: function (uuid1, uuid2) {
     // Determines what the thread_id will be based on the two uuid's supplied
     let thread_id;
     uuid1 > uuid2 ? thread_id = uuid1 + '-' + uuid2 : thread_id = uuid2 + '-' + uuid1;
     return 'thread-' + thread_id;
+  },
+
+  millisToMinutesAndSeconds: function (millis) {
+    const minutes = Math.floor(millis / 60000);
+    const seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  },
+
+  unixToFromNow: function (unix) {
+    const moment = require('moment');
+    return moment.unix(unix).fromNow();
   }
 }

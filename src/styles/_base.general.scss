@@ -55,6 +55,7 @@ button {
 	padding: 0;
 	line-height: 1;
 	vertical-align: middle;
+	user-select: none;
 }
 
 img {
@@ -86,13 +87,13 @@ textarea {
 	text-align: -webkit-center;
 	-ms-text-align-last: center;
 	-moz-text-align-last: center;
-	
+
 	/*  Reset inputs so that they 
 	maintain custom styles */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	
+
 	&::-webkit-input-placeholder {
 		color: $color-gray-2;
 	}

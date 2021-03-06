@@ -1,18 +1,18 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerLookingFor.title
+    title: endpoints.pages.registerLookingFor.title
 }); %>
     
     <form class="o-form" id="firestore_form" type="checkMulti">
         <h2 class="l-grid__header u-heading-2 u-align-center">What are you looking for?</h2>
-        <section name="looking_for" class="u-flex-row__form"></section>
+        <section name="looking_for" data-listType="checkboxes" data-list="looking_for" class="u-flex-row__form"></section>
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerBio.url, 
-        label: 'Next',
-        classnames: 'o-button-primary',
+        url: endpoints.pages.registerWhoAreYou.url, 
+        label: 'skip',
+        classnames: 'o-button-skip',
         form: '#firestore_form'
     }); %>
 

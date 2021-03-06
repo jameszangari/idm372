@@ -1,50 +1,29 @@
-const express = require("express");
-const firebase = require('../firebase'); // FireBase Functions
-
 module.exports = function (app) {
+  const express = require('express');
+  const firebase = require('../firebase'); // FireBase Functions
   const endpoints = require('../config/endpoints.json');
 
   firebase.init();
   app.use(express.json());
 
-  const routes = [
-    "home",
-    "login",
-    "authorize",
-    "callback",
-    "search",
-    "update",
-    "users",
-    "connected",
-    "chat",
-  ];
-
-  routes.forEach(route => {
-    app.get(endpoints[route].url, require('./' + route));
+  app.get('/', function (req, res) {
+    res.redirect(endpoints.pages.login.url);
   });
 
-  const pages = [
-    "tos",
-    "privacy",
-    "registerConnected",
-    "registerProfile",
-    "registerAnthem",
-    "registerArtist",
-    "registerPlaylist",
-    "registerImages",
-    "registerBio",
-    "registerLookingFor",
-    "browse",
-    "chatBrowse",
-    "chatView",
-  ];
+  const routes = endpoints.routes;
+  Object.keys(routes).forEach(route => {
+    const url = routes[route].url;
+    const method = routes[route].method || 'get'; // Get is default
+    app[method](url, require('.' + url));
+  });
 
-  pages.forEach(page => {
-    app.get(endpoints[page].url, function (req, res) {
-      res.render(endpoints[page].page, {
-        pageTitle: endpoints[page].title,
+  const pages = endpoints.pages;
+  Object.keys(pages).forEach(page => {
+    app.get(pages[page].url, function (req, res) {
+      res.render(pages[page].page, {
+        pageTitle: pages[page].title,
         endpoints: endpoints,
-        bodyclassName: endpoints[page].bodyclassName,
+        bodyclassName: pages[page].bodyclassName,
       });
     });
   });

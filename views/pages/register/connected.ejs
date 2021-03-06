@@ -1,67 +1,57 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerConnected.title
+    title: endpoints.pages.registerConnected.title
 }); %>
 
-<h2 class="l-grid__header u-heading-2 u-align-center">Here’s what we found from 
-    your Spotify account</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Here’s the music we pulled from your Spotify account.</h2>
+    <h2 class="l-grid__header u-heading-4 u-align-center">Want to let the world know the truth? Or maybe it needs some edits.</h2>
 
-<div class="l-connected">
-    <div class="l-connected__heading--group">
-        <h2 class="u-heading-2">Your Top Artists</h2>
-        <button class="o-edit-button">Edit</button>
+    <div class="l-connected">
+        <div class="l-connected__heading--group">
+            <h2 class="u-heading-2">Your Top Artists</h2>
+<!--            <button class="o-edit-button">Edit</button>-->
+        </div>
+            <section class="l-connected__sub-group group--artists">
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Artist Name</p>
+                </span>
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Artist Name</p>
+                </span>
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Artist Name</p>
+                </span>
+            </section>
+        <div class="l-connected__heading--group">
+            <h2 class="u-heading-2">Your Top Songs</h2>
+<!--            <button class="o-edit-button">Edit</button>-->
+        </div>
+            <section class="l-connected__sub-group group--tracks">
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Song Name</p>
+                </span>
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Song Name</p>
+                </span>
+                <span class="l-connected__item">
+                    <img class="l-connected__item-image" src="/images/100x70.png" alt="">
+                    <p class="l-connected__item-text">Song Name</p>
+                </span>
+            </section>
     </div>
-        <section class="l-connected__sub-group group--artists">
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Artist Name</p>
-            </span>
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Artist Name</p>
-            </span>
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Artist Name</p>
-            </span>
-        </section>
-    <div class="l-connected__heading--group">
-        <h2 class="u-heading-2">Your Top Songs</h2>
-        <button class="o-edit-button">Edit</button>
-    </div>
-        <section class="l-connected__sub-group group--tracks">
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Song Name</p>
-            </span>
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Song Name</p>
-            </span>
-            <span class="l-connected__item">
-                <img class="l-connected__item-image" src="/images/100x70.png" alt="">
-                <p class="l-connected__item-text">Song Name</p>
-            </span>
-        </section>
-    <form class="o-form" id="firestore_form" type="strings" hidden>
-        <input id="result_id" type="text" name="artist_0_id">
-        <input id="result_title" type="text" name="artist_0_title">
-        <input id="result_thumb" type="text" name="artist_0_thumb">
-        <input id="result_album" type="text" name="artist_0_album">
-    </form>
-    <div class="o-spotify-select" hidden>
-        <button class="o-spotify-select--close">Done</button>
-        <div class="o-spotify-select--group" id="search_results"></div>
-    </div>
-</div>
 
-<form class="o-form" id="firestore_form" type="strings" hidden></form>
+    <form class="o-form" id="firestore_form" type="strings" hidden></form>
 
 <%- include('../../_components/buttons', {
-    url: endpoints.registerLookingFor.url, 
+    url: endpoints.pages.registerLookingFor.url,
     label: 'Continue',
-    classnames: 'o-button-primary',
+    classnames: 'o-button-submit',
     form: '#firestore_form'
 }); %>
 

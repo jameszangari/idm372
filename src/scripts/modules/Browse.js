@@ -1,32 +1,33 @@
+// Cookies
+
 module.exports = {
     init: function () {
-
         if (document.querySelector('.js-browse') == null) {
             return;
         }
+        const
+            helper = require('../helper'),
+            shuffleCookie = helper.shuffleCookie();
 
         // Required
-        const endpoints = require('../config/endpoints.json');
-        const helper = require('../helper');
-        const Lists = require('./Lists');
+        const
+            endpoints = require('../config/endpoints.json'),
+            Lists = require('./Lists'),
+            // Elements
+            profile_list = docQ('.js-browse'),
+            html = docQ('html'),
+            viewUser = docQ('.c-profile'),
+            continueBtn = docQ('.continue-button'),
+            myProfileButton = docQ('.my-profile-button'),
+            backBtn = docQ('.c-header-navigation__button');
 
-        // Cookies
-        const spotifyObjectString = helper.getCookie('spotify');
-        const spotifyObject = JSON.parse(spotifyObjectString);
-
-        // Elements
-        const profile_list = docQ('#l-profile-list');
-        const html = docQ('html');
-        const viewUser = docQ('.c-view-user');
-        const continueBtn = docQ('.continue-button');
-        const myProfileButton = docQ('.my-profile-button');
-        const backBtn = docQ('.c-header-navigation__button');
+        continueBtn.hidden = true; // Default
 
         // Functions
         $.ajax({
-            url: endpoints.users.url,
+            url: endpoints.routes.users.url,
             data: {
-                uuid: spotifyObject.user_id,
+                uuid: shuffleCookie.uuid,
                 query: 'all-users'
             }
         }).done((response) => {
@@ -35,31 +36,32 @@ module.exports = {
         });
 
         function toggleChatBar(mode, target) { // 'mode' is a boolean, true = show, false = hide
-            const chatBar = docQ('.l-chat-view--input-bar');
+            const chatBar = docQ('.o-button-secondary');
             chatBar.hidden = !mode;
             if (target) {
-                chatBar.href = endpoints.chatView.url + '?thread=' + helper.getThread(spotifyObject.user_id, target.uuid);
+                chatBar.href = endpoints.pages.chatView.url + '?thread=' + helper.getThread(shuffleCookie.uuid, target.uuid);
             }
         }
 
         function close_user_view() {
             html.classList.remove('u-no-scroll');
-            viewUser.classList.remove('c-view-user--open');
+            viewUser.classList.remove('c-profile--open');
             viewUser.hidden = true;
             backBtn.hidden = true;
             myProfileButton.hidden = false;
-            if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = false;
+            if (docQ('.o-modal--close')) docQ('.o-modal--close').hidden = false;
             toggleChatBar(false);
         }
 
         function completeProfile() {
-            // Sets the new_user field to false, allowing them to be seen
+            // Sets the profileComplete field to false, allowing them to be seen
             $.ajax({
-                url: endpoints.update.url,
+                url: endpoints.routes.update.url,
+                method: endpoints.routes.update.method,
                 data: {
-                    uuid: spotifyObject.user_id,
+                    uuid: shuffleCookie.uuid,
                     values: {
-                        new_user: false
+                        profileComplete: true
                     }
                 }
             }).done((response) => {
@@ -72,9 +74,9 @@ module.exports = {
 
         // Get your own user
         $.ajax({
-            url: endpoints.users.url,
+            url: endpoints.routes.users.url,
             data: {
-                target: spotifyObject.user_id,
+                target: shuffleCookie.uuid,
                 query: 'single-user'
             }
         }).done((response) => {
@@ -84,7 +86,7 @@ module.exports = {
                 myProfileButton.addEventListener('click', () => {
                     displayUser(response);
                     toggleChatBar(false);
-                    docQ('.c-view-user').classList.add('c-view-user--self');
+                    docQ('.c-profile').classList.add('c-profile--self');
                     backBtn.hidden = false;
                     myProfileButton.hidden = true;
                 });
@@ -96,10 +98,10 @@ module.exports = {
                 // If just came from profile complete
                 if (helper.getUrlParam('completed')) {
                     myProfileButton.click();
-                    docQ('.c-view-user').classList.remove('c-view-user--self');
-                    docQ('.c-view-user--top-heading').innerText = 'Your Profile';
-                    if (docQ('.o-spotify-select--close')) docQ('.o-spotify-select--close').hidden = true;
+                    docQ('.c-profile').classList.remove('c-profile--self');
+                    if (docQ('.o-modal--close')) docQ('.o-modal--close').hidden = true;
                     continueBtn.hidden = false;
+                    docQ('.o-faux').hidden = true;
                     completeProfile();
                 } else {
                     continueBtn.hidden = true;
@@ -110,87 +112,152 @@ module.exports = {
         });
 
         function hideCard(el) { // Hides the parent card of the specified field
-            viewUser.querySelector(el).closest('.c-view-user__main--card').hidden = true;
+            viewUser.querySelector(el).closest('.c-profile__body-card').hidden = true;
         }
 
         function addGeneralData(el, data) {
-            data.pronouns ? el.querySelector('.data_pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.data_pronouns').hidden = true;
-            el.querySelector('.data_first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
-            el.querySelector('.data_location').innerText = 'Philadelphia';
-            el.querySelector('.data_anthem_heading').innerText = data.first_name + "'s Anthem";
-            data.anthem_id ? el.querySelector('.data_anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id : hideCard('.data_anthem_id');
-            data.anthem_title ? el.querySelector('.data_anthem_title').innerText = data.anthem_title : hideCard('.data_anthem_title');
-            data.anthem_album && data.anthem_artist ? el.querySelector('.data_anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist : hideCard('.data_anthem_subtitle');
+            // The data that appears on both the user list cards and on the profile view
+            // Meant to be re-usable
+            (data.pp_0 && data.pp_0.includes('shuffle')) ? el.querySelector('.js-pp_0').src = `${data.pp_0}` : el.querySelector('.js-pp_0').src = '';
+            data.pronouns ? el.querySelector('.js-pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.js-pronouns').hidden = true;
+            el.querySelector('.js-first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
+            el.querySelector('.js-location').innerText = 'Philadelphia';
+            el.querySelector('.js-anthem_heading').innerText = data.first_name + "'s Anthem";
+            data.anthem_id ? el.querySelector('.js-anthem_id').src = 'https://open.spotify.com/embed/track/' + data.anthem_id : hideCard('.js-anthem_id');
+            data.anthem_title ? el.querySelector('.js-anthem_title').innerText = data.anthem_title : hideCard('.js-anthem_title');
+            data.anthem_album && data.anthem_artist ? el.querySelector('.js-anthem_subtitle').innerText = data.anthem_album + ', ' + data.anthem_artist : hideCard('.js-anthem_subtitle');
         }
 
         // User Cards
         function listUsers(users) {
-            users.forEach(user => {
+            $.each(users, (i, user) => {
                 // quickRefs
-                const data = user.data;
-                const card = docQA('.c-user-card')[0];
-                const cloneCard = card.cloneNode(true);
+                const
+                    data = user.data,
+                    ogCard = docQA('.c-user-card')[0],
+                    cloneCard = ogCard.cloneNode(true);
 
                 // General Data
                 addGeneralData(cloneCard, data);
 
                 profile_list.appendChild(cloneCard);
-                cloneCard.querySelector('.c-user-card--overlay')
+                cloneCard.querySelector('.c-user-card__figure')
                     .addEventListener('click', () => {
                         displayUser(user);
                         toggleChatBar(true, user);
-                        docQ('.c-view-user').classList.remove('c-view-user--self');
+                        docQ('.c-profile').classList.remove('c-profile--self');
                     });
+
+                // Delete original card
+                i + 1 == users.length && ogCard.remove();
             });
         }
 
-        
-        // Specific User View
+
+        // Display a Specific User
         function displayUser(user) {
             // quickRefs
             const data = user.data;
-            const close = viewUser.querySelector('.o-spotify-select--close');
+            const close = viewUser.querySelector('.o-modal--close');
             helper.rm_events(close, false);
             close.addEventListener('click', close_user_view);
 
             // Un-hide optional fields
-            viewUser.querySelectorAll('.c-view-user__main--card[hidden], .c-view-user__main--card--block[hidden]').forEach(el => {
+            viewUser.querySelectorAll('.c-profile__body-card--block[hidden], .c-profile__body-card[hidden]').forEach(el => {
                 el.hidden = false;
             });
 
+            // Function to hide the top 3 blocks if data is insufficient
+            function hideBlock(el) {
+                // Finds the closest --block of the given element
+                viewUser.querySelector(el).closest('.c-profile__body-card--block').hidden = true;
+                const divider = viewUser.querySelector(el).closest('.c-profile__body-card').querySelector('.divider')
+                if (divider) divider.hidden = true;
+            }
+
             // Display the user
             html.classList.add('u-no-scroll');
-            viewUser.classList.add('c-view-user--open');
+            viewUser.classList.add('c-profile--open');
             viewUser.hidden = false;
 
             // General Data
             addGeneralData(viewUser, data);
 
-            // User View Specific Data
-            viewUser.querySelector('.data_first_name_1').innerText = data.first_name;
-            viewUser.querySelector('.data_top_artists_heading').innerText = data.first_name + "'s Top Artists";
-            viewUser.querySelector('.data_top_tracks_heading').innerText = data.first_name + "'s Top Songs";
-            // viewUser.querySelector('.data_top_playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
-            
-            // Optional Fields
-            data.looking_for ? viewUser.querySelector('.data_looking_for').innerText = Lists.decipherCodes('looking_for', data.looking_for) : hideCard('.data_looking_for');
-            data.bio ? viewUser.querySelector('.data_bio').innerText = data.bio : hideCard('.data_bio');
-
-            function hideBlock(el) { // Hides the parent card of the specified field
-                viewUser.querySelector(el).closest('.c-view-user__main--card--block').hidden = true;
+            // Profile pics 2, 3 and 4
+            for (i = 1; i < 4; i++) {
+                const image = viewUser.querySelector(`.js-pp_${i}`);
+                if (image) {
+                    const link = data[`pp_${i}`];
+                    (!!link && link.includes('shuffle')) ? image.src = `${link}` : image.src = '';
+                }
             }
 
+            // Card Titles
+            viewUser.querySelector('.js-first_name_1').innerText = data.first_name;
+            viewUser.querySelector('.js-top_artists_heading').innerText = data.first_name + "'s Top Artists";
+            viewUser.querySelector('.js-top_tracks_heading').innerText = data.first_name + "'s Top Songs";
+            viewUser.querySelector('.js-top_genres_heading').innerText = data.first_name + "'s Top Genres";
+            viewUser.querySelector('.js-playlist_heading').innerText = data.first_name + "'s Favorite Playlist";
+
+            // Looking For & Who Are You
+            ['looking_for', 'who_are_you'].forEach(string => {
+                data[string] ? viewUser.querySelector(`.js-${string}`).innerText = Lists.decipherCodes(string, data[string]) : hideBlock(`.js-${string}`);
+            });
+
+            // Bio
+            data.bio ? viewUser.querySelector('.js-bio').innerText = data.bio : hideCard('.js-bio');
+
+            // Top 3 Artists & Tracks
             ['artist', 'track'].forEach(string => {
                 for (i = 0; i < 3; i++) {
-                    data[`${string}_${i}_title`] ? viewUser.querySelector(`.data_${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12) : hideBlock(`.data_${string}_${i}_title`);
-                    data[`${string}_${i}_thumb`] ? viewUser.querySelector(`.data_${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`] : hideBlock(`.data_${string}_${i}_thumb`);
-                    data[`${string}_${i}_href`] ? viewUser.querySelector(`.data_${string}_${i}_href`).src = data[`${string}_${i}_href`] : hideBlock(`.data_${string}_${i}_href`);
+                    data[`${string}_${i}_title`] ? viewUser.querySelector(`.js-${string}_${i}_title`).innerText = helper.truncateString(data[`${string}_${i}_title`], 12) : hideBlock(`.js-${string}_${i}_title`);
+                    data[`${string}_${i}_thumb`] ? viewUser.querySelector(`.js-${string}_${i}_thumb`).src = data[`${string}_${i}_thumb`] : hideBlock(`.js-${string}_${i}_thumb`);
+                    data[`${string}_${i}_href`] ? viewUser.querySelector(`.js-${string}_${i}_href`).src = data[`${string}_${i}_href`] : hideBlock(`.js-${string}_${i}_href`);
                 }
             });
 
-            docQA('.c-view-user__main--card--block-wrap').forEach(wrap => {
-                if (wrap.querySelectorAll('.c-view-user__main--card--block[hidden]').length == 3) {
-                    wrap.querySelectorAll('.c-view-user__main--card--block')[0].closest('.c-view-user__main--card').hidden = true;
+            // Top 3 Genres
+            for (i = 0; i < 3; i++) {
+                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_title`).innerText = helper.truncateString(Lists.decipherCodes('genres', data[`genres_${i}`]), 12) : hideBlock(`.js-genres_${i}_title`);
+                data[`genres_${i}`] ? viewUser.querySelector(`.js-genres_${i}_thumb`).src = 'http://hunterhdesign.com/drexel/idm372/genre-imgs/' + Lists.decipherCodes('genres', data[`genres_${i}`]) + '.jpeg' : hideBlock(`.js-genres_${i}_thumb`);
+            }
+
+            // Top Playlist
+            data.playlist_thumb ? viewUser.querySelector(`.c-profile-playlist__image`).src = data.playlist_thumb : hideBlock(`.c-profile-playlist__image`); //playlist image
+            data.playlist_title ? viewUser.querySelector(`.c-profile-playlist__title`).innerText = helper.truncateString(data.playlist_title, 24) : hideBlock(`.c-profile-playlist__title`); //playlist title
+            data.playlist_artist ? viewUser.querySelector(`.c-profile-playlist__author`).innerText = `Created by ${data.playlist_artist}` : hideBlock(`.c-profile-playlist__author`); //playlist author
+
+            // Playlist Songs
+            const shuffleCookie = helper.shuffleCookie();
+            $.ajax({
+                url: endpoints.routes.playlist.url,
+                data: {
+                    refresh_token: shuffleCookie.refresh_token,
+                    access_token: shuffleCookie.access_token,
+                    playlist: data.playlist_id
+                }
+            }).done(function (res) {
+                viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML = '';
+                for (i = 0; i < 5; i++) {
+                    viewUser.querySelector(`.c-profile-playlist__songs-list`).innerHTML += `
+                    <div class='c-profile-playlist__songs-list__item'> 
+                    <span class='c-profile-playlist__songs-list__item__title'>
+                    ${helper.truncateString(res.items[i].track.name, 12)} 
+                    </span>
+                    <span class='c-profile-playlist__songs-list__item__artist'> 
+                    by ${helper.truncateString(res.items[i].track.artists[0].name, 15)} 
+                    </span>
+                    <span class='c-profile-playlist__songs-list__item__time'> 
+                    ${helper.millisToMinutesAndSeconds(res.items[i].track.duration_ms)}
+                    </span> 
+                    </div>`;
+                }
+            });
+
+            // Hide any cards where all 3 blocks are hidden (due to insufficient data)
+            docQA('.c-profile__body-card--block-wrap').forEach(wrap => {
+                if (wrap.querySelectorAll('.c-profile__body-card--block[hidden]').length == wrap.querySelectorAll('.c-profile__body-card--block').length) {
+                    wrap.closest('.c-profile__body-card').hidden = true;
                 }
             });
         }

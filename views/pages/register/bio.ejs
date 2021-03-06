@@ -1,21 +1,22 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerBio.title
+    title: endpoints.pages.registerBio.title
 }); %>
-
 
     <form class="o-form" id="firestore_form" type="strings">
         <section class="form-section">
-            <h2 class="section-title l-grid__header u-heading-2 u-align-center">Write a short bio about yourself</h2>
-            <textarea class="o-form--input-textarea" name="bio" id="iography_input" cols="30" rows="10" maxlength="250" placeholder="Put your bio here, this is the first text people will see when they view your profile. Express yourself!"></textarea>
+            <h2 class="section-title l-grid__header u-heading-2 u-align-center">Write a short bio about yourself.</h2>
+            <h2 class="section-title l-grid__header u-heading-2 u-align-center">Let your connections hear your story!</h2>
+            <textarea maxlength="280" class="o-form--input-textarea" name="bio" id="js-textarea" cols="30" rows="10" placeholder="Put your bio here, this is the first text people will see when they view your profile. Express yourself!"></textarea>
+            <div id="js-characters" class="o-form--input-characters"></div>
         </section>
     </form>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerImages.url, 
-        label: 'Next',
-        classnames: 'o-button-primary',
+        url: endpoints.pages.registerImages.url, 
+        label: 'skip',
+        classnames: 'o-button-skip',
         form: '#firestore_form'
     }); %>
 

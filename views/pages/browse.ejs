@@ -1,34 +1,36 @@
 <%- include('../_partials/header', {pageTitle: pageTitle}); %>
-    <%- include('../_components/header-navigation--home', { title: endpoints.browse.title }); %>
+    <%- include('../_components/header-navigation--home', { title: endpoints.pages.browse.title }); %>
 
-        <div class="js-browse" id="l-profile-list">
+        <div class="js-browse js-edit">
             <div class="c-user-card">
-                <div class="c-user-card--overlay"></div>
-                <div class="c-user-card--top">
-                    <p class="c-user-card__stats-name u-heading-1 u-box-shadow--text data_first_name"></p>
-                    <p class="c-user-card__stats-pronouns u-heading-4 u-box-shadow--text data_pronouns"></p>
-                    <p class="c-user-card__stats-location u-heading-3 u-box-shadow--text data_location"></p>
+                <div class="c-user-card__figure">
+                    <img class="c-user-card__figure-picture js-pp_0">
+                    <span class="c-user-card__figure-info u-box-shadow--text">
+                        <p class="c-user-card__figure-name u-heading-1 js-first_name"></p>
+                        <p class="c-user-card__figure-pronouns u-heading-4 js-pronouns"></p>
+                        <p class="c-user-card__figure-location u-heading-3 js-location"></p>
+                    </span>
                 </div>
-                <div class="c-user-card--btm">
-                    <p class="c-user-card--btm--title data_anthem_heading"></p>
+                <div class="c-user-card__body">
+                    <p class="c-user-card__body-title js-anthem_heading"></p>
                     <div class="c-media">
-                        <iframe class="data_anthem_id" src="" frameborder="0" allowtransparency="true"
+                        <iframe class="js-anthem_id" src="" frameborder="0" allowtransparency="true"
                             allow="encrypted-media"></iframe>
                         <div class="c-media--controls">
                             <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--title data_anthem_title"></p>
-                                <p class="c-media--controls--top--subtitle data_anthem_subtitle"></p>
+                                <p class="c-media--controls--top--title js-anthem_title"></p>
+                                <p class="c-media--controls--top--subtitle js-anthem_subtitle"></p>
                             </div>
                             <div class="c-media--controls--btm">
-                                <a href="#">
+                                <button>
                                     <i class="fas fa-lg fa-history"></i>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button>
                                     <i class="fas fa-lg fa-play"></i>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button>
                                     <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -36,109 +38,153 @@
             </div>
         </div>
 
-        <div class="c-view-user">
-            <div class="c-view-user--top">
-                <h2 class="c-view-user--top-heading u-heading-1 u-align-center data_first_name_1"></h2>
-                <button class="o-spotify-select--close">Done</button>
+        <div class="c-profile">
+            <div class="c-profile__header">
+                <div class="o-faux"></div>
+                <h2 class="c-profile__header-heading u-heading-1 u-align-center js-first_name_1"></h2>
+                <button class="o-modal--close">Done</button>
             </div>
-            <div class="c-view-user--overlay"></div>
-            <div class="c-view-user--header">
-                <p class="u-heading-1 u-box-shadow--text data_first_name"></p>
-                <p class="u-heading-3 u-box-shadow--text data_pronouns"></p>
-                <p class="u-heading-2 u-box-shadow--text data_location"></p>
-            </div>
-            <div class="c-view-user__main">
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">About Me</h2>
-                    <p class="c-view-user__main--card-body u-paragraph data_bio"></p>
+            <div class="c-profile__body">
+                <!-- Profile Pics -->
+                <div class="c-profile__figure">
+                    <div class="js-slick-carousel">
+                        <img class="c-profile__figure-picture js-pp_0">
+                        <img class="c-profile__figure-picture js-pp_1">
+                        <img class="c-profile__figure-picture js-pp_2">
+                        <img class="c-profile__figure-picture js-pp_3">
+                    </div>
+                    <span class="c-profile__figure-info">
+                        <p class="c-profile__figure-name u-heading-1 u-box-shadow--text js-first_name"></p>
+                        <p class="c-profile__figure-pronouns u-heading-3 u-box-shadow--text js-pronouns"></p>
+                        <p class="c-profile__figure-location u-heading-2 u-box-shadow--text js-location"></p>
+                    </span>
                 </div>
-                <div class="c-view-user__main--card c-view-user__main--card-horizontal">
-                    <h2 class="c-view-user__main--card-heading u-heading-3">Looking For</h2>
-                    <p class="data_looking_for"></p>
+                <!-- Bio -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerBio.url; %>">
+                    <h2 class="c-profile__body-card-heading u-heading-3">About Me</h2>
+                    <p class="c-profile__body-card-body u-paragraph js-bio"></p>
                 </div>
-                <div class="c-view-user__main--card">
+                <!-- Looking For & Who Am I -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerLookingFor.url; %>">
+                    <div class="c-profile__body-card--block full-width">
+                        <h2 class="c-profile__body-card-heading u-heading-3">Looking For</h2>
+                        <p class="js-looking_for"></p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="c-profile__body-card--block full-width">
+                        <h2 class="c-profile__body-card-heading u-heading-3">I Am A</h2>
+                        <p class="js-who_are_you">Listener, Concert goer</p>
+                    </div>
+                </div>
+                <!-- Anthem -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerAnthem.url; %>">
                     <h2
-                        class="c-view-user__main--card-heading c-view-user__main--card-heading-anthem u-heading-3 data_anthem_heading">
+                        class="c-profile__body-card-heading c-profile__body-card-heading-anthem u-heading-3 js-anthem_heading">
                     </h2>
                     <div class="c-media">
-                        <iframe class="data_anthem_id" src="" frameborder="0" allowtransparency="true"
+                        <iframe class="js-anthem_id" src="" frameborder="0" allowtransparency="true"
                             allow="encrypted-media"></iframe>
                         <div class="c-media--controls">
                             <div class="c-media--controls--top">
-                                <p class="c-media--controls--top--title data_anthem_title"></p>
-                                <p class="c-media--controls--top--subtitle data_anthem_subtitle"></p>
+                                <p class="c-media--controls--top--title js-anthem_title"></p>
+                                <p class="c-media--controls--top--subtitle js-anthem_subtitle"></p>
                             </div>
                             <div class="c-media--controls--btm">
-                                <a href="#">
+                                <button>
                                     <i class="fas fa-lg fa-history"></i>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button>
                                     <i class="fas fa-lg fa-play"></i>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button>
                                     <i class="fas fa-lg fa-history fa-flip-horizontal"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_artists_heading"></h2>
-                    <div class="c-view-user__main--card--block-wrap">
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_artist_0_href"><img
-                                    class="c-view-user__main--card--block--img data_artist_0_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_artist_0_title"></p>
+                <!-- Top Artists -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
+                    <h2 class="c-profile__body-card-heading u-heading-3 js-top_artists_heading"></h2>
+                    <div class="c-profile__body-card--block-wrap">
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-artist_0_href"><img
+                                    class="c-profile__body-card--block--img js-artist_0_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-artist_0_title"></p>
                         </div>
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_artist_1_href"><img
-                                    class="c-view-user__main--card--block--img data_artist_1_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_artist_1_title"></p>
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-artist_1_href"><img
+                                    class="c-profile__body-card--block--img js-artist_1_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-artist_1_title"></p>
                         </div>
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_artist_2_href"><img
-                                    class="c-view-user__main--card--block--img data_artist_2_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_artist_2_title"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_tracks_heading"></h2>
-                    <div class="c-view-user__main--card--block-wrap">
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_track_0_href"><img
-                                    class="c-view-user__main--card--block--img data_track_0_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_track_0_title"></p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_track_1_href"><img
-                                    class="c-view-user__main--card--block--img data_track_1_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_track_1_title"></p>
-                        </div>
-                        <div class="c-view-user__main--card--block">
-                            <a rel="noopener noreferrer" target="_blank" class="data_track_2_href"><img
-                                    class="c-view-user__main--card--block--img data_track_2_thumb"></a>
-                            <p class="c-view-user__main--card--block--title data_track_2_title"></p>
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-artist_2_href"><img
+                                    class="c-profile__body-card--block--img js-artist_2_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-artist_2_title"></p>
                         </div>
                     </div>
                 </div>
-                <!-- Disabled until we add this data category -->
-                <!-- <div class="c-view-user__main--card">
-                    <h2 class="c-view-user__main--card-heading u-heading-3 data_top_playlist_heading"></h2>
-                </div> -->
+                <!-- Top Songs -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerConnected.url; %>">
+                    <h2 class="c-profile__body-card-heading u-heading-3 js-top_tracks_heading"></h2>
+                    <div class="c-profile__body-card--block-wrap">
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-track_0_href"><img
+                                    class="c-profile__body-card--block--img js-track_0_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-track_0_title"></p>
+                        </div>
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-track_1_href"><img
+                                    class="c-profile__body-card--block--img js-track_1_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-track_1_title"></p>
+                        </div>
+                        <div class="c-profile__body-card--block">
+                            <a rel="noopener noreferrer" target="_blank" class="js-track_2_href"><img
+                                    class="c-profile__body-card--block--img js-track_2_thumb"></a>
+                            <p class="c-profile__body-card--block--title js-track_2_title"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Genres -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerGenres.url; %>">
+                    <h2 class="c-profile__body-card-heading u-heading-3 js-top_genres_heading"></h2>
+                    <div class="c-profile__body-card--block-wrap">
+                        <div class="c-profile__body-card--block">
+                            <img class="c-profile__body-card--block--img js-genres_0_thumb">
+                            <p class="c-profile__body-card--block--title js-genres_0_title"></p>
+                        </div>
+                        <div class="c-profile__body-card--block">
+                            <img class="c-profile__body-card--block--img js-genres_1_thumb">
+                            <p class="c-profile__body-card--block--title js-genres_1_title"></p>
+                        </div>
+                        <div class="c-profile__body-card--block">
+                            <img class="c-profile__body-card--block--img js-genres_2_thumb">
+                            <p class="c-profile__body-card--block--title js-genres_2_title"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Playlist -->
+                <div class="c-profile__body-card" data-editLink="<%- endpoints.pages.registerPlaylist.url; %>">
+                    <h2 class="c-profile__body-card-heading u-heading-3 js-playlist_heading"></h2>
+                    <div class="c-profile-playlist">
+                        <img class="c-profile-playlist__image">
+                        <div class="c-profile-playlist__info">
+                            <h3 class="c-profile-playlist__title"></h3>
+                            <h5 class="c-profile-playlist__author"></h5>
+                        </div>
+                    </div>
+                    <div class='c-profile-playlist__songs-list'></div>
+                </div>
+                <!-- Message Button -->
+                <a class="o-button-secondary">Message</a>
             </div>
         </div>
 
-        <a class="o-form l-chat-view--input-bar browse-variant" hidden>
-            <textarea name="message" maxlength="500" placeholder="Send a message"></textarea>
-            <button type="submit">Send</button>
-        </a>
+        <!-- Continue button for profile complete page -->
+        <%- include('../_components/buttons', { url: endpoints.pages.browse.url, label: 'Continue' ,
+            classnames: 'o-button-secondary continue-button' }); %>
 
-        <%- include('../_components/buttons', { 
-            url: endpoints.browse.url, 
-            label: 'Continue',
-            classnames: 'o-button-primary o-button-primary--pink continue-button'
-        }); %>
+            <%- include('../_components/settings'); %>
 
-    <%- include('../_components/footer-navigation'); %>
-<%- include('../_partials/footer'); %>
+                <%- include('../_components/footer-navigation'); %>
+                    <%- include('../_partials/footer'); %>

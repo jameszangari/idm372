@@ -1,0 +1,67 @@
+.c-settings {
+	position: fixed;
+	z-index: 996;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: fit-content;
+	color: black;
+	&__header {
+		@extend .u-box-shadow;
+		background-color: $color-gray-5;
+		border-radius: 24px 24px 0 0;
+		width: 100%;
+		height: fit-content;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+		transform: translateY(2px);
+		button {
+			@extend .o-modal--close;
+		}
+		&__title {
+			width: fit-content;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+	&__main {
+		background-color: $color-gray-5;
+		padding-bottom: 75px;
+		height: 82vh;
+		width: 100%;
+		overflow-y: scroll;
+		max-height: calc(100vh - 80px);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		&__section {
+			&:first-of-type {
+				border-top: none;
+			}
+			padding: 1rem;
+			border-top: 2px solid $color-gray-3;
+			&__title {
+				margin-bottom: 0.5rem;
+			}
+		}
+	}
+	&__button {
+		border: 2px solid $color-gray-3;
+		border-radius: 0.5rem;
+		padding: 1rem;
+		margin: 0.5rem 0;
+		width: 100%;
+		&__title {
+			color: $color-pink-1;
+			font-weight: bold;
+		}
+		&__desc {
+			margin-top: 1rem;
+			text-align: left;
+		}
+	}
+}

@@ -23,6 +23,7 @@
 		"ie 11"
 	],
 	"dependencies": {
+		"@google-cloud/storage": "^5.8.1",
 		"browserslist": "^4.6.3",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.4",
@@ -32,12 +33,17 @@
 		"express-session": "^1.17.1",
 		"firebase": "^7.24.0",
 		"firebase-admin": "^9.4.1",
+		"image-data-uri": "^2.0.1",
 		"jquery": "^3.1.0",
 		"lozad": "^1.14.0",
 		"moment": "^2.29.1",
 		"normalize.css": "^5.0.0",
 		"querystring": "~0.2.0",
-		"request": "^2.88.2"
+		"request": "^2.88.2",
+		"slick-carousel": "^1.8.1",
+		"socket.io": "^3.1.1",
+		"socket.io-client": "^3.1.1",
+		"sortablejs": "^1.13.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
@@ -50,7 +56,7 @@
 		"clean-webpack-plugin": "^3.0.0",
 		"css-loader": "^3.0.0",
 		"dotenv-webpack": "^1.7.0",
-		"eslint": "^7.17.0",
+		"eslint": "^7.20.0",
 		"filemanager-webpack-plugin": "^3.1.0",
 		"mini-css-extract-plugin": "^0.7.0",
 		"node-sass": "^4.14.1",
@@ -63,5 +69,8 @@
 		"webpack": "^4.33.0",
 		"webpack-cli": "^3.3.4",
 		"webpack-dev-server": "^3.7.1"
+	},
+	"browser": {
+		"fs": false
 	}
 }

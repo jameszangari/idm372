@@ -8,12 +8,17 @@ Shuffle Team
 */
 @import "~normalize.css/normalize";
 @import "addtohome.scss";
+$slick-font-path: './../../src/fonts/';
+$slick-loader-path: './../../src/images/';
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme';
 
 /* Config */
 @import "_config.variables.scss";
 @import "_config.fonts.scss";
 @import "_config.functions.scss";
 @import "_config.mixin.scss";
+@import "_config.slick.scss";
 
 /* Base */
 @import "_base.general.scss";
@@ -29,6 +34,8 @@ Shuffle Team
 @import "_component.footer.scss";
 @import "_component.longform.scss";
 @import "_component.browse.scss";
+@import "_component.settings.scss";
+@import "draggable.scss";
 
 /* Pages */
 @import "_pages.chat.scss";

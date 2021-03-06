@@ -25,6 +25,12 @@
 
 1. Run the command `nodemon server.js` to startup the express server
     - nodemon watches the files for changes and refreshes the server
+    - if you run into an error saying "Cannot be loaded because running scripts is disabled on this system":
+    -   - hit `CTRL/CMD + SHIFT + P` and type `settings`
+    -   - next open `Prefences: Open Settings (JSON)`
+    -   - add this line inside of the brackets `"terminal.integrated.shellArgs.windows": ["-ExecutionPolicy", "Bypass"]`
+    -   - save this file and restart VSCode
+    -   - re-run the command
 2. The server will then be running on `localhost:8888`
 3. In a new terminal tab/window, run the command `npm run dev` to build the files for development
     - Webpack will compile all files and watch for changes on save
@@ -48,7 +54,7 @@
 
 -   All pages live inside the `views` folder at the root and use the `.ejs` templating language
 -   The url, page title, and location of the `.ejs` templates are stored as values in `src/scripts/config/endpoints.json`
-    -   This allows us to dynamically changes these values globally so that we don't have to manually change each value on each template e.g. `endpoints.registerArtist.url`
+    -   This allows us to dynamically changes these values globally so that we don't have to manually change each value on each template e.g. `endpoints.pages.registerAnthem.url`
 -   In `src/scripts/routes`, there is a file called `routes.js` which renders these pages
 
 #### Creating New Pages

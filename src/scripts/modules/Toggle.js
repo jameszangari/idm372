@@ -3,7 +3,7 @@ var $ = require('jquery');
 module.exports = {
     init: function() {
 
-        if (document.querySelector('.o-spotify-select--close') != null) {
+        if (document.querySelector('.o-modal--close') != null) {
             this.SpotifyToggle();
         }
 
@@ -11,16 +11,20 @@ module.exports = {
             this.ToggleButtonState();
         }
 
+        if (document.querySelector('#js-textarea') != null) {
+            this.maxCharacters();
+        }
+
     },
     SpotifyToggle: function() {
         // SPOTIFY SEARCH MODAL
-        $('.o-spotify-select--close').on('click', function(e) {
+        $('.o-modal--close').on('click', function(e) {
             e.preventDefault();
-            $('.o-spotify-select--group').toggleClass("o-spotify-select--group-open");
+            $('.o-modal--group').toggleClass("o-modal--group-open");
         });
-        $('.o-spotify-select--close').on('click', function(e) {
+        $('.o-modal--close').on('click', function(e) {
             e.preventDefault();
-            $('.o-spotify-select--close').toggleClass("o-spotify-select--close-open");
+            $('.o-modal--close').toggleClass("o-modal--close-open");
         });
     },
     ToggleButtonState: function() {
@@ -36,5 +40,17 @@ module.exports = {
                 break;
             default: 
         }
-    }
+    },
+    maxCharacters: function() {
+        $(document).ready(function() {
+          $('#js-characters').html(0 + '/280' + ' characters remaining');
+    
+          $('#js-textarea').keyup(function() {
+              var text_length = $('#js-textarea').val().length;
+              var text_remaining = 0 + text_length;
+    
+              $('#js-characters').html(text_remaining + '/280' + ' characters remaining');
+          });
+        });
+      },
 }

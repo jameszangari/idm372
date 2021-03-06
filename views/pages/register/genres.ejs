@@ -1,0 +1,53 @@
+<%- include('../../_partials/header', {pageTitle: pageTitle}); %>
+
+<%- include('../../_components/header-navigation', { 
+    title: endpoints.pages.registerGenres.title
+}); %>
+    
+    <h2 class="l-grid__header u-heading-2 u-align-center">Show your Connections your favorite genres.</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Rank them so they know what you like best!</h2>
+    
+    <form class="o-form" id="firestore_form" type="strings">
+        <ul class="o-draggable js-drag">
+            <li class="drag-item">
+                <div class="numeral">1.</div>
+                <select class="title" name="genres_0" data-listType="select" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">2.</div>
+                <select class="title" name="genres_1" data-listType="select" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+            <li class="drag-item">
+                <div class="numeral">3.</div>
+                <select class="title" name="genres_2" data-listType="select" data-list="genres" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div class="edit-wrap">
+                    <div class="edit-icon"></div>
+                </div>
+                <i class="drag-handle"></i>
+            </li>
+        </ul>
+    </form>
+
+
+    <%- include('../../_components/buttons', { 
+        url: endpoints.pages.registerConnected.url, 
+        label: 'Next',
+        classnames: 'o-button-submit',
+        form: '#firestore_form'
+    }); %>
+
+<%- include('../../_partials/footer'); %>

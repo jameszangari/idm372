@@ -1,6 +1,6 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
-    <%- include('../../_components/header-navigation', { title: endpoints.chatBrowse.title }); %>
+    <%- include('../../_components/header-navigation', { title: endpoints.pages.chatBrowse.title }); %>
 
         <div class="l-chat-browse"></div>
 
@@ -12,7 +12,8 @@
                 </linearGradient>
                 <path fill="url(#gradient)" d="M7.94503 26.1084L8.27636 25.327L7.55933 24.8731C3.5275 22.3203 1 18.784 1 14.5714C1 7.261 8.40122 1 18 1C27.5988 1 35 7.261 35 14.5714C35 21.8818 27.5988 28.1429 18 28.1429C16.6251 28.1429 14.5831 28.0171 13.3554 27.7864L13.0066 27.7209L12.6945 27.8899L5.54829 31.7601L7.94503 26.1084Z"></path>
             </svg>
-            <h2>Your messages will appear here</h2>
+            <h2>Looks like you’ve got no messages yet. Why not take the initiative?</h2>
+            <a class="o-button-static" href="<%- endpoints.pages.browse.url %>">View Other Profiles</a>
         </div>
 
     <%- include('../../_components/footer-navigation'); %>

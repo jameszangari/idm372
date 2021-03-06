@@ -15,21 +15,29 @@ const
     AddToHome = require('./modules/AddToHome'),
     Spotify = require('./modules/Spotify'),
     Register = require('./modules/Register'),
+    Carousel = require('./modules/Carousel'),
     Toggle = require('./modules/Toggle'),
     Validate = require('./modules/Validate'),
     Browse = require('./modules/Browse'),
     Connected = require('./modules/Connected'),
     Images = require('./modules/Images'),
-    Chat = require('./modules/Chat');
+    webSocket = require('./modules/WebSocket'),
+    Edit = require('./modules/Edit'),
+    RefreshToken = require('./modules/RefreshToken'),
+    Chat = require('./modules/Chat'),
+    Settings = require('./modules/Settings'),
+    CheckUser = require('./modules/CheckUser'),
+    Sort = require('./modules/Drag');
 
 // Global Logic here
 $(document).ready(() => {
     AddToHome.init();
-    if(document.body.className === 'l-grid--login') {
+    if (document.body.className === 'l-grid--login') {
         addToHomescreen();
     }
     Spotify.init();
     Browse.init();
     Register.init();
     Toggle.init();
+    Carousel.init();
 });

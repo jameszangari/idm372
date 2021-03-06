@@ -19,9 +19,10 @@
         font-weight: 600;
     }
 }
-/**
-    HOME/BROWSE PAGE STYLES
-**/
+
+/*------------------------------------*\
+    #HOME/BROWSE VARIANT
+\*------------------------------------*/
 .c-header-navigation--home {
     @include blue-gradient($color-bright-blue, $color-darker-blue);
     @extend .u-box-shadow;
@@ -29,7 +30,8 @@
     padding-bottom: 20px;
     padding-left: 25px;
     padding-right: 25px;
-    position: fixed;
+    position: sticky;
+    top: 0;
     height: 100px;
     width: 100%;
     z-index: 996;
@@ -44,6 +46,7 @@
     & .fas {
         font-size: 24px;
         transition: opacity .3s;
+        color: $color-gray-5;
         &:hover {
             opacity: 0.75;
         }

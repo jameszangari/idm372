@@ -46,13 +46,14 @@ module.exports = async function (req, res) {
                 let targetUUID;
                 data.participants[0] == reqData.uuid ? targetUUID = data.participants[1] : targetUUID = data.participants[0];
 
-                firebase.getName(targetUUID).then((targetName) => {
+                firebase.getBaseInfo(targetUUID).then((response) => {
                     getLastMessage(thread_id).then((message) => {
                         const thread = {
                             thread_id: thread_id,
                             target_id: targetUUID,
                             last_activity: data.last_activity,
-                            target_name: targetName,
+                            target_name: response.name,
+                            pp_0: response.pp_0,
                             preview: message.content
                         }
                         threadsArray.push(thread);
@@ -65,11 +66,10 @@ module.exports = async function (req, res) {
                     res.send(false);
                 });
 
+                const send = () => { res.send(threadsArray) };
+
                 if (i != docRef.size) {
                 } else { // When done
-                    function send() {
-                        res.send(threadsArray);
-                    }
                     function checkArray() { // Check array before sending
                         if (docRef.size == threadsArray.length) {
                             send();
@@ -101,13 +101,11 @@ module.exports = async function (req, res) {
                     messageArray.push(message.data())
                 });
 
+                const send = () => { res.send(messageArray) };
+
                 if (i != messages.size) { // Check array before sending
                 } else { // When done
-                    function send() {
-                        res.send(messageArray);
-                    }
                     function checkArray() { // Check if data is ready
-                        console.log('Checking Messages Array');
                         if (messages.size == messageArray.length) {
                             send();
                         } else {
@@ -134,10 +132,11 @@ module.exports = async function (req, res) {
     } else if (reqData.query == 'get-target-info') {
         const targetUUID = firebase.getTargetUUID(reqData.thread, reqData.uuid);
 
-        firebase.getName(targetUUID).then((targetName) => {
+        firebase.getBaseInfo(targetUUID).then((response) => {
             res.send({
                 uuid: targetUUID,
-                name: targetName
+                name: response.name,
+                pic: response.pp_0
             });
         }).catch(function (error) {
             console.log(error);

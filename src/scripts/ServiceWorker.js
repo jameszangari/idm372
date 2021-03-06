@@ -5,13 +5,16 @@ var urlsToCache = [
     '/tos',
     '/privacy',
     '/register/profile',
+    '/register/anthem',
+    '/register/playlist',
+    '/register/genres',
+    '/register/connected',
+    '/register/looking-for',
     '/register/bio',
     '/register/images',
-    '/register/anthem',
-    '/register/artist',
-    '/register/playlist',
-    '/register/connected',
     '/browse',
+    '/chat/browse',
+    '/chat/view',
     '/favicons/apple-icon.png'
 ];
 

@@ -1,18 +1,15 @@
 // Requires
 const helper = require('../helper');
+const WS = require('./WebSocket');
 const endpoints = require('../config/endpoints.json');
 const moment = require('moment');
-
-function unixToFromNow(unix) {
-    return moment.unix(unix).fromNow();
-}
 
 let targetInfo;
 function getTargetInfo(threadID) {
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'get-target-info',
             thread: threadID
         }
@@ -25,8 +22,7 @@ function getTargetInfo(threadID) {
 }
 
 // Cookies
-const spotifyObjectString = helper.getCookie('spotify');
-const spotifyObject = JSON.parse(spotifyObjectString);
+const shuffleCookie = helper.shuffleCookie();
 
 if (docQ('.l-chat-browse')) { // Browse Page
     // quickRefs
@@ -34,24 +30,24 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
     // List users
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'list-chats'
         }
     }).done(function (results) {
         if (results.length > 0) {
             results.forEach(thread => {
                 chatsList.innerHTML += `
-                <a class="l-chat-browse--user-item" href="${endpoints.chatView.url + '/?thread=' + thread.thread_id}">
+                <a class="l-chat-browse--user-item" href="${endpoints.pages.chatView.url + '/?thread=' + thread.thread_id}">
                     <div class="l-chat-browse--user-item--img-area">
                         <img class="l-chat-browse--user-item--img-area--img"
-                            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                            src="${thread.pp_0 ? thread.pp_0 : 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}">
                     </div>
                     <div class="l-chat-browse--user-item--main">
                         <div class="l-chat-browse--user-item--main--top">
                             <h2 class="l-chat-browse--user-item--main--top--name">${thread.target_name}</h2>
-                            <p class="l-chat-browse--user-item--main--top--time">${unixToFromNow(thread.last_activity._seconds)}</p>
+                            <p class="l-chat-browse--user-item--main--top--time">${helper.unixToFromNow(thread.last_activity._seconds)}</p>
                         </div>
                         <div class="l-chat-browse--user-item--main--btm">
                             <p class="l-chat-browse--user-item--main--btm--preview">
@@ -87,7 +83,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
     function appendMessages(messages) {
         messages.forEach(message => {
             let fromClass;
-            message.from == spotifyObject.user_id ? fromClass = 'from-me' : fromClass = 'from-them';
+            message.from == shuffleCookie.uuid ? fromClass = 'from-me' : fromClass = 'from-them';
 
             chatContentDiv.innerHTML += `
                 <div class="l-chat-view--content--message message-${fromClass}">
@@ -101,9 +97,9 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
     // Get chat history
     $.ajax({
-        url: endpoints.chat.url,
+        url: endpoints.routes.chat.url,
         data: {
-            uuid: spotifyObject.user_id,
+            uuid: shuffleCookie.uuid,
             query: 'get-history',
             thread: thread
         }
@@ -114,19 +110,26 @@ if (docQ('.l-chat-browse')) { // Browse Page
     //  Send Messages
     const messageForm = docQ('#messageForm');
     const messageInput = messageForm.querySelector('textarea[name="message"]');
+    const sendBtn = messageForm.querySelector('#messageForm button[type="submit"]');
+
+    messageForm.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        e.keyCode == 13 && sendBtn.click();
+    });
+
+    // Send a message
     messageForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (messageInput.value) {
             $.ajax({
-                url: endpoints.chat.url,
+                url: endpoints.routes.chat.url,
                 data: {
-                    uuid: spotifyObject.user_id,
+                    uuid: shuffleCookie.uuid,
                     query: 'send-message',
                     thread: thread,
-                    content: messageInput.value
+                    content: messageInput.value.trim()
                 }
             }).done(function (response) {
-                console.log('why');
                 chatContentDiv.innerHTML += `
                     <div class="l-chat-view--content--message message-from-me">
                         <p>${messageInput.value}</p>
@@ -135,6 +138,7 @@ if (docQ('.l-chat-browse')) { // Browse Page
                 `;
                 messageInput.value = ''; // Clear input
                 scroll_to_bottom('tell');
+                resizeInput();
             });
         }
     });
@@ -151,6 +155,21 @@ if (docQ('.l-chat-browse')) { // Browse Page
 
         sHeight > maxHeight ? newHeight = maxHeight : newHeight = sHeight;
         messageInput.style.height = newHeight + 'px';
+        sendBtn.style.height = newHeight + 'px';
     }
     messageInput.addEventListener('input', resizeInput);
+
+    // ===============
+    // Subscription Handler
+    // ===============
+
+    var socket = WS.socket;
+
+    socket.emit('sub-to-thread', {
+        uuid: shuffleCookie.uuid,
+        thread: thread
+    });
+    socket.on('new-message', (message) => {
+        appendMessages([message]);
+    });
 }

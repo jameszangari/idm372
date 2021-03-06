@@ -1,10 +1,12 @@
 <%- include('../../_partials/header', {pageTitle: pageTitle}); %>
 
 <%- include('../../_components/header-navigation', { 
-    title: endpoints.registerPlaylist.title
+    title: endpoints.pages.registerPlaylist.title
 }); %>
 
-    <h2 class="l-grid__header u-heading-2 u-align-center">Choose your favorite playlist</h2>
+    <h2 class="l-grid__header u-heading-2 u-align-center">Choose a playlist that you love to listen to!</h2>
+
+    <h2 class="l-grid__header u-heading-2 u-align-center">Other users will be able to see this on your profile.</h2>
 
     <form class="o-search-form" id="searchSpotify">
         <input class="o-search-form--input" type="text" id="search_input" data-searchcategory="playlist"
@@ -21,20 +23,20 @@
         <input id="result_album" type="text" name="playlist_album">
     </form>
 
-    <div class="o-spotify-select" hidden>
-        <button class="o-spotify-select--close">Done</button>
-        <div class="o-spotify-select--group" id="search_results"></div>
+    <div class="o-modal" hidden>
+        <button class="o-modal--close">Done</button>
+        <div class="o-modal--group" id="search_results"></div>
     </div>
 
     <div class="o-spotify-choice" hidden>
-        <button onclick="return confirm('Are you sure you want to Delete?');" class="o-spotify-choice--cancel"></button>
+        <button class="o-spotify-choice--edit"></button>
         <div class="o-spotify-choice--area"></div>
     </div>
 
     <%- include('../../_components/buttons', { 
-        url: endpoints.registerConnected.url, 
-        label: 'Next',
-        classnames: 'o-button-primary',
+        url: endpoints.pages.registerGenres.url, 
+        label: 'skip',
+        classnames: 'o-button-skip',
         form: '#firestore_form'
     }); %>
 
