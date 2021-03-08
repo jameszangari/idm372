@@ -1,4 +1,3 @@
-
 module.exports = function (req, res) {
     const
         request = require('request'),
@@ -45,7 +44,7 @@ module.exports = function (req, res) {
     // Return the results from spotify api for search
     function search(token, type, callback) {
         const options = {
-            url: `https://api.spotify.com/v1/me/top/${type}?limit=3`,
+            url: `https://api.spotify.com/v1/me/top/${type}?limit=6`,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

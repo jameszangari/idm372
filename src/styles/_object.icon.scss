@@ -426,7 +426,7 @@ section .invalid:first-of-type {
 	border-radius: 16px 16px 0 0;
 	background: $color-gray-5;
 	color: $color-black;
-	padding: 20px 20px 0 20px;
+	padding: 20px 0px 0 0px;
 	width: 100%;
 	height: 85%;
 	&--close {
@@ -438,6 +438,7 @@ section .invalid:first-of-type {
 		padding-bottom: 9px;
 		padding-left: 8px;
 		padding-right: 8px;
+		margin-right: 20px;
 		border-radius: 32px;
 		font-weight: 600;
 		font-size: 14px;
@@ -455,10 +456,10 @@ section .invalid:first-of-type {
 		flex-direction: row;
 		align-items: center;
 		width: 100%;
-		height: 70px;
-		max-height: 70px;
-		border-radius: 16px;
-		margin-bottom: 16px;
+		height: 90px;
+		max-height: 90px;
+		margin-bottom: 0;
+		padding: 10px 20px;
 		&:last-of-type {
 			margin-bottom: 20px;
 		}
@@ -499,6 +500,24 @@ section .invalid:first-of-type {
 			font-size: 20px;
 		}
 	}
+	&--search-input {
+		background-color: rgba(118,118,128,0.12);
+		margin: 20px 20px 10px;
+		border-radius: 10px;
+		border: 0px;
+		text-align: left;
+		text-align: webkit-left;
+		&::placeholder {
+			text-align: left !important;
+			text-align: webkit-left;
+			-ms-text-align-last: left;
+			-moz-text-align-last: left;
+		}
+	}
+}
+
+.deselected {
+	background-color: rgba(106,106,106,0.5);
 }
 
 .o-spotify-choice {
