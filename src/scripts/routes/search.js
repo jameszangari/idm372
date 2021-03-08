@@ -41,8 +41,10 @@ module.exports = function (req, res) {
                 items.forEach(item => { // Loop thru each result and push the info we want into the tracks array
                     if (!item.images[0] || !item.id || !item.name) { return }
                     i++;
+						  //console.log(item);
                     tracks.push(i, {
                         'id': item.id,
+							   'href': item.uri,
                         'title': item.name,
                         'thumb': item.images[0].url,
                         'album': false
