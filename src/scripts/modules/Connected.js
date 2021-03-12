@@ -128,10 +128,7 @@ if (lconnected) { //if on right page
 		 <div class="track_id" hidden>${id}</div>
 		 <div class="track_href" hidden>${href}</div>
 		 <div class="o-modal--selected" hidden>
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-			<defs/>
-			<path fill="#F72585" fill-rule="evenodd" d="M5.64482 9.08453L13.722.29949c.3671-.39932.9586-.39932 1.3257 0L16.088 1.4309c.3671.39932.3671 1.04266 0 1.4198L6.31791 13.4992c-.36714.3994-.95865.3994-1.32579 0L.260059 8.35244c-.3467454-.37713-.3467454-1.02048 0-1.4198L1.32069 5.80123c.34675-.39932.93826-.39932 1.3054 0l3.01873 3.2833z" clip-rule="evenodd"/>
-			</svg>
+		 	<i class="fas fa-check"></i>
 		 </div>
 	  `;
 		
