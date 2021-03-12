@@ -201,7 +201,10 @@ iframe {
 		&-info {
 			position: absolute;
 			padding: 26px;
-			margin-bottom: 16px;
+			bottom: 10px;
+			text-align: left;
+			left: 0;
+			width: fit-content !important;
 		}
 		* {
 			max-height: 320px !important;
