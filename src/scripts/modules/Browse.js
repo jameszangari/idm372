@@ -118,7 +118,7 @@ module.exports = {
         function addGeneralData(el, data) {
             // The data that appears on both the user list cards and on the profile view
             // Meant to be re-usable
-            (data.pp_0 && data.pp_0.includes('shuffle')) ? el.querySelector('.js-pp_0').src = `${data.pp_0}` : el.querySelector('.js-pp_0').src = '';
+            (data.pp_0 && data.pp_0.includes('shuffle')) ? el.querySelector('.js-pp_0').style.backgroundImage = `url('${data.pp_0}')` : el.querySelector('.js-pp_0').style.backgroundImage = '';
             data.pronouns ? el.querySelector('.js-pronouns').innerText = Lists.decipherCodes('pronouns', data.pronouns) : el.querySelector('.js-pronouns').hidden = true;
             el.querySelector('.js-first_name').innerText = data.first_name + ', ' + helper.getAge(data.bday);
             el.querySelector('.js-location').innerText = 'Philadelphia';
@@ -188,7 +188,7 @@ module.exports = {
                 const image = viewUser.querySelector(`.js-pp_${i}`);
                 if (image) {
                     const link = data[`pp_${i}`];
-                    (!!link && link.includes('shuffle')) ? image.src = `${link}` : image.src = '';
+                    (!!link && link.includes('shuffle')) ? image.style.backgroundImage = `URL('${link}')` : image.style.backgroundImage = '';
                 }
             }
 

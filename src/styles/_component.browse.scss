@@ -32,7 +32,9 @@
 		&-picture {
 			height: 100%;
 			width: 100%;
-			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 		&-info {
 			position: absolute;
@@ -192,7 +194,9 @@ iframe {
 		&-picture {
 			min-width: 100vw;
 			height: 480px;
-			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 		&-info {
 			position: absolute;
