@@ -134,5 +134,11 @@ module.exports = {
                 });
             }
         });
+
+        // Turn off autocomplete on everything
+        const formNodes = docQA('form, input');
+        formNodes.forEach(el => {
+            el.setAttribute('autocomplete', 'off');
+        });
     }
 }
