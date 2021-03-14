@@ -16,7 +16,7 @@
 3. Install nodemon globally using `npm i nodemon -g`
 4. Fix any npm issues by running `npm audit fix`
 5. Go to Microsoft Teams and download the `secret/` folder and the `.env` file from
-   General Channle > Files Tab > `Back End Development/Secret Keys/`
+   the General Channel > Files Tab > `Back End Development/Secret Keys/`
 6. Copy both the folder and file to the root of the project.
 7. Downloading the `.env` file from Teams will likely rename it to just `env`, name it back to `.env`
 
